@@ -73,7 +73,8 @@ class Slugify {
 	);
 
 	/**
-	 * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and the dash. They can be used in URLs. 
+	 * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and dashes.
+	 * They can be used in URLs. 
 	 * @param  string $string String
 	 * @return string         Slug
 	 */
