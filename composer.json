@@ -1,6 +1,22 @@
 {
     "name": "cocur/slugify",
+    "type": "library",
+    "description": "Converts a string into a slug.",
+    "keywords": ["slug", "slugify"],
+    "license": "MIT",
+    "authors": [
+    	{
+    		"name": "Florian Eckerstorfer",
+    		"email": "florian@theroadtojoy.at",
+    		"homepage": "http://florianeckerstorfer.com"
+    	}
+    ],
     "require": {
         "php": ">=5.3.8"
+    },
+    "autoload": {
+    	"psr-0": {
+    		"Cocur": "src"
+    	}
     }
 }
