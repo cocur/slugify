@@ -62,6 +62,7 @@ class SlugifyArrayTest extends \PHPUnit_Framework_TestCase
             array('Hello', 'hello'),
             array('Hello World', 'hello-world'),
             array('Hello: World', 'hello-world'),
+            array('H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-w-o-r-l-d'),
             array(': World', 'world'),
             array('Hello World!', 'hello-world'),
             array('Ä ä Ö ö Ü ü ß', 'ae-ae-oe-oe-ue-ue-ss'),
