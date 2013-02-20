@@ -35,20 +35,24 @@ namespace Cocur\Slugify;
  * @license   http://www.opensource.org/licenses/MIT The MIT License
  */
 class Slugify {
-    
+
     const MODEICONV = 'iconv';
     const MODEARRAY = 'array';
 
-    /** 
+    /**
+     * taken, mixed and modified from:
+     * https://github.com/laravel/laravel/blob/master/application/config/strings.php
+     * https://github.com/sleepyboy/slug/blob/master/slug.php
+     * 
      * this is modified and will translit german umlauts to ae,etc and not simply to a. 
      * 
      * @var array 
      */
     private static $ascii = array(
         '/º|°/' => 0,
-	'/¹/' => 1,
-	'/²/' => 2,
-	'/³/' => 3,
+        '/¹/' => 1,
+        '/²/' => 2,
+        '/³/' => 3,
         '/æ|ǽ|ä/' => 'ae',
         '/œ|ö/' => 'oe',
         '/À|Á|Â|Ã|Å|Ǻ|Ā|Ă|Ą|Ǎ|А/' => 'A',
@@ -148,73 +152,71 @@ class Slugify {
      */
     public function slugify($string, $separator = '-') {
 
-        switch ($this->mode) {
-            case Slugify::MODEARRAY:
-                return $this->slugifyByArray($string, $separator);
-                break;
-            default:
-                return $this->slugifyIconv($string, $separator);
-                break;
+        $string = preg_replace('/
+                    [\x09\x0A\x0D\x20-\x7E]            # ASCII
+                  | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
+                  |  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
+                  | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
+                  |  \xED[\x80-\x9F][\x80-\xBF]        # excluding surrogates
+                  |  \xF0[\x90-\xBF][\x80-\xBF]{2}     # planes 1-3
+                  | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
+                  |  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
+               /', '', $string);
+
+        // transliterate
+        if (function_exists('iconv')) {
+            switch ($this->mode) {
+                case Slugify::MODEARRAY:
+                    $string = $this->translitByArray($string);
+                    break;
+                default:
+                    $string = $this->translitByIconv($string);
+                    break;
+            }
+        } else {
+            $string = $this->translitByArray($string);
         }
+        
+        // replace non letter or digits by seperator
+        $string = preg_replace('#[^\\pL\d]+#u', $separator, $string);
+        // trim
+        $string = trim($string, $separator);
+
+        // lowercase
+        $string = (defined('MB_CASE_LOWER')) ? mb_strtolower($string) : strtolower($string);
+        
+        // remove unwanted characters
+        $string = preg_replace('#[^-\w]+#', '', $string);
+
+        if (empty($string)) {
+            return 'n' . $separator . 'a';
+        }
+        
+        return $string;
     }
 
     /**
      * taken form doctrine project
-     * needs locale to be set: setlocale(LC_ALL, 'de_DE.utf8','de_DE');
+     * needs locale to be set for country specific transliteration: 
+     * setlocale(LC_ALL, 'de_DE.utf8','de_DE');
      * 
-     * caution: iconv doesnt work on all system, then use slugifyArray
+     * caution: iconv doesnt work on all system, then use translitByArray
      * 
      * @param type $text
      * @return string
      */
-    public static function slugifyIconv($text, $separator = '-') {
-        // replace non letter or digits by -
-        $text = preg_replace('#[^\\pL\d]+#u', $separator, $text);
-
-        // trim
-        $text = trim($text, $separator);
-
-        // transliterate
-        if (function_exists('iconv')) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // lowercase
-        $text = strtolower($text);
-
-        // remove unwanted characters
-        $text = preg_replace('#[^-\w]+#', '', $text);
-
-        if (empty($text)) {
-            return 'n' . $separator . 'a';
-        }
-
-        return $text;
+    public static function translitByIconv($text) {
+            return iconv('utf-8', 'us-ascii//TRANSLIT', $text);
     }
 
     /**
-     * taken from laravel project
+     * transliterate a string with a array map
      * 
-     * Generate a URL friendly "slug" from a given string.
-     *
      * @param  string  $title
-     * @param  string  $separator
      * @return string
      */
-    public static function slugifyByArray($title, $separator = '-') {
-
-        $title = preg_replace(array_keys(self::$ascii), array_values(self::$ascii), $title);
-        
-        $title = preg_replace('/[^\x09\x0A\x0D\x20-\x7E]/', '', $title);
-
-        // Remove all characters that are not the separator, letters, numbers, or whitespace.
-        $title = preg_replace('![^' . preg_quote($separator) . '\pL\pN\s]+!u', '', (defined('MB_CASE_LOWER')) ? mb_strtolower($title) : strtolower($title));
-
-        // Replace all separator characters and whitespace by a single separator
-        $title = preg_replace('![' . preg_quote($separator) . '\s]+!u', $separator, $title);
-
-
-        return trim($title, $separator);
+    public static function translitByArray($title) {
+        return preg_replace(array_keys(self::$ascii), array_values(self::$ascii), $title);
     }
 
 }
