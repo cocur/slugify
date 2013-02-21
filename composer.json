@@ -9,6 +9,10 @@
     		"name": "Florian Eckerstorfer",
     		"email": "florian@theroadtojoy.at",
     		"homepage": "http://florianeckerstorfer.com"
+    	},
+        {
+    		"name": "Ivo Bathke",
+    		"email": "ivo.bathke@gmail.com"
     	}
     ],
     "require": {
