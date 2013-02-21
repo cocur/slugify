@@ -6,7 +6,14 @@ Converts a string into a slug.
 Author
 ------
 
-Handcrafted in Vienna by [Florian Eckerstorfer](http://florianeckerstorfer.com) ([@Florian_](http://twitter.com/Florian_)).
+Started in Vienna by [Florian Eckerstorfer](http://florianeckerstorfer.com) ([@Florian_](http://twitter.com/Florian_)).
+
+Improved by Ivo Bathke  
+
+Slugify has two mechanism to slug a string:  
+as default it works with TRANSLIT from iconv, but it also has a static array to translit utf-8 chars to their 7bit representation.
+
+The two mechanism are taken and modified from doctrine project and laravel framework. 
 
 Usage
 -----
@@ -14,7 +21,8 @@ Usage
 	<?php
 	use Cocur\Slugify\Slugiy;
 
-	$slugify = new Slugify();
+	$slugify = new Slugify();//for iconv translit
+    //$slugify = new Slugify(Slugify::MODEARRAY);//for array map
 	echo $slugify->slugify('Hello World!'); // hello-world
 	?>
 
