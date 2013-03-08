@@ -3,17 +3,17 @@
 /**
  * The MIT License (MIT)
  * Copyright (c) 2012 Florian Eckerstorfer
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
  * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
  * sell copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -49,6 +49,10 @@ class SlugifyIconvTest extends \PHPUnit_Framework_TestCase
      * @dataProvider provider
      */
     public function testSlugify($string, $slug) {
+        if (!function_exists('iconv')) {
+            $this->markTestSkipped('The "iconv" function is not available.');
+            return;
+        }
         //we assume german locale
         setlocale(LC_ALL, 'de_DE.utf8','de_DE');
         $slugify = new Slugify();
@@ -64,10 +68,10 @@ class SlugifyIconvTest extends \PHPUnit_Framework_TestCase
             array('Hello', 'hello'),
             array('Hello World', 'hello-world'),
             array('Hello: World', 'hello-world'),
-            array('H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-w-o-r-l-d'),
+            array('H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-wsso-r-l-d'),
             array(': World', 'world'),
             array('Hello World!', 'hello-world'),
-            array('Ä ä Ö ö Ü ü ß', 'ae-ae-oe-oe-ue-ue-ss'),
+            array('Ä ä Ö ö Ü ü ß', 'a-a-o-o-u-u-ss'),
             array('Á À á à É È é è Ó Ò ó ò Ñ ñ Ú Ù ú ù', 'a-a-a-a-e-e-e-e-o-o-o-o-n-n-u-u-u-u'),
             array('Â â Ê ê Ô ô Û û', 'a-a-e-e-o-o-u-u'),
             array('Â â Ê ê Ô ô Û 1', 'a-a-e-e-o-o-u-1'),
