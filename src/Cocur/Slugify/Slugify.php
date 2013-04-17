@@ -138,6 +138,10 @@ class Slugify {
         }
     }
 
+    public static function create($mode = null) {
+        return new static($mode);
+    }
+
     /**
      * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and the dash. They can be used in URLs.
      * @param  string $string     String
