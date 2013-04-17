@@ -174,7 +174,7 @@ class Slugify {
         // remove unwanted characters
         $string = preg_replace('#[^-\w]+#', '', $string);
 
-        if (empty($string)) {
+        if ($string === '') {
             return 'n' . $separator . 'a';
         }
         

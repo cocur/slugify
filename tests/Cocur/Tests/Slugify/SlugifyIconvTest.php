@@ -66,6 +66,7 @@ class SlugifyIconvTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('Hello', 'hello'),
+            array('[0]', '0'),
             array('Hello World', 'hello-world'),
             array('Hello: World', 'hello-world'),
             // does not seem to work consistently
