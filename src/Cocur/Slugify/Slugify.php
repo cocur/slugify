@@ -133,15 +133,8 @@ class Slugify {
     protected $mode = Slugify::MODEICONV;
 
     public function __construct($mode = null) {
-        if (!empty($mode)) {
-            switch ($mode) {
-                case Slugify::MODEARRAY:
-                    $this->mode = $mode;
-                    break;
-                default:
-                    $this->mode = Slugify::MODEICONV;
-                    break;
-            }
+        if ($mode === Slugify::MODEARRAY || !function_exists('iconv')) {
+            $this->mode = $mode;
         }
     }
 
@@ -164,15 +157,8 @@ class Slugify {
                /', '', $string);
 
         // transliterate
-        if (function_exists('iconv')) {
-            switch ($this->mode) {
-                case Slugify::MODEARRAY:
-                    $string = $this->translitByArray($string);
-                    break;
-                default:
-                    $string = $this->translitByIconv($string);
-                    break;
-            }
+        if ($this->mode === Slugify::MODEICONV) {
+            $string = $this->translitByIconv($string);
         } else {
             $string = $this->translitByArray($string);
         }
