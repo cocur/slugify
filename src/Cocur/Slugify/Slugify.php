@@ -194,7 +194,7 @@ class Slugify {
      * @return string
      */
     public static function translitByIconv($text) {
-            return iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        return iconv('utf-8', 'us-ascii//TRANSLIT', $text);
     }
 
     /**
