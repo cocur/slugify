@@ -133,24 +133,19 @@ class Slugify {
     protected $mode = Slugify::MODEICONV;
 
     public function __construct($mode = null) {
-        if (!empty($mode)) {
-            switch ($mode) {
-                case Slugify::MODEARRAY:
-                    $this->mode = $mode;
-                    break;
-                default:
-                    $this->mode = Slugify::MODEICONV;
-                    break;
-            }
+        if ($mode === Slugify::MODEARRAY || !function_exists('iconv')) {
+            $this->mode = $mode;
         }
     }
 
     /**
-     * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and the dash. They can be used in URLs. 
-     * @param  string $string String
-     * @return string         Slug
+     * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and the dash. They can be used in URLs.
+     * @param  string $string     String
+     * @param  string $separator  Separator
+     * @param  string $emptyValue Value to use if the slugified version is empty, defaults to "n{$separator}a"
+     * @return string             Slug
      */
-    public function slugify($string, $separator = '-') {
+    public function slugify($string, $separator = '-', $emptyValue = null) {
 
         $string = preg_replace('/
                     [\x09\x0A\x0D\x20-\x7E]            # ASCII
@@ -164,15 +159,8 @@ class Slugify {
                /', '', $string);
 
         // transliterate
-        if (function_exists('iconv')) {
-            switch ($this->mode) {
-                case Slugify::MODEARRAY:
-                    $string = $this->translitByArray($string);
-                    break;
-                default:
-                    $string = $this->translitByIconv($string);
-                    break;
-            }
+        if ($this->mode === Slugify::MODEICONV) {
+            $string = $this->translitByIconv($string);
         } else {
             $string = $this->translitByArray($string);
         }
@@ -188,8 +176,8 @@ class Slugify {
         // remove unwanted characters
         $string = preg_replace('#[^-\w]+#', '', $string);
 
-        if (empty($string)) {
-            return 'n' . $separator . 'a';
+        if ($string === '') {
+            return $emptyValue ?: 'n' . $separator . 'a';
         }
         
         return $string;
@@ -206,7 +194,7 @@ class Slugify {
      * @return string
      */
     public static function translitByIconv($text) {
-            return iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        return iconv('utf-8', 'us-ascii//TRANSLIT', $text);
     }
 
     /**
