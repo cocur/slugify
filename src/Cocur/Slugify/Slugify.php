@@ -139,11 +139,13 @@ class Slugify {
     }
 
     /**
-     * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and the dash. They can be used in URLs. 
-     * @param  string $string String
-     * @return string         Slug
+     * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and the dash. They can be used in URLs.
+     * @param  string $string     String
+     * @param  string $separator  Separator
+     * @param  string $emptyValue Value to use if the slugified version is empty, defaults to "n{$separator}a"
+     * @return string             Slug
      */
-    public function slugify($string, $separator = '-') {
+    public function slugify($string, $separator = '-', $emptyValue = null) {
 
         $string = preg_replace('/
                     [\x09\x0A\x0D\x20-\x7E]            # ASCII
@@ -175,7 +177,7 @@ class Slugify {
         $string = preg_replace('#[^-\w]+#', '', $string);
 
         if ($string === '') {
-            return 'n' . $separator . 'a';
+            return $emptyValue ?: 'n' . $separator . 'a';
         }
         
         return $string;
