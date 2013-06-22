@@ -19,7 +19,7 @@ Usage
 -----
 
 	<?php
-	use Cocur\Slugify\Slugiy;
+	use Cocur\Slugify\Slugify;
 
 	$slugify = new Slugify();//for iconv translit
     //$slugify = new Slugify(Slugify::MODEARRAY);//for array map
