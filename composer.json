@@ -7,8 +7,8 @@
     "authors": [
     	{
     		"name": "Florian Eckerstorfer",
-    		"email": "florian@theroadtojoy.at",
-    		"homepage": "http://florianeckerstorfer.com"
+    		"email": "florian@eckerstorfer.co",
+    		"homepage": "http://florian.ec"
     	},
         {
     		"name": "Ivo Bathke",
@@ -17,6 +17,9 @@
     ],
     "require": {
         "php": ">=5.3.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7"
     },
     "autoload": {
     	"psr-4": {

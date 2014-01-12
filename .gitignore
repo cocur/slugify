@@ -4,3 +4,5 @@
 /nbproject/private/
 vendor
 report
+composer.lock
+phpunit.xml

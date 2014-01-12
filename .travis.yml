@@ -2,7 +2,14 @@ language: php
 
 php:
   - 5.3
+  - 5.3.8
   - 5.4
   - 5.5
 
-script: phpunit tests/
+before_script:
+  - wget http://getcomposer.org/composer.phar
+  - php composer.phar --prefer-source --dev install
+  - cp phpunit.xml.dist phpunit.xml
+
+script:
+    - ./vendor/bin/phpunit -c ./
