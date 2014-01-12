@@ -7,7 +7,7 @@ Authors
 -------
 
 - [Florian Eckerstorfer](http://florian.ec) ([Twitter](http://twitter.com/Florian_), [App.net](http://app.net/florian))
-- Ivo Bathke
+- [Ivo Bathke](https://github.com/ivoba)
 - And some [great contributors](https://github.com/cocur/slugify/graphs/contributors)
 
 
@@ -49,8 +49,8 @@ Changelog
 ### Version 0.3 (12 January 2014)
 
 - #11 PSR-4 compatible (by [mac2000](https://github.com/mac2000))
-- #12 Return empty slug when input is empty and removed unused parameter (by [mac2000](https://github.com/mac2000))
 - #13 Added editorconfig (by [mac2000](https://github.com/mac2000))
+- #14 Return empty slug when input is empty and removed unused parameter (by [mac2000](https://github.com/mac2000))
 
 
 License
