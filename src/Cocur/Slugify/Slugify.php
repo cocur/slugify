@@ -3,17 +3,17 @@
 /**
  * The MIT License (MIT)
  * Copyright (c) 2012 Florian Eckerstorfer
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
  * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
  * sell copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -43,10 +43,10 @@ class Slugify {
      * taken, mixed and modified from:
      * https://github.com/laravel/laravel/blob/master/application/config/strings.php
      * https://github.com/sleepyboy/slug/blob/master/slug.php
-     * 
-     * this is modified and will translit german umlauts to ae,etc and not simply to a. 
-     * 
-     * @var array 
+     *
+     * this is modified and will translit german umlauts to ae,etc and not simply to a.
+     *
+     * @var array
      */
     private static $ascii = array(
         '/º|°/' => 0,
@@ -127,8 +127,8 @@ class Slugify {
 
     /**
      * possible slugify methods
-     * 
-     * @var iconv|array 
+     *
+     * @var iconv|array
      */
     protected $mode = Slugify::MODEICONV;
 
@@ -149,7 +149,10 @@ class Slugify {
      * @param  string $emptyValue Value to use if the slugified version is empty, defaults to "n{$separator}a"
      * @return string             Slug
      */
-    public function slugify($string, $separator = '-', $emptyValue = null) {
+    public function slugify($string, $separator = '-') {
+        if (empty($string)) {
+            return '';
+        }
 
         $string = preg_replace('/
                     [\x09\x0A\x0D\x20-\x7E]            # ASCII
@@ -168,7 +171,7 @@ class Slugify {
         } else {
             $string = $this->translitByArray($string);
         }
-        
+
         // replace non letter or digits by seperator
         $string = preg_replace('#[^\\pL\d]+#u', $separator, $string);
         // trim
@@ -176,24 +179,20 @@ class Slugify {
 
         // lowercase
         $string = (defined('MB_CASE_LOWER')) ? mb_strtolower($string) : strtolower($string);
-        
+
         // remove unwanted characters
         $string = preg_replace('#[^-\w]+#', '', $string);
 
-        if ($string === '') {
-            return $emptyValue ?: 'n' . $separator . 'a';
-        }
-        
         return $string;
     }
 
     /**
      * taken form doctrine project
-     * needs locale to be set for country specific transliteration: 
+     * needs locale to be set for country specific transliteration:
      * setlocale(LC_ALL, 'de_DE.utf8','de_DE');
-     * 
+     *
      * caution: iconv doesnt work on all system, then use translitByArray
-     * 
+     *
      * @param type $text
      * @return string
      */
@@ -203,7 +202,7 @@ class Slugify {
 
     /**
      * transliterate a string with a array map
-     * 
+     *
      * @param  string  $title
      * @return string
      */
