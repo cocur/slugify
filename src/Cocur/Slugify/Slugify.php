@@ -149,7 +149,7 @@ class Slugify {
      * @param  string $emptyValue Value to use if the slugified version is empty, defaults to "n{$separator}a"
      * @return string             Slug
      */
-    public function slugify($string, $separator = '-', $emptyValue = null) {
+    public function slugify($string, $separator = '-') {
         if (empty($string)) {
             return '';
         }
