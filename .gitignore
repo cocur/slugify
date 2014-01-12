@@ -1,3 +1,5 @@
 *.sublime-project
 *.sublime-workspace
+.idea
 /nbproject/private/
+vendor
