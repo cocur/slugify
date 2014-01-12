@@ -30,7 +30,7 @@ namespace Cocur\Tests\Slugify;
 
 use Cocur\Slugify\Slugify;
 
-require_once __DIR__ . '/../../../../src/Cocur/Slugify/Slugify.php';
+require_once __DIR__ . '/../src/Slugify.php';
 
 /**
  * @package   org.cocur.slugify
