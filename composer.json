@@ -19,8 +19,8 @@
         "php": ">=5.3.8"
     },
     "autoload": {
-    	"psr-0": {
-    		"Cocur": "src"
+    	"psr-4": {
+    		"Cocur\\Slugify\\": "src"
     	}
     }
 }
