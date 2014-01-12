@@ -28,14 +28,16 @@
 namespace Cocur\Slugify;
 
 /**
+ * Slugify
+ *
  * @package   org.cocur.slugify
+ * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
  * @author    Ivo Bathke <ivo.bathke@gmail.com>
- * @author    Florian Eckerstorfer <florian@theroadtojoy.at>
- * @copyright 2012 Florian Eckerstorfer
+ * @copyright 2012-2014 Florian Eckerstorfer
  * @license   http://www.opensource.org/licenses/MIT The MIT License
  */
-class Slugify {
-
+class Slugify
+{
     const MODEICONV = 'iconv';
     const MODEARRAY = 'array';
 
@@ -126,30 +128,46 @@ class Slugify {
     );
 
     /**
-     * possible slugify methods
-     *
-     * @var iconv|array
+     * @var string (iconv|array)
      */
     protected $mode = Slugify::MODEICONV;
 
-    public function __construct($mode = null) {
+    /**
+     * Constructor.
+     *
+     * @param string $mode Mode, default value is {@see Slugify::MODEICONV}.
+     */
+    public function __construct($mode = null)
+    {
         if ($mode === Slugify::MODEARRAY || !function_exists('iconv')) {
             $this->mode = $mode;
         }
     }
 
-    public static function create($mode = null) {
+    /**
+     * Static method to create new instance of {@see Slugify}.
+     *
+     * @param string $mode Mode, default value is {@see Slugify::MODEICONV}.
+     *
+     * @return Slugify
+     */
+    public static function create($mode = null)
+    {
         return new static($mode);
     }
 
     /**
-     * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and the dash. They can be used in URLs.
-     * @param  string $string     String
-     * @param  string $separator  Separator
-     * @param  string $emptyValue Value to use if the slugified version is empty, defaults to "n{$separator}a"
-     * @return string             Slug
+     * Takes a string and returns a slugified version of it.
+     *
+     * Slugs only consists of characters, numbers and the dash. They can be used in URLs.
+     *
+     * @param string $string     Input string
+     * @param string $separator  Separator
+     *
+     * @return string Slugified version of the input string
      */
-    public function slugify($string, $separator = '-') {
+    public function slugify($string, $separator = '-')
+    {
         if (empty($string)) {
             return '';
         }
@@ -174,10 +192,9 @@ class Slugify {
 
         // replace non letter or digits by seperator
         $string = preg_replace('#[^\\pL\d]+#u', $separator, $string);
-        // trim
         $string = trim($string, $separator);
 
-        // lowercase
+        // Convert slug into lowercase
         $string = (defined('MB_CASE_LOWER')) ? mb_strtolower($string) : strtolower($string);
 
         // remove unwanted characters
@@ -187,27 +204,33 @@ class Slugify {
     }
 
     /**
-     * taken form doctrine project
-     * needs locale to be set for country specific transliteration:
-     * setlocale(LC_ALL, 'de_DE.utf8','de_DE');
+     * Transliterate the string by using the iconv extension.
      *
-     * caution: iconv doesnt work on all system, then use translitByArray
+     * Needs locale to be set for country specific transliteration:
+     *   <?php
+     *   setlocale(LC_ALL, 'de_DE.utf8','de_DE');
      *
-     * @param type $text
+     * Caution: iconv doesnt work on all system, then use translitByArray
+     *
+     * Taken form doctrine project
+     *
+     * @param type $string
+     *
      * @return string
      */
-    public static function translitByIconv($text) {
-        return iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    public static function translitByIconv($string)
+    {
+        return iconv('utf-8', 'us-ascii//TRANSLIT', $string);
     }
 
     /**
-     * transliterate a string with a array map
+     * Transliterate a string with an array map
      *
-     * @param  string  $title
+     * @param string $string
      * @return string
      */
-    public static function translitByArray($title) {
-        return preg_replace(array_keys(self::$ascii), array_values(self::$ascii), $title);
+    public static function translitByArray($string)
+    {
+        return preg_replace(array_keys(self::$ascii), array_values(self::$ascii), $string);
     }
-
 }

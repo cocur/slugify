@@ -42,13 +42,14 @@ require_once __DIR__ . '/../src/Slugify.php';
  */
 class SlugifyArrayTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @param string $string
      * @param string $slug
+     *
      * @dataProvider provider
      */
-    public function testSlugify($string, $slug) {
+    public function testSlugify($string, $slug)
+    {
         $slugify = new Slugify(Slugify::MODEARRAY);
         $this->assertEquals($slug, $slugify->slugify($string), '->slugify() transforms the string in a correct slug.');
     }
@@ -73,5 +74,4 @@ class SlugifyArrayTest extends \PHPUnit_Framework_TestCase
             array('Mórë thån wørds', 'more-than-words')
         );
     }
-
 }

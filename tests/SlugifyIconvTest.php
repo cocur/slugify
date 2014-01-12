@@ -30,8 +30,6 @@ namespace Cocur\Tests\Slugify;
 
 use Cocur\Slugify\Slugify;
 
-require_once __DIR__ . '/../src/Slugify.php';
-
 /**
  * @package   org.cocur.slugify
  * @category  tests
@@ -42,13 +40,14 @@ require_once __DIR__ . '/../src/Slugify.php';
  */
 class SlugifyIconvTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @param string $string
      * @param string $slug
+     *
      * @dataProvider provider
      */
-    public function testSlugify($string, $slug) {
+    public function testSlugify($string, $slug)
+    {
         if (!function_exists('iconv')) {
             $this->markTestSkipped('The "iconv" function is not available.');
             return;
@@ -83,5 +82,4 @@ class SlugifyIconvTest extends \PHPUnit_Framework_TestCase
             #array('Mórë thån wørds', 'more-thaan-words')
         );
     }
-
 }
