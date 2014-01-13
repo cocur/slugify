@@ -50,7 +50,7 @@ class SlugifyArrayTest extends \PHPUnit_Framework_TestCase
      */
     public function testSlugify($string, $slug)
     {
-        $slugify = new Slugify(Slugify::MODEARRAY);
+        $slugify = new Slugify(Slugify::MODE_ARRAYMAP);
         $this->assertEquals($slug, $slugify->slugify($string), '->slugify() transforms the string in a correct slug.');
     }
 

@@ -54,7 +54,7 @@ class SlugifyIconvTest extends \PHPUnit_Framework_TestCase
         }
         //we assume german locale
         setlocale(LC_ALL, 'de_DE.utf8','de_DE');
-        $slugify = new Slugify();
+        $slugify = new Slugify(Slugify::MODE_ICONV);
         $this->assertEquals($slug, $slugify->slugify($string), '->slugify() transforms the string in a correct slug.');
     }
 

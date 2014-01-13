@@ -11,6 +11,8 @@
 
 namespace Cocur\Slugify;
 
+use Cocur\Slugify\Transliter\TransliterFactory;
+
 /**
  * Slugify
  *
@@ -22,122 +24,42 @@ namespace Cocur\Slugify;
  */
 class Slugify implements SlugifyInterface
 {
-    const MODEICONV = 'iconv';
-    const MODEARRAY = 'array';
+    const MODE_ICONV = 'iconv';
+    const MODE_ARRAYMAP = 'arraymap';
 
-    /**
-     * taken, mixed and modified from:
-     * https://github.com/laravel/laravel/blob/master/application/config/strings.php
-     * https://github.com/sleepyboy/slug/blob/master/slug.php
-     *
-     * this is modified and will translit german umlauts to ae,etc and not simply to a.
-     *
-     * @var array
-     */
-    private static $ascii = array(
-        '/º|°/' => 0,
-        '/¹/' => 1,
-        '/²/' => 2,
-        '/³/' => 3,
-        '/æ|ǽ|ä/' => 'ae',
-        '/œ|ö/' => 'oe',
-        '/À|Á|Â|Ã|Å|Ǻ|Ā|Ă|Ą|Ǎ|А/' => 'A',
-        '/à|á|â|ã|å|ǻ|ā|ă|ą|ǎ|ª|а/' => 'a',
-        '/@/' => 'at',
-        '/Б/' => 'B',
-        '/б/' => 'b',
-        '/Ç|Ć|Ĉ|Ċ|Č|Ц/' => 'C',
-        '/ç|ć|ĉ|ċ|č|ц/' => 'c',
-        '/Ð|Ď|Đ|Д/' => 'Dj',
-        '/ð|ď|đ|д/' => 'dj',
-        '/È|É|Ê|Ë|Ē|Ĕ|Ė|Ę|Ě|Е|Ё|Э/' => 'E',
-        '/è|é|ê|ë|ē|ĕ|ė|ę|ě|е|ё|э/' => 'e',
-        '/Ф/' => 'F',
-        '/ƒ|ф/' => 'f',
-        '/Ĝ|Ğ|Ġ|Ģ|Г/' => 'G',
-        '/ĝ|ğ|ġ|ģ|г/' => 'g',
-        '/Ĥ|Ħ|Х/' => 'H',
-        '/ĥ|ħ|х/' => 'h',
-        '/Ì|Í|Î|Ï|Ĩ|Ī|Ĭ|Ǐ|Į|İ|И/' => 'I',
-        '/ì|í|î|ï|ĩ|ī|ĭ|ǐ|į|ı|и/' => 'i',
-        '/Ĵ|Й/' => 'J',
-        '/ĵ|й/' => 'j',
-        '/Ķ|К/' => 'K',
-        '/ķ|к/' => 'k',
-        '/Ĺ|Ļ|Ľ|Ŀ|Ł|Л/' => 'L',
-        '/ĺ|ļ|ľ|ŀ|ł|л/' => 'l',
-        '/М/' => 'M',
-        '/м/' => 'm',
-        '/Ñ|Ń|Ņ|Ň|Н/' => 'N',
-        '/ñ|ń|ņ|ň|ŉ|н/' => 'n',
-        '/Ò|Ó|Ô|Õ|Ō|Ŏ|Ǒ|Ő|Ơ|Ø|Ǿ|О/' => 'O',
-        '/ò|ó|ô|õ|ō|ŏ|ǒ|ő|ơ|ø|ǿ|º|о/' => 'o',
-        '/П/' => 'P',
-        '/п/' => 'p',
-        '/Ŕ|Ŗ|Ř|Р/' => 'R',
-        '/ŕ|ŗ|ř|р/' => 'r',
-        '/Ś|Ŝ|Ş|Ș|Š|С/' => 'S',
-        '/ś|ŝ|ş|ș|š|ſ|с/' => 's',
-        '/Ţ|Ț|Ť|Ŧ|Т/' => 'T',
-        '/ţ|ț|ť|ŧ|т/' => 't',
-        '/Ù|Ú|Û|Ũ|Ū|Ŭ|Ů|Ű|Ų|Ư|Ǔ|Ǖ|Ǘ|Ǚ|Ǜ|У/' => 'U',
-        '/ù|ú|û|ũ|ū|ŭ|ů|ű|ų|ư|ǔ|ǖ|ǘ|ǚ|ǜ|у/' => 'u',
-        '/ü/' => 'ue',
-        '/Ü/' => 'UE',
-        '/В/' => 'V',
-        '/в/' => 'v',
-        '/Ý|Ÿ|Ŷ|Ы/' => 'Y',
-        '/ý|ÿ|ŷ|ы/' => 'y',
-        '/Ŵ/' => 'W',
-        '/ŵ/' => 'w',
-        '/Ź|Ż|Ž|З/' => 'Z',
-        '/ź|ż|ž|з/' => 'z',
-        '/Æ|Ǽ|Ä/' => 'AE',
-        '/ß/' => 'ss',
-        '/Ĳ/' => 'IJ',
-        '/ĳ/' => 'ij',
-        '/Œ|Ö/' => 'OE',
-        '/Ч/' => 'Ch',
-        '/ч/' => 'ch',
-        '/Ю/' => 'Ju',
-        '/ю/' => 'ju',
-        '/Я/' => 'Ja',
-        '/я/' => 'ja',
-        '/Ш/' => 'Sh',
-        '/ш/' => 'sh',
-        '/Щ/' => 'Shch',
-        '/щ/' => 'shch',
-        '/Ж/' => 'Zh',
-        '/ж/' => 'zh',
-    );
-
-    /**
-     * @var string (iconv|array)
-     */
-    protected $mode = Slugify::MODEICONV;
-
-    /**
-     * Constructor.
-     *
-     * @param string|null $mode Mode, default value is {@see Slugify::MODEICONV}.
-     */
-    public function __construct($mode = null)
-    {
-        if ($mode === Slugify::MODEARRAY || !function_exists('iconv')) {
-            $this->mode = $mode;
-        }
-    }
+    /** @var TransliterInterface */
+    private $transliter;
 
     /**
      * Static method to create new instance of {@see Slugify}.
      *
-     * @param string|null $mode Mode, default value is {@see Slugify::MODEICONV}.
+     * @param TransliterInterface|string|null $transliter Transliter
      *
      * @return Slugify
      */
-    public static function create($mode = null)
+    public static function create($transliter = null)
     {
-        return new static($mode);
+        return new static($transliter);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param TransliterInterface|string|null $transliter Transliter
+     */
+    public function __construct($transliter = null)
+    {
+        if (null === $transliter && true === function_exists('iconv')) {
+            $transliter = Slugify::MODE_ICONV;
+        } else if (null === $transliter) {
+            $transliter = Slugify::MODE_ARRAYMAP;
+        }
+
+        if (false === ($transliter instanceof TransliterInterface)) {
+            $transliter = TransliterFactory::create($transliter);
+        }
+
+        $this->transliter = $transliter;
     }
 
     /**
@@ -145,14 +67,14 @@ class Slugify implements SlugifyInterface
      *
      * Slugs only consists of characters, numbers and the dash. They can be used in URLs.
      *
-     * @param string $string     Input string
-     * @param string $separator  Separator
+     * @param string $string    Input string
+     * @param string $separator Separator
      *
      * @return string Slugified version of the input string
      */
     public function slugify($string, $separator = '-')
     {
-        if (empty($string)) {
+        if (true === empty($string)) {
             return '';
         }
 
@@ -172,18 +94,14 @@ class Slugify implements SlugifyInterface
         );
 
         // transliterate
-        if ($this->mode === Slugify::MODEICONV) {
-            $string = $this->translitByIconv($string);
-        } else {
-            $string = $this->translitByArray($string);
-        }
+        $string = $this->transliter->translit($string);
 
         // replace non letter or digits by seperator
         $string = preg_replace('#[^\\pL\d]+#u', $separator, $string);
         $string = trim($string, $separator);
 
         // Convert slug into lowercase
-        $string = (defined('MB_CASE_LOWER')) ? mb_strtolower($string) : strtolower($string);
+        $string = $this->stringToLower($string);
 
         // remove unwanted characters
         $string = preg_replace('#[^-\w]+#', '', $string);
@@ -192,33 +110,14 @@ class Slugify implements SlugifyInterface
     }
 
     /**
-     * Transliterate the string by using the iconv extension.
+     * Returns the string in lowercase characters. Uses mb_strtolower when available.
      *
-     * Needs locale to be set for country specific transliteration:
-     *   <?php
-     *   setlocale(LC_ALL, 'de_DE.utf8','de_DE');
+     * @param string $input Input string.
      *
-     * Caution: iconv doesnt work on all system, then use translitByArray
-     *
-     * Taken form doctrine project
-     *
-     * @param string $string
-     *
-     * @return string
+     * @return string String in lowercase characters.
      */
-    public static function translitByIconv($string)
+    protected function stringToLower($input)
     {
-        return iconv('utf-8', 'us-ascii//TRANSLIT', $string);
-    }
-
-    /**
-     * Transliterate a string with an array map
-     *
-     * @param string $string
-     * @return string
-     */
-    public static function translitByArray($string)
-    {
-        return preg_replace(array_keys(self::$ascii), array_values(self::$ascii), $string);
+        return true === defined('MB_CASE_LOWER') ? mb_strtolower($input) : strtolower($input);
     }
 }
