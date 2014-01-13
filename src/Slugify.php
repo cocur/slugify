@@ -218,7 +218,7 @@ class Slugify implements SlugifyInterface
      *
      * Taken form doctrine project
      *
-     * @param type $string
+     * @param string $string
      *
      * @return string
      */
