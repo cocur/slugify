@@ -36,7 +36,7 @@ namespace Cocur\Slugify;
  * @copyright 2012-2014 Florian Eckerstorfer
  * @license   http://www.opensource.org/licenses/MIT The MIT License
  */
-class Slugify
+class Slugify implements SlugifyInterface
 {
     const MODEICONV = 'iconv';
     const MODEARRAY = 'array';
@@ -218,7 +218,7 @@ class Slugify
      *
      * Taken form doctrine project
      *
-     * @param type $string
+     * @param string $string
      *
      * @return string
      */
