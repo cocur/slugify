@@ -51,7 +51,7 @@ class Slugify implements SlugifyInterface
     {
         if (null === $transliter && true === function_exists('iconv')) {
             $transliter = Slugify::MODE_ICONV;
-        } else if (null === $transliter) {
+        } elseif (null === $transliter) {
             $transliter = Slugify::MODE_ARRAYMAP;
         }
 

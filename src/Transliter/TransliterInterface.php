@@ -16,4 +16,3 @@ interface TransliterInterface
      */
     public function translit($input);
 }
-

@@ -15,6 +15,8 @@ class TransliterFactory
      * @param string $transliter Name of the transliter
      *
      * @return TransliterInterface Transliter
+     *
+     * @throws \InvalidArgumentException if the given transliter does not exist.
      */
     public static function create($transliter)
     {
