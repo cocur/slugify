@@ -24,7 +24,7 @@
     },
     "autoload": {
     	"psr-4": {
-    		"Cocur\\Slugify\\": "src"
+    		"Cocur\\Slugify\\": "src/"
     	}
     }
 }

@@ -1,8 +1,7 @@
 language: php
 
 before_script:
-  - wget http://getcomposer.org/composer.phar
-  - php composer.phar install --dev --prefer-source
+  - composer install --dev --prefer-source
 
 php:
   - 5.3
