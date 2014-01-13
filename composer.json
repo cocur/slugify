@@ -18,9 +18,13 @@
     "require": {
         "php": ">=5.3.8"
     },
+    "require-dev": {
+        "phpunit/phpunit": "3.*",
+        "squizlabs/php_codesniffer": "1.*"
+    },
     "autoload": {
     	"psr-4": {
-    		"Cocur\\Slugify\\": "src"
+    		"Cocur\\Slugify\\": "src/"
     	}
     }
 }

@@ -1,53 +1,11 @@
 <?php
-
-/**
- * The MIT License (MIT)
- * Copyright (c) 2012 Florian Eckerstorfer
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
- * deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE.
- *
- * @package   org.cocur.slugify
- */
-
 namespace Cocur\Slugify;
 
-/**
- * @package   org.cocur.slugify
- * @author    Ivo Bathke <ivo.bathke@gmail.com>
- * @author    Florian Eckerstorfer <florian@theroadtojoy.at>
- * @copyright 2012 Florian Eckerstorfer
- * @license   http://www.opensource.org/licenses/MIT The MIT License
- */
-class Slugify {
-
+class Slugify
+{
     const MODEICONV = 'iconv';
     const MODEARRAY = 'array';
 
-    /**
-     * taken, mixed and modified from:
-     * https://github.com/laravel/laravel/blob/master/application/config/strings.php
-     * https://github.com/sleepyboy/slug/blob/master/slug.php
-     *
-     * this is modified and will translit german umlauts to ae,etc and not simply to a.
-     *
-     * @var array
-     */
     private static $ascii = array(
         '/º|°/' => 0,
         '/¹/' => 1,
@@ -126,46 +84,55 @@ class Slugify {
     );
 
     /**
-     * possible slugify methods
+     * Possible slugify methods
      *
      * @var iconv|array
      */
     protected $mode = Slugify::MODEICONV;
 
-    public function __construct($mode = null) {
+    public function __construct($mode = null)
+    {
         if ($mode === Slugify::MODEARRAY || !function_exists('iconv')) {
             $this->mode = $mode;
         }
     }
 
-    public static function create($mode = null) {
+    public static function create($mode = null)
+    {
         return new static($mode);
     }
 
     /**
-     * Takes a string and returns a slugified version of it. Slugs only consists of characters, numbers and the dash. They can be used in URLs.
-     * @param  string $string     String
-     * @param  string $separator  Separator
-     * @param  string $emptyValue Value to use if the slugified version is empty, defaults to "n{$separator}a"
-     * @return string             Slug
+     * Takes a string and returns a slugified version of it.
+     *
+     * Slugs only consists of characters, numbers and the dash. They can be used in URLs.
+     *
+     * @param  string $string String to slugify
+     * @param  string $separator Separator to use for spaces
+     *
+     * @return string            Slug
      */
-    public function slugify($string, $separator = '-') {
+    public function slugify($string, $separator = '-')
+    {
         if (empty($string)) {
             return '';
         }
 
-        $string = preg_replace('/
-                    [\x09\x0A\x0D\x20-\x7E]            # ASCII
-                  | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
-                  |  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
-                  | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
-                  |  \xED[\x80-\x9F][\x80-\xBF]        # excluding surrogates
-                  |  \xF0[\x90-\xBF][\x80-\xBF]{2}     # planes 1-3
-                  | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
-                  |  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
-               /', '', $string);
+        $string = preg_replace(
+            '/
+                  [\x09\x0A\x0D\x20-\x7E]            # ASCII
+                | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
+                |  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
+                | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
+                |  \xED[\x80-\x9F][\x80-\xBF]        # excluding surrogates
+                |  \xF0[\x90-\xBF][\x80-\xBF]{2}     # planes 1-3
+                | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
+                |  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
+            /',
+            '',
+            $string
+        );
 
-        // transliterate
         if ($this->mode === Slugify::MODEICONV) {
             $string = $this->translitByIconv($string);
         } else {
@@ -174,10 +141,9 @@ class Slugify {
 
         // replace non letter or digits by seperator
         $string = preg_replace('#[^\\pL\d]+#u', $separator, $string);
-        // trim
+
         $string = trim($string, $separator);
 
-        // lowercase
         $string = (defined('MB_CASE_LOWER')) ? mb_strtolower($string) : strtolower($string);
 
         // remove unwanted characters
@@ -187,27 +153,30 @@ class Slugify {
     }
 
     /**
-     * taken form doctrine project
+     * Taken form doctrine project
      * needs locale to be set for country specific transliteration:
      * setlocale(LC_ALL, 'de_DE.utf8','de_DE');
      *
      * caution: iconv doesnt work on all system, then use translitByArray
      *
-     * @param type $text
+     * @param  string $string String to slugify
+     *
      * @return string
      */
-    public static function translitByIconv($text) {
-        return iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    public static function translitByIconv($string)
+    {
+        return iconv('utf-8', 'us-ascii//TRANSLIT', $string);
     }
 
     /**
-     * transliterate a string with a array map
+     * Transliterate a string with a array map
      *
-     * @param  string  $title
+     * @param  string $string String to slugify
+     *
      * @return string
      */
-    public static function translitByArray($title) {
-        return preg_replace(array_keys(self::$ascii), array_values(self::$ascii), $title);
+    public static function translitByArray($string)
+    {
+        return preg_replace(array_keys(self::$ascii), array_values(self::$ascii), $string);
     }
-
 }

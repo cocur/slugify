@@ -1,8 +1,13 @@
 language: php
 
+before_script:
+  - composer install --dev --prefer-source
+
 php:
   - 5.3
   - 5.4
   - 5.5
 
-script: phpunit tests/
+script:
+  - vendor/bin/phpcs --ignore=vendor --standard=psr2 ./
+  - vendor/bin/phpunit
