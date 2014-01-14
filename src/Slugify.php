@@ -21,7 +21,7 @@ class Slugify implements SlugifyInterface
 
     protected function isIntlAvailable()
     {
-        return extension_loaded('intl');
+        return extension_loaded('intl') && function_exists('transliterator_transliterate');
     }
 
     protected function isIconvAvailable()
