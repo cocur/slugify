@@ -27,6 +27,7 @@ class IconvSlugifyTest extends PHPUnit_Framework_TestCase
 
     public function testCustomRules()
     {
+        $this->slugify->inCharset = 'UTF-8//IGNORE';
         $this->slugify->outCharset = 'ASCII//IGNORE';
         $this->assertEquals('', $this->slugify->slugify('€'));
     }
