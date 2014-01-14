@@ -10,7 +10,7 @@ class NativeSlugifyTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (!extension_loaded('intl') || !function_exists('transliterator_transliterate')) {
             $this->markTestSkipped('intl extension not loaded');
         }
 
