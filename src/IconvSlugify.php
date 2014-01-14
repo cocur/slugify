@@ -8,7 +8,7 @@ class IconvSlugify implements SlugifyInterface
 
     public function slugify($string, $separator = '-')
     {
-        $string = iconv($this->inCharset, $this->outCharset, $string);
+        $string = @iconv($this->inCharset, $this->outCharset, $string);
         $string = preg_replace('/([^a-z0-9]|-)+/usi', $separator, $string);
         $string = strtolower($string);
         return trim($string, $separator);

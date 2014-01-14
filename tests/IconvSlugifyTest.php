@@ -40,7 +40,7 @@ class IconvSlugifyTest extends PHPUnit_Framework_TestCase
             array('Hello World', 'hello-world'),
             array('Hello: World', 'hello-world'),
             // does not seem to work consistently
-            #array('H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-wsso-r-l-d'),
+            //array('H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-wsso-r-l-d'),
             array(': World', 'world'),
             array('Hello World!', 'hello-world'),
             array('Ä ä Ö ö Ü ü ß', 'a-a-o-o-u-u-ss'),
@@ -48,9 +48,9 @@ class IconvSlugifyTest extends PHPUnit_Framework_TestCase
             array('Â â Ê ê Ô ô Û û', 'a-a-e-e-o-o-u-u'),
             array('Â â Ê ê Ô ô Û 1', 'a-a-e-e-o-o-u-1'),
             //this doesnt work with iconv
-            #array('°¹²³@','0123at'),
+            //array('°¹²³@','0123at'),
             //german translit, ø doesnt work: iconv bug
-            #array('Mórë thån wørds', 'more-thaan-words')
+            //array('Mórë thån wørds', 'more-thaan-words'),
         );
     }
 }
