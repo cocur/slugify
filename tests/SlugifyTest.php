@@ -5,27 +5,6 @@ use Cocur\Slugify\Slugify;
 use PHPUnit_Framework_TestCase;
 
 
-class SlugifyArrayMock extends Slugify
-{
-    public function isIntlAvailable()
-    {
-        return false;
-    }
-
-    public function isIconvAvailable()
-    {
-        return false;
-    }
-}
-
-class SlugifyIconvMock extends Slugify
-{
-    protected function isIntlAvailable()
-    {
-        return false;
-    }
-}
-
 class SlugifyTest extends PHPUnit_Framework_TestCase
 {
     private $slugify;
@@ -35,26 +14,39 @@ class SlugifyTest extends PHPUnit_Framework_TestCase
         $this->slugify = new Slugify();
     }
 
-    public function testSlugify()
+    /**
+     * @dataProvider provider
+     */
+    public function testSlugify($string, $result)
     {
-        $slugify = new Slugify();
-        $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', $slugify);
-        $this->assertEquals('hello-world', $slugify->slugify('Hello World'));
-
-        $slugify = new SlugifyArrayMock();
-        $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', $slugify);
-        $this->assertEquals('hello-world', $slugify->slugify('Hello World'));
-
-
-        $slugify = new SlugifyIconvMock();
-        $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', $slugify);
-        $this->assertEquals('hello-world', $slugify->slugify('Hello World'));
+        $this->assertEquals($result, $this->slugify->slugify($string));
     }
 
-    public function testStatic()
+    public function testCustomRules()
     {
-        $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', Slugify::create());
-        $this->assertEquals('hello-world', Slugify::create()->slugify('Hello World'));
+        $this->slugify->rules['X'] = 'y';
+        $this->assertEquals('y', $this->slugify->slugify('X'));
     }
 
+    public function provider()
+    {
+        return array(
+            array(' a  b ', 'a-b'),
+            array('Hello', 'hello'),
+            array('Hello World', 'hello-world'),
+            array('Привет мир', 'privet-mir'),
+            array('Привіт світ', 'privit-svit'),
+            array('Hello: World', 'hello-world'),
+            array('H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-w-o-r-l-d'),
+            array(': World', 'world'),
+            array('Hello World!', 'hello-world'),
+            array('Ä ä Ö ö Ü ü ß', 'ae-ae-oe-oe-ue-ue-ss'),
+            array('Á À á à É È é è Ó Ò ó ò Ñ ñ Ú Ù ú ù', 'a-a-a-a-e-e-e-e-o-o-o-o-n-n-u-u-u-u'),
+            array('Â â Ê ê Ô ô Û û', 'a-a-e-e-o-o-u-u'),
+            array('Â â Ê ê Ô ô Û 1', 'a-a-e-e-o-o-u-1'),
+            array('°¹²³@', '0123at'),
+            array('Mórë thån wørds', 'more-than-words'),
+            array('Блоґ їжачка', 'blog-jizhachka')
+        );
+    }
 }
