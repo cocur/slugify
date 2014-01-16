@@ -305,4 +305,14 @@ class Slugify implements SlugifyInterface
         $string = strtolower($string);
         return trim($string, $separator);
     }
+
+    /**
+     * Static method to create new instance of {@see Slugify}.
+     *
+     * @return Slugify
+     */
+    public static function create()
+    {
+        return new static();
+    }
 }

@@ -49,4 +49,10 @@ class SlugifyTest extends PHPUnit_Framework_TestCase
             array('Блоґ їжачка', 'blog-jizhachka')
         );
     }
+
+    public function testStatic()
+    {
+        $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', Slugify::create());
+        $this->assertEquals('hello-world', Slugify::create()->slugify('Hello World'));
+    }
 }
