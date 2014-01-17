@@ -1,11 +1,30 @@
 <?php
+
+/**
+ * This file is part of cocur/slugify.
+ *
+ * (c) Florian Eckerstorfer <florian@eckerstorfer.co>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Cocur\Slugify\Tests;
 
 use Cocur\Slugify\Slugify;
-use PHPUnit_Framework_TestCase;
 
-
-class SlugifyTest extends PHPUnit_Framework_TestCase
+/**
+ * SlugifyTest
+ *
+ * @category  test
+ * @package   org.cocur.slugify
+ * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @author    Ivo Bathke <ivo.bathke@gmail.com>
+ * @author    Marchenko Alexandr
+ * @copyright 2012-2014 Florian Eckerstorfer
+ * @license   http://www.opensource.org/licenses/MIT The MIT License
+ */
+class SlugifyTest extends \PHPUnit_Framework_TestCase
 {
     private $slugify;
 
@@ -15,17 +34,33 @@ class SlugifyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @test
      * @dataProvider provider
+     * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function testSlugify($string, $result)
+    public function slugifyReturnsSlugifiedString($string, $result)
     {
         $this->assertEquals($result, $this->slugify->slugify($string));
     }
 
-    public function testCustomRules()
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::addRule()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function addRuleAddsRule()
     {
-        $this->slugify->rules['X'] = 'y';
+        $this->slugify->addRule('X', 'y');
         $this->assertEquals('y', $this->slugify->slugify('X'));
+    }
+
+    /**
+     * @test
+     */
+    public function createReturnsAnInstance()
+    {
+        $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', Slugify::create());
+        $this->assertEquals('hello-world', Slugify::create()->slugify('Hello World'));
     }
 
     public function provider()
@@ -48,11 +83,5 @@ class SlugifyTest extends PHPUnit_Framework_TestCase
             array('Mórë thån wørds', 'more-than-words'),
             array('Блоґ їжачка', 'blog-jizhachka')
         );
-    }
-
-    public function testStatic()
-    {
-        $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', Slugify::create());
-        $this->assertEquals('hello-world', Slugify::create()->slugify('Hello World'));
     }
 }
