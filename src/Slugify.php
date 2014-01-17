@@ -11,8 +11,6 @@
 
 namespace Cocur\Slugify;
 
-use Cocur\Slugify\Transliter\TransliterFactory;
-
 /**
  * Slugify
  *
@@ -24,100 +22,325 @@ use Cocur\Slugify\Transliter\TransliterFactory;
  */
 class Slugify implements SlugifyInterface
 {
-    const MODE_ICONV = 'iconv';
-    const MODE_ARRAYMAP = 'arraymap';
+    public $rules = array(
+        'º'=>0,
+        '°'=>0,
+        '¹'=>1,
+        '²'=>2,
+        '³'=>3,
+        'æ'=>'ae',
+        'ǽ'=>'ae',
+        'ä'=>'ae',
+        'œ'=>'oe',
+        'ö'=>'oe',
+        'À'=>'A',
+        'Á'=>'A',
+        'Â'=>'A',
+        'Ã'=>'A',
+        'Å'=>'A',
+        'Ǻ'=>'A',
+        'Ā'=>'A',
+        'Ă'=>'A',
+        'Ą'=>'A',
+        'Ǎ'=>'A',
+        'А'=>'A',
+        'à'=>'a',
+        'á'=>'a',
+        'â'=>'a',
+        'ã'=>'a',
+        'å'=>'a',
+        'ǻ'=>'a',
+        'ā'=>'a',
+        'ă'=>'a',
+        'ą'=>'a',
+        'ǎ'=>'a',
+        'ª'=>'a',
+        'а'=>'a',
+        '@'=>'at',
+        'Б'=>'B',
+        'б'=>'b',
+        'Ç'=>'C',
+        'Ć'=>'C',
+        'Ĉ'=>'C',
+        'Ċ'=>'C',
+        'Č'=>'C',
+        'Ц'=>'C',
+        'ç'=>'c',
+        'ć'=>'c',
+        'ĉ'=>'c',
+        'ċ'=>'c',
+        'č'=>'c',
+        'ц'=>'c',
+        'Ð'=>'Dj',
+        'Ď'=>'Dj',
+        'Đ'=>'Dj',
+        'Д'=>'Dj',
+        'ð'=>'dj',
+        'ď'=>'dj',
+        'đ'=>'dj',
+        'д'=>'dj',
+        'È'=>'E',
+        'É'=>'E',
+        'Ê'=>'E',
+        'Ë'=>'E',
+        'Ē'=>'E',
+        'Ĕ'=>'E',
+        'Ė'=>'E',
+        'Ę'=>'E',
+        'Ě'=>'E',
+        'Е'=>'E',
+        'Ё'=>'E',
+        'Э'=>'E',
+        'è'=>'e',
+        'é'=>'e',
+        'ê'=>'e',
+        'ë'=>'e',
+        'ē'=>'e',
+        'ĕ'=>'e',
+        'ė'=>'e',
+        'ę'=>'e',
+        'ě'=>'e',
+        'е'=>'e',
+        'ё'=>'e',
+        'э'=>'e',
+        'Ф'=>'F',
+        'ƒ'=>'f',
+        'ф'=>'f',
+        'Ĝ'=>'G',
+        'Ğ'=>'G',
+        'Ġ'=>'G',
+        'Ģ'=>'G',
+        'Г'=>'G',
+        'Ґ'=>'G',
+        'ĝ'=>'g',
+        'ğ'=>'g',
+        'ġ'=>'g',
+        'ģ'=>'g',
+        'г'=>'g',
+        'ґ'=>'g',
+        'Ĥ'=>'H',
+        'Ħ'=>'H',
+        'Х'=>'H',
+        'ĥ'=>'h',
+        'ħ'=>'h',
+        'х'=>'h',
+        'Ì'=>'I',
+        'Í'=>'I',
+        'Î'=>'I',
+        'Ï'=>'I',
+        'Ĩ'=>'I',
+        'Ī'=>'I',
+        'Ĭ'=>'I',
+        'Ǐ'=>'I',
+        'Į'=>'I',
+        'İ'=>'I',
+        'И'=>'I',
+        'І'=>'I',
+        'ì'=>'i',
+        'í'=>'i',
+        'î'=>'i',
+        'ï'=>'i',
+        'ĩ'=>'i',
+        'ī'=>'i',
+        'ĭ'=>'i',
+        'ǐ'=>'i',
+        'į'=>'i',
+        'ı'=>'i',
+        'и'=>'i',
+        'і'=>'i',
+        'Ĵ'=>'J',
+        'Й'=>'J',
+        'ĵ'=>'j',
+        'й'=>'j',
+        'Ķ'=>'K',
+        'К'=>'K',
+        'ķ'=>'k',
+        'к'=>'k',
+        'Ĺ'=>'L',
+        'Ļ'=>'L',
+        'Ľ'=>'L',
+        'Ŀ'=>'L',
+        'Ł'=>'L',
+        'Л'=>'L',
+        'ĺ'=>'l',
+        'ļ'=>'l',
+        'ľ'=>'l',
+        'ŀ'=>'l',
+        'ł'=>'l',
+        'л'=>'l',
+        'М'=>'M',
+        'м'=>'m',
+        'Ñ'=>'N',
+        'Ń'=>'N',
+        'Ņ'=>'N',
+        'Ň'=>'N',
+        'Н'=>'N',
+        'ñ'=>'n',
+        'ń'=>'n',
+        'ņ'=>'n',
+        'ň'=>'n',
+        'ŉ'=>'n',
+        'н'=>'n',
+        'Ò'=>'O',
+        'Ó'=>'O',
+        'Ô'=>'O',
+        'Õ'=>'O',
+        'Ō'=>'O',
+        'Ŏ'=>'O',
+        'Ǒ'=>'O',
+        'Ő'=>'O',
+        'Ơ'=>'O',
+        'Ø'=>'O',
+        'Ǿ'=>'O',
+        'О'=>'O',
+        'ò'=>'o',
+        'ó'=>'o',
+        'ô'=>'o',
+        'õ'=>'o',
+        'ō'=>'o',
+        'ŏ'=>'o',
+        'ǒ'=>'o',
+        'ő'=>'o',
+        'ơ'=>'o',
+        'ø'=>'o',
+        'ǿ'=>'o',
+        'º'=>'o',
+        'о'=>'o',
+        'П'=>'P',
+        'п'=>'p',
+        'Ŕ'=>'R',
+        'Ŗ'=>'R',
+        'Ř'=>'R',
+        'Р'=>'R',
+        'ŕ'=>'r',
+        'ŗ'=>'r',
+        'ř'=>'r',
+        'р'=>'r',
+        'Ś'=>'S',
+        'Ŝ'=>'S',
+        'Ş'=>'S',
+        'Ș'=>'S',
+        'Š'=>'S',
+        'С'=>'S',
+        'ś'=>'s',
+        'ŝ'=>'s',
+        'ş'=>'s',
+        'ș'=>'s',
+        'š'=>'s',
+        'ſ'=>'s',
+        'с'=>'s',
+        'Ţ'=>'T',
+        'Ț'=>'T',
+        'Ť'=>'T',
+        'Ŧ'=>'T',
+        'Т'=>'T',
+        'ţ'=>'t',
+        'ț'=>'t',
+        'ť'=>'t',
+        'ŧ'=>'t',
+        'т'=>'t',
+        'Ù'=>'U',
+        'Ú'=>'U',
+        'Û'=>'U',
+        'Ũ'=>'U',
+        'Ū'=>'U',
+        'Ŭ'=>'U',
+        'Ů'=>'U',
+        'Ű'=>'U',
+        'Ų'=>'U',
+        'Ư'=>'U',
+        'Ǔ'=>'U',
+        'Ǖ'=>'U',
+        'Ǘ'=>'U',
+        'Ǚ'=>'U',
+        'Ǜ'=>'U',
+        'У'=>'U',
+        'ù'=>'u',
+        'ú'=>'u',
+        'û'=>'u',
+        'ũ'=>'u',
+        'ū'=>'u',
+        'ŭ'=>'u',
+        'ů'=>'u',
+        'ű'=>'u',
+        'ų'=>'u',
+        'ư'=>'u',
+        'ǔ'=>'u',
+        'ǖ'=>'u',
+        'ǘ'=>'u',
+        'ǚ'=>'u',
+        'ǜ'=>'u',
+        'у'=>'u',
+        'ü'=>'ue',
+        'Ü'=>'UE',
+        'В'=>'V',
+        'в'=>'v',
+        'Ý'=>'Y',
+        'Ÿ'=>'Y',
+        'Ŷ'=>'Y',
+        'Ы'=>'Y',
+        'ý'=>'y',
+        'ÿ'=>'y',
+        'ŷ'=>'y',
+        'ы'=>'y',
+        'Ŵ'=>'W',
+        'ŵ'=>'w',
+        'Ź'=>'Z',
+        'Ż'=>'Z',
+        'Ž'=>'Z',
+        'З'=>'Z',
+        'ź'=>'z',
+        'ż'=>'z',
+        'ž'=>'z',
+        'з'=>'z',
+        'Æ'=>'AE',
+        'Ǽ'=>'AE',
+        'Ä'=>'AE',
+        'ß'=>'ss',
+        'Ĳ'=>'IJ',
+        'ĳ'=>'ij',
+        'Œ'=>'OE',
+        'Ö'=>'OE',
+        'Ч'=>'Ch',
+        'ч'=>'ch',
+        'Ю'=>'Ju',
+        'ю'=>'ju',
+        'Я'=>'Ja',
+        'я'=>'ja',
+        'Ш'=>'Sh',
+        'ш'=>'sh',
+        'Щ'=>'Shch',
+        'щ'=>'shch',
+        'Ж'=>'Zh',
+        'ж'=>'zh',
+        'ї'=>'ji',
+        'Ї'=>'Ji',
+    );
 
-    /** @var TransliterInterface */
-    private $transliter;
+    /**
+     * Returns the slugified string.
+     *
+     * @param string $string String to slugify
+     * @param string $separator Separator
+     *
+     * @return string Slugified string
+     */
+    public function slugify($string, $separator = '-')
+    {
+        $string = strtolower(strtr($string, $this->rules));
+        $string = preg_replace('/([^a-z0-9]|-)+/', $separator, $string);
+        $string = strtolower($string);
+
+        return trim($string, $separator);
+    }
 
     /**
      * Static method to create new instance of {@see Slugify}.
      *
-     * @param TransliterInterface|string|null $transliter Transliter
-     *
      * @return Slugify
      */
-    public static function create($transliter = null)
+    public static function create()
     {
-        return new static($transliter);
-    }
-
-    /**
-     * Constructor.
-     *
-     * @param TransliterInterface|string|null $transliter Transliter
-     */
-    public function __construct($transliter = null)
-    {
-        if (null === $transliter && true === function_exists('iconv')) {
-            $transliter = Slugify::MODE_ICONV;
-        } elseif (null === $transliter) {
-            $transliter = Slugify::MODE_ARRAYMAP;
-        }
-
-        if (false === ($transliter instanceof TransliterInterface)) {
-            $transliter = TransliterFactory::create($transliter);
-        }
-
-        $this->transliter = $transliter;
-    }
-
-    /**
-     * Takes a string and returns a slugified version of it.
-     *
-     * Slugs only consists of characters, numbers and the dash. They can be used in URLs.
-     *
-     * @param string $string    Input string
-     * @param string $separator Separator
-     *
-     * @return string Slugified version of the input string
-     */
-    public function slugify($string, $separator = '-')
-    {
-        if (true === empty($string)) {
-            return '';
-        }
-
-        $string = preg_replace(
-            '/
-                [\x09\x0A\x0D\x20-\x7E]              # ASCII
-                | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
-                |  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
-                | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
-                |  \xED[\x80-\x9F][\x80-\xBF]        # excluding surrogates
-                |  \xF0[\x90-\xBF][\x80-\xBF]{2}     # planes 1-3
-                | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
-                |  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
-            /',
-            '',
-            $string
-        );
-
-        // transliterate
-        $string = $this->transliter->translit($string);
-
-        // replace non letter or digits by seperator
-        $string = preg_replace('#[^\\pL\d]+#u', $separator, $string);
-        $string = trim($string, $separator);
-
-        // Convert slug into lowercase
-        $string = $this->stringToLower($string);
-
-        // remove unwanted characters
-        $string = preg_replace('#[^-\w]+#', '', $string);
-
-        return $string;
-    }
-
-    /**
-     * Returns the string in lowercase characters. Uses mb_strtolower when available.
-     *
-     * @param string $input Input string.
-     *
-     * @return string String in lowercase characters.
-     */
-    protected function stringToLower($input)
-    {
-        return true === defined('MB_CASE_LOWER') ? mb_strtolower($input) : strtolower($input);
+        return new static();
     }
 }
