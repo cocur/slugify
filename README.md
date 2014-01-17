@@ -15,43 +15,28 @@ Authors
 
 - [Florian Eckerstorfer](http://florian.ec) ([Twitter](http://twitter.com/Florian_), [App.net](http://app.net/florian))
 - [Ivo Bathke](https://github.com/ivoba)
+- [Marchenko Alexandr](http://mac-blog.org.ua)
 - And some [great contributors](https://github.com/cocur/slugify/graphs/contributors)
-
-
-Features
---------
-
-Slugify has two mechanism to slug a string:
-
-- Using TRANSLIT from iconv
-- Using an array map to translit utf-8 chars to their 7bit representation
-
-The two mechanism are taken and modified from the [Doctrine](http://www.doctrine-project.org) project and
-[Laravel](http://laravel.com) framework.
 
 
 Usage
 -----
 
-Generate a slug using the *iconv* extension:
-
-	<?php
-	use Cocur\Slugify\Slugify;
-
-	$slugify = new Slugify(); // for iconv translit
-	echo $slugify->slugify('Hello World!'); // hello-world
-
-Or generate a slug without using the *iconv* extension:
+Generate a slug
 
     <?php
     use Cocur\Slugify\Slugify;
 
-    $slugify = new Slugify(Slugify::MODEARRAY);
+    $slugify = new Slugify();
     echo $slugify->slugify('Hello World!'); // hello-world
 
 
 Changelog
 ---------
+
+### Version 0.4 (17 January 2014)
+
+Nearly completely rewritten code, removes `iconv` support because the underlying library is broken. The code is now better and faster. Many thanks to [Marchenko Alexandr](http://mac-blog.org.ua).
 
 ### Version 0.3 (12 January 2014)
 
