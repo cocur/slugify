@@ -81,7 +81,8 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('Â â Ê ê Ô ô Û 1', 'a-a-e-e-o-o-u-1'),
             array('°¹²³@', '0123at'),
             array('Mórë thån wørds', 'more-than-words'),
-            array('Блоґ їжачка', 'blog-jizhachka')
+            array('Блоґ їжачка', 'blog-jizhachka'),
+            array('фильм', 'film')
         );
     }
 }
