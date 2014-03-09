@@ -317,6 +317,8 @@ class Slugify implements SlugifyInterface
         'ж' => 'zh',
         'ї' => 'ji',
         'Ї' => 'Ji',
+        'ь' => '',
+        'Ь' => ''
     );
 
     /**
