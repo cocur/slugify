@@ -34,6 +34,10 @@ Generate a slug
 Changelog
 ---------
 
+### Version 0.4.1 (9 March 2014)
+
+- #19 Adds soft sign rule (by [Marchenko Alexandr](https://github.com/mac2000))
+
 ### Version 0.4 (17 January 2014)
 
 Nearly completely rewritten code, removes `iconv` support because the underlying library is broken. The code is now better and faster. Many thanks to [Marchenko Alexandr](http://mac-blog.org.ua).
