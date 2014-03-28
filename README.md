@@ -1,4 +1,4 @@
-Cocur Slugify
+cocur/slugify
 =============
 
 > Converts a string into a slug.
@@ -9,25 +9,36 @@ Cocur Slugify
 [![Latest Stable Version](https://poser.pugx.org/cocur/slugify/v/stable.png)](https://packagist.org/packages/cocur/slugify)
 [![Total Downloads](https://poser.pugx.org/cocur/slugify/downloads.png)](https://packagist.org/packages/cocur/slugify)
 
-Authors
--------
+Installation
+------------
 
-- [Florian Eckerstorfer](http://florian.ec) ([Twitter](http://twitter.com/Florian_), [App.net](http://app.net/florian))
-- [Ivo Bathke](https://github.com/ivoba)
-- [Marchenko Alexandr](http://mac-blog.org.ua)
-- And some [great contributors](https://github.com/cocur/slugify/graphs/contributors)
+You can install cocur/slugify through [Composer](https://getcomposer.org):
 
+```shell
+$ composer require cocur/slugify:@stable
+```
+
+*In a production environment you should replace `@stable` with the [version](https://github.com/cocur/slugify/releases) you want to use.*
 
 Usage
 -----
 
-Generate a slug
+Generate a slug:
 
-    <?php
-    use Cocur\Slugify\Slugify;
+```php
+use Cocur\Slugify\Slugify;
 
-    $slugify = new Slugify();
-    echo $slugify->slugify('Hello World!'); // hello-world
+$slugify = new Slugify();
+echo $slugify->slugify('Hello World!'); // hello-world
+```
+
+You can also change the seperator used by `Slugify`:
+
+```php
+echo $slugify->slugify('Hello World!', '_'); // hello_world
+```
+
+The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface whenever you reference a type in your code.
 
 
 Changelog
@@ -37,6 +48,7 @@ Changelog
 
 - #21 Added support for greek characters (by [Michel Petit](https://github.com/malenkiki))
 - #20 Fixed rule for cyrillic letter D (by [Marchenko Alexandr](https://github.com/cocur/slugify/pull/20))
+- Add missing `$separator` parameter to `SlugifyInterface`
 
 ### Version 0.4.1 (9 March 2014)
 
@@ -52,6 +64,13 @@ Nearly completely rewritten code, removes `iconv` support because the underlying
 - #13 Added editorconfig (by [mac2000](https://github.com/mac2000))
 - #14 Return empty slug when input is empty and removed unused parameter (by [mac2000](https://github.com/mac2000))
 
+Authors
+-------
+
+- [Florian Eckerstorfer](http://florian.ec) ([Twitter](http://twitter.com/Florian_), [App.net](http://app.net/florian))
+- [Ivo Bathke](https://github.com/ivoba)
+- [Marchenko Alexandr](http://mac-blog.org.ua)
+- And some [great contributors](https://github.com/cocur/slugify/graphs/contributors)
 
 License
 -------
