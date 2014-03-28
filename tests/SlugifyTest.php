@@ -83,7 +83,9 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('Mórë thån wørds', 'more-than-words'),
             array('Блоґ їжачка', 'blog-jizhachka'),
             array('фильм', 'film'),
-            array('драма', 'drama')
+            array('драма', 'drama'),
+            array('ελληνικά', 'ellenika'),
+            array('C’est du français !', 'c-est-du-francais')
         );
     }
 }
