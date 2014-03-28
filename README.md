@@ -1,12 +1,11 @@
 Cocur Slugify
 =============
 
-Converts a string into a slug.
+> Converts a string into a slug.
 
 [![Build Status](https://travis-ci.org/cocur/slugify.png?branch=master)](https://travis-ci.org/cocur/slugify)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/cocur/slugify/badges/quality-score.png?s=6dc4ff1137d4405f75be9e98c74b1b70fcfdffaa)](https://scrutinizer-ci.com/g/cocur/slugify/)
 [![Code Coverage](https://scrutinizer-ci.com/g/cocur/slugify/badges/coverage.png?s=27306b142814efca5c7a99984d01a073e453309f)](https://scrutinizer-ci.com/g/cocur/slugify/)
-
 [![Latest Stable Version](https://poser.pugx.org/cocur/slugify/v/stable.png)](https://packagist.org/packages/cocur/slugify)
 [![Total Downloads](https://poser.pugx.org/cocur/slugify/downloads.png)](https://packagist.org/packages/cocur/slugify)
 
@@ -33,6 +32,11 @@ Generate a slug
 
 Changelog
 ---------
+
+### Version 0.5 (28 March 2014)
+
+- #21 Added support for greek characters (by [Michel Petit](https://github.com/malenkiki))
+- #20 Fixed rule for cyrillic letter D (by [Marchenko Alexandr](https://github.com/cocur/slugify/pull/20))
 
 ### Version 0.4.1 (9 March 2014)
 
