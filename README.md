@@ -25,7 +25,7 @@ $ composer require cocur/slugify:@stable
 Requirements
 ------------
 
-`cocur/slugify` has no external depencies (except PHPUnit for running the tests) and provides compatability with PHP >= 5.3.3, including PHP 5.6 and [HHVM](http://hhvm.com).
+`cocur/slugify` has no external dependencies (except PHPUnit for running the tests) and provides compatability with PHP >= 5.3.3, including PHP 5.6 and [HHVM](http://hhvm.com).
 
 
 Usage
