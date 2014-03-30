@@ -9,6 +9,7 @@ cocur/slugify
 [![Latest Stable Version](https://poser.pugx.org/cocur/slugify/v/stable.png)](https://packagist.org/packages/cocur/slugify)
 [![Total Downloads](https://poser.pugx.org/cocur/slugify/downloads.png)](https://packagist.org/packages/cocur/slugify)
 
+
 Installation
 ------------
 
@@ -19,6 +20,13 @@ $ composer require cocur/slugify:@stable
 ```
 
 *In a production environment you should replace `@stable` with the [version](https://github.com/cocur/slugify/releases) you want to use.*
+
+
+Requirements
+------------
+
+`cocur/slugify` has no external depencies (except PHPUnit for running the tests) and provides compatability with PHP >= 5.3.3, including PHP 5.6 and [HHVM](http://hhvm.com).
+
 
 Usage
 -----
@@ -64,6 +72,7 @@ Nearly completely rewritten code, removes `iconv` support because the underlying
 - #13 Added editorconfig (by [mac2000](https://github.com/mac2000))
 - #14 Return empty slug when input is empty and removed unused parameter (by [mac2000](https://github.com/mac2000))
 
+
 Authors
 -------
 
@@ -71,6 +80,7 @@ Authors
 - [Ivo Bathke](https://github.com/ivoba)
 - [Marchenko Alexandr](http://mac-blog.org.ua)
 - And some [great contributors](https://github.com/cocur/slugify/graphs/contributors)
+
 
 License
 -------
@@ -91,6 +101,3 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/cocur/slugify/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
