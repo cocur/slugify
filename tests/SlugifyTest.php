@@ -85,7 +85,8 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('фильм', 'film'),
             array('драма', 'drama'),
             array('ελληνικά', 'ellenika'),
-            array('C’est du français !', 'c-est-du-francais')
+            array('C’est du français !', 'c-est-du-francais'),
+            array('serĉi manĝi ĥirurgio ĵurnalo ŝuo malgraŭ', 'sercxi-mangxi-hxirurgio-jxurnalo-sxuo-malgraux')
         );
     }
 }
