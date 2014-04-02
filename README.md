@@ -10,6 +10,16 @@ cocur/slugify
 [![Total Downloads](https://poser.pugx.org/cocur/slugify/downloads.png)](https://packagist.org/packages/cocur/slugify)
 
 
+Features
+--------
+
+- Removes all special characters from a string.
+- Provides custom replacements for German, French, Spanish, Cyrillic, Greek and Esperanto special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
+- No external dependencies (except PHPUnit for testing).
+- PSR-4 compatible
+- Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com)
+
+
 Installation
 ------------
 
@@ -20,12 +30,6 @@ $ composer require cocur/slugify:@stable
 ```
 
 *In a production environment you should replace `@stable` with the [version](https://github.com/cocur/slugify/releases) you want to use.*
-
-
-Requirements
-------------
-
-`cocur/slugify` has no external dependencies (except PHPUnit for running the tests) and provides compatability with PHP >= 5.3.3, including PHP 5.6 and [HHVM](http://hhvm.com).
 
 
 Usage
@@ -52,9 +56,13 @@ The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface w
 Changelog
 ---------
 
+### Version 0.6 (2 April 2014)
+
+- #22 Added support for Esperanto characters (by [Michel Petit](https://github.com/malenkiki))
+
 ### Version 0.5 (28 March 2014)
 
-- #21 Added support for greek characters (by [Michel Petit](https://github.com/malenkiki))
+- #21 Added support for Greek characters (by [Michel Petit](https://github.com/malenkiki))
 - #20 Fixed rule for cyrillic letter D (by [Marchenko Alexandr](https://github.com/cocur/slugify/pull/20))
 - Add missing `$separator` parameter to `SlugifyInterface`
 

@@ -25,16 +25,17 @@ class Slugify implements SlugifyInterface
 {
     /** @var array */
     private $rules = array(
-        'º' => 0,
-        '°' => 0,
+        // Numeric characters
         '¹' => 1,
         '²' => 2,
         '³' => 3,
+        // French, Cryllic, Spanish characters
+        // TODO: Sort by language
+        'º' => 0,
+        '°' => 0,
         'æ' => 'ae',
         'ǽ' => 'ae',
-        'ä' => 'ae',
         'œ' => 'oe',
-        'ö' => 'oe',
         'À' => 'A',
         'Á' => 'A',
         'Â' => 'A',
@@ -273,8 +274,6 @@ class Slugify implements SlugifyInterface
         'ǚ' => 'u',
         'ǜ' => 'u',
         'у' => 'u',
-        'ü' => 'ue',
-        'Ü' => 'UE',
         'В' => 'V',
         'в' => 'v',
         'Ý' => 'Y',
@@ -297,12 +296,9 @@ class Slugify implements SlugifyInterface
         'з' => 'z',
         'Æ' => 'AE',
         'Ǽ' => 'AE',
-        'Ä' => 'AE',
-        'ß' => 'ss',
         'Ĳ' => 'IJ',
         'ĳ' => 'ij',
         'Œ' => 'OE',
-        'Ö' => 'OE',
         'Ч' => 'Ch',
         'ч' => 'ch',
         'Ю' => 'Ju',
@@ -319,6 +315,15 @@ class Slugify implements SlugifyInterface
         'Ї' => 'Ji',
         'ь' => '',
         'Ь' => '',
+        // German characters
+        'Ä' => 'AE',
+        'Ö' => 'OE',
+        'Ü' => 'UE',
+        'ä' => 'ae',
+        'ö' => 'oe',
+        'ü' => 'ue',
+        'ß' => 'ss',
+        // Greek characters
         'Α' => 'A',
         'Β' => 'B',
         'Γ' => 'G',
@@ -383,16 +388,17 @@ class Slugify implements SlugifyInterface
         'ϐ' => 'b',
         'ϑ' => 'th',
         'ϒ' => 'Y',
+        // Esperanto
         'ĉ' => 'cx',
-        'ĝ' => 'gx', 
+        'ĝ' => 'gx',
         'ĥ' => 'hx',
-        'ĵ' => 'jx', 
+        'ĵ' => 'jx',
         'ŝ' => 'sx',
         'ŭ' => 'ux',
         'Ĉ' => 'CX',
-        'Ĝ' => 'GX', 
-        'Ĥ' => 'HX', 
-        'Ĵ' => 'JX', 
+        'Ĝ' => 'GX',
+        'Ĥ' => 'HX',
+        'Ĵ' => 'JX',
         'Ŝ' => 'SX',
         'Ŭ' => 'UX'
     );
