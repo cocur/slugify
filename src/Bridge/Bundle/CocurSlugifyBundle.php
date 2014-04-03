@@ -33,7 +33,7 @@ class CocurSlugifyBundle extends Bundle
         parent::build($container);
 
         $extension = new CocurSlugifyExtension();
-        $extension->load([], $container);
+        $extension->load(array(), $container);
 
         $container->registerExtension($extension);
     }
