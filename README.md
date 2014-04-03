@@ -15,10 +15,10 @@ Features
 
 - Removes all special characters from a string.
 - Provides custom replacements for German, French, Spanish, Cyrillic, Greek and Esperanto special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
-- No external dependencies (except PHPUnit for testing).
-- PSR-4 compatible
-- Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com)
-- Integration as service for the Symfony2 framework
+- No external dependencies.
+- PSR-4 compatible.
+- Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
+- Integrations for Symfony2 and Twig.
 
 
 Installation
@@ -78,6 +78,26 @@ class AppKernel extends Kernel
     // ...
 }
 ```
+
+### Twig
+
+If you use the Symfony2 framework with Twig you can use the Twig filter `slugify` in your templates after you have setup Symfony2 integrations (see above).
+
+```twig
+{{ 'Hällo Wörld'|slugify }}
+```
+
+If you use Twig outside of the Symfony2 framework you first need to add the extension to your environment:
+
+```php
+use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
+use Cocur\Slugify\Slugify;
+
+$twig = new Twig_Environment($loader);
+$twig->addExtension(new SlugifyExtension(Slugify::create()));
+```
+
+You can find more information about registering extensions in the [Twig documentation](http://twig.sensiolabs.org/doc/advanced.html#creating-an-extension).
 
 
 Changelog
