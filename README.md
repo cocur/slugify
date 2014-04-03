@@ -18,6 +18,7 @@ Features
 - No external dependencies (except PHPUnit for testing).
 - PSR-4 compatible
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com)
+- Integration as service for the Symfony2 framework
 
 
 Installation
@@ -51,6 +52,32 @@ echo $slugify->slugify('Hello World!', '_'); // hello_world
 ```
 
 The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface whenever you reference a type in your code.
+
+
+Integrations
+------------
+
+### Symfony2
+
+Slugify contains a Symfony2 bundle and service definition that allow you to use it as a service in your Symfony2 application. The code resides in the `Cocur\Slugify\Bridge\Bundle` namespace and you only need to add the bundle class to your `AppKernel.php`:
+
+```php
+# app/AppKernel.php
+
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new Cocur\Slugify\Bridge\Bundle\CocurSlugifyBundle(),
+        );
+        // ...
+    }
+
+    // ...
+}
+```
 
 
 Changelog
