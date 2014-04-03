@@ -13,6 +13,7 @@ namespace Cocur\Slugify\Bridge\Bundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
@@ -35,5 +36,12 @@ class CocurSlugifyExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $container->setDefinition('cocur_slugify', new Definition('Cocur\Slugify\Slugify'));
+        $container->setDefinition(
+            'cocur_slugify.twig.slugify',
+            new Definition(
+                'Cocur\Slugify\Bridge\Twig\SlugifyExtension',
+                array(new Reference('cocur_slugify'))
+            )
+        )->addTag('twig.extension');
     }
 }
