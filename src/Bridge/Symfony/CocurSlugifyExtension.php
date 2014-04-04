@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cocur\Slugify\Bridge\Bundle;
+namespace Cocur\Slugify\Bridge\Symfony;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
