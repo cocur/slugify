@@ -35,7 +35,7 @@ class CocurSlugifyExtensionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @covers Cocur\Slugify\Bridge\Bundle\CocurSlugifyExtension::load()
+     * @covers Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension::load()
      */
     public function load()
     {
