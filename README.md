@@ -103,6 +103,14 @@ You can find more information about registering extensions in the [Twig document
 Changelog
 ---------
 
+### Version 0.7 (4 April 2014)
+
+This version introduces optional integrations into Symfony2, Silex and Twig. You can still use the library in any other framework. I decided to include these bridges because there exist integrations from other developers, but they use outdated versions of cocur/slugify. Including these small bridge classes in the library makes maintaining them a lot easier for me.
+
+- #23 Added Symfony2 service
+- #24 Added Twig extension
+- #25 Added Silex service provider
+
 ### Version 0.6 (2 April 2014)
 
 - #22 Added support for Esperanto characters (by [Michel Petit](https://github.com/malenkiki))
