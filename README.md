@@ -18,7 +18,7 @@ Features
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
-- Integrations for Symfony2 and Twig.
+- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org) and [Twig](http://twig.sensiolabs.org).
 
 
 Installation
@@ -98,6 +98,28 @@ $twig->addExtension(new SlugifyExtension(Slugify::create()));
 ```
 
 You can find more information about registering extensions in the [Twig documentation](http://twig.sensiolabs.org/doc/advanced.html#creating-an-extension).
+
+### Silex
+
+Slugify also provides a service provider to integrate into Silex.
+
+```php
+$app->register(new Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider());
+```
+
+You can use the `slugify` method in your controllers:
+
+```php
+$app->get('/', function () {
+    return $app['slugify']->slugify('welcome to the homepage');
+});
+```
+
+And if you use Silex in combination with Twig you can also use it in your templates:
+
+```twig
+{{ app.slugify.slugify('welcome to the homepage') }}
+```
 
 
 Changelog
