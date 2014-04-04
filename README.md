@@ -79,6 +79,12 @@ class AppKernel extends Kernel
 }
 ```
 
+You can now use the `slugify` service everywhere in your application, for example, in your controller:
+
+```php
+$slug = $this->get('slugify')->slugify('Hello World!');
+```
+
 ### Twig
 
 If you use the Symfony2 framework with Twig you can use the Twig filter `slugify` in your templates after you have setup Symfony2 integrations (see above).
@@ -119,6 +125,12 @@ And if you use Silex in combination with Twig you can also use it in your templa
 
 ```twig
 {{ app.slugify.slugify('welcome to the homepage') }}
+```
+
+Of course you can also add the Twig extension to your environment and use the `slugify` filter:
+
+```php
+$app['twig']->addExtension(new SlugifyExtension(Slugify::create()));
 ```
 
 
