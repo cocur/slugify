@@ -14,7 +14,7 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for German, French, Spanish, Cyrillic, Greek and Esperanto special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
+- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek and Esperanto special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
