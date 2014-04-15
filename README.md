@@ -6,7 +6,7 @@ cocur/slugify
 [![Latest Stable Version](http://img.shields.io/packagist/v/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
 [![Build Status](http://img.shields.io/travis/cocur/slugify.svg)](https://travis-ci.org/cocur/slugify)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/cocur/slugify/badges/quality-score.png?s=6dc4ff1137d4405f75be9e98c74b1b70fcfdffaa)](https://scrutinizer-ci.com/g/cocur/slugify/)
-[![Code Coverage](https://scrutinizer-ci.com/g/cocur/slugify/badges/coverage.png?s=27306b142814efca5c7a99984d01a073e453309f)](https://scrutinizer-ci.com/g/cocur/slugify/)
+[![Code Coverage](http://img.shields.io/coveralls/cocur/slugify.svg)](https://coveralls.io/r/cocur/slugify)
 [![Monthly Downloads](http://img.shields.io/packagist/dm/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
 
 
@@ -133,6 +133,20 @@ Of course you can also add the Twig extension to your environment and use the `s
 $app['twig']->addExtension(new SlugifyExtension(Slugify::create()));
 ```
 
+### Mustache.php
+
+We don't need an additional integration to use Slugify in [Mustache.php](https://github.com/bobthecow/mustache.php).
+
+```php
+use Cocur\Slugify\Slugify;
+
+$mustache = new Mustache_Engine(array(
+    // ...
+    'helpers' => array('slugify' => function($string, $separator = '-') {
+        return Slugify::create()->slugify($string, $separator);
+    }),
+));
+```
 
 Changelog
 ---------
