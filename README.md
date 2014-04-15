@@ -187,7 +187,7 @@ Nearly completely rewritten code, removes `iconv` support because the underlying
 Authors
 -------
 
-- [Florian Eckerstorfer](http://florian.ec) ([Twitter](http://twitter.com/Florian_), [App.net](http://app.net/florian))
+- [Florian Eckerstorfer](http://florian.ec) ([Twitter](http://twitter.com/Florian_))  [![Support Florian](http://img.shields.io/gittip/florianeckerstorfer.svg)](https://www.gittip.com/FlorianEckerstorfer/)
 - [Ivo Bathke](https://github.com/ivoba)
 - [Marchenko Alexandr](http://mac-blog.org.ua)
 - And some [great contributors](https://github.com/cocur/slugify/graphs/contributors)
