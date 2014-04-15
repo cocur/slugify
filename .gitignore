@@ -2,6 +2,7 @@
 *.sublime-workspace
 .idea
 /nbproject/private/
+/build/
 vendor
 report
 composer.lock

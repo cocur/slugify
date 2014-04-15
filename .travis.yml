@@ -14,4 +14,8 @@ before_script:
   - cp phpunit.xml.dist phpunit.xml
 
 script:
-    - ./vendor/bin/phpunit -c ./
+  - mkdir -p build/logs
+  - ./vendor/bin/phpunit -c ./
+
+after_script:
+  - php vendor/bin/coveralls -v
