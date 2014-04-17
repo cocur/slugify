@@ -86,7 +86,9 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('драма', 'drama'),
             array('ελληνικά', 'ellenika'),
             array('C’est du français !', 'c-est-du-francais'),
-            array('serĉi manĝi ĥirurgio ĵurnalo ŝuo malgraŭ', 'sercxi-mangxi-hxirurgio-jxurnalo-sxuo-malgraux')
+            array('serĉi manĝi ĥirurgio ĵurnalo ŝuo malgraŭ', 'sercxi-mangxi-hxirurgio-jxurnalo-sxuo-malgraux'),
+            array('هذه هي اللغة العربية', 'hthh-hy-llgh-laarby'),
+            array('مرحبا العالم', 'mrhb-laa-lm')
         );
     }
 }
