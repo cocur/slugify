@@ -52,6 +52,10 @@ class CocurSlugifyExtensionTest extends \PHPUnit_Framework_TestCase
             ->with('cocur_slugify.twig.slugify', m::type('Symfony\Component\DependencyInjection\Definition'))
             ->once()
             ->andReturn($twigDefinition);
+        $container
+            ->shouldReceive('setAlias')
+            ->with('slugify', 'cocur_slugify')
+            ->once();
 
         $this->extension->load(array(), $container);
     }
