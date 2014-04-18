@@ -43,5 +43,6 @@ class CocurSlugifyExtension extends Extension
                 array(new Reference('cocur_slugify'))
             )
         )->addTag('twig.extension');
+        $container->setAlias('slugify', 'cocur_slugify');
     }
 }
