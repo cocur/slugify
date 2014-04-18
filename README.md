@@ -135,7 +135,7 @@ $app['twig']->addExtension(new SlugifyExtension(Slugify::create()));
 
 ### Mustache.php
 
-We don't need an additional integration to use Slugify in [Mustache.php](https://github.com/bobthecow/mustache.php).
+We don't need an additional integration to use Slugify in [Mustache.php](https://github.com/bobthecow/mustache.php). If you want to use Slugify in Mustache, just add a helper:
 
 ```php
 use Cocur\Slugify\Slugify;
