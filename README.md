@@ -14,7 +14,7 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek and Esperanto special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
+- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek, Esperanto and Arabian special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
@@ -151,27 +151,33 @@ $mustache = new Mustache_Engine(array(
 Changelog
 ---------
 
+### Version 0.8 (18 April 2014)
+
+- [#27](https://github.com/cocur/slugify/pull/27) Add support for Arabic characters (by [Davide Bellini](https://github.com/billmn))
+- Added some missing characters
+- Improved organisation of characters in `Slugify` class
+
 ### Version 0.7 (4 April 2014)
 
 This version introduces optional integrations into Symfony2, Silex and Twig. You can still use the library in any other framework. I decided to include these bridges because there exist integrations from other developers, but they use outdated versions of cocur/slugify. Including these small bridge classes in the library makes maintaining them a lot easier for me.
 
-- #23 Added Symfony2 service
-- #24 Added Twig extension
-- #25 Added Silex service provider
+- [#23](https://github.com/cocur/slugify/pull/23) Added Symfony2 service
+- [#24](https://github.com/cocur/slugify/pull/24) Added Twig extension
+- [#25](https://github.com/cocur/slugify/pull/25) Added Silex service provider
 
 ### Version 0.6 (2 April 2014)
 
-- #22 Added support for Esperanto characters (by [Michel Petit](https://github.com/malenkiki))
+- [#22](https://github.com/cocur/slugify/pull/22) Added support for Esperanto characters (by [Michel Petit](https://github.com/malenkiki))
 
 ### Version 0.5 (28 March 2014)
 
-- #21 Added support for Greek characters (by [Michel Petit](https://github.com/malenkiki))
-- #20 Fixed rule for cyrillic letter D (by [Marchenko Alexandr](https://github.com/cocur/slugify/pull/20))
+- [#21](https://github.com/cocur/slugify/pull/21) Added support for Greek characters (by [Michel Petit](https://github.com/malenkiki))
+- [#20](https://github.com/cocur/slugify/pull/20) Fixed rule for cyrillic letter D (by [Marchenko Alexandr](https://github.com/cocur/slugify/pull/20))
 - Add missing `$separator` parameter to `SlugifyInterface`
 
 ### Version 0.4.1 (9 March 2014)
 
-- #19 Adds soft sign rule (by [Marchenko Alexandr](https://github.com/mac2000))
+- [#19](https://github.com/cocur/slugify/pull/19) Adds soft sign rule (by [Marchenko Alexandr](https://github.com/mac2000))
 
 ### Version 0.4 (17 January 2014)
 
@@ -179,9 +185,9 @@ Nearly completely rewritten code, removes `iconv` support because the underlying
 
 ### Version 0.3 (12 January 2014)
 
-- #11 PSR-4 compatible (by [mac2000](https://github.com/mac2000))
-- #13 Added editorconfig (by [mac2000](https://github.com/mac2000))
-- #14 Return empty slug when input is empty and removed unused parameter (by [mac2000](https://github.com/mac2000))
+- [#11](https://github.com/cocur/slugify/pull/11) PSR-4 compatible (by [mac2000](https://github.com/mac2000))
+- [#13](https://github.com/cocur/slugify/pull/13) Added editorconfig (by [mac2000](https://github.com/mac2000))
+- [#14](https://github.com/cocur/slugify/pull/14) Return empty slug when input is empty and removed unused parameter (by [mac2000](https://github.com/mac2000))
 
 
 Authors
