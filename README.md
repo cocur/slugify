@@ -51,7 +51,7 @@ You can also change the seperator used by `Slugify`:
 echo $slugify->slugify('Hello World!', '_'); // hello_world
 ```
 
-The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface whenever you reference a type in your code.
+The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface whenever you need to typehint an instance of `Slugify`.
 
 
 Integrations
