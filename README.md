@@ -79,10 +79,16 @@ class AppKernel extends Kernel
 }
 ```
 
-You can now use the `slugify` service everywhere in your application, for example, in your controller:
+You can now use the `cocur_slugify` service everywhere in your application, for example, in your controller:
 
 ```php
-$slug = $this->get('slugify')->slugify('Hello World!');
+$slug = $this->get('cocur_slugify')->slugify('Hello World!');
+```
+
+The bundle also provides an alias `slugify` for the `cocur_slugify` service:
+
+```php
+$slug = $this->get('cocur_slugify')->slugify('Hello World!');
 ```
 
 ### Twig
