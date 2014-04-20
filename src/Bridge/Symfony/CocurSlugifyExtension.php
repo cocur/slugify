@@ -36,13 +36,16 @@ class CocurSlugifyExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $container->setDefinition('cocur_slugify', new Definition('Cocur\Slugify\Slugify'));
-        $container->setDefinition(
-            'cocur_slugify.twig.slugify',
-            new Definition(
-                'Cocur\Slugify\Bridge\Twig\SlugifyExtension',
-                array(new Reference('cocur_slugify'))
+        $container
+            ->setDefinition(
+                'cocur_slugify.twig.slugify',
+                new Definition(
+                    'Cocur\Slugify\Bridge\Twig\SlugifyExtension',
+                    array(new Reference('cocur_slugify'))
+                )
             )
-        )->addTag('twig.extension');
+            ->addTag('twig.extension')
+            ->setPublic(false);
         $container->setAlias('slugify', 'cocur_slugify');
     }
 }

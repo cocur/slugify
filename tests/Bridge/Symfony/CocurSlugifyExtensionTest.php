@@ -40,7 +40,15 @@ class CocurSlugifyExtensionTest extends \PHPUnit_Framework_TestCase
     public function load()
     {
         $twigDefinition = m::mock('Symfony\Component\DependencyInjection\Definition');
-        $twigDefinition->shouldReceive('addTag')->with('twig.extension')->once();
+        $twigDefinition
+            ->shouldReceive('addTag')
+            ->with('twig.extension')
+            ->once()
+            ->andReturn($twigDefinition);
+        $twigDefinition
+            ->shouldReceive('setPublic')
+            ->with(false)
+            ->once();
 
         $container = m::mock('Symfony\Component\DependencyInjection\ContainerBuilder');
         $container
