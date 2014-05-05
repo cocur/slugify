@@ -109,6 +109,19 @@ $twig = new Twig_Environment($loader);
 $twig->addExtension(new SlugifyExtension(Slugify::create()));
 ```
 
+To use the Twig filter with [TwigBridge](https://github.com/rcrowe/TwigBridge) for Laravel, you'll need to add the Slugify extension using a closure:
+
+```php
+// laravel/app/config/packages/rcrowe/twigbridge/config.php
+
+'extensions' => array(
+    //...
+    function () {
+        return new \Cocur\Slugify\Bridge\Twig\SlugifyExtension(\Cocur\Slugify\Slugify::create());
+    },
+),
+```
+
 You can find more information about registering extensions in the [Twig documentation](http://twig.sensiolabs.org/doc/advanced.html#creating-an-extension).
 
 ### Silex
