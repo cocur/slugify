@@ -88,7 +88,7 @@ $slug = $this->get('cocur_slugify')->slugify('Hello World!');
 The bundle also provides an alias `slugify` for the `cocur_slugify` service:
 
 ```php
-$slug = $this->get('cocur_slugify')->slugify('Hello World!');
+$slug = $this->get('slugify')->slugify('Hello World!');
 ```
 
 ### Twig
