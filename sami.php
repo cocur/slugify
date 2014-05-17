@@ -11,10 +11,10 @@ $versions = GitVersionCollection::create($dir)
 ;
 
 return new Sami($dir, array(
-    'title' => 'Slugify API',
+    'title'                => 'Slugify API',
     'theme'                => 'enhanced',
-    'versions' => $versions,
-    'build_dir' => __DIR__.'/build/api/%version%',
-    'cache_dir' => __DIR__.'/cache/api/%version%',
+    'versions'             => $versions,
+    'build_dir'            => __DIR__.'/build/api/%version%',
+    'cache_dir'            => __DIR__.'/cache/api/%version%',
     'default_opened_level' => 2,
 ));
