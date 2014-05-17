@@ -3,6 +3,7 @@
 .idea
 /nbproject/private/
 /build/
+/cache/
 vendor
 report
 composer.lock
