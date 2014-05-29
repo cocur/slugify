@@ -174,6 +174,10 @@ $mustache = new Mustache_Engine(array(
 Changelog
 ---------
 
+### Version 0.9 (29 May 2014)
+
+- [#28](https://github.com/cocur/slugify/pull/28) Add Symfony2 service alias and make Twig extension private (by [Kevin Bond](https://github.com/kbond))
+
 ### Version 0.8 (18 April 2014)
 
 - [#27](https://github.com/cocur/slugify/pull/27) Add support for Arabic characters (by [Davide Bellini](https://github.com/billmn))
