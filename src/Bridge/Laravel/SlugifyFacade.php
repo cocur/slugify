@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 
 
-class Slugify extends Facade {
+class SlugifyFacade extends Facade {
 
     /**
      * Get the registered name of the component.

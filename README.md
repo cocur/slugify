@@ -187,7 +187,7 @@ And add the facade into the "aliases" array:
 
 ```php
 'aliases' => array(
-    "Slugify" => "Cocur\Slugify\Bridge\Laravel\Facade",
+    "Slugify" => "Cocur\Slugify\Bridge\Laravel\SlugifyFacade",
 )
 ```
 
