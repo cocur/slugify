@@ -18,7 +18,7 @@ Features
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org) and [Twig](http://twig.sensiolabs.org).
+- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com) and [Twig](http://twig.sensiolabs.org).
 
 
 Installation
