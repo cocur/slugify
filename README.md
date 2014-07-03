@@ -173,7 +173,7 @@ $mustache = new Mustache_Engine(array(
 
 ### Laravel
 
-Slugify also provides a service provider to integrate into Laravel (versions 4.2 and later).
+Slugify also provides a service provider to integrate into Laravel (versions 4.1 and later).
 
 In your Laravel project's `app/config/app.php` file, add the service provider into the "providers" array:
 
