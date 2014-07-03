@@ -171,6 +171,33 @@ $mustache = new Mustache_Engine(array(
 ));
 ```
 
+### Laravel
+
+Slugify also provides a service provider to integrate into Laravel (versions 4.2 and later).
+
+In your Laravel project's `app/config/app.php` file, add the service provider into the "providers" array:
+
+```php
+'providers' => array(
+    "Cocur\Slugify\Bridge\Larave\SlugifyServiceProvider",
+)
+```
+
+And add the facade into the "aliases" array:
+
+```php
+'aliases' => array(
+    "Slugify" => "Cocur\Slugify\Bridge\Laravel\Facade",
+)
+```
+
+You can then use the `Slugify::slugify()` method in your controllers:
+
+```php
+$url = Slugify::slugify('welcome to the homepage');
+```
+
+
 Changelog
 ---------
 
