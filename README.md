@@ -45,7 +45,7 @@ $slugify = new Slugify();
 echo $slugify->slugify('Hello World!'); // hello-world
 ```
 
-You can also change the seperator used by `Slugify`:
+You can also change the separator used by `Slugify`:
 
 ```php
 echo $slugify->slugify('Hello World!', '_'); // hello_world
