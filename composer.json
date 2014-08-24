@@ -27,7 +27,8 @@
         "twig/twig":                     "~1",
         "silex/silex":                   "~1.2",
         "sami/sami":                     "~1.3",
-        "codeclimate/php-test-reporter": "dev-master"
+        "codeclimate/php-test-reporter": "dev-master",
+        "laravel/framework":             "~4.1"
     },
     "autoload": {
     	"psr-4": {
