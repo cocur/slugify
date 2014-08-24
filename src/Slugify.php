@@ -315,7 +315,7 @@ class Slugify implements SlugifyInterface
         'Ů' => 'U',
         'Ž' => 'Z',
         'č' => 'c',
-        'ď' => 'dj',
+        'ď' => 'd',
         'ě' => 'e',
         'ň' => 'n',
         'ř' => 'r',
