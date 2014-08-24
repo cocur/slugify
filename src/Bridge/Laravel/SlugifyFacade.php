@@ -14,7 +14,7 @@ namespace Cocur\Slugify\Bridge\Laravel;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * SlugifyServiceProvider
+ * SlugifyFacade
  *
  * @package    cocur/slugify
  * @subpackage bridge
