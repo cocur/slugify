@@ -306,7 +306,7 @@ class Slugify implements SlugifyInterface
 
         // Czech
         'Č' => 'C',
-        'Ď' => 'Dj',
+        'Ď' => 'D',
         'Ě' => 'E',
         'Ň' => 'N',
         'Ř' => 'R',
