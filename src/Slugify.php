@@ -456,12 +456,12 @@ class Slugify implements SlugifyInterface
     );
 
     /**
-     * Returns the slugified string.
+     * Returns the slug-version of the string.
      *
      * @param string $string    String to slugify
      * @param string $separator Separator
      *
-     * @return string Slugified string
+     * @return string Slug-verison of the string
      */
     public function slugify($string, $separator = '-')
     {
@@ -473,7 +473,7 @@ class Slugify implements SlugifyInterface
     }
 
     /**
-     * Adds a custom rule to the slugifier.
+     * Adds a custom rule to the Slugify.
      *
      * @param string $character   Character
      * @param string $replacement Replacement character

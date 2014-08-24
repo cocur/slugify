@@ -18,7 +18,7 @@ Features
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org) and [Twig](http://twig.sensiolabs.org).
+- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com) and [Twig](http://twig.sensiolabs.org).
 
 
 Installation
@@ -170,6 +170,33 @@ $mustache = new Mustache_Engine(array(
     }),
 ));
 ```
+
+### Laravel
+
+Slugify also provides a service provider to integrate into Laravel (versions 4.1 and later).
+
+In your Laravel project's `app/config/app.php` file, add the service provider into the "providers" array:
+
+```php
+'providers' => array(
+    "Cocur\Slugify\Bridge\Larave\SlugifyServiceProvider",
+)
+```
+
+And add the facade into the "aliases" array:
+
+```php
+'aliases' => array(
+    "Slugify" => "Cocur\Slugify\Bridge\Laravel\SlugifyFacade",
+)
+```
+
+You can then use the `Slugify::slugify()` method in your controllers:
+
+```php
+$url = Slugify::slugify('welcome to the homepage');
+```
+
 
 Changelog
 ---------
