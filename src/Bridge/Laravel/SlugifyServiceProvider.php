@@ -1,9 +1,19 @@
-<?php namespace Cocur\Slugify\Bridge\Laravel;
+<?php
+
+/**
+ * This file is part of cocur/slugify.
+ *
+ * (c) Florian Eckerstorfer <florian@eckerstorfer.co>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Cocur\Slugify\Bridge\Laravel;
 
 use Cocur\Slugify\Slugify;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Illuminate\Foundation\Application;
-
 
 /**
  * SlugifyServiceProvider
@@ -11,12 +21,12 @@ use Illuminate\Foundation\Application;
  * @package    cocur/slugify
  * @subpackage bridge
  * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @author     Colin Viebrock
  * @copyright  2012-2014 Florian Eckerstorfer
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
 class SlugifyServiceProvider extends LaravelServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -29,7 +39,8 @@ class SlugifyServiceProvider extends LaravelServiceProvider
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         $this->app->bindShared('slugify', function (Application $app) {
             return new Slugify();
         });
@@ -40,8 +51,8 @@ class SlugifyServiceProvider extends LaravelServiceProvider
      *
      * @return array
      */
-    public function provides() {
+    public function provides()
+    {
         return array('slugify');
     }
-
 }
