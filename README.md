@@ -30,7 +30,8 @@ You can install cocur/slugify through [Composer](https://getcomposer.org):
 $ composer require cocur/slugify:@stable
 ```
 
-*In a production environment you should replace `@stable` with the [version](https://github.com/cocur/slugify/releases) you want to use.*
+*In a production environment you should replace `@stable` with the [version](https://github.com/cocur/slugify/releases)
+you want to use.*
 
 
 Usage
@@ -51,7 +52,15 @@ You can also change the separator used by `Slugify`:
 echo $slugify->slugify('Hello World!', '_'); // hello_world
 ```
 
-The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface whenever you need to typehint an instance of `Slugify`.
+The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface whenever you need to type hint an
+instance of `Slugify`.
+
+To add additional transliteration rules you can use the `addRule()` method.
+
+```php
+$slugify->addRule('i', 'ey');
+echo $slugify->slugify('Hi'); // hey
+```
 
 ### Further information
 
