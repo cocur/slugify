@@ -53,6 +53,13 @@ echo $slugify->slugify('Hello World!', '_'); // hello_world
 
 The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface whenever you need to typehint an instance of `Slugify`.
 
+To change transliteration rules use `addRule` method, like this:
+
+```php
+$slugify->addRule('i', 'ey');
+echo $slugify->slugify('Hi'); // hey
+```
+
 ### Further information
 
 - [API docs](http://cocur.co/slugify/api/master/)
