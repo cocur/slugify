@@ -61,7 +61,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     public function addRulesAddsMultipleRules()
     {
-        $this->slugify->addRules(['x' => 'y', 'a' => 'b']);
+        $this->slugify->addRules(array('x' => 'y', 'a' => 'b'));
         $this->assertEquals('yb', $this->slugify->slugify('xa'));
     }
 
