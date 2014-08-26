@@ -442,8 +442,8 @@ class Slugify implements SlugifyInterface
     );
 
     /** @var string[][] */
-    private $rulesets = [
-        'esperanto' => [
+    private $rulesets = array(
+        'esperanto' => array(
             'ĉ' => 'cx',
             'ĝ' => 'gx',
             'ĥ' => 'hx',
@@ -456,8 +456,8 @@ class Slugify implements SlugifyInterface
             'Ĵ' => 'JX',
             'Ŝ' => 'SX',
             'Ŭ' => 'UX'
-        ]
-    ];
+        )
+    );
 
     /**
      * Returns the slug-version of the string.
