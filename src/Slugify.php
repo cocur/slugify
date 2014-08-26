@@ -410,20 +410,6 @@ class Slugify implements SlugifyInterface
         'ϑ' => 'th',
         'ϒ' => 'Y',
 
-        // Esperanto
-        'ĉ' => 'cx',
-        'ĝ' => 'gx',
-        'ĥ' => 'hx',
-        'ĵ' => 'jx',
-        'ŝ' => 'sx',
-        'ŭ' => 'ux',
-        'Ĉ' => 'CX',
-        'Ĝ' => 'GX',
-        'Ĥ' => 'HX',
-        'Ĵ' => 'JX',
-        'Ŝ' => 'SX',
-        'Ŭ' => 'UX',
-
         /* Arabic */
         'أ' => 'a',
         'ب' => 'b',
