@@ -524,6 +524,29 @@ class Slugify implements SlugifyInterface
     }
 
     /**
+     * Adds a ruleset to the Slugifier.
+     *
+     * @param string     $name  Name of the ruleset.
+     * @param string[][] $rules Rules
+     */
+    public function addRuleset($name, array $rules)
+    {
+        $this->rulesets[$name] = $rules;
+
+        return $this;
+    }
+
+    /**
+     * Returns the rulesets.
+     *
+     * @return string[][] Rulesets
+     */
+    public function getRulesets()
+    {
+        return $this->rulesets;
+    }
+
+    /**
      * Static method to create new instance of {@see Slugify}.
      *
      * @return Slugify

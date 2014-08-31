@@ -91,6 +91,18 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @covers  Cocur\Slugify\Slugify::addRuleset()
+     * @covers  Cocur\Slugify\Slugify::getRulesets()
+     */
+    public function addRulesetGetRulesets()
+    {
+        $this->slugify->addRuleset('foo', array('k' => 'key'));
+
+        $this->assertCount(2, $this->slugify->getRulesets());
+    }
+
+    /**
+     * @test
      * @covers Cocur\Slugify\Slugify::create()
      */
     public function createReturnsAnInstance()
