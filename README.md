@@ -225,7 +225,11 @@ $url = Slugify::slugify('welcome to the homepage');
 Changelog
 ---------
 
-### Version 0.10 (26 August 2014)
+### Version 0.10.1 (1 September 2014)
+
+- [#39](https://github.com/cocur/slugify/pull/39) Add support for rulesets (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+
+### Version 0.10.0 (26 August 2014)
 
 - [#32](https://github.com/cocur/slugify/pull/32) Added Laraval bridge (by [cviebrock](https://github.com/cviebrock))
 - [#35](https://github.com/cocur/slugify/pull/35) Fixed transliteration for `Ď` (by [michalskop](https://github.com/michalskop))
