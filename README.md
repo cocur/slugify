@@ -190,7 +190,7 @@ In your Laravel project's `app/config/app.php` file, add the service provider in
 
 ```php
 'providers' => array(
-    "Cocur\Slugify\Bridge\Larave\SlugifyServiceProvider",
+    "Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider",
 )
 ```
 
