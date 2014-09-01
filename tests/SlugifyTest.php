@@ -56,6 +56,53 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @covers Cocur\Slugify\Slugify::addRules()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function addRulesAddsMultipleRules()
+    {
+        $this->slugify->addRules(array('x' => 'y', 'a' => 'b'));
+        $this->assertEquals('yb', $this->slugify->slugify('xa'));
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::activateRuleset()
+     */
+    public function activateRulesetActivatesTheGivenRuleset()
+    {
+        $this->slugify->activateRuleset('esperanto');
+
+        $this->assertEquals(
+            'sercxi-mangxi-hxirurgio-jxurnalo-sxuo-malgraux',
+            $this->slugify->slugify('serĉi manĝi ĥirurgio ĵurnalo ŝuo malgraŭ')
+        );
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::activateRuleset()
+     * @expectedException \InvalidArgumentException
+     */
+    public function activateRulesetThrowsExceptionIfInvalidName()
+    {
+        $this->slugify->activateRuleset('invalid');
+    }
+
+    /**
+     * @test
+     * @covers  Cocur\Slugify\Slugify::addRuleset()
+     * @covers  Cocur\Slugify\Slugify::getRulesets()
+     */
+    public function addRulesetGetRulesets()
+    {
+        $this->slugify->addRuleset('foo', array('k' => 'key'));
+
+        $this->assertCount(2, $this->slugify->getRulesets());
+    }
+
+    /**
+     * @test
      * @covers Cocur\Slugify\Slugify::create()
      */
     public function createReturnsAnInstance()
@@ -86,7 +133,6 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('драма', 'drama'),
             array('ελληνικά', 'ellenika'),
             array('C’est du français !', 'c-est-du-francais'),
-            // array('serĉi manĝi ĥirurgio ĵurnalo ŝuo malgraŭ', 'sercxi-mangxi-hxirurgio-jxurnalo-sxuo-malgraux'),
             array('هذه هي اللغة العربية', 'hthh-hy-llgh-laarby'),
             array('مرحبا العالم', 'mrhb-laa-lm')
         );

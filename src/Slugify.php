@@ -441,6 +441,24 @@ class Slugify implements SlugifyInterface
         'ي' => 'y'
     );
 
+    /** @var string[][] */
+    private $rulesets = array(
+        'esperanto' => array(
+            'ĉ' => 'cx',
+            'ĝ' => 'gx',
+            'ĥ' => 'hx',
+            'ĵ' => 'jx',
+            'ŝ' => 'sx',
+            'ŭ' => 'ux',
+            'Ĉ' => 'CX',
+            'Ĝ' => 'GX',
+            'Ĥ' => 'HX',
+            'Ĵ' => 'JX',
+            'Ŝ' => 'SX',
+            'Ŭ' => 'UX'
+        )
+    );
+
     /**
      * Returns the slug-version of the string.
      *
@@ -459,7 +477,7 @@ class Slugify implements SlugifyInterface
     }
 
     /**
-     * Adds a custom rule to the Slugify.
+     * Adds a custom rule to Slugify.
      *
      * @param string $character   Character
      * @param string $replacement Replacement character
@@ -471,6 +489,61 @@ class Slugify implements SlugifyInterface
         $this->rules[$character] = $replacement;
 
         return $this;
+    }
+
+    /**
+     * Adds multiple rules to Slugify.
+     *
+     * @param string[][] $rules
+     */
+    public function addRules(array $rules)
+    {
+        foreach ($rules as $character => $replacement) {
+            $this->rules[$character] = $replacement;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Activates an additional ruleset.
+     *
+     * @param string $name Name of the ruleset.
+     *
+     * @return Slugify
+     *
+     * @throws \InvalidArgumentException if the no ruleset with the given name exists
+     */
+    public function activateRuleset($name)
+    {
+        if (!isset($this->rulesets[$name])) {
+            throw new \InvalidArgumentException('Slugify does not contain a ruleset "'.$name.'".');
+        }
+
+        return $this->addRules($this->rulesets[$name]);
+    }
+
+    /**
+     * Adds a ruleset to the Slugifier.
+     *
+     * @param string     $name  Name of the ruleset.
+     * @param string[][] $rules Rules
+     */
+    public function addRuleset($name, array $rules)
+    {
+        $this->rulesets[$name] = $rules;
+
+        return $this;
+    }
+
+    /**
+     * Returns the rulesets.
+     *
+     * @return string[][] Rulesets
+     */
+    public function getRulesets()
+    {
+        return $this->rulesets;
     }
 
     /**
