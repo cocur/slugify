@@ -64,6 +64,19 @@ $slugify->addRule('i', 'ey');
 echo $slugify->slugify('Hi'); // hey
 ```
 
+### Rulesets
+
+In addition Slugify also supports rulesets. A ruleset contains a set of rules that are not part of the default rules.
+Currently one ruleset exists for Esperanto since some of the transliterations conflict with those for other langauges.
+The `activateRuleset()` method activates a ruleset with the given name.
+
+```php
+$slugify->activateRuleset('esperanto');
+echo $slugify->slugify('serĉi manĝi'); // sercxi-mangxi
+```
+
+You can add rulesets by using `Slugify::addRuleset()` and retrieve all rulesets with `Slugify::getRuleset()`.
+
 ### Further information
 
 - [API docs](http://cocur.co/slugify/api/master/)
