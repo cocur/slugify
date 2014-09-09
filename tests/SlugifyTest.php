@@ -110,6 +110,25 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', Slugify::create());
     }
 
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::setSlugMap()
+     * @covers Cocur\Slugify\Slugify::getSlugMap()
+     * @covers Cocur\Slugify\Slugify::addSlugToMap()
+     */
+    public function testSetSlugMap(){
+        $this->slugify->setSlugMap(array('Hello World' => 'hello-world',
+                                          "Mijn foto's" => 'mijn-fotos'));
+
+        $this->assertEquals('hello-world', $this->slugify->slugify('Hello World'));
+        $this->assertEquals('mijn-fotos', $this->slugify->slugify("Mijn foto's"));
+        $this->assertEquals('jouw-foto-s', $this->slugify->slugify("Jouw foto's"));
+        $this->assertCount(2, $this->slugify->getSlugMap());
+
+        $this->slugify->addSlugToMap("Jouw foto's", 'jouw-fotos');
+        $this->assertEquals('jouw-fotos', $this->slugify->slugify("Jouw foto's"));
+    }
+
     public function provider()
     {
         return array(
