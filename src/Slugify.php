@@ -460,6 +460,11 @@ class Slugify implements SlugifyInterface
     );
 
     /**
+     * @var string[]|null
+     */
+    private $slugMap;
+
+    /**
      * Returns the slug-version of the string.
      *
      * @param string $string    String to slugify
@@ -469,6 +474,12 @@ class Slugify implements SlugifyInterface
      */
     public function slugify($string, $separator = '-')
     {
+        if($this->slugMap){
+            if(isset($this->slugMap[$string])){
+                return $this->slugMap[$string];
+            }
+        }
+
         $string = strtolower(strtr($string, $this->rules));
         $string = preg_replace('/([^a-z0-9]|-)+/', $separator, $string);
         $string = strtolower($string);
@@ -544,6 +555,35 @@ class Slugify implements SlugifyInterface
     public function getRulesets()
     {
         return $this->rulesets;
+    }
+
+    /**
+     * set a custom map for slugs
+     *
+     * @param array $slugMap
+     */
+    public function setSlugMap(array $slugMap){
+        $this->slugMap = $slugMap;
+    }
+
+    /**
+     * add a single slug to the slug map
+     *
+     * @param $string
+     * @param $slug
+     */
+    public function addSlugToMap($string, $slug){
+        $this->slugMap[$string] = $slug;
+    }
+
+    /**
+     * returns the slug map
+     *
+     * @return null|string[][] SlugMap
+     */
+    public function getSlugMap()
+    {
+        return $this->slugMap;
     }
 
     /**
