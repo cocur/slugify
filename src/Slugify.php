@@ -24,7 +24,7 @@ namespace Cocur\Slugify;
 class Slugify implements SlugifyInterface
 {
     /** @var array */
-    private $rules = array(
+    protected $rules = array(
         // Numeric characters
         '¹' => 1,
         '²' => 2,
@@ -442,7 +442,7 @@ class Slugify implements SlugifyInterface
     );
 
     /** @var string[][] */
-    private $rulesets = array(
+    protected $rulesets = array(
         'esperanto' => array(
             'ĉ' => 'cx',
             'ĝ' => 'gx',
