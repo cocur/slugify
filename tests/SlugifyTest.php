@@ -110,6 +110,20 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', Slugify::create());
     }
 
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::setRegExp()
+     */
+    public function otherRegExpsProduceOtherResults()
+    {
+        $actual = 'File Name.tar.gz';
+        $expected = 'file-name.tar.gz';
+
+        $this->assertNotEquals($expected, $this->slugify->slugify($actual));
+        $this->slugify->setRegExp('/([^a-z0-9.]|-)+/');
+        $this->assertEquals($expected, $this->slugify->slugify($actual));
+    }
+
     public function provider()
     {
         return array(
