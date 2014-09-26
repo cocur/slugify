@@ -23,7 +23,7 @@ namespace Cocur\Slugify;
  */
 class Slugify implements SlugifyInterface
 {
-    const LOWERCASE_NUMBERS_UNDERSCORES = '/([^a-z0-9]|-)+/';
+    const LOWERCASE_NUMBERS_NOT_DASHES = '/([^a-z0-9]|-)+/';
 
     /** @var array */
     protected $rules = array(
@@ -468,7 +468,7 @@ class Slugify implements SlugifyInterface
      *
      * @param string $regExp
      */
-    public function __construct($regExp = self::LOWERCASE_NUMBERS_UNDERSCORES)
+    public function __construct($regExp = self::LOWERCASE_NUMBERS_NOT_DASHES)
     {
         $this->regExp = $regExp;
     }
@@ -579,7 +579,7 @@ class Slugify implements SlugifyInterface
      *
      * @return Slugify
      */
-    public static function create($regExp = self::LOWERCASE_NUMBERS_UNDERSCORES)
+    public static function create($regExp = self::LOWERCASE_NUMBERS_NOT_DASHES)
     {
         return new static($regExp);
     }
