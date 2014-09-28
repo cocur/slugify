@@ -133,7 +133,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $actual = 'File Name.tar.gz';
         $expected = 'file-name.tar.gz';
 
-        $this->slugify = new SLugify('/([^a-z0-9.]|-)+/');
+        $this->slugify = new Slugify('/([^a-z0-9.]|-)+/');
         $this->assertEquals($expected, $this->slugify->slugify($actual));
     }
 
