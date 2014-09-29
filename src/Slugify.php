@@ -23,6 +23,8 @@ namespace Cocur\Slugify;
  */
 class Slugify implements SlugifyInterface
 {
+    const LOWERCASE_NUMBERS_DASHES = '/([^a-z0-9]|-)+/';
+
     /** @var array */
     protected $rules = array(
         // Numeric characters
@@ -459,6 +461,18 @@ class Slugify implements SlugifyInterface
         )
     );
 
+    /** @var string */
+    protected $regExp;
+
+    /**
+     *
+     * @param string $regExp
+     */
+    public function __construct($regExp = self::LOWERCASE_NUMBERS_DASHES)
+    {
+        $this->regExp = $regExp;
+    }
+    
     /**
      * Returns the slug-version of the string.
      *
@@ -470,7 +484,7 @@ class Slugify implements SlugifyInterface
     public function slugify($string, $separator = '-')
     {
         $string = strtolower(strtr($string, $this->rules));
-        $string = preg_replace('/([^a-z0-9]|-)+/', $separator, $string);
+        $string = preg_replace($this->regExp, $separator, $string);
         $string = strtolower($string);
 
         return trim($string, $separator);
@@ -547,12 +561,26 @@ class Slugify implements SlugifyInterface
     }
 
     /**
+     * Sets the regular expression used to sanitize the slug
+     *
+     * @param string $regExp
+     */
+    public function setRegExp($regExp)
+    {
+        $this->regExp = $regExp;
+
+        return $this;
+    }
+
+    /**
      * Static method to create new instance of {@see Slugify}.
+     *
+     * @param string $regExp The regular expression to be applied to strings when calling slugify
      *
      * @return Slugify
      */
-    public static function create()
+    public static function create($regExp = self::LOWERCASE_NUMBERS_DASHES)
     {
-        return new static();
+        return new static($regExp);
     }
 }
