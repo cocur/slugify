@@ -225,6 +225,13 @@ $url = Slugify::slugify('welcome to the homepage');
 Changelog
 ---------
 
+### Version 0.10.2 (18 October 2014)
+
+- [#44](https://github.com/cocur/slugify/pull/44) Change visibility of properties to `protected` (by [acelaya](https://github.com/acelaya))
+- [#45](https://github.com/cocur/slugify/pull/45) Configure regular expression used to replace characters (by [acelaya](https://github.com/acelaya))
+- Fix type hinting (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+- Remove duplicate rule (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+
 ### Version 0.10.1 (1 September 2014)
 
 - [#39](https://github.com/cocur/slugify/pull/39) Add support for rulesets (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
