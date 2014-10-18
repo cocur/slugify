@@ -13,7 +13,6 @@ namespace Cocur\Slugify\Bridge\Laravel;
 
 use Cocur\Slugify\Slugify;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use Illuminate\Foundation\Application;
 
 /**
  * SlugifyServiceProvider
