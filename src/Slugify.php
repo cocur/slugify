@@ -479,7 +479,7 @@ class Slugify implements SlugifyInterface
      * @param string $string    String to slugify
      * @param string $separator Separator
      *
-     * @return string Slug-verison of the string
+     * @return string Slugified version of the string
      */
     public function slugify($string, $separator = '-')
     {
@@ -509,6 +509,8 @@ class Slugify implements SlugifyInterface
      * Adds multiple rules to Slugify.
      *
      * @param string[][] $rules
+     *
+     * @return Slugify
      */
     public function addRules(array $rules)
     {
@@ -538,10 +540,12 @@ class Slugify implements SlugifyInterface
     }
 
     /**
-     * Adds a ruleset to the Slugifier.
+     * Adds a ruleset to Slugify.
      *
      * @param string     $name  Name of the ruleset.
      * @param string[][] $rules Rules
+     *
+     * @return Slugify
      */
     public function addRuleset($name, array $rules)
     {
@@ -564,6 +568,8 @@ class Slugify implements SlugifyInterface
      * Sets the regular expression used to sanitize the slug
      *
      * @param string $regExp
+     *
+     * @return Slugify
      */
     public function setRegExp($regExp)
     {
