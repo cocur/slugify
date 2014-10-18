@@ -77,6 +77,18 @@ echo $slugify->slugify('serĉi manĝi'); // sercxi-mangxi
 
 You can add rulesets by using `Slugify::addRuleset()` and retrieve all rulesets with `Slugify::getRuleset()`.
 
+### Further Customization
+
+You can also change the regular expression that is used to replace characters with the separator.
+
+```php
+$slugify = new Slugify('/([^a-z0-9]|-)+/');
+// or
+$slugify->setRegExp('/([^a-z0-9]|-)+/');
+```
+
+*(The regular expression used in the example above is the default one.)*
+
 ### Further information
 
 - [API docs](http://cocur.co/slugify/api/master/)
