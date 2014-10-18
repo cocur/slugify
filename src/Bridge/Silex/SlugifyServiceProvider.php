@@ -31,7 +31,7 @@ class SlugifyServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        $app['slugify'] = $app->share(function ($app) {
+        $app['slugify'] = $app->share(function (Application $app) {
             $app->flush();
 
             return new Slugify();
