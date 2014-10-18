@@ -33,7 +33,6 @@ class Slugify implements SlugifyInterface
         '³' => 3,
 
         // Latin
-        'º' => 0,
         '°' => 0,
         'æ' => 'ae',
         'ǽ' => 'ae',
