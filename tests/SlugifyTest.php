@@ -162,7 +162,8 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('C’est du français !', 'c-est-du-francais'),
             array('هذه هي اللغة العربية', 'hthh-hy-llgh-laarby'),
             array('مرحبا العالم', 'mrhb-laa-lm'),
-            array('Één jaar', 'een-jaar')
+            array('Één jaar', 'een-jaar'),
+            array('tiếng việt rất khó', 'tieng viet rat kho')
         );
     }
 }
