@@ -89,6 +89,15 @@ $slugify->setRegExp('/([^a-z0-9]|-)+/');
 
 *(The regular expression used in the example above is the default one.)*
 
+### Contributing
+
+Feel free to ask for new rules for languages that is not already here.
+
+All you need to do is:
+
+1. Provide transliteration rules for your language, in any form, e.g. `'ї' => 'ji'`
+2. Provide some examples of texts transliterated with this rules e.g. `'Україна' => 'Ukrajina'`
+
 ### Further information
 
 - [API docs](http://cocur.co/slugify/api/master/)
