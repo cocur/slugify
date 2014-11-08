@@ -14,14 +14,13 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek, ~~Esperanto~~¹ and Arabian special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
+- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek, Esperanto¹, Arabian and Vietnamese special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
 - Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com) and [Twig](http://twig.sensiolabs.org).
 
-¹ Some Esperanto transliterations were conflicting with others. We will add some kind of support for in a future
-version.
+¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
 
 Installation
 ------------
@@ -245,6 +244,10 @@ $url = Slugify::slugify('welcome to the homepage');
 
 Changelog
 ---------
+
+### Version 0.10.3 (8 November 2014)
+
+- [#48](https://github.com/cocur/slugify/pull/48) Add support for Vietnamese (by [mac2000](https://github.com/mac2000))
 
 ### Version 0.10.2 (18 October 2014)
 
