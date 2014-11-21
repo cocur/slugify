@@ -1,0 +1,40 @@
+<?php
+namespace Cocur\Slugify\Bridge\ZF2;
+
+use Cocur\Slugify\Slugify;
+use Zend\ServiceManager\ServiceManager;
+use Zend\View\HelperPluginManager;
+
+/**
+ * Class SlugifyViewHelperFactoryTest
+ * @package    cocur/slugify
+ * @subpackage bridge
+ * @license    http://www.opensource.org/licenses/MIT The MIT License
+ */
+class SlugifyViewHelperFactoryTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @var SlugifyViewHelperFactory
+     */
+    private $factory;
+
+    public function setUp()
+    {
+        $this->factory = new SlugifyViewHelperFactory();
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Bridge\ZF2\SlugifyViewHelperFactory::__invoke()
+     */
+    public function createService()
+    {
+        $sm = new ServiceManager();
+        $sm->setService('Cocur\Slugify\Slugify', new Slugify());
+        $vhm = new HelperPluginManager();
+        $vhm->setServiceLocator($sm);
+
+        $viewHelper = call_user_func($this->factory, $vhm);
+        $this->assertInstanceOf('Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper', $viewHelper);
+    }
+}
