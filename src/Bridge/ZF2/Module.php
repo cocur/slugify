@@ -22,7 +22,11 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface
     public function getConfig()
     {
         return array(
-
+            'view_helpers' => array(
+                'factories' => array(
+                    'slugify' => 'Cocur\Slugify\Bridge\ZF2\SlugifyViewHelperFactory'
+                )
+            )
         );
     }
 
