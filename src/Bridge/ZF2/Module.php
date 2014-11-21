@@ -47,4 +47,3 @@ class Module implements ServiceProviderInterface, ViewHelperProviderInterface
         );
     }
 }
- 

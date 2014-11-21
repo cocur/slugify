@@ -23,4 +23,3 @@ class SlugifyViewHelperFactory
         return new SlugifyViewHelper($slugify);
     }
 }
- 

@@ -30,4 +30,3 @@ class SlugifyViewHelper extends AbstractHelper
         return $this->slugify->slugify($string, $separator);
     }
 }
- 
