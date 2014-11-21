@@ -1,8 +1,6 @@
 <?php
 namespace Cocur\Slugify\Bridge\ZF2;
 
-use Cocur\Slugify\Slugify;
-
 /**
  * Class SlugifyServiceTest
  * @package    cocur/slugify
