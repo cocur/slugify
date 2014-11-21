@@ -1,6 +1,8 @@
 <?php
 namespace Cocur\Slugify\Bridge\ZF2;
 
+use Zend\ServiceManager\ServiceManager;
+
 /**
  * Class SlugifyServiceTest
  * @package    cocur/slugify
@@ -57,10 +59,8 @@ class SlugifyServiceTest extends \PHPUnit_Framework_TestCase
 
     protected function createServiceManagerMock(array $config = array())
     {
-        $sm = $this->getMock('Zend\ServiceManager\ServiceManager');
-        $sm->expects($this->any())
-           ->method('get')
-           ->will($this->returnValue($config));
+        $sm = new ServiceManager();
+        $sm->setService('Config', $config);
 
         return $sm;
     }
