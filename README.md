@@ -18,7 +18,7 @@ Features
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com) and [Twig](http://twig.sensiolabs.org).
+- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com), [Twig](http://twig.sensiolabs.org) and [Zend Framework 2](http://framework.zend.com/).
 
 ¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
 
