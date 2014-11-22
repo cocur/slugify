@@ -18,7 +18,7 @@ Features
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com) and [Twig](http://twig.sensiolabs.org).
+- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com), [Twig](http://twig.sensiolabs.org) and [Zend Framework 2](http://framework.zend.com/).
 
 ¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
 
@@ -239,6 +239,53 @@ You can then use the `Slugify::slugify()` method in your controllers:
 
 ```php
 $url = Slugify::slugify('welcome to the homepage');
+```
+
+### Zend Framework 2
+
+Slugify can be easely used in Zend Framework 2 applications. Included bridge provides a service and a view helper already registered for you.
+
+Just enable the module in your configuration like this.
+
+```php
+return array(
+    //...
+    
+    'modules' => array(
+        'Application',
+        'ZfcBase',
+        'Cocur\Slugify\Bridge\ZF2' // <- Add this line
+        //...
+    )
+    
+    //...
+);
+```
+
+After that you can retrieve the `Cocur\Slugify\Slugify` service (or the `slugify` alias) and generate a slug.
+
+```php
+/** @var \Zend\ServiceManager\ServiceManager $sm */
+$slugify = $sm->get('Cocur\Slugify\Slugify');
+$slug = $slugify->slugify('Hällo Wörld');
+$anotherSlug = $slugify->slugify('Hällo Wörld', '_');
+```
+
+In your view templates use the `slugify` helper to generate slugs.
+
+```php
+<?php echo $this->slugify('Hällo Wörld') ?>
+<?php echo $this->slugify('Hällo Wörld', '_') ?>
+```
+
+The service (which is also used in the view helper) can be customized by defining this configuration key.
+
+```php
+return array(
+    'cocur_slugify' => array(
+        'reg_exp' => '/([^a-zA-Z0-9]|-)+/'
+    )
+);
 ```
 
 
