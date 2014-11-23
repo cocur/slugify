@@ -250,14 +250,14 @@ Just enable the module in your configuration like this.
 ```php
 return array(
     //...
-    
+
     'modules' => array(
         'Application',
         'ZfcBase',
         'Cocur\Slugify\Bridge\ZF2' // <- Add this line
         //...
     )
-    
+
     //...
 );
 ```
@@ -291,6 +291,10 @@ return array(
 
 Changelog
 ---------
+
+### Version 0.11 (23 November 2014)
+
+- [#49](https://github.com/cocur/slugify/pull/49) Add Zend Framework 2 integration (by [acelaya](https://github.com/acelaya))
 
 ### Version 0.10.3 (8 November 2014)
 
