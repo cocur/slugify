@@ -291,6 +291,10 @@ return array(
 Changelog
 ---------
 
+### Version 1.0 (26 November 2014)
+
+No new features or bugfixes, but it's about time to pump Slugify to v1.0.
+
 ### Version 0.11 (23 November 2014)
 
 - [#49](https://github.com/cocur/slugify/pull/49) Add Zend Framework 2 integration (by [acelaya](https://github.com/acelaya))
