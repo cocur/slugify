@@ -27,12 +27,8 @@ Installation
 You can install cocur/slugify through [Composer](https://getcomposer.org):
 
 ```shell
-$ composer require cocur/slugify:@stable
+$ composer require cocur/slugify
 ```
-
-*In a production environment you should replace `@stable` with the [version](https://github.com/cocur/slugify/releases)
-you want to use.*
-
 
 Usage
 -----
