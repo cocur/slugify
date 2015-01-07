@@ -585,6 +585,7 @@ class Slugify implements SlugifyInterface
         'သြော'=> 'aw',
         'ဪ'=> 'aw',
         '၍' => 'ywae',
+        '၌' => 'hnaik',
         // numbers
         '၀'=> '0',
         '၁'=> '1',
