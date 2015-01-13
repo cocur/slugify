@@ -19,7 +19,7 @@ class Module implements ServiceProviderInterface, ViewHelperProviderInterface
      * Expected to return \Zend\ServiceManager\Config object or array to
      * seed such an object.
      *
-     * @return array
+     * @return array<string,array<string,string>>
      */
     public function getServiceConfig()
     {
@@ -37,7 +37,7 @@ class Module implements ServiceProviderInterface, ViewHelperProviderInterface
      * Expected to return \Zend\ServiceManager\Config object or array to
      * seed such an object.
      *
-     * @return array|\Zend\ServiceManager\Config
+     * @return array<string,array<string,string>>|\Zend\ServiceManager\Config
      */
     public function getViewHelperConfig()
     {

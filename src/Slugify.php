@@ -655,7 +655,7 @@ class Slugify implements SlugifyInterface
         'ုံ'    => 'on'
     );
 
-    /** @var string[][] */
+    /** @var array<integer,array<string,string>> */
     protected $rulesets = array(
         'esperanto' => array(
             'ĉ' => 'cx',
@@ -754,8 +754,8 @@ class Slugify implements SlugifyInterface
     /**
      * Adds a ruleset to Slugify.
      *
-     * @param string     $name  Name of the ruleset.
-     * @param string[][] $rules Rules
+     * @param string               $name  Name of the ruleset.
+     * @param array<string,string> $rules Rules
      *
      * @return Slugify
      */
