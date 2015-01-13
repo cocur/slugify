@@ -1,7 +1,9 @@
 <?php
+
 namespace Cocur\Slugify\Bridge\ZF2;
 
 use Cocur\Slugify\Slugify;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Class SlugifyService
@@ -11,6 +13,11 @@ use Cocur\Slugify\Slugify;
  */
 class SlugifyService
 {
+    /**
+     * @param ServiceManager $sm
+     *
+     * @return Slugify
+     */
     public function __invoke($sm)
     {
         $config = $sm->get('Config');

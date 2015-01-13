@@ -1,4 +1,5 @@
 <?php
+
 namespace Cocur\Slugify\Bridge\ZF2;
 
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
