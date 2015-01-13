@@ -769,7 +769,7 @@ class Slugify implements SlugifyInterface
     /**
      * Returns the rulesets.
      *
-     * @return array<string,string>[] Rulesets
+     * @return array<integer,array<string,string>> Rulesets
      */
     public function getRulesets()
     {
