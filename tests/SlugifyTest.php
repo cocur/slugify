@@ -165,7 +165,9 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('Één jaar', 'een-jaar'),
             array('tiếng việt rất khó', 'tieng-viet-rat-kho'),
             array('Nguyễn Đăng Khoa', 'nguyen-dang-khoa'),
-            array('နှစ်သစ်ကူးတွင် သတ္တဝါတွေ စိတ်ချမ်းသာ ကိုယ်ကျန်းမာ၍ ကောင်းခြင်း အနန္တနှင့် ပြည့်စုံကြပါစေ', 'nhitthitkutwin-thttwatwe-seikkhyaantha-koekyaanmaywae-kaungkhyin-anntnhin-pyisonkypase')
+            array('နှစ်သစ်ကူးတွင် သတ္တဝါတွေ စိတ်ချမ်းသာ ကိုယ်ကျန်းမာ၍ ကောင်းခြင်း အနန္တနှင့် ပြည့်စုံကြပါစေ', 'nhitthitkutwin-thttwatwe-seikkhyaantha-koekyaanmaywae-kaungkhyin-anntnhin-pyisonkypase'),
+            array('Zażółć żółcią gęślą jaźń', 'zazolc-zolcia-gesla-jazn'),
+            array('Mężny bądź chroń pułk twój i sześć flag', 'mezny-badz-chron-pulk-twoj-i-szesc-flag')
         );
     }
 }
