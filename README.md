@@ -17,7 +17,7 @@ Features
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com), [Twig](http://twig.sensiolabs.org) and [Zend Framework 2](http://framework.zend.com/).
+- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com), [Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/) and [Latte](http://latte.nette.org/).
 
 ¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
 
@@ -281,6 +281,53 @@ return array(
         'reg_exp' => '/([^a-zA-Z0-9]|-)+/'
     )
 );
+```
+
+### Nette Framework
+
+Slugify contains a Nette extension that allows you to use it as a service in your Nette application. You only need to register it in your `config.neon`:
+
+```yml
+# app/config/config.neon
+
+extensions:
+	slugify: Cocur\Slugify\Bridge\Nette\SlugifyExtension
+```
+
+You can now use the `Cocur\Slugify\SlugifyInterface` service everywhere in your application, for example in your presenter:
+
+```php
+class MyPresenter extends \Nette\Application\UI\Presenter
+{
+
+	/** @var \Cocur\Slugify\SlugifyInterface @inject */
+	public $slugify;
+
+	public function renderDefault()
+	{
+		$this->template->hello = $this->slugify->slugify('Hällo Wörld');
+	}
+
+}
+```
+
+### Latte
+
+If you use the Nette Framework with it's native Latte templating engine, you can use the Latte filter `slugify` in your templates after you have setup Nette extension (see above).
+
+```smarty
+{$hello|slugify}
+```
+
+If you use Latte outside of the Nette Framework you first need to add the filter to your engine:
+
+```php
+use Cocur\Slugify\Bridge\Latte\SlugifyHelper;
+use Cocur\Slugify\Slugify;
+use Latte;
+
+$latte = new Latte\Engine();
+$latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugify'));
 ```
 
 

@@ -31,7 +31,9 @@
         "zendframework/zend-view":              "~2.2",
         "zendframework/zend-servicemanager":    "~2.2",
         "codeclimate/php-test-reporter":        "dev-master",
-        "laravel/framework":                    "~4.1"
+        "laravel/framework":                    "~4.1",
+        "nette/di":                             "~2.2",
+        "latte/latte":                          "~2.2"
     },
     "autoload": {
     	"psr-4": {
