@@ -3,32 +3,41 @@ cocur/slugify
 
 > Converts a string into a slug.
 
-[![Build Status](https://travis-ci.org/cocur/slugify.svg?branch=master)](https://travis-ci.org/cocur/slugify)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/cocur/slugify/badges/quality-score.png?s=6dc4ff1137d4405f75be9e98c74b1b70fcfdffaa)](https://scrutinizer-ci.com/g/cocur/slugify/)
-[![Code Coverage](http://img.shields.io/coveralls/cocur/slugify.svg)](https://coveralls.io/r/cocur/slugify)
-[![Monthly Downloads](http://img.shields.io/packagist/dm/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
+[![Build Status](https://img.shields.io/travis/cocur/slugify.svg?style=flat)](https://travis-ci.org/cocur/slugify)
+[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/cocur/slugify.svg?style=flat)](https://scrutinizer-ci.com/g/cocur/slugify/)
+[![Code Coverage](http://img.shields.io/coveralls/cocur/slugify.svg?style=flat)](https://coveralls.io/r/cocur/slugify)
+[![Monthly Downloads](http://img.shields.io/packagist/dm/cocur/slugify.svg?style=flat)](https://packagist.org/packages/cocur/slugify)
+
+Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with the help of 
+[many great contributors](https://github.com/cocur/slugify/graphs/contributors).
 
 
 Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek, Esperanto¹, Arabian, Vietnamese and Burmese special characters. Instead of removing these characters Slugify approximates them (e.g., `ae` replaces `ä`).
+- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek,
+Esperanto¹, Arabian, Vietnamese and Burmese special characters. Instead of removing these characters, Slugify
+approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com), [Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/) and [Latte](http://latte.nette.org/).
+- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
+[Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/)
+and [Latte](http://latte.nette.org/).
 
 ¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
+
 
 Installation
 ------------
 
-You can install cocur/slugify through [Composer](https://getcomposer.org):
+You can install Slugify through [Composer](https://getcomposer.org):
 
 ```shell
 $ composer require cocur/slugify
 ```
+
 
 Usage
 -----
@@ -61,7 +70,7 @@ echo $slugify->slugify('Hi'); // hey
 ### Rulesets
 
 In addition Slugify also supports rulesets. A ruleset contains a set of rules that are not part of the default rules.
-Currently one ruleset exists for Esperanto since some of the transliterations conflict with those for other langauges.
+Currently one ruleset exists for Esperanto since some of the transliterations conflict with those for other languages.
 The `activateRuleset()` method activates a ruleset with the given name.
 
 ```php
@@ -102,7 +111,9 @@ Integrations
 
 ### Symfony2
 
-Slugify contains a Symfony2 bundle and service definition that allow you to use it as a service in your Symfony2 application. The code resides in the `Cocur\Slugify\Bridge\Symfony` namespace and you only need to add the bundle class to your `AppKernel.php`:
+Slugify contains a Symfony2 bundle and service definition that allow you to use it as a service in your Symfony2
+application. The code resides in the `Cocur\Slugify\Bridge\Symfony` namespace and you only need to add the bundle class
+to your `AppKernel.php`:
 
 ```php
 # app/AppKernel.php
@@ -136,7 +147,8 @@ $slug = $this->get('slugify')->slugify('Hello World!');
 
 ### Twig
 
-If you use the Symfony2 framework with Twig you can use the Twig filter `slugify` in your templates after you have setup Symfony2 integrations (see above).
+If you use the Symfony2 framework with Twig you can use the Twig filter `slugify` in your templates after you have setup
+Symfony2 integrations (see above).
 
 ```twig
 {{ 'Hällo Wörld'|slugify }}
@@ -152,7 +164,8 @@ $twig = new Twig_Environment($loader);
 $twig->addExtension(new SlugifyExtension(Slugify::create()));
 ```
 
-To use the Twig filter with [TwigBridge](https://github.com/rcrowe/TwigBridge) for Laravel, you'll need to add the Slugify extension using a closure:
+To use the Twig filter with [TwigBridge](https://github.com/rcrowe/TwigBridge) for Laravel, you'll need to add the
+Slugify extension using a closure:
 
 ```php
 // laravel/app/config/packages/rcrowe/twigbridge/config.php
@@ -165,7 +178,8 @@ To use the Twig filter with [TwigBridge](https://github.com/rcrowe/TwigBridge) f
 ),
 ```
 
-You can find more information about registering extensions in the [Twig documentation](http://twig.sensiolabs.org/doc/advanced.html#creating-an-extension).
+You can find more information about registering extensions in the 
+[Twig documentation](http://twig.sensiolabs.org/doc/advanced.html#creating-an-extension).
 
 ### Silex
 
@@ -197,7 +211,8 @@ $app['twig']->addExtension(new SlugifyExtension(Slugify::create()));
 
 ### Mustache.php
 
-We don't need an additional integration to use Slugify in [Mustache.php](https://github.com/bobthecow/mustache.php). If you want to use Slugify in Mustache, just add a helper:
+We don't need an additional integration to use Slugify in [Mustache.php](https://github.com/bobthecow/mustache.php).
+If you want to use Slugify in Mustache, just add a helper:
 
 ```php
 use Cocur\Slugify\Slugify;
@@ -238,7 +253,8 @@ $url = Slugify::slugify('welcome to the homepage');
 
 ### Zend Framework 2
 
-Slugify can be easely used in Zend Framework 2 applications. Included bridge provides a service and a view helper already registered for you.
+Slugify can be easely used in Zend Framework 2 applications. Included bridge provides a service and a view helper
+already registered for you.
 
 Just enable the module in your configuration like this.
 
@@ -285,7 +301,8 @@ return array(
 
 ### Nette Framework
 
-Slugify contains a Nette extension that allows you to use it as a service in your Nette application. You only need to register it in your `config.neon`:
+Slugify contains a Nette extension that allows you to use it as a service in your Nette application. You only need to
+register it in your `config.neon`:
 
 ```yml
 # app/config/config.neon
@@ -294,7 +311,8 @@ extensions:
 	slugify: Cocur\Slugify\Bridge\Nette\SlugifyExtension
 ```
 
-You can now use the `Cocur\Slugify\SlugifyInterface` service everywhere in your application, for example in your presenter:
+You can now use the `Cocur\Slugify\SlugifyInterface` service everywhere in your application, for example in your
+presenter:
 
 ```php
 class MyPresenter extends \Nette\Application\UI\Presenter
@@ -313,7 +331,8 @@ class MyPresenter extends \Nette\Application\UI\Presenter
 
 ### Latte
 
-If you use the Nette Framework with it's native Latte templating engine, you can use the Latte filter `slugify` in your templates after you have setup Nette extension (see above).
+If you use the Nette Framework with it's native Latte templating engine, you can use the Latte filter `slugify` in your
+templates after you have setup Nette extension (see above).
 
 ```smarty
 {$hello|slugify}
@@ -333,6 +352,12 @@ $latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugif
 
 Changelog
 ---------
+
+### Version 1.1 (18 March 2015)
+
+- [#54](https://github.com/cocur/slugify/pull/54) Add support for Burmese characters (by [lovetostrike](https://github.com/lovetostrike))
+- [#58](https://github.com/cocur/slugify/pull/58) Add Nette and Latte integration (by [lookyman](https://github.com/lookyman))
+- [#50](https://github.com/cocur/slugify/issues/50) Fix transliteration for Vietnamese character Đ (by [mac2000](https://github.com/mac2000))
 
 ### Version 1.0 (26 November 2014)
 
@@ -408,10 +433,10 @@ Nearly completely rewritten code, removes `iconv` support because the underlying
 Authors
 -------
 
-- [Florian Eckerstorfer](http://florian.ec) ([Twitter](http://twitter.com/Florian_))  [![Support Florian](http://img.shields.io/gittip/florianeckerstorfer.svg)](https://www.gittip.com/FlorianEckerstorfer/)
+- [Florian Eckerstorfer](http://florian.ec) ([Twitter](http://twitter.com/Florian_))
 - [Ivo Bathke](https://github.com/ivoba)
 - [Marchenko Alexandr](http://mac-blog.org.ua)
-- And some [great contributors](https://github.com/cocur/slugify/graphs/contributors)
+- And many [great contributors](https://github.com/cocur/slugify/graphs/contributors)
 
 
 License
