@@ -28,6 +28,7 @@ class SlugifyHelper
     /**
      * @param string
      * @param string
+     *
      * @return string
      */
     public function slugify($string, $separator = '-')

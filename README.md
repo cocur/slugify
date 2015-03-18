@@ -317,7 +317,6 @@ presenter:
 ```php
 class MyPresenter extends \Nette\Application\UI\Presenter
 {
-
 	/** @var \Cocur\Slugify\SlugifyInterface @inject */
 	public $slugify;
 
@@ -325,7 +324,6 @@ class MyPresenter extends \Nette\Application\UI\Presenter
 	{
 		$this->template->hello = $this->slugify->slugify('Hällo Wörld');
 	}
-
 }
 ```
 
