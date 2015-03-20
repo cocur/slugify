@@ -33,7 +33,8 @@
         "codeclimate/php-test-reporter":        "dev-master",
         "laravel/framework":                    "~4.1",
         "nette/di":                             "~2.2",
-        "latte/latte":                          "~2.2"
+        "latte/latte":                          "~2.2",
+        "plumphp/plum":                         "~0.1"
     },
     "autoload": {
     	"psr-4": {
