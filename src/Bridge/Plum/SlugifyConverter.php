@@ -28,7 +28,7 @@ class SlugifyConverter implements ConverterInterface
     private $slugify;
 
     /**
-     * @param SlugifyInterface $slugify
+     * @param SlugifyInterface|null $slugify
      */
     public function __construct(SlugifyInterface $slugify = null)
     {
