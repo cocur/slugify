@@ -12,8 +12,8 @@
 namespace Cocur\Slugify\Bridge\Silex;
 
 use Cocur\Slugify\Slugify;
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
  * SlugifyServiceProvider
@@ -21,6 +21,7 @@ use Silex\ServiceProviderInterface;
  * @package    cocur/slugify
  * @subpackage bridge
  * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @author     Jonathan Plantey <jonathan.plantey@gmail.com>
  * @copyright  2012-2014 Florian Eckerstorfer
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
@@ -29,19 +30,10 @@ class SlugifyServiceProvider implements ServiceProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function register(Application $app)
+    public function register(Container $container)
     {
-        $app['slugify'] = $app->share(function (Application $app) {
-            $app->flush();
-
+        $container['slugify'] = function () {
             return new Slugify();
-        });
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function boot(Application $app)
-    {
+        };
     }
 }
