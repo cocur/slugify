@@ -441,6 +441,19 @@ class Slugify implements SlugifyInterface
         'و' => 'o',
         'ي' => 'y',
 
+        /* Persian */
+        'ج' => 'j',
+        'ذ' => 'z',
+        'ض' => 'z',
+        'ظ' => 'z',
+        'ق' => 'gh',
+        'پ' => 'p',
+        'ژ' => 'zh',
+        'گ' => 'g',
+        'چ' => 'ch',
+        'ی' => 'y',
+        'ا' => 'a',
+
         /* Vietnamese */
         'ạ' => 'a',
         'ả' => 'a',
