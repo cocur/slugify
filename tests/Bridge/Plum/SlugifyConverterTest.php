@@ -32,10 +32,10 @@ class SlugifyConverterTest extends PHPUnit_Framework_TestCase
     public function convertSlugifiesString()
     {
         $slugify = Mockery::mock('Cocur\Slugify\SlugifyInterface');
-        $slugify->shouldReceive('slugify')->with('Hello World')->once()->andReturn('hello-world');
+        $slugify->shouldReceive('slugify')->with('Hello World')->once()->andReturn('hello_world');
         $converter = new SlugifyConverter($slugify);
 
-        $this->assertSame('hello-world', $converter->convert('Hello World'));
+        $this->assertSame('hello_world', $converter->convert('Hello World'));
     }
 
     /**

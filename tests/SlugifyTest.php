@@ -50,7 +50,10 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     public function addRuleAddsRule()
     {
-        $this->slugify->addRule('X', 'y');
+        $this->assertInstanceOf(
+            'Cocur\Slugify\Slugify',
+            $this->slugify->addRule('X', 'y')
+        );
         $this->assertEquals('y', $this->slugify->slugify('X'));
     }
 
@@ -61,7 +64,10 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     public function addRulesAddsMultipleRules()
     {
-        $this->slugify->addRules(array('x' => 'y', 'a' => 'b'));
+        $this->assertInstanceOf(
+            'Cocur\Slugify\Slugify',
+            $this->slugify->addRules(array('x' => 'y', 'a' => 'b'))
+        );
         $this->assertEquals('yb', $this->slugify->slugify('xa'));
     }
 
@@ -71,7 +77,10 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     public function activateRulesetActivatesTheGivenRuleset()
     {
-        $this->slugify->activateRuleset('esperanto');
+        $this->assertInstanceOf(
+            'Cocur\Slugify\Slugify',
+            $this->slugify->activateRuleset('esperanto')
+        );
 
         $this->assertEquals(
             'sercxi-mangxi-hxirurgio-jxurnalo-sxuo-malgraux',
@@ -96,7 +105,10 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     public function addRulesetGetRulesets()
     {
-        $this->slugify->addRuleset('foo', array('k' => 'key'));
+        $this->assertInstanceOf(
+            'Cocur\Slugify\Slugify',
+            $this->slugify->addRuleset('foo', array('k' => 'key'))
+        );
 
         $this->assertCount(2, $this->slugify->getRulesets());
     }
@@ -120,7 +132,10 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $expected = 'file-name.tar.gz';
 
         $this->assertNotEquals($expected, $this->slugify->slugify($actual));
-        $this->slugify->setRegExp('/([^a-z0-9.]|-)+/');
+        $this->assertInstanceOf(
+            'Cocur\Slugify\Slugify',
+            $this->slugify->setRegExp('/([^a-z0-9.]|-)+/')
+        );
         $this->assertEquals($expected, $this->slugify->slugify($actual));
     }
 

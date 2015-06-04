@@ -28,6 +28,16 @@ use \Mockery as m;
  */
 class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Cocur\Slugify\SlugifyInterface|\Mockery\MockInterface
+     */
+    protected $slugify;
+
+    /**
+     * @var SlugifyExtension
+     */
+    protected $extension;
+
     public function setUp()
     {
         $this->slugify = m::mock('Cocur\Slugify\SlugifyInterface');
@@ -38,7 +48,7 @@ class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
      * @test
      * @covers Cocur\Slugify\Bridge\Twig\SlugifyExtension::getName()
      */
-    public function getName($withDataSet = true)
+    public function getNameReturnsNameOfExtension()
     {
         $this->assertEquals('slugify_extension', $this->extension->getName());
     }
