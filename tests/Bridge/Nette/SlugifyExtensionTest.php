@@ -46,7 +46,7 @@ class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
             ->once()
             ->andReturn($helper);
         $helper
-            ->shouldReceive('setInject')
+            ->shouldReceive('setAutowired')
             ->with(false)
             ->once()
             ->andReturn($helper);
