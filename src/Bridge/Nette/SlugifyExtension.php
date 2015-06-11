@@ -25,7 +25,7 @@ class SlugifyExtension extends CompilerExtension
 
         $builder->addDefinition($this->prefix('helper'))
             ->setClass('Cocur\Slugify\Bridge\Latte\SlugifyHelper')
-            ->setInject(false);
+            ->setAutowired(false);
     }
 
     public function beforeCompile()
