@@ -23,7 +23,7 @@ namespace Cocur\Slugify;
  */
 class Slugify implements SlugifyInterface
 {
-    const LOWERCASE_NUMBERS_DASHES = '/([^a-z0-9]|-)+/';
+    const LOWERCASE_NUMBERS_DASHES = '/([^A-Za-z0-9]|-)+/';
 
     /** @var array */
     protected $rules = array(
@@ -676,13 +676,17 @@ class Slugify implements SlugifyInterface
     /** @var string */
     protected $regExp;
 
+    /** @var array */
+    protected $options;
+
     /**
      *
      * @param string $regExp
      */
-    public function __construct($regExp = self::LOWERCASE_NUMBERS_DASHES)
+    public function __construct($regExp = null, array $options = array())
     {
-        $this->regExp = $regExp;
+        $this->regExp  = $regExp ? $regExp : self::LOWERCASE_NUMBERS_DASHES;
+        $this->options = array_merge(array('lowercase' => true), $options);
     }
 
     /**
@@ -695,9 +699,11 @@ class Slugify implements SlugifyInterface
      */
     public function slugify($string, $separator = '-')
     {
-        $string = strtolower(strtr($string, $this->rules));
+        $string = strtr($string, $this->rules);
+        if ($this->options['lowercase']) {
+            $string = strtolower($string);
+        }
         $string = preg_replace($this->regExp, $separator, $string);
-        $string = strtolower($string);
 
         return trim($string, $separator);
     }

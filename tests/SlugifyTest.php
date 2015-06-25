@@ -152,6 +152,20 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $this->slugify->slugify($actual));
     }
 
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::__construct()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function doNotConvertToLowercase()
+    {
+        $actual = 'File Name';
+        $expected = 'File-Name';
+
+        $this->slugify = new Slugify(null, array('lowercase' => false));
+        $this->assertEquals($expected, $this->slugify->slugify($actual));
+    }
+
     public function provider()
     {
         return array(
