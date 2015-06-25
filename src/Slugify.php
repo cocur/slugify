@@ -803,8 +803,8 @@ class Slugify implements SlugifyInterface
      *
      * @return Slugify
      */
-    public static function create($regExp = self::LOWERCASE_NUMBERS_DASHES)
+    public static function create($regExp = null, array $options = array())
     {
-        return new static($regExp);
+        return new static($regExp, $options);
     }
 }
