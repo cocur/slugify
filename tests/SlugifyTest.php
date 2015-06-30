@@ -166,6 +166,21 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $this->slugify->slugify($actual));
     }
 
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::setOptions()
+     */
+    public function setOptionsSetsOptions()
+    {
+        $actual = 'File Name';
+        $expected = 'File-Name';
+
+        $this->slugify = new Slugify();
+        $this->slugify->setOptions(array('lowercase' => false));
+
+        $this->assertEquals($expected, $this->slugify->slugify($actual));
+    }
+
     public function provider()
     {
         return array(
