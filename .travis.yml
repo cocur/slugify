@@ -19,6 +19,7 @@ addons:
     repo_token: e27c69a17c19e62d55c1ec43eecc6821b905c504e5cb5cc4ad7f8a997163447a
 
 before_script:
+  - sudo echo 'precedence ::ffff:0:0/96  100' >> /etc/gai.conf
   - composer self-update
   - composer install --prefer-source
 
