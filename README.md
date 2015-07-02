@@ -100,6 +100,8 @@ $slugify = new Slugify(null, array('lowercase' => false));
 $slugify->slugify('Hello World'); // -> "Hello-World"
 ```
 
+Options can also be set using the `setOptions()` method.
+
 ### Contributing
 
 Feel free to ask for new rules for languages that is not already here.
@@ -358,6 +360,12 @@ $latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugif
 
 Changelog
 ---------
+
+### Version 1.2 (2 July 2015)
+
+- Add integration for [Plum](https://github.com/plumphp/plum) (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+- [#64](https://github.com/cocur/slugify/pull/64) Fix Nette integration (by [lookyman](https://github.com/lookyman))
+- Add option to not convert slug to lowercase (by [florianeckerstorfer](https://github.com/florianeckerstorfer) and [GDmac](https://github.com/GDmac))
 
 ### Version 1.1 (18 March 2015)
 
