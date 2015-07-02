@@ -677,16 +677,17 @@ class Slugify implements SlugifyInterface
     protected $regExp;
 
     /** @var array */
-    protected $options;
+    protected $options = array('lowercase' => true);
 
     /**
      *
      * @param string $regExp
+     * @param array  $options
      */
     public function __construct($regExp = null, array $options = array())
     {
         $this->regExp  = $regExp ? $regExp : self::LOWERCASE_NUMBERS_DASHES;
-        $this->options = array_merge(array('lowercase' => true), $options);
+        $this->options = array_merge($this->options, $options);
     }
 
     /**
@@ -797,9 +798,22 @@ class Slugify implements SlugifyInterface
     }
 
     /**
+     * @param array $options
+     *
+     * @return Slugify
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = array_merge($this->options, $options);
+
+        return $this;
+    }
+
+    /**
      * Static method to create new instance of {@see Slugify}.
      *
-     * @param string $regExp The regular expression to be applied to strings when calling slugify
+     * @param string $regExp  The regular expression to be applied to strings when calling slugify
+     * @param array  $options
      *
      * @return Slugify
      */
