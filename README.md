@@ -78,7 +78,7 @@ $slugify->activateRuleset('esperanto');
 echo $slugify->slugify('serĉi manĝi'); // sercxi-mangxi
 ```
 
-You can add rulesets by using `Slugify::addRuleset()` and retrieve all rulesets with `Slugify::getRuleset()`.
+You can add rulesets by using `Slugify::addRuleset()` and retrieve all rulesets with `Slugify::getRulesets()`.
 
 ### Further Customization
 

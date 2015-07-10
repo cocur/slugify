@@ -27,13 +27,30 @@ class Slugify implements SlugifyInterface
 
     /** @var array */
     protected $rules = array(
-        // Numeric characters
+        // Numeric characters, superscript
+        '°' => 0,
         '¹' => 1,
         '²' => 2,
         '³' => 3,
+        '⁴' => 4,
+        '⁵' => 5,
+        '⁶' => 6,
+        '⁷' => 7,
+        '⁸' => 8,
+        '⁹' => 9,
+        // Numeric characters, subscript
+        '₀' => 0,
+        '₁' => 1,
+        '₂' => 2,
+        '₃' => 3,
+        '₄' => 4,
+        '₅' => 5,
+        '₆' => 6,
+        '₇' => 7,
+        '₈' => 8,
+        '₉' => 9,
 
         // Latin
-        '°' => 0,
         'æ' => 'ae',
         'ǽ' => 'ae',
         'À' => 'A',
