@@ -202,7 +202,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('Блоґ їжачка', 'blog-jizhachka'),
             array('фильм', 'film'),
             array('драма', 'drama'),
-            array('ελληνικά', 'ellenika'),
+            array('Ύπαρξη Αυτής η Σκουληκομυρμηγκότρυπα', 'iparxi-autis-i-skoulikomirmigkotripa'),
             array('C’est du français !', 'c-est-du-francais'),
             array('هذه هي اللغة العربية', 'hthh-hy-llgh-laarby'),
             array('مرحبا العالم', 'mrhb-laa-lm'),
