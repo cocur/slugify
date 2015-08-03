@@ -12,6 +12,8 @@
 namespace Cocur\Slugify\Bridge\Silex;
 
 use Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider;
+use Silex\Application;
+use Silex\Provider\TwigServiceProvider;
 
 /**
  * SlugifyServiceProviderTest
@@ -33,7 +35,7 @@ class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
     public function register()
     {
         // it seems like Application is not mockable.
-        $app = new \Silex\Application();
+        $app = new Application();
         $app->register(new SlugifyServiceProvider());
         $app->boot();
 
@@ -41,5 +43,17 @@ class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('slugify.regex', $app);
         $this->assertArrayHasKey('slugify.options', $app);
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $app['slugify']);
+    }
+
+    /**
+     * @test
+     */
+    public function registerWithTwig()
+    {
+        $app = new Application();
+        $app->register(new TwigServiceProvider());
+        $app->register(new SlugifyServiceProvider());
+
+        $this->assertTrue($app['twig']->hasExtension('slugify_extension'));
     }
 }

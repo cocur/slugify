@@ -11,6 +11,7 @@
 
 namespace Cocur\Slugify\Bridge\Silex;
 
+use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 use Cocur\Slugify\Slugify;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
@@ -37,6 +38,14 @@ class SlugifyServiceProvider implements ServiceProviderInterface
         $app['slugify'] = $app->share(function ($app) {
             return new Slugify($app['slugify.regex'], $app['slugify.options']);
         });
+
+        if (isset($app['twig'])) {
+            $app['twig'] = $app->share($app->extend('twig', function (\Twig_Environment $twig, $app) {
+                $twig->addExtension(new SlugifyExtension($app['slugify']));
+
+                return $twig;
+            }));
+        }
     }
 
     /**
