@@ -31,8 +31,11 @@ class SlugifyServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        $app['slugify'] = $app->share(function () {
-            return new Slugify();
+        $app['slugify.regex'] = null;
+        $app['slugify.options'] = array();
+
+        $app['slugify'] = $app->share(function ($app) {
+            return new Slugify($app['slugify.regex'], $app['slugify.options']);
         });
     }
 

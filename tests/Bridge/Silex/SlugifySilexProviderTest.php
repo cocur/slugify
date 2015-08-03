@@ -26,36 +26,20 @@ use Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider;
  */
 class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var SlugifyServiceProvider */
-    private $provider;
-
-    public function setUp()
-    {
-        $this->provider = new SlugifyServiceProvider();
-    }
-
     /**
      * @test
-     * @covers Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider::boot()
-     */
-    public function boot()
-    {
-        // it seems like Application is not mockable.
-        $app = new \Silex\Application();
-        $this->provider->boot($app);
-    }
-
-    /**
-     * @test
-     * @covers Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider::register()
+     * @covers Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider
      */
     public function register()
     {
         // it seems like Application is not mockable.
         $app = new \Silex\Application();
-        $this->provider->register($app);
+        $app->register(new SlugifyServiceProvider());
+        $app->boot();
 
         $this->assertArrayHasKey('slugify', $app);
+        $this->assertArrayHasKey('slugify.regex', $app);
+        $this->assertArrayHasKey('slugify.options', $app);
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $app['slugify']);
     }
 }
