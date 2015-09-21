@@ -433,7 +433,6 @@ class Slugify implements SlugifyInterface
         'Ό' => 'O',
         'Ύ' => 'I',
         'Ϊ' => 'I',
-        'Ϊ' => 'I',
         'Ϋ' => 'I',
         'ϒ' => 'I',
         'α' => 'a',
