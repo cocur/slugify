@@ -30,3 +30,11 @@ script:
 after_script:
   - php vendor/bin/coveralls -v
   - php vendor/bin/test-reporter
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/fc8ccb3e96abeb0fdc95
+    on_success: change
+    on_failure: always
+    on_start: never

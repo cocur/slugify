@@ -17,8 +17,8 @@ Features
 
 - Removes all special characters from a string.
 - Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek,
-Esperanto¹, Arabian, Vietnamese and Burmese special characters. Instead of removing these characters, Slugify
-approximates them (e.g., `ae` replaces `ä`).
+Esperanto¹, Arabian, Vietnamese, Burmese, Danish and Georgian special characters. Instead of removing these characters,
+Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
@@ -458,6 +458,26 @@ Authors
 - [Ivo Bathke](https://github.com/ivoba)
 - [Marchenko Alexandr](http://mac-blog.org.ua)
 - And many [great contributors](https://github.com/cocur/slugify/graphs/contributors)
+
+> Slugify is a project of [Cocur](http://cocur.co). You can contact us on Twitter:
+> [**@cocurco**](https://twitter.com/cocurco)
+
+
+Support
+-------
+
+If you need support you can ask on [Twitter](https://twitter.com/cocurco) (well, only if your question is short) or you
+can join our chat on Gitter.
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cocur/slugify)
+
+In case you want to support the development of Slugify you can help us with providing additional transliterations or
+inform us if a transliteration is wrong. We would highly appreciate it if you can send us directly a Pull Request on
+Github. If you have never contributed to a project on Github we are happy to help you. Just ask on Twitter or directly
+join our Gitter.
+
+You always can help me (Florian, the original developer and maintainer) out by 
+[sending me an Euro or two](https://paypal.me/florianec/2).
 
 
 License
