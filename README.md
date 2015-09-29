@@ -361,6 +361,12 @@ $latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugif
 Changelog
 ---------
 
+### Version 1.4 (29 September 2015)
+
+- [#75](https://github.com/cocur/slugify/pull/75) Remove a duplicate array entry (by [irfanevrens](https://github.com/irfanevrens))
+- [#76](https://github.com/cocur/slugify/pull/76) Add support for Georgian (by [TheGIBSON](https://github.com/TheGIBSON))
+- [#77](https://github.com/cocur/slugify/pull/77) Fix Danish transliterations (by [kafoso](https://github.com/kafoso))
+
 ### Version 1.3 (2 September 2015)
 
 - [#70](https://github.com/cocur/slugify/pull/70) Add missing superscript and subscript digits (by [BlueM](https://github.com/BlueM))
