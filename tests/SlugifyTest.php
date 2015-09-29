@@ -198,7 +198,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('Â â Ê ê Ô ô Û û', 'a-a-e-e-o-o-u-u'),
             array('Â â Ê ê Ô ô Û 1', 'a-a-e-e-o-o-u-1'),
             array('°¹²³⁴⁵⁶⁷⁸⁹@₀₁₂₃₄₅₆₇₈₉', '0123456789at0123456789'),
-            array('Mórë thån wørds', 'more-than-words'),
+            array('Mórë thån wørds', 'more-thaan-woerds'),
             array('Блоґ їжачка', 'blog-jizhachka'),
             array('фильм', 'film'),
             array('драма', 'drama'),
