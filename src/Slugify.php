@@ -799,7 +799,7 @@ class Slugify implements SlugifyInterface
     {
         $string = strtr($string, $this->rules);
         if ($this->options['lowercase']) {
-            $string = strtolower($string);
+            $string = mb_strtolower($string);
         }
         $string = preg_replace($this->regExp, $separator, $string);
 
