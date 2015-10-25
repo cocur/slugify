@@ -6,7 +6,10 @@ cocur/slugify
 [![Build Status](https://img.shields.io/travis/cocur/slugify.svg?style=flat)](https://travis-ci.org/cocur/slugify)
 [![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/cocur/slugify.svg?style=flat)](https://scrutinizer-ci.com/g/cocur/slugify/)
 [![Code Coverage](http://img.shields.io/coveralls/cocur/slugify.svg?style=flat)](https://coveralls.io/r/cocur/slugify)
-[![Monthly Downloads](http://img.shields.io/packagist/dm/cocur/slugify.svg?style=flat)](https://packagist.org/packages/cocur/slugify)
+
+[![Latest Release](https://img.shields.io/packagist/v/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
+[![MIT License](https://img.shields.io/packagist/l/cocur/slugify.svg)](http://opensource.org/licenses/MIT)
+[![Total Downloads](https://img.shields.io/packagist/dt/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
 
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with the help of
 [many great contributors](https://github.com/cocur/slugify/graphs/contributors).
