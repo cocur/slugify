@@ -23,7 +23,6 @@ install:
   - echo extension=php_openssl.dll >> php.ini
   - echo extension=php_mbstring.dll >> php.ini
   - echo extension=php_fileinfo.dll >> php.ini
-  - echo extension=php_curl.dll >> php.ini
   - echo memory_limit=1G >> php.ini
   - cd c:\projects\cocur\slugify
   - php -r "readfile('http://getcomposer.org/installer');" | php
@@ -35,7 +34,7 @@ test_script:
 
 notifications:
   - provider: Webhook
-    url: https://webhooks.gitter.im/e/8bfd287c1e8cd5f18f31
+    url: https://webhooks.gitter.im/e/aaf55568e4629e650616
     on_build_success: false
     on_build_failure: true
     on_build_status_changed: true

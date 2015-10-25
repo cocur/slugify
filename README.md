@@ -5,7 +5,7 @@ cocur/slugify
 
 [![Build Status](https://img.shields.io/travis/cocur/slugify.svg?style=flat)](https://travis-ci.org/cocur/slugify)
 [![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/cocur/slugify.svg?style=flat)](https://scrutinizer-ci.com/g/cocur/slugify/)
-[![Code Coverage](http://img.shields.io/coveralls/cocur/slugify.svg?style=flat)](https://coveralls.io/r/cocur/slugify)
+[![Code Coverage](https://scrutinizer-ci.com/g/cocur/slugify/badges/coverage.png?b=master&style=flat-square)](https://scrutinizer-ci.com/g/cocur/slugify/?branch=master)
 
 [![Latest Release](https://img.shields.io/packagist/v/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
 [![MIT License](https://img.shields.io/packagist/l/cocur/slugify.svg)](http://opensource.org/licenses/MIT)
@@ -361,8 +361,8 @@ $latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugif
 ```
 
 
-Changelog
----------
+Change Log
+----------
 
 ### Version 1.4 (29 September 2015)
 
