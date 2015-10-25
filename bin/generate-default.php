@@ -20,29 +20,6 @@ function getRules($directory)
 }
 
 /**
- * @param array $array
- * @param int   $depth
- *
- * @return string
- */
-function arrayToString(array $array, $depth = 0)
-{
-    $string = "[\n";
-    foreach ($array as $key => $value) {
-        $string .= str_repeat(' ', ($depth+1)*4)."'$key' => ";
-        if (is_array($value)) {
-            $string .= arrayToString($value, $depth+1);
-        } else {
-            $string .= "'$value'";
-        }
-        $string .= ",\n";
-    }
-    $string .= str_repeat(' ', $depth*4)."]";
-
-    return $string;
-}
-
-/**
  * @param string $fileName
  * @param array  $rules
  *
@@ -56,7 +33,7 @@ function insertRules($fileName, array $rules = [])
     $content = file_get_contents($fileName);
     $content = preg_replace(
         $regexp = sprintf('#%s(.*)%s#', quotemeta($startTag), quotemeta($endTag)),
-        $startTag.arrayToString($rules, 1).$endTag,
+        $startTag.var_export($rules, true).$endTag,
         $content
     );
 
