@@ -23,6 +23,7 @@ install:
   - echo extension=php_openssl.dll >> php.ini
   - echo extension=php_mbstring.dll >> php.ini
   - echo extension=php_fileinfo.dll >> php.ini
+  - echo extension=php_curl.dll >> php.ini
   - echo memory_limit=1G >> php.ini
   - cd c:\projects\cocur\slugify
   - php -r "readfile('http://getcomposer.org/installer');" | php
