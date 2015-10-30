@@ -212,7 +212,10 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             array('နှစ်သစ်ကူးတွင် သတ္တဝါတွေ စိတ်ချမ်းသာ ကိုယ်ကျန်းမာ၍ ကောင်းခြင်း အနန္တနှင့် ပြည့်စုံကြပါစေ', 'nhitthitkutwin-thttwatwe-seikkhyaantha-koekyaanmaywae-kaungkhyin-anntnhin-pyisonkypase'),
             array('Zażółć żółcią gęślą jaźń', 'zazolc-zolcia-gesla-jazn'),
             array('Mężny bądź chroń pułk twój i sześć flag', 'mezny-badz-chron-pulk-twoj-i-szesc-flag'),
-            array('ერთი ორი სამი ოთხი ხუთი', 'erti-ori-sami-otkhi-khuti')
+            array('ერთი ორი სამი ოთხი ხუთი', 'erti-ori-sami-otkhi-khuti'),
+            array(str_repeat('Übergrößenträger', 1000), str_repeat('uebergroessentraeger', 1000)),
+            array(str_repeat('my️🎉', 5000), substr(str_repeat('my-', 5000), 0, -1)),
+            array(str_repeat('hi🇦🇹', 5000), substr(str_repeat('hi-', 5000), 0, -1)),
         );
     }
 }
