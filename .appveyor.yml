@@ -1,0 +1,40 @@
+build: false
+shallow_clone: true
+platform: x86
+clone_folder: c:\projects\cocur\slugify
+
+cache:
+  - '%LOCALAPPDATA%\Composer\files'
+
+init:
+  - SET PATH=C:\Program Files\OpenSSL;c:\tools\php;%PATH%
+
+environment:
+  matrix:
+    - COMPOSER_FLAGS: ""
+
+install:
+  - cinst -y OpenSSL.Light
+  - cinst -y php
+  - cd c:\tools\php
+  - copy php.ini-production php.ini /Y
+  - echo date.timezone="UTC" >> php.ini
+  - echo extension_dir=ext >> php.ini
+  - echo extension=php_openssl.dll >> php.ini
+  - echo extension=php_mbstring.dll >> php.ini
+  - echo extension=php_fileinfo.dll >> php.ini
+  - echo memory_limit=1G >> php.ini
+  - cd c:\projects\cocur\slugify
+  - php -r "readfile('http://getcomposer.org/installer');" | php
+  - php composer.phar update %COMPOSER_FLAGS% --no-interaction --no-progress
+
+test_script:
+  - cd c:\projects\cocur\slugify
+  - vendor\bin\phpunit.bat --verbose
+
+notifications:
+  - provider: Webhook
+    url: https://webhooks.gitter.im/e/aaf55568e4629e650616
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: true

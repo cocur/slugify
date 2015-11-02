@@ -29,6 +29,8 @@ interface SlugifyInterface
      * @param string $separator
      *
      * @return string
+     *
+     * @api
      */
     public function slugify($string, $separator = '-');
 }
