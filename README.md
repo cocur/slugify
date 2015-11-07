@@ -21,14 +21,14 @@ Features
 
 - Removes all special characters from a string.
 - Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek,
-Esperanto¹, Arabian, Vietnamese, Burmese, Danish and Georgian special characters. Instead of removing these characters,
-Slugify approximates them (e.g., `ae` replaces `ä`).
+Esperanto¹, Arabian, Vietnamese, Burmese, Danish, Turkish, Finnish, Swedish, and Georgian special characters. Instead of
+removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
-- Compatible with PHP >= 5.3.3 and [HHVM](http://hhvm.com).
+- Compatible with PHP >= 5.5.9, PHP 7 and [HHVM](http://hhvm.com).
 - Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
-[Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/)
-and [Latte](http://latte.nette.org/).
+[Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), 
+[Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
 
 ¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
 

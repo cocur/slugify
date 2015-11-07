@@ -5,15 +5,15 @@
     "keywords": ["slug", "slugify"],
     "license": "MIT",
     "authors": [
-    	{
-    		"name": "Florian Eckerstorfer",
-    		"email": "florian@eckerstorfer.co",
-    		"homepage": "https://florian.ec"
-    	},
         {
-    		"name": "Ivo Bathke",
-    		"email": "ivo.bathke@gmail.com"
-    	}
+            "name": "Florian Eckerstorfer",
+            "email": "florian@eckerstorfer.co",
+            "homepage": "https://florian.ec"
+        },
+        {
+            "name": "Ivo Bathke",
+            "email": "ivo.bathke@gmail.com"
+        }
     ],
     "require": {
         "php": ">=5.5.9"
@@ -36,8 +36,6 @@
         "plumphp/plum":                         "~0.1"
     },
     "autoload": {
-    	"psr-4": {
-    		"Cocur\\Slugify\\": "src"
-    	}
+        "psr-4": {"Cocur\\Slugify\\": "src"}
     }
 }
