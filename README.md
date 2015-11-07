@@ -46,6 +46,10 @@ $ composer require cocur/slugify
 Usage
 -----
 
+> The documentation you can find here has already been updated for the upcoming 2.0 release. If you are using the
+v1.4, the latest stable version, please use the corresponding documentation. You can find it 
+[here](https://github.com/cocur/slugify/tree/1.4). 
+
 Generate a slug:
 
 ```php
@@ -73,38 +77,47 @@ echo $slugify->slugify('Hi'); // hey
 
 ### Rulesets
 
-In addition Slugify also supports rulesets. A ruleset contains a set of rules that are not part of the default rules.
-Currently one ruleset exists for Esperanto since some of the transliterations conflict with those for other languages.
-The `activateRuleset()` method activates a ruleset with the given name.
+Many of the transliterations rules used in Slugify are specific to a language. These rules are therefore categorized
+using rulesets. Rules for the most popular are activated by default in a specific order. You can change which rulesets
+are activated and the order in which they are activated. The order is important when there are conflicting rules in
+different languages. For example, in German `ä` is transliterated with `ae`, in Turkish the correct transliteration is
+`a`. By default the German transliteration is used since German is used more often on the internet. If you want to use
+prefer the Turkish transliteration you have to possibilities. You can activate it after creating the constructor:
 
 ```php
-$slugify->activateRuleset('esperanto');
-echo $slugify->slugify('serĉi manĝi'); // sercxi-mangxi
+$slugify = new Slugify();
+$slugify->slugify('ä'); // -> "ae"
+$slugify->activateRuleset('turkish');
+$slugify->slugify('ä'); // -> "a"
 ```
 
-You can add rulesets by using `Slugify::addRuleset()` and retrieve all rulesets with `Slugify::getRulesets()`.
-
-### Further Customization
-
-You can also change the regular expression that is used to replace characters with the separator. If you pass `null`
-the default regular expression is used.
+An alternative way would be to pass the rulesets and their order to the constructor.
 
 ```php
-$slugify = new Slugify('/([^A-Za-z0-9]|-)+/');
-// or
-$slugify->setRegExp('/([^A-Za-z0-9]|-)+/');
+$slugify = new Slugify(['rulesets' => ['default', 'turkish']]);
+$slugify->slugify('ä'); // -> "a"
+```
+
+You can find a list of the available rulesets in `Resources/rules`.
+
+### More options
+
+The constructor takes an options array, you have already seen the `rulesets` options above. You can also change the 
+regular expression that is used to replace characters with the separator.
+
+```php
+$slugify = new Slugify(['regexp' => '/([^A-Za-z0-9]|-)+/']);
 ```
 
 *(The regular expression used in the example above is the default one.)*
 
-The constructor also takes an options array. Currently you can disable converting the string to lowercase.
+By default Slugify will convert the slug to lowercase. If you want to preserve the case of the string you can set the
+`lowercase` option to false.
 
 ```php
-$slugify = new Slugify(null, array('lowercase' => false));
+$slugify = new Slugify(['lowercase' => false]);
 $slugify->slugify('Hello World'); // -> "Hello-World"
 ```
-
-Options can also be set using the `setOptions()` method.
 
 ### Contributing
 
