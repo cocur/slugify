@@ -50,6 +50,7 @@ class Slugify implements SlugifyInterface
             // websites in that language
             // https://en.wikipedia.org/wiki/Languages_used_on_the_Internet#Content_languages_for_websites
             'burmese',
+            'hindi',
             'georgian',
             'vietnamese',
             'ukrainian',
