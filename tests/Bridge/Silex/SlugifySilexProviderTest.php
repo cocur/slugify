@@ -40,7 +40,7 @@ class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
         $app->boot();
 
         $this->assertArrayHasKey('slugify', $app);
-        $this->assertArrayHasKey('slugify.regex', $app);
+        $this->assertArrayHasKey('slugify.provider', $app);
         $this->assertArrayHasKey('slugify.options', $app);
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $app['slugify']);
     }

@@ -22,10 +22,9 @@ class SlugifyService
     {
         $config = $sm->get('Config');
 
-        if (isset($config[Module::CONFIG_KEY]['reg_exp'])) {
-            return new Slugify($config[Module::CONFIG_KEY]['reg_exp']);
-        } else {
-            return new Slugify();
-        }
+        $options  = isset($config[Module::CONFIG_KEY]['options']) ? $config[Module::CONFIG_KEY]['options'] : [];
+        $provider = isset($config[Module::CONFIG_KEY]['provider']) ? $config[Module::CONFIG_KEY]['provider'] : null;
+
+        return new Slugify($options, $provider);
     }
 }

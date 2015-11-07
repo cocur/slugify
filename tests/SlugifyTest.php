@@ -12,6 +12,7 @@
 namespace Cocur\Slugify\Tests;
 
 use Cocur\Slugify\Slugify;
+use Mockery;
 
 /**
  * SlugifyTest
@@ -26,21 +27,34 @@ use Cocur\Slugify\Slugify;
  */
 class SlugifyTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Slugify
+     */
     private $slugify;
+
+    /**
+     * @var \Cocur\Slugify\RuleProvider\RuleProviderInterface|\Mockery\MockInterface
+     */
+    private $provider;
 
     public function setUp()
     {
-        $this->slugify = new Slugify();
+        $this->provider = Mockery::mock('\Cocur\Slugify\RuleProvider\RuleProviderInterface');
+        $this->provider->shouldReceive('getRules')->andReturn([]);
+
+        $this->slugify = new Slugify([], $this->provider);
     }
 
     /**
      * @test
-     * @dataProvider provider
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @dataProvider defaultRuleProvider
+     * @covers       Cocur\Slugify\Slugify::slugify()
      */
-    public function slugifyReturnsSlugifiedString($string, $result)
+    public function slugifyReturnsSlugifiedStringUsingDefaultProvider($string, $result)
     {
-        $this->assertEquals($result, $this->slugify->slugify($string));
+        $slugify = new Slugify();
+
+        $this->assertEquals($result, $slugify->slugify($string));
     }
 
     /**
@@ -66,7 +80,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf(
             'Cocur\Slugify\Slugify',
-            $this->slugify->addRules(array('x' => 'y', 'a' => 'b'))
+            $this->slugify->addRules(['x' => 'y', 'a' => 'b'])
         );
         $this->assertEquals('yb', $this->slugify->slugify('xa'));
     }
@@ -77,40 +91,16 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     public function activateRulesetActivatesTheGivenRuleset()
     {
+        $provider = Mockery::mock('\Cocur\Slugify\RuleProvider\RuleProviderInterface');
+        $provider->shouldReceive('getRules')->with('esperanto')->once()->andReturn(['ĉ' => 'cx']);
+
+        $slugify = new Slugify(['rulesets' => []], $provider);
         $this->assertInstanceOf(
             'Cocur\Slugify\Slugify',
-            $this->slugify->activateRuleset('esperanto')
+            $slugify->activateRuleset('esperanto')
         );
 
-        $this->assertEquals(
-            'sercxi-mangxi-hxirurgio-jxurnalo-sxuo-malgraux',
-            $this->slugify->slugify('serĉi manĝi ĥirurgio ĵurnalo ŝuo malgraŭ')
-        );
-    }
-
-    /**
-     * @test
-     * @covers Cocur\Slugify\Slugify::activateRuleset()
-     * @expectedException \InvalidArgumentException
-     */
-    public function activateRulesetThrowsExceptionIfInvalidName()
-    {
-        $this->slugify->activateRuleset('invalid');
-    }
-
-    /**
-     * @test
-     * @covers  Cocur\Slugify\Slugify::addRuleset()
-     * @covers  Cocur\Slugify\Slugify::getRulesets()
-     */
-    public function addRulesetGetRulesets()
-    {
-        $this->assertInstanceOf(
-            'Cocur\Slugify\Slugify',
-            $this->slugify->addRuleset('foo', array('k' => 'key'))
-        );
-
-        $this->assertCount(2, $this->slugify->getRulesets());
+        $this->assertEquals('sercxi', $slugify->slugify('serĉi'));
     }
 
     /**
@@ -124,32 +114,13 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @covers Cocur\Slugify\Slugify::setRegExp()
-     */
-    public function otherRegExpsProduceOtherResults()
-    {
-        $actual = 'File Name.tar.gz';
-        $expected = 'file-name.tar.gz';
-
-        $this->assertNotEquals($expected, $this->slugify->slugify($actual));
-        $this->assertInstanceOf(
-            'Cocur\Slugify\Slugify',
-            $this->slugify->setRegExp('/([^a-z0-9.]|-)+/')
-        );
-        $this->assertEquals($expected, $this->slugify->slugify($actual));
-    }
-
-    /**
-     * @test
      * @covers Cocur\Slugify\Slugify::__construct()
      */
     public function constructWithOtherRegexp()
     {
-        $actual = 'File Name.tar.gz';
-        $expected = 'file-name.tar.gz';
+        $this->slugify = new Slugify(['regexp' => '/([^a-z0-9.]|-)+/']);
 
-        $this->slugify = new Slugify('/([^a-z0-9.]|-)+/');
-        $this->assertEquals($expected, $this->slugify->slugify($actual));
+        $this->assertEquals('file-name.tar.gz', $this->slugify->slugify('File Name.tar.gz'));
     }
 
     /**
@@ -159,63 +130,48 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     public function doNotConvertToLowercase()
     {
-        $actual = 'File Name';
+        $actual   = 'File Name';
         $expected = 'File-Name';
 
-        $this->slugify = new Slugify(null, array('lowercase' => false));
+        $this->slugify = new Slugify(['lowercase' => false]);
         $this->assertEquals($expected, $this->slugify->slugify($actual));
     }
 
-    /**
-     * @test
-     * @covers Cocur\Slugify\Slugify::setOptions()
-     */
-    public function setOptionsSetsOptions()
+    public function defaultRuleProvider()
     {
-        $actual = 'File Name';
-        $expected = 'File-Name';
-
-        $this->slugify = new Slugify();
-        $this->slugify->setOptions(array('lowercase' => false));
-
-        $this->assertEquals($expected, $this->slugify->slugify($actual));
-    }
-
-    public function provider()
-    {
-        return array(
-            array(' a  b ', 'a-b'),
-            array('Hello', 'hello'),
-            array('Hello World', 'hello-world'),
-            array('Привет мир', 'privet-mir'),
-            array('Привіт світ', 'privit-svit'),
-            array('Hello: World', 'hello-world'),
-            array('H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-w-o-r-l-d'),
-            array(': World', 'world'),
-            array('Hello World!', 'hello-world'),
-            array('Ä ä Ö ö Ü ü ß', 'ae-ae-oe-oe-ue-ue-ss'),
-            array('Á À á à É È é è Ó Ò ó ò Ñ ñ Ú Ù ú ù', 'a-a-a-a-e-e-e-e-o-o-o-o-n-n-u-u-u-u'),
-            array('Â â Ê ê Ô ô Û û', 'a-a-e-e-o-o-u-u'),
-            array('Â â Ê ê Ô ô Û 1', 'a-a-e-e-o-o-u-1'),
-            array('°¹²³⁴⁵⁶⁷⁸⁹@₀₁₂₃₄₅₆₇₈₉', '0123456789at0123456789'),
-            array('Mórë thån wørds', 'more-thaan-woerds'),
-            array('Блоґ їжачка', 'blog-jizhachka'),
-            array('фильм', 'film'),
-            array('драма', 'drama'),
-            array('Ύπαρξη Αυτής η Σκουληκομυρμηγκότρυπα', 'iparxi-autis-i-skoulikomirmigkotripa'),
-            array('C’est du français !', 'c-est-du-francais'),
-            array('هذه هي اللغة العربية', 'hthh-hy-llgh-laarby'),
-            array('مرحبا العالم', 'mrhb-laa-lm'),
-            array('Één jaar', 'een-jaar'),
-            array('tiếng việt rất khó', 'tieng-viet-rat-kho'),
-            array('Nguyễn Đăng Khoa', 'nguyen-dang-khoa'),
-            array('နှစ်သစ်ကူးတွင် သတ္တဝါတွေ စိတ်ချမ်းသာ ကိုယ်ကျန်းမာ၍ ကောင်းခြင်း အနန္တနှင့် ပြည့်စုံကြပါစေ', 'nhitthitkutwin-thttwatwe-seikkhyaantha-koekyaanmaywae-kaungkhyin-anntnhin-pyisonkypase'),
-            array('Zażółć żółcią gęślą jaźń', 'zazolc-zolcia-gesla-jazn'),
-            array('Mężny bądź chroń pułk twój i sześć flag', 'mezny-badz-chron-pulk-twoj-i-szesc-flag'),
-            array('ერთი ორი სამი ოთხი ხუთი', 'erti-ori-sami-otkhi-khuti'),
-            array(str_repeat('Übergrößenträger', 1000), str_repeat('uebergroessentraeger', 1000)),
-            array(str_repeat('my🎉', 5000), substr(str_repeat('my-', 5000), 0, -1)),
-            array(str_repeat('hi🇦🇹', 5000), substr(str_repeat('hi-', 5000), 0, -1)),
-        );
+        return [
+            [' a  b ', 'a-b'],
+            ['Hello', 'hello'],
+            ['Hello World', 'hello-world'],
+            ['Привет мир', 'privet-mir'],
+            ['Привіт світ', 'privit-svit'],
+            ['Hello: World', 'hello-world'],
+            ['H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-w-o-r-l-d'],
+            [': World', 'world'],
+            ['Hello World!', 'hello-world'],
+            ['Ä ä Ö ö Ü ü ß', 'ae-ae-oe-oe-ue-ue-ss'],
+            ['Á À á à É È é è Ó Ò ó ò Ñ ñ Ú Ù ú ù', 'a-a-a-a-e-e-e-e-o-o-o-o-n-n-u-u-u-u'],
+            ['Â â Ê ê Ô ô Û û', 'a-a-e-e-o-o-u-u'],
+            ['Â â Ê ê Ô ô Û 1', 'a-a-e-e-o-o-u-1'],
+            ['°¹²³⁴⁵⁶⁷⁸⁹@₀₁₂₃₄₅₆₇₈₉', '0123456789at0123456789'],
+            ['Mórë thån wørds', 'more-thaan-woerds'],
+            ['Блоґ їжачка', 'blog-jizhachka'],
+            ['фильм', 'film'],
+            ['драма', 'drama'],
+            ['Ύπαρξη Αυτής η Σκουληκομυρμηγκότρυπα', 'iparxi-autis-i-skoulikomirmigkotripa'],
+            ['C’est du français !', 'c-est-du-francais'],
+            ['هذه هي اللغة العربية', 'hthh-hy-llgh-laarby'],
+            ['مرحبا العالم', 'mrhb-laa-lm'],
+            ['Één jaar', 'een-jaar'],
+            ['tiếng việt rất khó', 'tieng-viet-rat-kho'],
+            ['Nguyễn Đăng Khoa', 'nguyen-dang-khoa'],
+            ['နှစ်သစ်ကူးတွင် သတ္တဝါတွေ စိတ်ချမ်းသာ ကိုယ်ကျန်းမာ၍ ကောင်းခြင်း အနန္တနှင့် ပြည့်စုံကြပါစေ', 'nhitthitkutwin-thttwatwe-seikkhyaantha-koekyaanmaywae-kaungkhyin-anntnhin-pyisonkypase'],
+            ['Zażółć żółcią gęślą jaźń', 'zazolc-zolcia-gesla-jazn'],
+            ['Mężny bądź chroń pułk twój i sześć flag', 'mezny-badz-chron-pulk-twoj-i-szesc-flag'],
+            ['ერთი ორი სამი ოთხი ხუთი', 'erti-ori-sami-otkhi-khuti'],
+            [str_repeat('Übergrößenträger', 1000), str_repeat('uebergroessentraeger', 1000)],
+            [str_repeat('my🎉', 5000), substr(str_repeat('my-', 5000), 0, -1)],
+            [str_repeat('hi🇦🇹', 5000), substr(str_repeat('hi-', 5000), 0, -1)],
+        ];
     }
 }

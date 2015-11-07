@@ -41,7 +41,7 @@ class CocurSlugifyExtension extends Extension
                 'cocur_slugify.twig.slugify',
                 new Definition(
                     'Cocur\Slugify\Bridge\Twig\SlugifyExtension',
-                    array(new Reference('cocur_slugify'))
+                    [new Reference('cocur_slugify')]
                 )
             )
             ->addTag('twig.extension')

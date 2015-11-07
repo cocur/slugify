@@ -20,6 +20,8 @@ class SlugifyViewHelper extends AbstractHelper
 
     /**
      * @param SlugifyInterface $slugify
+     *
+     * @codeCoverageIgnore
      */
     public function __construct(SlugifyInterface $slugify)
     {
