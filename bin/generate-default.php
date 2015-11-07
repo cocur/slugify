@@ -32,7 +32,7 @@ function insertRules($fileName, array $rules = [])
 
     $content = file_get_contents($fileName);
     $content = preg_replace(
-        $regexp = sprintf('#%s(.*)%s#', quotemeta($startTag), quotemeta($endTag)),
+        $regexp = sprintf('#%s(.*)%s#s', quotemeta($startTag), quotemeta($endTag)),
         $startTag.var_export($rules, true).$endTag,
         $content
     );
