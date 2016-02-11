@@ -170,6 +170,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             ['Mężny bądź chroń pułk twój i sześć flag', 'mezny-badz-chron-pulk-twoj-i-szesc-flag'],
             ['ერთი ორი სამი ოთხი ხუთი', 'erti-ori-sami-otkhi-khuti'],
             ['अ ऒ न द', 'a-oii-na-tha'],
+            ['Æ Ø Å æ ø å', 'ae-oe-aa-ae-oe-aa'],
             [str_repeat('Übergrößenträger', 1000), str_repeat('uebergroessentraeger', 1000)],
             [str_repeat('my🎉', 5000), substr(str_repeat('my-', 5000), 0, -1)],
             [str_repeat('hi🇦🇹', 5000), substr(str_repeat('hi-', 5000), 0, -1)],

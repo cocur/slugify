@@ -443,6 +443,15 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ჯ' => 'j',
     'ჰ' => 'h',
   ),
+  'norwegian' =>
+    array (
+      'Æ' => 'AE',
+      'Ø' => 'OE',
+      'Å' => 'AA',
+      'æ' => 'ae',
+      'ø' => 'oe',
+      'å' => 'aa'
+    ),
   'german' => 
   array (
     'Ä' => 'AE',

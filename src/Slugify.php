@@ -52,6 +52,7 @@ class Slugify implements SlugifyInterface
             'burmese',
             'hindi',
             'georgian',
+            'norwegian',
             'vietnamese',
             'ukrainian',
             'latvian',
