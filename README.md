@@ -378,6 +378,10 @@ $latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugif
 Change Log
 ----------
 
+### Version 1.4.1 (11 February 2016)
+
+- [#90](https://github.com/cocur/slugify/pull/90) Replace `bindShared` with `singleton` in Laravel bridge (by [sunspikes](https://github.com/sunspikes))
+
 ### Version 1.4 (29 September 2015)
 
 - [#75](https://github.com/cocur/slugify/pull/75) Remove a duplicate array entry (by [irfanevrens](https://github.com/irfanevrens))
