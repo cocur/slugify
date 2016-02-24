@@ -69,6 +69,7 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ö' => 'oe',
     'ü' => 'ue',
   ),
+  'bulgarian' => NULL,
   'burmese' => 
   array (
     'က' => 'k',
@@ -443,15 +444,6 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ჯ' => 'j',
     'ჰ' => 'h',
   ),
-  'norwegian' =>
-    array (
-      'Æ' => 'AE',
-      'Ø' => 'OE',
-      'Å' => 'AA',
-      'æ' => 'ae',
-      'ø' => 'oe',
-      'å' => 'aa'
-    ),
   'german' => 
   array (
     'Ä' => 'AE',
@@ -659,6 +651,15 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ļ' => 'l',
     'ņ' => 'n',
     'ū' => 'u',
+  ),
+  'norwegian' => 
+  array (
+    'Æ' => 'AE',
+    'Ø' => 'OE',
+    'Å' => 'AA',
+    'æ' => 'ae',
+    'ø' => 'oe',
+    'å' => 'aa',
   ),
   'polish' => 
   array (
