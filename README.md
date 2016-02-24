@@ -378,6 +378,18 @@ $latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugif
 Change Log
 ----------
 
+### Version 2.0.0 (24 February 2016)
+
+- [#78](https://github.com/cocur/slugify/pull/78) Use multibyte-safe case convention (by [Koc](https://github.com/Koc))
+- [#81](https://github.com/cocur/slugify/pull/81) Move rules into JSON files (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+- [#84](https://github.com/cocur/slugify/pull/84) Add tests for very long strings containing umlauts (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+- [#88](https://github.com/cocur/slugify/pull/88) Add rules for Hindi (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+- [#89](https://github.com/cocur/slugify/pull/89) Add rules for Norwegian (by [tsmes](https://github.com/tsmes))
+- [#90](https://github.com/cocur/slugify/pull/90) Replace `bindShared` with `singleton` in Laravel bridge (by [sunspikes](https://github.com/sunspikes))
+- [#97](https://github.com/cocur/slugify/pull/97) Set minimum PHP version to 5.5.9 (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+- [#98](https://github.com/cocur/slugify/pull/98) Add rules for Bulgarian (by [RoumenDamianoff](https://github.com/RoumenDamianoff))
+
+
 ### Version 1.4.1 (11 February 2016)
 
 - [#90](https://github.com/cocur/slugify/pull/90) Replace `bindShared` with `singleton` in Laravel bridge (by [sunspikes](https://github.com/sunspikes))
