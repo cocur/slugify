@@ -27,8 +27,8 @@ removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - PSR-4 compatible.
 - Compatible with PHP >= 5.5.9, PHP 7 and [HHVM](http://hhvm.com).
 - Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
-[Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), 
-[Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
+[Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/),
+[Latte](http://latte.nette.org/), [Plum](https://github.com/plumphp/plum) and [Yii2](http://www.yiiframework.com/).
 
 ¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
 
@@ -47,8 +47,8 @@ Usage
 -----
 
 > The documentation you can find here has already been updated for the upcoming 2.0 release. If you are using the
-v1.4, the latest stable version, please use the corresponding documentation. You can find it 
-[here](https://github.com/cocur/slugify/tree/1.4). 
+v1.4, the latest stable version, please use the corresponding documentation. You can find it
+[here](https://github.com/cocur/slugify/tree/1.4).
 
 Generate a slug:
 
@@ -102,7 +102,7 @@ You can find a list of the available rulesets in `Resources/rules`.
 
 ### More options
 
-The constructor takes an options array, you have already seen the `rulesets` options above. You can also change the 
+The constructor takes an options array, you have already seen the `rulesets` options above. You can also change the
 regular expression that is used to replace characters with the separator.
 
 ```php
@@ -394,6 +394,44 @@ In a template you can use it like this:
 <a href="/blog/{{ post.title|slugify }}">{{ post.title|raw }}</a></h5>
 ```
 
+### Yii2 framework
+
+Slugify can be easely used in Yii2 applications. Included bridge provides a component to register in your config file.
+
+Just enable the component in your configuration like this.
+
+```php
+return array(
+    //...
+
+    'components' => array(
+        //...
+
+        'slugify' => array(
+            'class' => \Cocur\Slugify\Bridge\Yii2\SlugifyComponent::className(),
+            'options' => array(
+                //Slugify options
+            )
+        ),
+        //...
+    )
+
+    //...
+);
+```
+
+You can now use the `Cocur\Slugify\SlugifyInterface` service everywhere in your application:
+
+```php
+class MyController extends \yii\web\Controller
+{
+    public function actionIndex()
+    {
+        return \Yii::$app->slugify->slugify('Hällo Wörld');
+    }
+}
+```
+
 
 Change Log
 ----------
@@ -535,7 +573,7 @@ inform us if a transliteration is wrong. We would highly appreciate it if you ca
 Github. If you have never contributed to a project on Github we are happy to help you. Just ask on Twitter or directly
 join our Gitter.
 
-You always can help me (Florian, the original developer and maintainer) out by 
+You always can help me (Florian, the original developer and maintainer) out by
 [sending me an Euro or two](https://paypal.me/florianec/2).
 
 

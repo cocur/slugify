@@ -33,7 +33,8 @@
         "laravel/framework":                    "~5.1",
         "nette/di":                             "~2.2",
         "latte/latte":                          "~2.2",
-        "plumphp/plum":                         "~0.1"
+        "plumphp/plum":                         "~0.1",
+        "yiisoft/yii2":                         "~2.0"
     },
     "autoload": {
         "psr-4": {"Cocur\\Slugify\\": "src"}
