@@ -374,6 +374,26 @@ $latte = new Latte\Engine();
 $latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugify'));
 ```
 
+### Slim 3
+
+Slugify does not need a specific bridge to work with [Slim 3](http://www.slimframework.com), just add the following configuration:
+
+```php
+$container['view'] = function ($c) {
+    $settings = $c->get('settings');
+    $view = new \Slim\Views\Twig($settings['view']['template_path'], $settings['view']['twig']);
+    $view->addExtension(new Slim\Views\TwigExtension($c->get('router'), $c->get('request')->getUri()));
+    $view->addExtension(new Cocur\Slugify\Bridge\Twig\SlugifyExtension(Cocur\Slugify\Slugify::create()));
+    return $view;
+};
+```
+
+In a template you can use it like this:
+
+```twig
+<a href="/blog/{{ post.title|slugify }}">{{ post.title|raw }}</a></h5>
+```
+
 
 Change Log
 ----------
