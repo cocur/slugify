@@ -172,6 +172,15 @@ The bundle also provides an alias `slugify` for the `cocur_slugify` service:
 $slug = $this->get('slugify')->slugify('Hello World!');
 ```
 
+You can set the following configuration settings in `app/config.yml` to adjust the slugify service:
+
+```yaml
+cocur_slugify:
+    lowercase: <boolean>
+    regexp: <string>
+    rulesets: { }
+```
+
 ### Twig
 
 If you use the Symfony2 framework with Twig you can use the Twig filter `slugify` in your templates after you have setup
