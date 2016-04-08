@@ -407,6 +407,11 @@ In a template you can use it like this:
 Change Log
 ----------
 
+### Version 2.1.0 (8 April 2016)
+
+- [#104](https://github.com/cocur/slugify/pull/104) Add Symfony configuration (by [estahn](https://github.com/estahn))
+- [#107](https://github.com/cocur/slugify/issues/107) Fix Swedish rules
+
 ### Version 2.0.0 (24 February 2016)
 
 - [#78](https://github.com/cocur/slugify/pull/78) Use multibyte-safe case convention (by [Koc](https://github.com/Koc))
