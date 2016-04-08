@@ -407,6 +407,10 @@ In a template you can use it like this:
 Change Log
 ----------
 
+### Version 2.1.1 (8 April 2016)
+
+- Do not activate Swedish rules by default (fixes broken v2.1 release)
+
 ### Version 2.1.0 (8 April 2016)
 
 - [#104](https://github.com/cocur/slugify/pull/104) Add Symfony configuration (by [estahn](https://github.com/estahn))
