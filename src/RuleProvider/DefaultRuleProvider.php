@@ -754,9 +754,11 @@ class DefaultRuleProvider implements RuleProviderInterface
   'swedish' => 
   array (
     'Ä' => 'A',
+    'Å' => 'a',
     'Ö' => 'O',
     'ä' => 'a',
-    'ö' => 'ö',
+    'å' => 'a',
+    'ö' => 'o',
   ),
   'turkish' => 
   array (
