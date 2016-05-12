@@ -45,11 +45,6 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->slugify = new Slugify([], $this->provider);
     }
 
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @test
      * @dataProvider defaultRuleProvider
