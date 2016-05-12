@@ -58,7 +58,6 @@ class Slugify implements SlugifyInterface
             'latvian',
             'finnish',
             'greek',
-            'swedish',
             'czech',
             'arabic',
             'turkish',
