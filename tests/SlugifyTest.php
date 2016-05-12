@@ -45,6 +45,11 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->slugify = new Slugify([], $this->provider);
     }
 
+    public function tearDown()
+    {
+        Mockery::close();
+    }
+
     /**
      * @test
      * @dataProvider defaultRuleProvider
@@ -135,6 +140,26 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
 
         $this->slugify = new Slugify(['lowercase' => false]);
         $this->assertEquals($expected, $this->slugify->slugify($actual));
+    }
+
+    /**
+     * @test
+     * @dataProvider customRulesProvider
+     */
+    public function customRules($rule, $string, $result)
+    {
+        $slugify = new Slugify();
+        $slugify->activateRuleSet($rule);
+
+        $this->assertSame($result, $slugify->slugify($string));
+    }
+
+    public function customRulesProvider()
+    {
+        return [
+            ['azerbaijani', 'əöüğşçı', 'eougsci'],
+            ['azerbaijani', 'Fərhad Səfərov', 'ferhad-seferov']
+        ];
     }
 
     public function defaultRuleProvider()

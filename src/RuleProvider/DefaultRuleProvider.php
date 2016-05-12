@@ -69,6 +69,23 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ö' => 'oe',
     'ü' => 'ue',
   ),
+  'azerbaijani' => 
+  array (
+    'Ə' => 'E',
+    'Ç' => 'C',
+    'Ğ' => 'G',
+    'İ' => 'I',
+    'Ş' => 'S',
+    'Ö' => 'O',
+    'Ü' => 'U',
+    'ə' => 'e',
+    'ç' => 'c',
+    'ğ' => 'g',
+    'ı' => 'i',
+    'ş' => 's',
+    'ö' => 'o',
+    'ü' => 'u',
+  ),
   'bulgarian' => NULL,
   'burmese' => 
   array (
