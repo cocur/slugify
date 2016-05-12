@@ -119,6 +119,14 @@ $slugify = new Slugify(['lowercase' => false]);
 $slugify->slugify('Hello World'); // -> "Hello-World"
 ```
 
+By default Slugify will use dashes as separators. If you want to use a different default separator, you can set the
+`separator` option.
+
+```php
+$slugify = new Slugify(['separator' => '_']);
+$slugify->slugify('Hello World'); // -> "hello_world"
+```
+
 ### Contributing
 
 Feel free to ask for new rules for languages that is not already here.
@@ -177,6 +185,7 @@ You can set the following configuration settings in `app/config.yml` to adjust t
 ```yaml
 cocur_slugify:
     lowercase: <boolean>
+    separator: <string>
     regexp: <string>
     rulesets: { }
 ```
@@ -255,7 +264,7 @@ use Cocur\Slugify\Slugify;
 
 $mustache = new Mustache_Engine(array(
     // ...
-    'helpers' => array('slugify' => function($string, $separator = '-') {
+    'helpers' => array('slugify' => function($string, $separator = null) {
         return Slugify::create()->slugify($string, $separator);
     }),
 ));
