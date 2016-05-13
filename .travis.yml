@@ -24,6 +24,7 @@ before_install:
   - travis_retry composer self-update && composer --version
 
 install:
+  - travis_retry composer global require "fxp/composer-asset-plugin:~1.1"
   - travis_retry composer update $COMPOSER_FLAGS --prefer-source -n
 
 script: vendor/bin/phpunit --verbose --coverage-clover=coverage.clover
