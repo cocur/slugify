@@ -3,7 +3,7 @@
 namespace Cocur\Slugify\Bridge\Latte;
 
 use Cocur\Slugify\Bridge\Latte\SlugifyHelper;
-use \Mockery as m;
+use Mockery as m;
 
 /**
  * SlugifyHelperTest
