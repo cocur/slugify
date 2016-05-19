@@ -12,7 +12,7 @@
 namespace Cocur\Slugify\Bridge\Twig;
 
 use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
-use \Mockery as m;
+use Mockery as m;
 
 
 /**

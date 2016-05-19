@@ -2,7 +2,7 @@
 
 namespace Cocur\Slugify\Bridge\Nette;
 
-use \Mockery as m;
+use Mockery as m;
 
 /**
  * SlugifyExtensionTest
