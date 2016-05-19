@@ -23,7 +23,7 @@ class SlugifyViewHelperTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__construct()
      */
-    public function setUp()
+    protected function setUp()
     {
         $this->slugify = new Slugify();
         $this->viewHelper = new SlugifyViewHelper($this->slugify);

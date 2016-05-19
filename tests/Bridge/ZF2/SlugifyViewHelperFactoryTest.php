@@ -18,7 +18,7 @@ class SlugifyViewHelperFactoryTest extends \PHPUnit_Framework_TestCase
      */
     private $factory;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->factory = new SlugifyViewHelperFactory();
     }

@@ -14,7 +14,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
      */
     private $module;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->module = new Module();
     }
