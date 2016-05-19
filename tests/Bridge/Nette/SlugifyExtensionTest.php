@@ -82,14 +82,14 @@ class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
         $latteFactory = m::mock('Nette\DI\ServiceDefinition');
         $latteFactory
             ->shouldReceive('addSetup')
-            ->with('addFilter', array('slugify', array('@slugify.helper', 'slugify')))
+            ->with('addFilter', ['slugify', ['@slugify.helper', 'slugify']])
             ->once()
             ->andReturn($latteFactory);
 
         $latte = m::mock('Nette\DI\ServiceDefinition');
         $latte
             ->shouldReceive('addSetup')
-            ->with('addFilter', array('slugify', array('@slugify.helper', 'slugify')))
+            ->with('addFilter', ['slugify', ['@slugify.helper', 'slugify']])
             ->once()
             ->andReturn($latte);
 

@@ -17,13 +17,13 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     public function testAll()
     {
-        $configs = array(
-            array(
+        $configs = [
+            [
                 'lowercase' => true,
                 'regexp' => 'abcd',
                 'rulesets' => ['burmese', 'hindi']
-            ),
-        );
+            ],
+        ];
 
         $this->process($configs);
     }

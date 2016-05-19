@@ -63,7 +63,7 @@ class CocurSlugifyExtensionTest extends \PHPUnit_Framework_TestCase
             ->with('slugify', 'cocur_slugify')
             ->once();
 
-        $this->extension->load(array(), $container);
+        $this->extension->load([], $container);
     }
 }
 

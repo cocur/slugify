@@ -57,7 +57,7 @@ class SlugifyServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $slugify->slugify($actual));
     }
 
-    protected function createServiceManagerMock(array $config = array())
+    protected function createServiceManagerMock(array $config = [])
     {
         $sm = new ServiceManager();
         $sm->setService('Config', $config);
