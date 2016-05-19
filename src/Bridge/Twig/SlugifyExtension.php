@@ -49,9 +49,9 @@ class SlugifyExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return array(
+        return [
             new Twig_SimpleFilter('slugify', [$this, 'slugifyFilter']),
-        );
+        ];
     }
 
     /**
