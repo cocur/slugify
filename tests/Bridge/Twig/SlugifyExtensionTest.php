@@ -38,7 +38,7 @@ class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
      */
     protected $extension;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->slugify = m::mock('Cocur\Slugify\SlugifyInterface');
         $this->extension = new SlugifyExtension($this->slugify);

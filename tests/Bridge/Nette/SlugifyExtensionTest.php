@@ -16,7 +16,7 @@ use Mockery as m;
  */
 class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $this->extension = new SlugifyExtension();
     }

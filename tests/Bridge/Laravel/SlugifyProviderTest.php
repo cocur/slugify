@@ -34,7 +34,7 @@ class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
     /** @var SlugifyServiceProvider */
     private $provider;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->app = new Application();
         $this->provider = new SlugifyServiceProvider($this->app);

@@ -16,7 +16,7 @@ class SlugifyServiceTest extends \PHPUnit_Framework_TestCase
      */
     private $slugifyService;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->slugifyService = new SlugifyService();
     }

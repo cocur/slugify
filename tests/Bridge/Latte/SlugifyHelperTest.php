@@ -17,7 +17,7 @@ use Mockery as m;
  */
 class SlugifyHelperTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $this->slugify = m::mock('Cocur\Slugify\SlugifyInterface');
         $this->helper = new SlugifyHelper($this->slugify);
