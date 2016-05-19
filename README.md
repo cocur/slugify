@@ -403,6 +403,58 @@ In a template you can use it like this:
 <a href="/blog/{{ post.title|slugify }}">{{ post.title|raw }}</a></h5>
 ```
 
+### League
+
+Slugify provides a service provider for use with `league/container`:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
+
+You can configure it by sharing the required options:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->share('config.slugify.options', [
+    'lowercase' => false,
+    'rulesets' => [
+        'default',
+        'german',
+    ],
+]);
+
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
+
+You can configure which rule provider to use by sharing it:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->share(Slugify\RuleProvider\RuleProviderInterface::class, function () {
+    return new Slugify\RuleProvider\FileRuleProvider(__DIR__ . '/../../rules');
+]);
+
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
 
 Change Log
 ----------
