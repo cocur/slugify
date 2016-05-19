@@ -1,6 +1,6 @@
 <?php
 
-namespace Cocur\Slugify\Bridge\Latte;
+namespace Cocur\Slugify\Tests\Bridge\Latte;
 
 use Cocur\Slugify\Bridge\Latte\SlugifyHelper;
 use Mockery as m;

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cocur\Slugify\Bridge\Twig;
+namespace Cocur\Slugify\Tests\Bridge\Twig;
 
 use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 use Mockery as m;

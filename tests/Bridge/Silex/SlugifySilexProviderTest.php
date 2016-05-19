@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cocur\Slugify\Bridge\Silex;
+namespace Cocur\Slugify\Tests\Bridge\Silex;
 
 use Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider;
 use Silex\Application;
@@ -26,7 +26,7 @@ use Silex\Provider\TwigServiceProvider;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
+class SlugifySilexProviderTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
