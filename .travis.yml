@@ -20,6 +20,10 @@ matrix:
     - php: nightly
   fast_finish: true
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 before_install:
   - travis_retry composer self-update && composer --version
 
