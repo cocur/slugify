@@ -29,7 +29,7 @@ use \Mockery as m;
 class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var Cocur\Slugify\SlugifyInterface|\Mockery\MockInterface
+     * @var \Cocur\Slugify\SlugifyInterface|\Mockery\MockInterface
      */
     protected $slugify;
 
