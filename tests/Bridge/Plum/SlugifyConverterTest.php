@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Cocur\Slugify\Bridge\Plum;
+namespace Cocur\Slugify\Tests\Bridge\Plum;
 
+use Cocur\Slugify\Bridge\Plum\SlugifyConverter;
 use Mockery;
 use PHPUnit_Framework_TestCase;
 

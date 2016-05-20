@@ -1,6 +1,7 @@
 <?php
-namespace Cocur\Slugify\Bridge\ZF2;
+namespace Cocur\Slugify\Tests\Bridge\ZF2;
 
+use Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper;
 use Cocur\Slugify\Slugify;
 
 /**

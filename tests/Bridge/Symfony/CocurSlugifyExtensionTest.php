@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Cocur\Slugify\Bridge\Symfony;
+namespace Cocur\Slugify\Tests\Bridge\Symfony;
 
+use Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension;
 use Mockery as m;
 
 /**

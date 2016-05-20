@@ -1,7 +1,8 @@
 <?php
 
-namespace Cocur\Slugify\Bridge\Nette;
+namespace Cocur\Slugify\Tests\Bridge\Nette;
 
+use Cocur\Slugify\Bridge\Nette\SlugifyExtension;
 use Mockery as m;
 
 /**

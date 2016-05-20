@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Cocur\Slugify\RuleProvider;
+namespace Cocur\Slugify\Tests\RuleProvider;
 
+use Cocur\Slugify\RuleProvider\FileRuleProvider;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit_Framework_TestCase;
 
