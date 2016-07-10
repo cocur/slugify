@@ -29,12 +29,12 @@ class SlugifyViewHelper extends AbstractHelper
     }
 
     /**
-     * @param string $string
-     * @param string $separator
+     * @param string      $string
+     * @param string|null $separator
      *
      * @return string
      */
-    public function __invoke($string, $separator = '-')
+    public function __invoke($string, $separator = null)
     {
         return $this->slugify->slugify($string, $separator);
     }

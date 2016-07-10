@@ -57,12 +57,12 @@ class SlugifyExtension extends \Twig_Extension
     /**
      * Slugify filter.
      *
-     * @param string $string
-     * @param string $separator
+     * @param string      $string
+     * @param string|null $separator
      *
      * @return string
      */
-    public function slugifyFilter($string, $separator = '-')
+    public function slugifyFilter($string, $separator = null)
     {
         return $this->slugify->slugify($string, $separator);
     }
