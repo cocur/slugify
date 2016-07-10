@@ -468,6 +468,13 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 Change Log
 ----------
 
+### Version 2.2 (10 July 2016)
+
+- [#102](https://github.com/cocur/slugify/pull/102) Add transliterations for Azerbaijani (by [seferov](https://github.com/seferov))
+- [#109](https://github.com/cocur/slugify/pull/109) Made integer values into strings (by [JonathanMH](https://github.com/JonathanMH))
+- [#114](https://github.com/cocur/slugify/pull/114) Provide SlugifyServiceProvider for league/container (by [localheinz](https://github.com/localheinz))
+- [#120](https://github.com/cocur/slugify/issues/120) Add compatibility with Silex 2 (by [shamotj](https://github.com/shamotj))
+
 ### Version 2.1.1 (8 April 2016)
 
 - Do not activate Swedish rules by default (fixes broken v2.1 release)
