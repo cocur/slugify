@@ -39,7 +39,7 @@ class CocurSlugifyExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         // Extract slugify arguments from config
-        $slugifyArguments = array_intersect_key($config, array_flip(['lowercase', 'regexp', 'rulesets']));
+        $slugifyArguments = array_intersect_key($config, array_flip(['lowercase', 'separator', 'regexp', 'rulesets']));
 
         $container->setDefinition('cocur_slugify', new Definition('Cocur\Slugify\Slugify', [$slugifyArguments]));
         $container

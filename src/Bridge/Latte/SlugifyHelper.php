@@ -26,12 +26,12 @@ class SlugifyHelper
     }
 
     /**
-     * @param string $string
-     * @param string $separator
+     * @param string      $string
+     * @param string|null $separator
      *
      * @return string
      */
-    public function slugify($string, $separator = '-')
+    public function slugify($string, $separator = null)
     {
         return $this->slugify->slugify($string, $separator);
     }

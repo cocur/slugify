@@ -157,6 +157,34 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::__construct()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyDefaultsToSeparatorOption()
+    {
+        $actual   = 'file name';
+        $expected = 'file__name';
+
+        $this->slugify = new Slugify(['separator' => '__']);
+        $this->assertEquals($expected, $this->slugify->slugify($actual));
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::__construct()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyHonorsSeparatorArgument()
+    {
+        $actual   = 'file name';
+        $expected = 'file__name';
+
+        $this->slugify = new Slugify(['separator' => 'dummy']);
+        $this->assertEquals($expected, $this->slugify->slugify($actual, '__'));
+    }
+
     public function defaultRuleProvider()
     {
         return [

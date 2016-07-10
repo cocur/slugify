@@ -21,6 +21,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $configs = [
             [
                 'lowercase' => true,
+                'separator' => '_',
                 'regexp' => 'abcd',
                 'rulesets' => ['burmese', 'hindi']
             ],
