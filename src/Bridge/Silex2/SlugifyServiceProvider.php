@@ -15,7 +15,6 @@ use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 use Cocur\Slugify\Slugify;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use Silex\Application;
 
 /**
  * SlugifyServiceProvider
@@ -39,18 +38,11 @@ class SlugifyServiceProvider implements ServiceProviderInterface
         };
 
         if (isset($container['twig'])) {
-            $container['twig'] = $container->extend('twig', function (\Twig_Environment $twig, $container) {
+            $container->extend('twig', function (\Twig_Environment $twig, $container) {
                 $twig->addExtension(new SlugifyExtension($container['slugify']));
 
                 return $twig;
             });
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function boot(Application $app)
-    {
     }
 }
