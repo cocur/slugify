@@ -222,6 +222,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             [str_repeat('Übergrößenträger', 1000), str_repeat('uebergroessentraeger', 1000)],
             [str_repeat('my🎉', 5000), substr(str_repeat('my-', 5000), 0, -1)],
             [str_repeat('hi🇦🇹', 5000), substr(str_repeat('hi-', 5000), 0, -1)],
+            ['Č Ć Ž Š Đ č ć ž š đ', 'Č-Ć-Ž-Š-Đ-č-ć-ž-š-đ'],
         ];
     }
 }
