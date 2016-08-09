@@ -20,17 +20,14 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek,
-Esperanto¹, Arabian, Vietnamese, Burmese, Danish, Turkish, Finnish, Swedish, and Georgian special characters. Instead of
+- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Finnish, French, Georgian, German, Greek, Hindi, Latvian, Norwegian, Polish, Russian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
 removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.5.9, PHP 7 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
+- Integrations for [Symfony2](http://symfony.com), [Silex (1 and 2)](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
 [Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), 
 [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
-
-¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
 
 
 Installation
@@ -467,6 +464,12 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 Change Log
 ----------
+
+### Version 2.3 (9 August 2016)
+
+- [#124](https://github.com/cocur/slugify/issues/124) Fix support for Bulgarian
+- [#125](https://github.com/cocur/slugify/pull/125) Update Silex 2 provider (by [JakeFr](https://github.com/JakeFr))
+- [#129](https://github.com/cocur/slugify/pull/129) Add support for Croatian (by [napravicukod](https://github.com/napravicukod))
 
 ### Version 2.2 (10 July 2016)
 
