@@ -269,6 +269,19 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ိံ' => 'ein',
     'ုံ' => 'on',
   ),
+  'croatian' => 
+  array (
+    'Č' => 'C',
+    'Ć' => 'C',
+    'Ž' => 'Z',
+    'Š' => 'S',
+    'Đ' => 'Dj',
+    'č' => 'c',
+    'ć' => 'c',
+    'ž' => 'z',
+    'š' => 's',
+    'đ' => 'dj',
+  ),
   'czech' => 
   array (
     'Č' => 'C',
