@@ -231,7 +231,13 @@ You can find more information about registering extensions in the
 Slugify also provides a service provider to integrate into Silex.
 
 ```php
+// For Silex version 1
 $app->register(new Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider());
+```
+
+```php
+// For Silex version 2
+$app->register(new Cocur\Slugify\Bridge\Silex2\SlugifyServiceProvider());
 ```
 
 You can use the `slugify` method in your controllers:
@@ -242,16 +248,10 @@ $app->get('/', function () {
 });
 ```
 
-And if you use Silex in combination with Twig you can also use it in your templates:
+And if you use Silex in combination with Twig register the `SlugifyServiceProvider` after the `Silex\Provider\TwigServiceProvider` to add the Twig extension to your environment and use the `slugify` filter in your templates.
 
 ```twig
-{{ app.slugify.slugify('welcome to the homepage') }}
-```
-
-Of course you can also add the Twig extension to your environment and use the `slugify` filter:
-
-```php
-$app['twig']->addExtension(new SlugifyExtension(Slugify::create()));
+{{ 'welcome to the homepage'|slugify }}
 ```
 
 ### Mustache.php
