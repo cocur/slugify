@@ -124,6 +124,23 @@ $slugify = new Slugify(['separator' => '_']);
 $slugify->slugify('Hello World'); // -> "hello_world"
 ```
 
+### Changing options on the fly
+
+You can overwrite any of the above options on the fly by passing an options array as second argument to the `slugify()`
+method. For example:
+
+```php
+$slugify = new Slugify();
+$slugify->slugify('Hello World', ['lowercase' => false]); // -> "Hello-World"
+```
+
+You can also modify the separator this way:
+
+```php
+$slugify = new Slugify();
+$slugify->slugify('Hello World', ['separator' => '_']); // -> "hello_world"
+```
+
 ### Contributing
 
 Feel free to ask for new rules for languages that is not already here.
