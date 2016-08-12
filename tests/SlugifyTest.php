@@ -186,6 +186,22 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $this->slugify->slugify($actual, '__'));
     }
 
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyOptionsArray()
+    {
+        $this->assertEquals('file-name', $this->slugify->slugify('file name'));
+        $this->assertEquals('file+name', $this->slugify->slugify('file name', ['separator' => '+']));
+
+        $this->assertEquals('name-1', $this->slugify->slugify('name(1)'));
+        $this->assertEquals('name(1)', $this->slugify->slugify('name(1)', ['regexp' => '/([^a-z0-9.()]|-)+/']));
+
+        $this->assertEquals('file-name', $this->slugify->slugify('FILE NAME'));
+        $this->assertEquals('FILE-NAME', $this->slugify->slugify('FILE NAME', ['lowercase' => false]));
+    }
+
     public function defaultRuleProvider()
     {
         return [

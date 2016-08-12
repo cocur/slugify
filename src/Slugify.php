@@ -86,23 +86,30 @@ class Slugify implements SlugifyInterface
     /**
      * Returns the slug-version of the string.
      *
-     * @param string      $string    String to slugify
-     * @param string|null $separator Separator
+     * @param string            $string  String to slugify
+     * @param string|array|null $options Options
      *
      * @return string Slugified version of the string
      */
-    public function slugify($string, $separator = null)
+    public function slugify($string, $options = null)
     {
+        // BC: the second argument used to be the separator
+        if (is_string($options)) {
+            $separator = $options;
+            $options = [];
+            $options['separator'] = $separator;
+        }
+
+        $options = array_merge($this->options, (array) $options);
         $string = strtr($string, $this->rules);
-        if ($this->options['lowercase']) {
+
+        if ($options['lowercase']) {
             $string = mb_strtolower($string);
         }
-        if ($separator === null) {
-            $separator = $this->options['separator'];
-        }
-        $string = preg_replace($this->options['regexp'], $separator, $string);
 
-        return trim($string, $separator);
+        $string = preg_replace($options['regexp'], $options['separator'], $string);
+
+        return trim($string, $options['separator']);
     }
 
     /**
