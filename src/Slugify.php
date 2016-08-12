@@ -95,8 +95,8 @@ class Slugify implements SlugifyInterface
     {
         // BC: the second argument used to be the separator
         if (is_string($options)) {
-            $separator = $options;
-            $options = [];
+            $separator            = $options;
+            $options              = [];
             $options['separator'] = $separator;
         }
 
