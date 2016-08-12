@@ -202,6 +202,18 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('FILE-NAME', $this->slugify->slugify('FILE NAME', ['lowercase' => false]));
     }
 
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyCustomRuleSet()
+    {
+        $slugify = new Slugify();
+
+        $this->assertSame('fur', $slugify->slugify('für', ['ruleset' => 'turkish']));
+        $this->assertSame('fuer', $slugify->slugify('für'));
+    }
+
     public function defaultRuleProvider()
     {
         return [

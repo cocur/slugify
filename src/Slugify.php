@@ -101,7 +101,16 @@ class Slugify implements SlugifyInterface
         }
 
         $options = array_merge($this->options, (array) $options);
-        $string = strtr($string, $this->rules);
+
+        // Add a custom ruleset without touching the default rules
+        if (isset($options['ruleset'])) {
+            $rules = array_merge($this->rules, $this->provider->getRules($options['ruleset']));
+        } else {
+            $rules = $this->rules;
+        }
+
+        $string = strtr($string, $rules);
+        unset($rules);
 
         if ($options['lowercase']) {
             $string = mb_strtolower($string);

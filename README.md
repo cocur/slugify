@@ -141,6 +141,14 @@ $slugify = new Slugify();
 $slugify->slugify('Hello World', ['separator' => '_']); // -> "hello_world"
 ```
 
+You can even activate a custom ruleset without touching the default rules:
+
+```php
+$slugify = new Slugify();
+$slugify->slugify('für', ['ruleset' => 'turkish']); // -> "fur"
+$slugify->slugify('für'); // -> "fuer"
+```
+
 ### Contributing
 
 Feel free to ask for new rules for languages that is not already here.
