@@ -303,6 +303,17 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ů' => 'u',
     'ž' => 'z',
   ),
+  'danish' =>
+  array(
+    'Æ' => 'Ae',
+    'æ' => 'ae',
+    'Ø' => 'Oe',
+    'ø' => 'oe',
+    'Å' => 'Aa',
+    'å' => 'aa',
+    'É' => 'E',
+    'é' => 'e',
+  ),
   'default' => 
   array (
     '°' => '0',
