@@ -683,7 +683,7 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ए' => 'e',
     'ई' => 'ii',
     'ऍ' => 'ei',
-    'ऎ' => 'ऎ',
+    'ऎ' => 'ae',
     'ऐ' => 'ai',
     'इ' => 'i',
     'ओ' => 'o',
