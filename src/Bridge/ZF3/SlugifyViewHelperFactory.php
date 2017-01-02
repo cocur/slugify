@@ -1,6 +1,6 @@
 <?php
 
-namespace Cocur\Slugify\Bridge\ZF2;
+namespace Cocur\Slugify\Bridge\ZF3;
 
 use Cocur\Slugify\Slugify;
 use Interop\Container\ContainerInterface;
