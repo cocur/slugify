@@ -43,12 +43,14 @@ class Slugify implements SlugifyInterface
      */
     protected $options = [
         'regexp'    => self::LOWERCASE_NUMBERS_DASHES,
+        'separator' => '-',
         'lowercase' => true,
         'rulesets'  => [
             'default',
             // Languages are preferred if they appear later, list is ordered by number of
             // websites in that language
             // https://en.wikipedia.org/wiki/Languages_used_on_the_Internet#Content_languages_for_websites
+            'azerbaijani',
             'burmese',
             'hindi',
             'georgian',
@@ -58,7 +60,6 @@ class Slugify implements SlugifyInterface
             'latvian',
             'finnish',
             'greek',
-            'swedish',
             'czech',
             'arabic',
             'turkish',
@@ -85,20 +86,39 @@ class Slugify implements SlugifyInterface
     /**
      * Returns the slug-version of the string.
      *
-     * @param string $string    String to slugify
-     * @param string $separator Separator
+     * @param string            $string  String to slugify
+     * @param string|array|null $options Options
      *
      * @return string Slugified version of the string
      */
-    public function slugify($string, $separator = '-')
+    public function slugify($string, $options = null)
     {
-        $string = strtr($string, $this->rules);
-        if ($this->options['lowercase']) {
+        // BC: the second argument used to be the separator
+        if (is_string($options)) {
+            $separator            = $options;
+            $options              = [];
+            $options['separator'] = $separator;
+        }
+
+        $options = array_merge($this->options, (array) $options);
+
+        // Add a custom ruleset without touching the default rules
+        if (isset($options['ruleset'])) {
+            $rules = array_merge($this->rules, $this->provider->getRules($options['ruleset']));
+        } else {
+            $rules = $this->rules;
+        }
+
+        $string = strtr($string, $rules);
+        unset($rules);
+
+        if ($options['lowercase']) {
             $string = mb_strtolower($string);
         }
-        $string = preg_replace($this->options['regexp'], $separator, $string);
 
-        return trim($string, $separator);
+        $string = preg_replace($options['regexp'], $options['separator'], $string);
+
+        return trim($string, $options['separator']);
     }
 
     /**

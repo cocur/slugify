@@ -20,17 +20,14 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for German, French, Spanish, Russian, Ukrainian, Polish, Czech, Latvian, Greek,
-Esperanto¹, Arabian, Vietnamese, Burmese, Danish, Turkish, Finnish, Swedish, and Georgian special characters. Instead of
+- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Finnish, French, Georgian, German, Greek, Hindi, Latvian, Norwegian, Polish, Russian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
 removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.5.9, PHP 7 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
+- Integrations for [Symfony2](http://symfony.com), [Silex (1 and 2)](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
 [Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), 
 [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
-
-¹ Some Esperanto transliterations conflict with others. You need to enable the Esperanto ruleset to use these transliterations.
 
 
 Installation
@@ -119,6 +116,39 @@ $slugify = new Slugify(['lowercase' => false]);
 $slugify->slugify('Hello World'); // -> "Hello-World"
 ```
 
+By default Slugify will use dashes as separators. If you want to use a different default separator, you can set the
+`separator` option.
+
+```php
+$slugify = new Slugify(['separator' => '_']);
+$slugify->slugify('Hello World'); // -> "hello_world"
+```
+
+### Changing options on the fly
+
+You can overwrite any of the above options on the fly by passing an options array as second argument to the `slugify()`
+method. For example:
+
+```php
+$slugify = new Slugify();
+$slugify->slugify('Hello World', ['lowercase' => false]); // -> "Hello-World"
+```
+
+You can also modify the separator this way:
+
+```php
+$slugify = new Slugify();
+$slugify->slugify('Hello World', ['separator' => '_']); // -> "hello_world"
+```
+
+You can even activate a custom ruleset without touching the default rules:
+
+```php
+$slugify = new Slugify();
+$slugify->slugify('für', ['ruleset' => 'turkish']); // -> "fur"
+$slugify->slugify('für'); // -> "fuer"
+```
+
 ### Contributing
 
 Feel free to ask for new rules for languages that is not already here.
@@ -172,6 +202,16 @@ The bundle also provides an alias `slugify` for the `cocur_slugify` service:
 $slug = $this->get('slugify')->slugify('Hello World!');
 ```
 
+You can set the following configuration settings in `app/config.yml` to adjust the slugify service:
+
+```yaml
+cocur_slugify:
+    lowercase: <boolean>
+    separator: <string>
+    regexp: <string>
+    rulesets: { }
+```
+
 ### Twig
 
 If you use the Symfony2 framework with Twig you can use the Twig filter `slugify` in your templates after you have setup
@@ -213,7 +253,13 @@ You can find more information about registering extensions in the
 Slugify also provides a service provider to integrate into Silex.
 
 ```php
+// For Silex version 1
 $app->register(new Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider());
+```
+
+```php
+// For Silex version 2
+$app->register(new Cocur\Slugify\Bridge\Silex2\SlugifyServiceProvider());
 ```
 
 You can use the `slugify` method in your controllers:
@@ -224,16 +270,10 @@ $app->get('/', function () {
 });
 ```
 
-And if you use Silex in combination with Twig you can also use it in your templates:
+And if you use Silex in combination with Twig register the `SlugifyServiceProvider` after the `Silex\Provider\TwigServiceProvider` to add the Twig extension to your environment and use the `slugify` filter in your templates.
 
 ```twig
-{{ app.slugify.slugify('welcome to the homepage') }}
-```
-
-Of course you can also add the Twig extension to your environment and use the `slugify` filter:
-
-```php
-$app['twig']->addExtension(new SlugifyExtension(Slugify::create()));
+{{ 'welcome to the homepage'|slugify }}
 ```
 
 ### Mustache.php
@@ -246,7 +286,7 @@ use Cocur\Slugify\Slugify;
 
 $mustache = new Mustache_Engine(array(
     // ...
-    'helpers' => array('slugify' => function($string, $separator = '-') {
+    'helpers' => array('slugify' => function($string, $separator = null) {
         return Slugify::create()->slugify($string, $separator);
     }),
 ));
@@ -394,9 +434,83 @@ In a template you can use it like this:
 <a href="/blog/{{ post.title|slugify }}">{{ post.title|raw }}</a></h5>
 ```
 
+### League
+
+Slugify provides a service provider for use with `league/container`:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
+
+You can configure it by sharing the required options:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->share('config.slugify.options', [
+    'lowercase' => false,
+    'rulesets' => [
+        'default',
+        'german',
+    ],
+]);
+
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
+
+You can configure which rule provider to use by sharing it:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->share(Slugify\RuleProvider\RuleProviderInterface::class, function () {
+    return new Slugify\RuleProvider\FileRuleProvider(__DIR__ . '/../../rules');
+]);
+
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
 
 Change Log
 ----------
+
+### Version 2.3 (9 August 2016)
+
+- [#124](https://github.com/cocur/slugify/issues/124) Fix support for Bulgarian
+- [#125](https://github.com/cocur/slugify/pull/125) Update Silex 2 provider (by [JakeFr](https://github.com/JakeFr))
+- [#129](https://github.com/cocur/slugify/pull/129) Add support for Croatian (by [napravicukod](https://github.com/napravicukod))
+
+### Version 2.2 (10 July 2016)
+
+- [#102](https://github.com/cocur/slugify/pull/102) Add transliterations for Azerbaijani (by [seferov](https://github.com/seferov))
+- [#109](https://github.com/cocur/slugify/pull/109) Made integer values into strings (by [JonathanMH](https://github.com/JonathanMH))
+- [#114](https://github.com/cocur/slugify/pull/114) Provide SlugifyServiceProvider for league/container (by [localheinz](https://github.com/localheinz))
+- [#120](https://github.com/cocur/slugify/issues/120) Add compatibility with Silex 2 (by [shamotj](https://github.com/shamotj))
+
+### Version 2.1.1 (8 April 2016)
+
+- Do not activate Swedish rules by default (fixes broken v2.1 release)
+
+### Version 2.1.0 (8 April 2016)
+
+- [#104](https://github.com/cocur/slugify/pull/104) Add Symfony configuration (by [estahn](https://github.com/estahn))
+- [#107](https://github.com/cocur/slugify/issues/107) Fix Swedish rules
 
 ### Version 2.0.0 (24 February 2016)
 

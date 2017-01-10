@@ -37,7 +37,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     private $provider;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->provider = Mockery::mock('\Cocur\Slugify\RuleProvider\RuleProviderInterface');
         $this->provider->shouldReceive('getRules')->andReturn([]);
@@ -137,6 +137,84 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $this->slugify->slugify($actual));
     }
 
+    /**
+     * @test
+     * @dataProvider customRulesProvider
+     */
+    public function customRules($rule, $string, $result)
+    {
+        $slugify = new Slugify();
+        $slugify->activateRuleSet($rule);
+
+        $this->assertSame($result, $slugify->slugify($string));
+    }
+
+    public function customRulesProvider()
+    {
+        return [
+            ['azerbaijani', 'əöüğşçı', 'eougsci'],
+            ['azerbaijani', 'Fərhad Səfərov', 'ferhad-seferov'],
+            ['croatian', 'Č Ć Ž Š Đ č ć ž š đ', 'c-c-z-s-dj-c-c-z-s-dj'],
+            ['danish', 'Æ æ Ø ø Å å É é', 'ae-ae-oe-oe-aa-aa-e-e'],
+        ];
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::__construct()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyDefaultsToSeparatorOption()
+    {
+        $actual   = 'file name';
+        $expected = 'file__name';
+
+        $this->slugify = new Slugify(['separator' => '__']);
+        $this->assertEquals($expected, $this->slugify->slugify($actual));
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::__construct()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyHonorsSeparatorArgument()
+    {
+        $actual   = 'file name';
+        $expected = 'file__name';
+
+        $this->slugify = new Slugify(['separator' => 'dummy']);
+        $this->assertEquals($expected, $this->slugify->slugify($actual, '__'));
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyOptionsArray()
+    {
+        $this->assertEquals('file-name', $this->slugify->slugify('file name'));
+        $this->assertEquals('file+name', $this->slugify->slugify('file name', ['separator' => '+']));
+
+        $this->assertEquals('name-1', $this->slugify->slugify('name(1)'));
+        $this->assertEquals('name(1)', $this->slugify->slugify('name(1)', ['regexp' => '/([^a-z0-9.()]|-)+/']));
+
+        $this->assertEquals('file-name', $this->slugify->slugify('FILE NAME'));
+        $this->assertEquals('FILE-NAME', $this->slugify->slugify('FILE NAME', ['lowercase' => false]));
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyCustomRuleSet()
+    {
+        $slugify = new Slugify();
+
+        $this->assertSame('fur', $slugify->slugify('für', ['ruleset' => 'turkish']));
+        $this->assertSame('fuer', $slugify->slugify('für'));
+    }
+
     public function defaultRuleProvider()
     {
         return [
@@ -174,6 +252,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             [str_repeat('Übergrößenträger', 1000), str_repeat('uebergroessentraeger', 1000)],
             [str_repeat('my🎉', 5000), substr(str_repeat('my-', 5000), 0, -1)],
             [str_repeat('hi🇦🇹', 5000), substr(str_repeat('hi-', 5000), 0, -1)],
+			['Č Ć Ž Š Đ č ć ž š đ', 'c-c-z-s-d-c-c-z-s-d'],
         ];
     }
 }

@@ -49,20 +49,20 @@ class SlugifyExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return array(
+        return [
             new Twig_SimpleFilter('slugify', [$this, 'slugifyFilter']),
-        );
+        ];
     }
 
     /**
      * Slugify filter.
      *
-     * @param string $string
-     * @param string $separator
+     * @param string      $string
+     * @param string|null $separator
      *
      * @return string
      */
-    public function slugifyFilter($string, $separator = '-')
+    public function slugifyFilter($string, $separator = null)
     {
         return $this->slugify->slugify($string, $separator);
     }

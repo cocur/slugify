@@ -34,7 +34,7 @@ class SlugifyExtension extends CompilerExtension
 
         $self = $this;
         $registerToLatte = function(ServiceDefinition $def) use ($self) {
-            $def->addSetup('addFilter', array('slugify', array($self->prefix('@helper'), 'slugify')));
+            $def->addSetup('addFilter', ['slugify', [$self->prefix('@helper'), 'slugify']]);
         };
 
         $latteFactory = $builder->getByType('Nette\Bridges\ApplicationLatte\ILatteFactory') ?: 'nette.latteFactory';

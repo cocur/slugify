@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cocur\Slugify\Bridge\Laravel;
+namespace Cocur\Slugify\Tests\Bridge\Laravel;
 
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
 use Illuminate\Foundation\Application;
@@ -26,7 +26,7 @@ use Illuminate\Foundation\Application;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
+class SlugifyProviderTest extends \PHPUnit_Framework_TestCase
 {
     /** @var Application */
     private $app;
@@ -34,7 +34,7 @@ class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
     /** @var SlugifyServiceProvider */
     private $provider;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->app = new Application();
         $this->provider = new SlugifyServiceProvider($this->app);

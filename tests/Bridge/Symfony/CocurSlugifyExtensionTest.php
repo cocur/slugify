@@ -9,11 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Cocur\Slugify\Bridge\Bundle;
+namespace Cocur\Slugify\Tests\Bridge\Symfony;
 
 use Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension;
-use \Mockery as m;
-
+use Mockery as m;
 
 /**
  * CocurSlugifyExtensionTest
@@ -28,7 +27,7 @@ use \Mockery as m;
  */
 class CocurSlugifyExtensionTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $this->extension = new CocurSlugifyExtension();
     }
@@ -65,7 +64,7 @@ class CocurSlugifyExtensionTest extends \PHPUnit_Framework_TestCase
             ->with('slugify', 'cocur_slugify')
             ->once();
 
-        $this->extension->load(array(), $container);
+        $this->extension->load([], $container);
     }
 }
 

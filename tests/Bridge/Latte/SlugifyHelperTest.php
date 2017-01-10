@@ -1,9 +1,9 @@
 <?php
 
-namespace Cocur\Slugify\Bridge\Latte;
+namespace Cocur\Slugify\Tests\Bridge\Latte;
 
 use Cocur\Slugify\Bridge\Latte\SlugifyHelper;
-use \Mockery as m;
+use Mockery as m;
 
 /**
  * SlugifyHelperTest
@@ -17,7 +17,7 @@ use \Mockery as m;
  */
 class SlugifyHelperTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $this->slugify = m::mock('Cocur\Slugify\SlugifyInterface');
         $this->helper = new SlugifyHelper($this->slugify);
