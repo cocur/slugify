@@ -792,6 +792,23 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ź' => 'z',
     'ż' => 'z',
   ),
+  'romanian' =>
+  array(
+      "ă" => "a",
+      "î" => "i",
+      "â" => "a",
+      "ş" => "s",
+      "ș" => "s",
+      "ţ" => "t",
+      "ț" => "t",
+      "Ă" => "A",
+      "Î" => "I",
+      "Â" => "A",
+      "Ş" => "S",
+      "Ș" => "S",
+      "Ţ" => "T",
+      "Ț" => "T"
+  ),
   'russian' => 
   array (
     'Ъ' => '',
