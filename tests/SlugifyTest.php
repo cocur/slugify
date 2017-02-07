@@ -156,6 +156,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             ['azerbaijani', 'Fərhad Səfərov', 'ferhad-seferov'],
             ['croatian', 'Č Ć Ž Š Đ č ć ž š đ', 'c-c-z-s-dj-c-c-z-s-dj'],
             ['danish', 'Æ æ Ø ø Å å É é', 'ae-ae-oe-oe-aa-aa-e-e'],
+            ['serbian', 'Š Đ Ž Ć Č š đ ž ć č Ш Ђ Ж Ћ Ч Џ Њ ш ђ ж ћ ч џ њ', 's-dj-z-c-c-s-dj-z-c-c-s-dj-z-c-c-dz-nj-s-dj-z-c-c-dz-nj']
         ];
     }
 
