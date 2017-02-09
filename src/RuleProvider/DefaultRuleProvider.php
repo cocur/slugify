@@ -762,6 +762,27 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ņ' => 'n',
     'ū' => 'u',
   ),
+  'lithuanian' => 
+  array (
+    'Ą' => 'A',
+    'Č' => 'C',
+    'Ę' => 'E',
+    'Ė' => 'E',
+    'Į' => 'I',
+    'Š' => 'S',
+    'Ų' => 'U',
+    'Ū' => 'U',
+    'Ž' => 'Z',
+    'ą' => 'a',
+    'č' => 'c',
+    'ę' => 'e',
+    'ė' => 'e',
+    'į' => 'i',
+    'š' => 's',
+    'ų' => 'u',
+    'ū' => 'u',
+    'ž' => 'z',
+  ),
   'norwegian' => 
   array (
     'Æ' => 'AE',
