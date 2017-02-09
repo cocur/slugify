@@ -20,7 +20,7 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Finnish, French, Georgian, German, Greek, Hindi, Latvian, Lithuanian, Norwegian, Polish, Russian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
+- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Finnish, French, Georgian, German, Greek, Hindi, Italien, Latvian, Lithuanian, Norwegian, Polish, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
 removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
@@ -489,6 +489,15 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 Change Log
 ----------
+
+### Version 2.4 (9 February 2017)
+
+- [#133](https://github.com/cocur/slugify/pull/133) Allow to modify options without creating a new object (by [leofeyer](https://github.com/leofeyer))
+- [#135](https://github.com/cocur/slugify/pull/135) Add support for Danish (by [izehose](https://github.com/izehose))
+- [#140](https://github.com/cocur/slugify/pull/140) Update Hindi support (by [arunlodhi](https://github.com/arunlodhi))
+- [#146](https://github.com/cocur/slugify/pull/146) Add support for Italien (by [gianiaz](https://github.com/gianiaz))
+- [#151](https://github.com/cocur/slugify/pull/151) Add support for Serbian (by [cvetan](https://github.com/cvetan))
+- [#155](https://github.com/cocur/slugify/pull/155) Update support for Lithuanian (by [s4uliu5](https://github.com/s4uliu5))
 
 ### Version 2.3 (9 August 2016)
 
