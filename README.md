@@ -43,10 +43,6 @@ $ composer require cocur/slugify
 Usage
 -----
 
-> The documentation you can find here has already been updated for the upcoming 2.0 release. If you are using the
-v1.4, the latest stable version, please use the corresponding documentation. You can find it 
-[here](https://github.com/cocur/slugify/tree/1.4). 
-
 Generate a slug:
 
 ```php
