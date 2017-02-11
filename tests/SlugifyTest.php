@@ -240,7 +240,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             ['фильм', 'film'],
             ['драма', 'drama'],
             ['Ύπαρξη Αυτής η Σκουληκομυρμηγκότρυπα', 'iparxi-autis-i-skoulikomirmigkotripa'],
-            ['C’est du français !', 'c-est-du-francais'],
+            ['Français Œuf où à', 'francais-oeuf-ou-a'],
             ['هذه هي اللغة العربية', 'hthh-hy-llgh-laarby'],
             ['مرحبا العالم', 'mrhb-laa-lm'],
             ['Één jaar', 'een-jaar'],
