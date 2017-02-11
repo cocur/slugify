@@ -20,7 +20,7 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Finnish, French, Georgian, German, Greek, Hindi, Italien, Latvian, Lithuanian, Norwegian, Polish, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
+- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Finnish, French, Georgian, German, Greek, Hindi, Italien, Latvian, Lithuanian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
 removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
