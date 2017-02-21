@@ -762,6 +762,27 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ņ' => 'n',
     'ū' => 'u',
   ),
+  'lithuanian' => 
+  array (
+    'Ą' => 'A',
+    'Č' => 'C',
+    'Ę' => 'E',
+    'Ė' => 'E',
+    'Į' => 'I',
+    'Š' => 'S',
+    'Ų' => 'U',
+    'Ū' => 'U',
+    'Ž' => 'Z',
+    'ą' => 'a',
+    'č' => 'c',
+    'ę' => 'e',
+    'ė' => 'e',
+    'į' => 'i',
+    'š' => 's',
+    'ų' => 'u',
+    'ū' => 'u',
+    'ž' => 'z',
+  ),
   'norwegian' => 
   array (
     'Æ' => 'AE',
@@ -791,6 +812,23 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ś' => 's',
     'ź' => 'z',
     'ż' => 'z',
+  ),
+  'romanian' =>
+  array(
+      'ă' => 'a',
+      'î' => 'i',
+      'â' => 'a',
+      'ş' => 's',
+      'ș' => 's',
+      'ţ' => 't',
+      'ț' => 't',
+      'Ă' => 'A',
+      'Î' => 'I',
+      'Â' => 'A',
+      'Ş' => 'S',
+      'Ș' => 'S',
+      'Ţ' => 'T',
+      'Ț' => 'T'
   ),
   'russian' => 
   array (
