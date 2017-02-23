@@ -159,6 +159,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             ['romanian', 'ă î â ş ș ţ ț Ă Î Â Ş Ș Ţ Ț', 'a-i-a-s-s-t-t-a-i-a-s-s-t-t'],
             ['serbian', 'А Б В Г Д Ђ Е Ж З И Ј К Л Љ М Н Њ О П Р С Т Ћ У Ф Х Ц Ч Џ Ш а б в г д ђ е ж з и ј к л љ м н њ о п р с т ћ у ф х ц ч џ ш Š Đ Ž Ć Č š đ ž ć č', 'a-b-v-g-d-dj-e-z-z-i-j-k-l-lj-m-n-nj-o-p-r-s-t-c-u-f-h-c-c-dz-s-a-b-v-g-d-dj-e-z-z-i-j-k-l-lj-m-n-nj-o-p-r-s-t-c-u-f-h-c-c-dz-s-s-dj-z-c-c-s-dj-z-c-c'],
             ['lithuanian', 'Ą Č Ę Ė Į Š Ų Ū Ž ą č ę ė į š ų ū ž', 'a-c-e-e-i-s-u-u-z-a-c-e-e-i-s-u-u-z'],
+            ['chinese', '活动日起', 'huodongriqi'],
         ];
     }
 
