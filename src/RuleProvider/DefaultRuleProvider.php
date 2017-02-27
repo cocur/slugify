@@ -511,6 +511,21 @@ class DefaultRuleProvider implements RuleProviderInterface
     'Ŝ' => 'SX',
     'Ŭ' => 'UX',
   ),
+  'estonian' => 
+  array (
+    'Š' => 'S',
+    'Ž' => 'Z',
+    'Õ' => 'O',
+    'Ä' => 'A',
+    'Ö' => 'O',
+    'Ü' => 'U',
+    'š' => 's',
+    'ž' => 'z',
+    'õ' => 'o',
+    'ä' => 'a',
+    'ö' => 'o',
+    'ü' => 'u',
+  ),
   'finnish' => 
   array (
     'Ä' => 'A',
