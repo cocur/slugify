@@ -32,7 +32,7 @@
         "symfony/config": "~2.4|~3.0",
         "symfony/dependency-injection": "~2.4|~3.0",
         "symfony/http-kernel": "~2.4|~3.0",
-        "twig/twig": "~1.12",
+        "twig/twig": "~1.26|~2.0",
         "zendframework/zend-modulemanager": "~2.2",
         "zendframework/zend-servicemanager": "~2.2",
         "zendframework/zend-view": "~2.2"
