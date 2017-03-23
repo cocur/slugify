@@ -25,7 +25,7 @@ removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.5.9, PHP 7 and [HHVM](http://hhvm.com).
-- Integrations for [Symfony2](http://symfony.com), [Silex (1 and 2)](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
+- Integrations for [Symfony (2 and 3)](http://symfony.com), [Silex (1 and 2)](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
 [Twig (1 and 2)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/),
 [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
 
@@ -162,9 +162,9 @@ All you need to do is:
 Integrations
 ------------
 
-### Symfony2
+### Symfony
 
-Slugify contains a Symfony2 bundle and service definition that allow you to use it as a service in your Symfony2
+Slugify contains a Symfony bundle and service definition that allow you to use it as a service in your Symfony
 application. The code resides in the `Cocur\Slugify\Bridge\Symfony` namespace and you only need to add the bundle class
 to your `AppKernel.php`:
 
@@ -210,14 +210,14 @@ cocur_slugify:
 
 ### Twig
 
-If you use the Symfony2 framework with Twig you can use the Twig filter `slugify` in your templates after you have setup
-Symfony2 integrations (see above).
+If you use the Symfony framework with Twig you can use the Twig filter `slugify` in your templates after you have setup
+Symfony integrations (see above).
 
 ```twig
 {{ 'Hällo Wörld'|slugify }}
 ```
 
-If you use Twig outside of the Symfony2 framework you first need to add the extension to your environment:
+If you use Twig outside of the Symfony framework you first need to add the extension to your environment:
 
 ```php
 use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
