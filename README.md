@@ -20,7 +20,7 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Finnish, French, Georgian, German, Greek, Hindi, Italien, Latvian, Lithuanian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
+- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Italien, Latvian, Lithuanian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
 removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
@@ -485,6 +485,13 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 Change Log
 ----------
+
+### Version 2.5 (23 March 2017)
+
+- [#150](https://github.com/cocur/slugify/pull/150) Add Romanian rules (by [gabiudrescu](https://github.com/gabiudrescu))
+- [#154](https://github.com/cocur/slugify/pull/154) Add French rules (by [SuN-80](https://github.com/SuN-80))
+- [#159](https://github.com/cocur/slugify/pull/159) Add Estonian rules (by [erkimiilberg](https://github.com/erkimiilberg))
+- [#162](https://github.com/cocur/slugify/pull/162) Add support for Twig 2 (by [JakeFr](https://github.com/JakeFr))
 
 ### Version 2.4 (9 February 2017)
 
