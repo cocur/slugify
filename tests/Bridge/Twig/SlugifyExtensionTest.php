@@ -46,15 +46,6 @@ class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @covers Cocur\Slugify\Bridge\Twig\SlugifyExtension::getName()
-     */
-    public function getNameReturnsNameOfExtension()
-    {
-        $this->assertEquals('slugify_extension', $this->extension->getName());
-    }
-
-    /**
-     * @test
      * @covers Cocur\Slugify\Bridge\Twig\SlugifyExtension::getFilters()
      */
     public function getFilters()

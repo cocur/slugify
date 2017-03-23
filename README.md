@@ -26,7 +26,7 @@ removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - PSR-4 compatible.
 - Compatible with PHP >= 5.5.9, PHP 7 and [HHVM](http://hhvm.com).
 - Integrations for [Symfony2](http://symfony.com), [Silex (1 and 2)](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
-[Twig](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), 
+[Twig (1 and 2)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/),
 [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
 
 
@@ -95,7 +95,7 @@ You can find a list of the available rulesets in `Resources/rules`.
 
 ### More options
 
-The constructor takes an options array, you have already seen the `rulesets` options above. You can also change the 
+The constructor takes an options array, you have already seen the `rulesets` options above. You can also change the
 regular expression that is used to replace characters with the separator.
 
 ```php
@@ -654,7 +654,7 @@ inform us if a transliteration is wrong. We would highly appreciate it if you ca
 Github. If you have never contributed to a project on Github we are happy to help you. Just ask on Twitter or directly
 join our Gitter.
 
-You always can help me (Florian, the original developer and maintainer) out by 
+You always can help me (Florian, the original developer and maintainer) out by
 [sending me an Euro or two](https://paypal.me/florianec/2).
 
 

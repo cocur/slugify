@@ -12,6 +12,7 @@
 namespace Cocur\Slugify\Tests\Bridge\Silex;
 
 use Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider;
+use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 use Silex\Application;
 use Silex\Provider\TwigServiceProvider;
 
@@ -54,6 +55,6 @@ class SlugifySilexProviderTest extends \PHPUnit_Framework_TestCase
         $app->register(new TwigServiceProvider());
         $app->register(new SlugifyServiceProvider());
 
-        $this->assertTrue($app['twig']->hasExtension('slugify_extension'));
+        $this->assertTrue($app['twig']->hasExtension(SlugifyExtension::class));
     }
 }
