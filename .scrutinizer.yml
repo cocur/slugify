@@ -155,7 +155,6 @@ checks:
         avoid_corrupting_byteorder_marks: true
         avoid_closing_tag: true
         avoid_aliased_php_functions: true
-        align_assignments: true
         argument_type_checks: true
         no_mixed_inline_html: true
         no_long_variable_names:
