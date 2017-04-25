@@ -43,6 +43,7 @@ function insertRules($fileName, array $rules = [])
 $directory = __DIR__.'/../Resources/rules';
 $fileName  = __DIR__.'/../src/RuleProvider/DefaultRuleProvider.php';
 $rules     = getRules($directory);
+ksort($rules);
 
 $result = insertRules($fileName, $rules);
 
