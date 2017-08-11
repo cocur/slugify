@@ -20,8 +20,10 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for Arabic, Austrian, Azerbaijani, Bulgarian, Burmese, Croatian, Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Italien, Latvian, Lithuanian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of
-removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
+- Provides custom replacements for Arabic, Austrian, Azerbaijani, Brazilian Portuguese, Bulgarian, Burmese, Croatian, 
+Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Hungarian, Italian, Latvian, Lithuanian, 
+Macedonian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special 
+characters. Instead of removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
 - Compatible with PHP >= 5.5.9 and PHP 7.
