@@ -793,6 +793,27 @@ class DefaultRuleProvider implements RuleProviderInterface
     'य़' => 'Yi',
     'ज़' => 'Za',
   ),
+  'hungarian' =>
+  array (
+    "Á" => "a",
+    "É" => "e",
+    "Í" => "i",
+    "Ó" => "o",
+    "Ö" => "o",
+    "Ő" => "o",
+    "Ú" => "u",
+    "Ü" => "u",
+    "Ű" => "u",
+    "á" => "a",
+    "é" => "e",
+    "í" => "i",
+    "ó" => "o",
+    "ö" => "o",
+    "ő" => "o",
+    "ú" => "u",
+    "ü" => "u",
+    "ű" => "u"
+  ),
   'italian' => 
   array (
     'À' => 'a',
