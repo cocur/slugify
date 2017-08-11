@@ -24,7 +24,7 @@ Features
 removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 - No external dependencies.
 - PSR-4 compatible.
-- Compatible with PHP >= 5.5.9, PHP 7 and [HHVM](http://hhvm.com).
+- Compatible with PHP >= 5.5.9 and PHP 7.
 - Integrations for [Symfony (2 and 3)](http://symfony.com), [Silex (1 and 2)](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
 [Twig (1 and 2)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/),
 [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
@@ -147,12 +147,21 @@ $slugify->slugify('für'); // -> "fuer"
 
 ### Contributing
 
-Feel free to ask for new rules for languages that is not already here.
+We really appreciate if you report bugs and errors in the transliteration, especially if you are a native speaker of
+the language and question. Feel free to ask for additional languages in the issues, but please not that the
+maintainer of this repository does not speak all languages. If you can provide a Pull Request with rules for
+a new language or extend the rules for an existing language that would be amazing.
 
-All you need to do is:
+To add a new language you need to:
 
-1. Provide transliteration rules for your language, in any form, e.g. `'ї' => 'ji'`
-2. Provide some examples of texts transliterated with this rules e.g. `'Україна' => 'Ukrajina'`
+1. Create a `[language].json` in `Resources/rules`
+2. If you believe the language should be a default ruleset you can add the language to 
+`Cocur\Slugify\Slugify::$options`. If you add the language there all existing tests still have to pass
+3. Run `php bin/generate-default.php`
+4. Add tests for the language in `tests/SlugifyTest.php`. If the language is in the default ruleset add your
+test cases to `defaultRuleProvider()`, otherwise to `customRulesProvider()`.
+
+Submit PR. Thank you very much.
 
 ### Further information
 
@@ -486,6 +495,17 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 Change Log
 ----------
 
+### Version 3.0 (11 August 2017)
+
+- HHVM is no longer supported
+- Bugfix [#165](https://github.com/cocur/slugify/issues/165) Added missing French rules to `DefaultRuleProvider` (by [gsouf](https://github.com/gsouf))
+- [#168](https://github.com/cocur/slugify/pull/168) Add Persian rules (by [mohammad6006](https://github.com/mohammad6006))
+- Bugfix [#169](https://github.com/cocur/slugify/issues/169) Add missing `getName()` to `Cocur\Slugify\Bridge\Twig\SlugifyExtension` (by [TomCan](https://github.com/TomCan))
+- [#172](https://github.com/cocur/slugify/pull/172) Sort rules in `DefaultRuleProvider` alphabetically (by [tbmatuka](https://github.com/tbmatuka))
+- [#174](https://github.com/cocur/slugify/pull/174) Add Hungarian rules (by [rviktor87](https://github.com/rviktor87))
+- [#180](https://github.com/cocur/slugify/pull/180) Add Brazilian Portuguese rules (by [tallesairan](https://github.com/tallesairan))
+- Bugfix [#181](https://github.com/cocur/slugify/pull/181) Add missing French rules (by [FabienPapet](https://github.com/FabienPapet))
+
 ### Version 2.5 (23 March 2017)
 
 - [#150](https://github.com/cocur/slugify/pull/150) Add Romanian rules (by [gabiudrescu](https://github.com/gabiudrescu))
@@ -670,7 +690,7 @@ License
 
 The MIT License (MIT)
 
-Copyright (c) 2012-2014 Florian Eckerstorfer
+Copyright (c) 2012-2017 Florian Eckerstorfer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
