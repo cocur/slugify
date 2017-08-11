@@ -38,6 +38,10 @@ class CocurSlugifyExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        if (empty($config['rulesets'])) {
+            unset($config['rulesets']);
+        }
+
         // Extract slugify arguments from config
         $slugifyArguments = array_intersect_key($config, array_flip(['lowercase', 'separator', 'regexp', 'rulesets']));
 
