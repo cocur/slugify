@@ -80,7 +80,7 @@ prefer the Turkish transliteration you have to possibilities. You can activate i
 ```php
 $slugify = new Slugify();
 $slugify->slugify('ä'); // -> "ae"
-$slugify->activateRuleset('turkish');
+$slugify->activateRuleSet('turkish');
 $slugify->slugify('ä'); // -> "a"
 ```
 
