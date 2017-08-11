@@ -66,4 +66,15 @@ class SlugifyExtension extends \Twig_Extension
     {
         return $this->slugify->slugify($string, $separator);
     }
+
+    /**
+     * get Name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return "SlugifyExtension";
+    }
+
 }
