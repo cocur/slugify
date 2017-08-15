@@ -163,7 +163,15 @@ To add a new language you need to:
 4. Add tests for the language in `tests/SlugifyTest.php`. If the language is in the default ruleset add your
 test cases to `defaultRuleProvider()`, otherwise to `customRulesProvider()`.
 
-Submit PR. Thank you very much.
+Submit PR. Thank you very much. 💚
+
+### Code of Conduct
+
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+
+The full Code of Conduct can be found [here](https://github.com/cocur/slugify/blob/master/CODE_OF_CONDUCT.md).
+
+This project is no place for hate. If you have any problems please contact Florian: [florian@eckerstorfer.net](mailto:florian@eckerstorfer.net) ✌🏻🏳️‍🌈
 
 ### Further information
 
