@@ -41,6 +41,8 @@ You can install Slugify through [Composer](https://getcomposer.org):
 $ composer require cocur/slugify
 ```
 
+Slugify requires the Multibyte String extension from PHP. Typically you can use the configure option `--enable-mbstring` while compiling PHP. More information can be found in the [PHP documentation](http://php.net/manual/en/mbstring.installation.php).
+ 
 
 Usage
 -----
