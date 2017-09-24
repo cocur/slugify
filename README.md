@@ -507,6 +507,12 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 Change Log
 ----------
 
+### Version 3.0.1 (24 September 2017)
+
+- [#183](https://github.com/cocur/slugify/pull/183) Fix invalid JSON ([RusiPapazov](https://github.com/RusiPapazov))
+- [#185](https://github.com/cocur/slugify/pull/185) Fix support for Symfony > 3.3 (by [FabienPapet](https://github.com/FabienPapet))
+- [#186](https://github.com/cocur/slugify/pull/186) Require Multibyte extension in `composer.json` (by [wandersonwhcr](https://github.com/wandersonwhcr))
+
 ### Version 3.0 (11 August 2017)
 
 - HHVM is no longer supported
