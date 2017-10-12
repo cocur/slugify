@@ -126,6 +126,14 @@ $slugify = new Slugify(['separator' => '_']);
 $slugify->slugify('Hello World'); // -> "hello_world"
 ```
 
+By default Slugify will remove leading and trailing separators before returning the slug. If you do not want the slug to 
+be trimmed you can set the `trim` option to false.
+
+```php
+$slugify = new Slugify(['trim' => false]);
+$slugify->slugify('Hello World '); // -> "hello-world-"
+```
+
 ### Changing options on the fly
 
 You can overwrite any of the above options on the fly by passing an options array as second argument to the `slugify()`
