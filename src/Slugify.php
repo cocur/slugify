@@ -45,6 +45,7 @@ class Slugify implements SlugifyInterface
         'regexp'    => self::LOWERCASE_NUMBERS_DASHES,
         'separator' => '-',
         'lowercase' => true,
+        'trim' => true,
         'rulesets'  => [
             'default',
             // Languages are preferred if they appear later, list is ordered by number of
@@ -119,7 +120,9 @@ class Slugify implements SlugifyInterface
 
         $string = preg_replace($options['regexp'], $options['separator'], $string);
 
-        return trim($string, $options['separator']);
+        return ($options['trim'])
+            ? trim($string, $options['separator'])
+            : $string;
     }
 
     /**

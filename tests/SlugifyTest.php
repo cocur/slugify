@@ -207,6 +207,9 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('file-name', $this->slugify->slugify('FILE NAME'));
         $this->assertEquals('FILE-NAME', $this->slugify->slugify('FILE NAME', ['lowercase' => false]));
+
+        $this->assertEquals('file-name', $this->slugify->slugify('file name '));
+        $this->assertEquals('file-name-', $this->slugify->slugify('file name ', ['trim' => false]));
     }
 
     /**
