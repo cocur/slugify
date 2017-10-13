@@ -59,9 +59,9 @@ class CocurSlugifyExtension extends Extension
             ->setPublic(false);
         $container->setAlias('slugify', 'cocur_slugify');
 
-        // for symfony versions > 3.3
-        if (Kernel::VERSION_ID > 30300) {
-            $container->setAlias('Cocur\Slugify\Slugify', 'cocur_slugify');
+        // for symfony versions >= 3.3
+        if (Kernel::VERSION_ID >= 30300) {
+            $container->setAlias('Cocur\Slugify\SlugifyInterface', 'cocur_slugify');
         }
     }
 }
