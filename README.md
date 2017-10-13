@@ -97,7 +97,7 @@ $slugify = new Slugify(['rulesets' => ['default', 'turkish']]);
 $slugify->slugify('ä'); // -> "a"
 ```
 
-You can find a list of the available rulesets in `Resources/rules`.
+You can find a list of the available rulesets in [Resources/rules](https://github.com/cocur/slugify/tree/master/Resources/rules).
 
 ### More options
 
@@ -229,14 +229,20 @@ The bundle also provides an alias `slugify` for the `cocur_slugify` service:
 $slug = $this->get('slugify')->slugify('Hello World!');
 ```
 
-You can set the following configuration settings in `app/config.yml` to adjust the slugify service:
+If you use `autowire` (Symfony >=3.3), you can inject it into your services like this:
+
+```php
+public function __construct(\Cocur\Slugify\SlugifyInterface $slugify)
+```
+
+You can set the following configuration settings in `config.yml` to adjust the slugify service:
 
 ```yaml
 cocur_slugify:
     lowercase: <boolean>
     separator: <string>
     regexp: <string>
-    rulesets: { }
+    rulesets: { } # List of rulesets: https://github.com/cocur/slugify/tree/master/Resources/rules
 ```
 
 ### Twig
