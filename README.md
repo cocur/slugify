@@ -97,7 +97,7 @@ $slugify = new Slugify(['rulesets' => ['default', 'turkish']]);
 $slugify->slugify('ä'); // -> "a"
 ```
 
-You can find a list of the available rulesets in `Resources/rules`.
+You can find a list of the available rulesets in [Resources/rules](https://github.com/cocur/slugify/tree/master/Resources/rules).
 
 ### More options
 
@@ -242,7 +242,7 @@ cocur_slugify:
     lowercase: <boolean>
     separator: <string>
     regexp: <string>
-    rulesets: { }
+    rulesets: { } # List of rulesets: https://github.com/cocur/slugify/tree/master/Resources/rules
 ```
 
 ### Twig
