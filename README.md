@@ -229,6 +229,12 @@ The bundle also provides an alias `slugify` for the `cocur_slugify` service:
 $slug = $this->get('slugify')->slugify('Hello World!');
 ```
 
+If you use `autowire` (Symfony >=3.3), you can inject it into your services like this:
+
+```php
+public function __construct(\Cocur\Slugify\SlugifyInterface $slugify)
+```
+
 You can set the following configuration settings in `app/config.yml` to adjust the slugify service:
 
 ```yaml
