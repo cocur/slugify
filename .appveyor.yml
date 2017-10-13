@@ -38,3 +38,6 @@ notifications:
     on_build_success: false
     on_build_failure: true
     on_build_status_changed: true
+
+on_failure:
+    - type C:\Users\appveyor\AppData\Local\Temp\1\chocolatey\KB3035131.Install.evt
