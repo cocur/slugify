@@ -162,7 +162,7 @@ $slugify->slugify('für'); // -> "fuer"
 ### Contributing
 
 We really appreciate if you report bugs and errors in the transliteration, especially if you are a native speaker of
-the language and question. Feel free to ask for additional languages in the issues, but please not that the
+the language and question. Feel free to ask for additional languages in the issues, but please note that the
 maintainer of this repository does not speak all languages. If you can provide a Pull Request with rules for
 a new language or extend the rules for an existing language that would be amazing.
 
