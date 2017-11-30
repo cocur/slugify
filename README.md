@@ -20,7 +20,7 @@ Features
 --------
 
 - Removes all special characters from a string.
-- Provides custom replacements for Arabic, Austrian, Azerbaijani, Brazilian Portuguese, Bulgarian, Burmese, Croatian, 
+- Provides custom replacements for Arabic, Austrian, Azerbaijani, Brazilian Portuguese, Bulgarian, Burmese, Chinese, Croatian, 
 Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Hungarian, Italian, Latvian, Lithuanian, 
 Macedonian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special 
 characters. Instead of removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
@@ -697,6 +697,8 @@ Authors
 - [Ivo Bathke](https://github.com/ivoba)
 - [Marchenko Alexandr](http://mac-blog.org.ua)
 - And many [great contributors](https://github.com/cocur/slugify/graphs/contributors)
+
+Support for Chinese is adapted from [jifei/Pinyin](https://github.com/jifei/Pinyin) with permission.
 
 > Slugify is a project of [Cocur](http://cocur.co). You can contact us on Twitter:
 > [**@cocurco**](https://twitter.com/cocurco)
