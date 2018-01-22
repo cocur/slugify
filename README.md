@@ -523,6 +523,11 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 Change Log
 ----------
 
+### Version 3.1 (22 January 2018)
+
+- [#195](https://github.com/cocur/slugify/pull/195) Add support for Chinese (Pinyin) (by [SuN-80](https://github.com/SuN-80), [franmomu](https://github.com/franmomu))
+- [#189](https://github.com/cocur/slugify/pull/189) Add trim option (by [sforsberg](https://github.com/sforsberg))
+
 ### Version 3.0.1 (24 September 2017)
 
 - [#183](https://github.com/cocur/slugify/pull/183) Fix invalid JSON ([RusiPapazov](https://github.com/RusiPapazov))
