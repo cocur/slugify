@@ -28,6 +28,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->booleanNode('lowercase')->end()
                 ->booleanNode('trim')->end()
+                ->booleanNode('strip_tags')->end()
                 ->scalarNode('separator')->end()
                 ->scalarNode('regexp')->end()
                 ->arrayNode('rulesets')->prototype('scalar')->end()

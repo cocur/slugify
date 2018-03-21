@@ -211,6 +211,10 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('file-name', $this->slugify->slugify('file name '));
         $this->assertEquals('file-name-', $this->slugify->slugify('file name ', ['trim' => false]));
+
+        $this->assertEquals('file-name', $this->slugify->slugify('<file name'));
+        $this->assertEquals('p-file-p-foo-a-href-bar-name-a', $this->slugify->slugify('<p>file</p><!-- foo --> <a href="#bar">name</a>'));
+        $this->assertEquals('file-name', $this->slugify->slugify('<p>file</p><!-- foo --> <a href="#bar">name</a>', ['strip_tags' => true]));
     }
 
     /**

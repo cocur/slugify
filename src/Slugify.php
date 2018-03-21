@@ -46,6 +46,7 @@ class Slugify implements SlugifyInterface
         'separator' => '-',
         'lowercase' => true,
         'trim' => true,
+        'strip_tags' => false,
         'rulesets'  => [
             'default',
             // Languages are preferred if they appear later, list is ordered by number of
@@ -110,6 +111,10 @@ class Slugify implements SlugifyInterface
         } else {
             $rules = $this->rules;
         }
+
+        $string = ($options['strip_tags'])
+            ? strip_tags($string)
+            : $string;
 
         $string = strtr($string, $rules);
         unset($rules);
