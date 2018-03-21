@@ -44,7 +44,7 @@ class CocurSlugifyExtension extends Extension
         }
 
         // Extract slugify arguments from config
-        $slugifyArguments = array_intersect_key($config, array_flip(['lowercase', 'separator', 'regexp', 'rulesets']));
+        $slugifyArguments = array_intersect_key($config, array_flip(['lowercase', 'trim', 'strip_tags', 'separator', 'regexp', 'rulesets']));
 
         $container->setDefinition('cocur_slugify', new Definition('Cocur\Slugify\Slugify', [$slugifyArguments]));
         $container
