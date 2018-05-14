@@ -98,12 +98,12 @@ class Slugify implements SlugifyInterface
     {
         // BC: the second argument used to be the separator
         if (is_string($options)) {
-            $separator            = $options;
-            $options              = [];
+            $separator = $options;
+            $options = [];
             $options['separator'] = $separator;
         }
 
-        $options = array_merge($this->options, (array) $options);
+        $options = array_merge($this->options, (array)$options);
 
         // Add a custom ruleset without touching the default rules
         if (isset($options['ruleset'])) {
@@ -181,5 +181,17 @@ class Slugify implements SlugifyInterface
     public static function create(array $options = [])
     {
         return new static($options);
+    }
+
+    /**
+     * Return if a string is a valid slug or not.
+     *
+     * @param $string
+     * @param null $options
+     * @return bool
+     */
+    public function validateSlug($string, $options = null)
+    {
+        return $string === $this->slugify($string, $options);
     }
 }
