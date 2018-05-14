@@ -182,4 +182,16 @@ class Slugify implements SlugifyInterface
     {
         return new static($options);
     }
+
+    /**
+     * Return if a string is a valid slug or not.
+     *
+     * @param $string
+     * @param null $options
+     * @return bool
+     */
+    public function validateSlug($string, $options = null)
+    {
+        return $string === $this->slugify($string, $options);
+    }
 }

@@ -270,4 +270,17 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
             ['Ą Č Ę Ė Į Š Ų Ū Ž ą č ę ė į š ų ū ž', 'a-c-e-e-i-s-u-u-z-a-c-e-e-i-s-u-u-z'],
         ];
     }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::validateSlug()
+     * @dataProvider defaultRuleProvider
+     */
+    public function validateSlug($bad, $good)
+    {
+        $slugify = new Slugify();
+
+        $this->assertFalse($slugify->validateSlug($bad));
+        $this->assertTrue($slugify->validateSlug($good));
+    }
 }
