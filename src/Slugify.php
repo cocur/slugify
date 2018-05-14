@@ -98,12 +98,12 @@ class Slugify implements SlugifyInterface
     {
         // BC: the second argument used to be the separator
         if (is_string($options)) {
-            $separator = $options;
-            $options = [];
+            $separator            = $options;
+            $options              = [];
             $options['separator'] = $separator;
         }
 
-        $options = array_merge($this->options, (array)$options);
+        $options = array_merge($this->options, (array) $options);
 
         // Add a custom ruleset without touching the default rules
         if (isset($options['ruleset'])) {
