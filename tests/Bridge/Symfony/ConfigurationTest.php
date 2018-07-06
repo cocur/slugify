@@ -21,6 +21,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $configs = [
             [
                 'lowercase' => true,
+                'strip_tags' => false,
                 'separator' => '_',
                 'regexp' => 'abcd',
                 'rulesets' => ['burmese', 'hindi']
@@ -36,6 +37,15 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testLowercaseOnlyAcceptsBoolean()
     {
         $configs = [['lowercase' => 'abc']];
+        $this->process($configs);
+    }
+
+    /**
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
+     */
+    public function testStripTagsOnlyAcceptsBoolean()
+    {
+        $configs = [['strip_tags' => 'abc']];
         $this->process($configs);
     }
 
