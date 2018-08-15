@@ -8303,6 +8303,25 @@ class DefaultRuleProvider implements RuleProviderInterface
     'ö' => 'o',
     'ü' => 'u',
   ),
+  'turkmen' => 
+  array (
+    'Ç' => 'C',
+    'Ä' => 'A',
+    'Ž' => 'Z',
+    'Ň' => 'N',
+    'Ö' => 'O',
+    'Ş' => 'S',
+    'Ü' => 'U',
+    'Ý' => 'Y',
+    'ç' => 'c',
+    'ä' => 'a',
+    'ž' => 'z',
+    'ň' => 'n',
+    'ö' => 'o',
+    'ş' => 's',
+    'ü' => 'u',
+    'ý' => 'y',
+  ),
   'ukrainian' => 
   array (
     'Ґ' => 'G',
