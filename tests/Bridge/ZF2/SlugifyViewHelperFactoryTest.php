@@ -5,6 +5,7 @@ use Cocur\Slugify\Bridge\ZF2\SlugifyViewHelperFactory;
 use Cocur\Slugify\Slugify;
 use Zend\ServiceManager\ServiceManager;
 use Zend\View\HelperPluginManager;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SlugifyViewHelperFactoryTest
@@ -12,7 +13,7 @@ use Zend\View\HelperPluginManager;
  * @subpackage bridge
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
-class SlugifyViewHelperFactoryTest extends \PHPUnit_Framework_TestCase
+class SlugifyViewHelperFactoryTest extends TestCase
 {
     /**
      * @var SlugifyViewHelperFactory

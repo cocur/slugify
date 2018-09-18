@@ -4,6 +4,7 @@ namespace Cocur\Slugify\Tests\Bridge\Nette;
 
 use Cocur\Slugify\Bridge\Nette\SlugifyExtension;
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 
 /**
  * SlugifyExtensionTest
@@ -15,7 +16,7 @@ use Mockery as m;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
+class SlugifyExtensionTest extends TestCase
 {
     protected function setUp()
     {

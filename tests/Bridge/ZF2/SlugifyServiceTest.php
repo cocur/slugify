@@ -4,6 +4,7 @@ namespace Cocur\Slugify\Tests\Bridge\ZF2;
 use Cocur\Slugify\Bridge\ZF2\Module;
 use Cocur\Slugify\Bridge\ZF2\SlugifyService;
 use Zend\ServiceManager\ServiceManager;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SlugifyServiceTest
@@ -11,7 +12,7 @@ use Zend\ServiceManager\ServiceManager;
  * @subpackage bridge
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
-class SlugifyServiceTest extends \PHPUnit_Framework_TestCase
+class SlugifyServiceTest extends TestCase
 {
     /**
      * @var SlugifyService
