@@ -13,7 +13,7 @@ namespace Cocur\Slugify\Tests\Bridge\Twig;
 
 use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 use Mockery as m;
-
+use PHPUnit\Framework\TestCase;
 
 /**
  * SlugifyExtensionTest
@@ -26,7 +26,7 @@ use Mockery as m;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class SlugifyExtensionTest extends \PHPUnit_Framework_TestCase
+class SlugifyExtensionTest extends TestCase
 {
     /**
      * @var \Cocur\Slugify\SlugifyInterface|\Mockery\MockInterface

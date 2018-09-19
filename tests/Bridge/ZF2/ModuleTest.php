@@ -2,6 +2,7 @@
 namespace Cocur\Slugify\Tests\Bridge\ZF2;
 
 use Cocur\Slugify\Bridge\ZF2\Module;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ModuleTest
@@ -9,7 +10,7 @@ use Cocur\Slugify\Bridge\ZF2\Module;
  * @subpackage bridge
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
-class ModuleTest extends \PHPUnit_Framework_TestCase
+class ModuleTest extends TestCase
 {
     /**
      * @var Module

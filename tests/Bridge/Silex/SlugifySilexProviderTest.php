@@ -15,6 +15,7 @@ use Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider;
 use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 use Silex\Application;
 use Silex\Provider\TwigServiceProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * SlugifyServiceProviderTest
@@ -27,7 +28,7 @@ use Silex\Provider\TwigServiceProvider;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class SlugifySilexProviderTest extends \PHPUnit_Framework_TestCase
+class SlugifySilexProviderTest extends TestCase
 {
     /**
      * @test

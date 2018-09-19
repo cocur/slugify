@@ -8,8 +8,9 @@ use Cocur\Slugify\RuleProvider\RuleProviderInterface;
 use Cocur\Slugify\SlugifyInterface;
 use League\Container\Container;
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 
-class SlugifyServiceProviderTest extends \PHPUnit_Framework_TestCase
+class SlugifyServiceProviderTest extends TestCase
 {
     public function testProvidesSlugify()
     {

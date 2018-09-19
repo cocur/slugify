@@ -4,6 +4,7 @@ namespace Cocur\Slugify\Tests\Bridge\Latte;
 
 use Cocur\Slugify\Bridge\Latte\SlugifyHelper;
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 
 /**
  * SlugifyHelperTest
@@ -15,7 +16,7 @@ use Mockery as m;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class SlugifyHelperTest extends \PHPUnit_Framework_TestCase
+class SlugifyHelperTest extends TestCase
 {
     protected function setUp()
     {

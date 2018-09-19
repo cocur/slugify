@@ -13,6 +13,7 @@ namespace Cocur\Slugify\Tests\Bridge\Symfony;
 
 use Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle;
 use Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension;
+use PHPUnit\Framework\TestCase;
 
 /**
  * CocurSlugifyBundleTest
@@ -25,7 +26,7 @@ use Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class CocurSlugifyBundleTest extends \PHPUnit_Framework_TestCase
+class CocurSlugifyBundleTest extends TestCase
 {
     /**
      * @covers Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::getContainerExtension()
@@ -37,4 +38,3 @@ class CocurSlugifyBundleTest extends \PHPUnit_Framework_TestCase
         static::assertInstanceOf(CocurSlugifyExtension::class, $bundle->getContainerExtension());
     }
 }
-

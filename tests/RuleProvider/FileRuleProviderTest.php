@@ -13,7 +13,7 @@ namespace Cocur\Slugify\Tests\RuleProvider;
 
 use Cocur\Slugify\RuleProvider\FileRuleProvider;
 use org\bovigo\vfs\vfsStream;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * FileRuleProviderTest
@@ -23,7 +23,7 @@ use PHPUnit_Framework_TestCase;
  * @copyright 2015 Florian Eckerstorfer
  * @group     unit
  */
-class FileRuleProviderTest extends PHPUnit_Framework_TestCase
+class FileRuleProviderTest extends TestCase
 {
     /**
      * @test

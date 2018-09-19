@@ -3,6 +3,7 @@ namespace Cocur\Slugify\Tests\Bridge\ZF2;
 
 use Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper;
 use Cocur\Slugify\Slugify;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SlugifyViewHelperTest
@@ -10,7 +11,7 @@ use Cocur\Slugify\Slugify;
  * @subpackage bridge
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
-class SlugifyViewHelperTest extends \PHPUnit_Framework_TestCase
+class SlugifyViewHelperTest extends TestCase
 {
     /**
      * @var SlugifyViewHelper
