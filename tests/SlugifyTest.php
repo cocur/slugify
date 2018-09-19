@@ -162,7 +162,7 @@ class SlugifyTest extends TestCase
             ['lithuanian', 'Ą Č Ę Ė Į Š Ų Ū Ž ą č ę ė į š ų ū ž', 'a-c-e-e-i-s-u-u-z-a-c-e-e-i-s-u-u-z'],
             ['estonian', 'Š Ž Õ Ä Ö Ü š ž õ ä ö ü', 's-z-o-a-o-u-s-z-o-a-o-u'],
             ['hungarian', 'Á É Í Ó Ö Ő Ú Ü Ű á é í ó ö ő ú ü ű', 'a-e-i-o-o-o-u-u-u-a-e-i-o-o-o-u-u-u'],
-            ['macedonian', 'Ѓезвето беше полно со црно кафе. ', 'gjezveto-beshe-polno-so-crno-kafe'],
+            ['macedonian', 'Ѓезвето беше полно со црно кафе. Ѕ ѕ s', 'gjezveto-beshe-polno-so-crno-kafe-dz-dz-s'],
             ['chinese', '活动日起', 'huodongriqi'],
             ['turkmen', 'Ç Ä Ž Ň Ö Ş Ü Ý ç ä ž ň ö ş ü ý', 'c-a-z-n-o-s-u-y-c-a-z-n-o-s-u-y'],
         ];
