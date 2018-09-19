@@ -164,6 +164,7 @@ class SlugifyTest extends TestCase
             ['hungarian', 'Á É Í Ó Ö Ő Ú Ü Ű á é í ó ö ő ú ü ű', 'a-e-i-o-o-o-u-u-u-a-e-i-o-o-o-u-u-u'],
             ['macedonian', 'Ѓезвето беше полно со црно кафе. ', 'gjezveto-beshe-polno-so-crno-kafe'],
             ['chinese', '活动日起', 'huodongriqi'],
+            ['turkmen', 'Ç Ä Ž Ň Ö Ş Ü Ý ç ä ž ň ö ş ü ý', 'c-a-z-n-o-s-u-y-c-a-z-n-o-s-u-y'],
         ];
     }
 
