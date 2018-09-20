@@ -40,5 +40,8 @@
     },
     "autoload": {
         "psr-4": {"Cocur\\Slugify\\": "src"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Cocur\\Slugify\\Tests\\": "tests"}
     }
 }
