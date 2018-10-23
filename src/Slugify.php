@@ -45,6 +45,7 @@ class Slugify implements SlugifyInterface
         'regexp'    => self::LOWERCASE_NUMBERS_DASHES,
         'separator' => '-',
         'lowercase' => true,
+        'lowercase_after_regexp' => false,
         'trim' => true,
         'strip_tags' => false,
         'rulesets'  => [
@@ -119,11 +120,15 @@ class Slugify implements SlugifyInterface
         $string = strtr($string, $rules);
         unset($rules);
 
-        if ($options['lowercase']) {
+        if ($options['lowercase'] && !$options['lowercase_after_regexp']) {
             $string = mb_strtolower($string);
         }
 
         $string = preg_replace($options['regexp'], $options['separator'], $string);
+
+        if ($options['lowercase'] && $options['lowercase_after_regexp']) {
+            $string = mb_strtolower($string);
+        }
 
         return ($options['trim'])
             ? trim($string, $options['separator'])

@@ -22,6 +22,7 @@ class ConfigurationTest extends TestCase
         $configs = [
             [
                 'lowercase' => true,
+                'lowercase_after_regexp' => false,
                 'strip_tags' => false,
                 'separator' => '_',
                 'regexp' => 'abcd',
@@ -38,6 +39,15 @@ class ConfigurationTest extends TestCase
     public function testLowercaseOnlyAcceptsBoolean()
     {
         $configs = [['lowercase' => 'abc']];
+        $this->process($configs);
+    }
+
+    /**
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
+     */
+    public function testLowercaseAfterRegexpOnlyAcceptsBoolean()
+    {
+        $configs = [['lowercase_after_regexp' => 'abc']];
         $this->process($configs);
     }
 
