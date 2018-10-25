@@ -118,6 +118,17 @@ $slugify = new Slugify(['lowercase' => false]);
 $slugify->slugify('Hello World'); // -> "Hello-World"
 ```
 
+Lowercasing is done before using the regular expression. If you want to keep the lowercasing behavior but your regular
+expression needs to match uppercase letters, you can set the `lowercase_after_regexp` option to `true`.
+
+```php
+$slugify = new Slugify([
+    'regexp' => '/(?<=[[:^upper:]])(?=[[:upper:]])/',
+    'lowercase_after_regexp' => false,
+]);
+$slugify->slugify('FooBar'); // -> "foo-bar"
+```
+
 By default Slugify will use dashes as separators. If you want to use a different default separator, you can set the
 `separator` option.
 

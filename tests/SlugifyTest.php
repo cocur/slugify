@@ -272,4 +272,44 @@ class SlugifyTest extends TestCase
             ['Ą Č Ę Ė Į Š Ų Ū Ž ą č ę ė į š ų ū ž', 'a-c-e-e-i-s-u-u-z-a-c-e-e-i-s-u-u-z'],
         ];
     }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyLowercaseNotAfterRegexp()
+    {
+        $slugify = new Slugify();
+
+        // Matches any non-uppercase letter followed by an uppercase letter,
+        // which means it  must be used before lowercasing the result.
+        $regexp = '/(?<=[[:^upper:]])(?=[[:upper:]])/';
+
+        $this->assertSame('foobar', $slugify->slugify('FooBar', [
+            'regexp' => $regexp,
+            'lowercase' => true,
+            'lowercase_after_regexp' => false,
+            'separator' => '_',
+        ]));
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyLowercaseAfterRegexp()
+    {
+        $slugify = new Slugify();
+
+        // Matches any non-uppercase letter followed by an uppercase letter,
+        // which means it  must be used before lowercasing the result.
+        $regexp = '/(?<=[[:^upper:]])(?=[[:upper:]])/';
+
+        $this->assertSame('foo_bar', $slugify->slugify('FooBar', [
+            'regexp' => $regexp,
+            'lowercase' => true,
+            'lowercase_after_regexp' => true,
+            'separator' => '_',
+        ]));
+    }
 }
