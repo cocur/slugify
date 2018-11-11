@@ -1,39 +1,25 @@
 build: false
-shallow_clone: true
 platform: x86
 clone_folder: c:\projects\cocur\slugify
 
 cache:
   - '%LOCALAPPDATA%\Composer\files'
 
-init:
-  - SET PATH=C:\Program Files\OpenSSL;C:\tools\php;%PATH%
-
-environment:
-  matrix:
-    - COMPOSER_FLAGS: ""
-
 install:
-  - cinst -y OpenSSL.Light
-  - sc config wuauserv start= auto
-  - net start wuauserv
-  - cinst -y php --params "/InstallDir:C:\tools\php"
-  - cd C:\tools\php
+  - ps: Set-Service wuauserv -StartupType Manual
+  - cinst -y php composer
+  - refreshenv
+  - cd c:\tools\php72
   - copy php.ini-production php.ini /Y
+  - echo date.timezone="UTC" >> php.ini
   - echo extension_dir=ext >> php.ini
   - echo extension=php_openssl.dll >> php.ini
   - echo extension=php_mbstring.dll >> php.ini
+  - echo extension=php_curl.dll >> php.ini
+  - echo memory_limit=3G >> php.ini
   - cd %APPVEYOR_BUILD_FOLDER%
-  - php -r "readfile('https://getcomposer.org/installer');" | php
-  - php composer.phar update %COMPOSER_FLAGS% --no-interaction --no-progress
+  - composer install --no-interaction --no-progress
 
 test_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - vendor\bin\phpunit --verbose --colors=always
-
-notifications:
-  - provider: Webhook
-    url: https://webhooks.gitter.im/e/aaf55568e4629e650616
-    on_build_success: false
-    on_build_failure: true
-    on_build_status_changed: true
+  - php vendor\phpunit\phpunit\phpunit
