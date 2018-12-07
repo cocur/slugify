@@ -24,7 +24,7 @@
         "latte/latte": "~2.2",
         "league/container": "^2.2.0",
         "mikey179/vfsStream": "~1.6",
-        "mockery/mockery": "~1.0",
+        "mockery/mockery": "~1.2",
         "nette/di": "~2.2",
         "phpunit/phpunit": "~5.3|~6.0|~7.0",
         "pimple/pimple": "~3.0",
