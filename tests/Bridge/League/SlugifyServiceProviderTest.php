@@ -12,6 +12,11 @@ use PHPUnit\Framework\TestCase;
 
 class SlugifyServiceProviderTest extends TestCase
 {
+
+    protected function tearDown() {
+        m::close();
+    }
+
     public function testProvidesSlugify()
     {
         $container = new Container();

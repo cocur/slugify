@@ -12,18 +12,19 @@
 namespace Cocur\Slugify\Tests\Bridge\Symfony;
 
 use Cocur\Slugify\Bridge\Symfony\Configuration;
-use Symfony\Component\Config\Definition\Processor;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Config\Definition\Processor;
 
 class ConfigurationTest extends TestCase
 {
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testAll()
     {
         $configs = [
             [
                 'lowercase' => true,
-                'lowercase_after_regexp' => false,
-                'strip_tags' => false,
                 'separator' => '_',
                 'regexp' => 'abcd',
                 'rulesets' => ['burmese', 'hindi']
@@ -39,24 +40,6 @@ class ConfigurationTest extends TestCase
     public function testLowercaseOnlyAcceptsBoolean()
     {
         $configs = [['lowercase' => 'abc']];
-        $this->process($configs);
-    }
-
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
-     */
-    public function testLowercaseAfterRegexpOnlyAcceptsBoolean()
-    {
-        $configs = [['lowercase_after_regexp' => 'abc']];
-        $this->process($configs);
-    }
-
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
-     */
-    public function testStripTagsOnlyAcceptsBoolean()
-    {
-        $configs = [['strip_tags' => 'abc']];
         $this->process($configs);
     }
 

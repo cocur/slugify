@@ -3,9 +3,9 @@ namespace Cocur\Slugify\Tests\Bridge\ZF2;
 
 use Cocur\Slugify\Bridge\ZF2\SlugifyViewHelperFactory;
 use Cocur\Slugify\Slugify;
+use PHPUnit\Framework\TestCase;
 use Zend\ServiceManager\ServiceManager;
 use Zend\View\HelperPluginManager;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Class SlugifyViewHelperFactoryTest

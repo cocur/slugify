@@ -38,3 +38,4 @@ class CocurSlugifyBundleTest extends TestCase
         static::assertInstanceOf(CocurSlugifyExtension::class, $bundle->getContainerExtension());
     }
 }
+

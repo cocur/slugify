@@ -24,6 +24,10 @@ class SlugifyHelperTest extends TestCase
         $this->helper = new SlugifyHelper($this->slugify);
     }
 
+    protected function tearDown() {
+        m::close();
+    }
+
     /**
      * @test
      * @covers Cocur\Slugify\Bridge\Latte\SlugifyHelper::slugify()

@@ -26,7 +26,7 @@
         "mikey179/vfsStream": "~1.6",
         "mockery/mockery": "~1.0",
         "nette/di": "~2.2",
-        "phpunit/phpunit": "~4.8|~5.2",
+        "phpunit/phpunit": "~5.3|~6.0|~7.0",
         "pimple/pimple": "~3.0",
         "plumphp/plum": "~0.1",
         "silex/silex": "~2.3",

@@ -25,6 +25,7 @@ class SlugifyExtensionTest extends TestCase
 
     /**
      * @test
+     * @doesNotPerformAssertions
      * @covers Cocur\Slugify\Bridge\Nette\SlugifyExtension::loadConfiguration()
      */
     public function loadConfiguration()
@@ -73,10 +74,12 @@ class SlugifyExtensionTest extends TestCase
 
         $this->extension->setCompiler($compiler, 'slugify');
         $this->extension->loadConfiguration();
+        m::close();
     }
 
     /**
      * @test
+     * @doesNotPerformAssertions
      * @covers Cocur\Slugify\Bridge\Nette\SlugifyExtension::beforeCompile()
      */
     public function beforeCompile()
@@ -130,5 +133,6 @@ class SlugifyExtensionTest extends TestCase
 
         $this->extension->setCompiler($compiler, 'slugify');
         $this->extension->beforeCompile();
+        m::close();
     }
 }

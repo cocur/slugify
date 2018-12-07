@@ -37,6 +37,8 @@ class SlugifyConverterTest extends TestCase
         $converter = new SlugifyConverter($slugify);
 
         $this->assertSame('hello_world', $converter->convert('Hello World'));
+
+        Mockery::close();
     }
 
     /**

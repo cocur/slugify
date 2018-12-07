@@ -15,6 +15,7 @@ use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
+
 /**
  * SlugifyExtensionTest
  *
@@ -42,6 +43,10 @@ class SlugifyExtensionTest extends TestCase
     {
         $this->slugify = m::mock('Cocur\Slugify\SlugifyInterface');
         $this->extension = new SlugifyExtension($this->slugify);
+    }
+
+    protected function tearDown() {
+        m::close();
     }
 
     /**

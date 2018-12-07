@@ -46,6 +46,10 @@ class SlugifyTest extends TestCase
         $this->slugify = new Slugify([], $this->provider);
     }
 
+    public function tearDown() {
+        Mockery::close();
+    }
+
     /**
      * @test
      * @dataProvider defaultRuleProvider

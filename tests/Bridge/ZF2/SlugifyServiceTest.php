@@ -3,8 +3,8 @@ namespace Cocur\Slugify\Tests\Bridge\ZF2;
 
 use Cocur\Slugify\Bridge\ZF2\Module;
 use Cocur\Slugify\Bridge\ZF2\SlugifyService;
-use Zend\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Class SlugifyServiceTest

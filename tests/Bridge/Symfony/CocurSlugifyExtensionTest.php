@@ -33,8 +33,12 @@ class CocurSlugifyExtensionTest extends TestCase
         $this->extension = new CocurSlugifyExtension();
     }
 
+    protected function tearDown() {
+        m::close();
+    }
     /**
      * @test
+     * @doesNotPerformAssertions
      * @covers Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension::load()
      */
     public function load()
@@ -68,3 +72,4 @@ class CocurSlugifyExtensionTest extends TestCase
         $this->extension->load([], $container);
     }
 }
+
