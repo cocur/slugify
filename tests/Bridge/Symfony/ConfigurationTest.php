@@ -44,6 +44,24 @@ class ConfigurationTest extends TestCase
     }
 
     /**
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
+     */
+    public function testLowercaseAfterRegexpOnlyAcceptsBoolean()
+    {
+        $configs = [['lowercase_after_regexp' => 'abc']];
+        $this->process($configs);
+    }
+
+    /**
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
+     */
+    public function testStripTagsOnlyAcceptsBoolean()
+    {
+        $configs = [['strip_tags' => 'abc']];
+        $this->process($configs);
+    }
+
+    /**
      * Processes an array of configurations and returns a compiled version.
      *
      * @param array $configs An array of raw configurations
