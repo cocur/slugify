@@ -53,6 +53,7 @@ class Slugify implements SlugifyInterface
             // Languages are preferred if they appear later, list is ordered by number of
             // websites in that language
             // https://en.wikipedia.org/wiki/Languages_used_on_the_Internet#Content_languages_for_websites
+            'armenian',
             'azerbaijani',
             'burmese',
             'hindi',
