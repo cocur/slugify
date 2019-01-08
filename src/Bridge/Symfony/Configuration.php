@@ -21,8 +21,15 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('cocur_slugify');
+        $treeBuilder = new TreeBuilder('cocur_slugify');
+
+        // Keep compatibility with symfony/config < 4.2
+        if (\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            $rootNode = $treeBuilder->root('cocur_slugify');
+
+        }
 
         $rootNode
             ->children()
