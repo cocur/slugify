@@ -207,11 +207,12 @@ Integrations
 ### Symfony
 
 Slugify contains a Symfony bundle and service definition that allow you to use it as a service in your Symfony
-application. The code resides in the `Cocur\Slugify\Bridge\Symfony` namespace and you only need to add the bundle class
-to your `AppKernel.php`:
+application. The code resides in `Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle` and you only need to activate it:
+
+#### Symfony <=3
 
 ```php
-# app/AppKernel.php
+// app/AppKernel.php
 
 class AppKernel extends Kernel
 {
@@ -221,11 +222,19 @@ class AppKernel extends Kernel
             // ...
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
         );
-        // ...
     }
-
-    // ...
 }
+```
+
+#### Symfony >=4
+
+```php
+// config/bundles.php
+
+return [
+    // ...
+    Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::class => ['all' => true],
+];
 ```
 
 You can now use the `cocur_slugify` service everywhere in your application, for example, in your controller:
