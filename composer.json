@@ -43,5 +43,15 @@
     },
     "autoload-dev": {
         "psr-4": {"Cocur\\Slugify\\Tests\\": "tests"}
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cocur\\Slugify\\Bridge\\Laravel\\SlugifyServiceProvider"
+            ],
+            "aliases": {
+                "Slugify": "Cocur\\Slugify\\Bridge\\Laravel\\SlugifyFacade"
+            }
+        }
     }
 }
