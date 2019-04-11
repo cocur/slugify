@@ -144,10 +144,11 @@ class DefaultRuleProvider implements RuleProviderInterface
     'Ä' => 'AE',
     'Ö' => 'OE',
     'Ü' => 'UE',
-    'ß' => 'sz',
+    'ẞ' => 'SS',
     'ä' => 'ae',
     'ö' => 'oe',
     'ü' => 'ue',
+    'ß' => 'ss',
   ),
   'azerbaijani' => 
   array (
@@ -7627,10 +7628,11 @@ class DefaultRuleProvider implements RuleProviderInterface
     'Ä' => 'AE',
     'Ö' => 'OE',
     'Ü' => 'UE',
-    'ß' => 'ss',
+    'ẞ' => 'SS',
     'ä' => 'ae',
     'ö' => 'oe',
     'ü' => 'ue',
+    'ß' => 'ss',
   ),
   'greek' => 
   array (
