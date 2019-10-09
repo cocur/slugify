@@ -14,7 +14,7 @@ namespace Cocur\Slugify\Bridge\Symfony;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * CourSlugifyBundle
+ * CocurSlugifyBundle
  *
  * @package    cocur/slugify
  * @subpackage bridge
