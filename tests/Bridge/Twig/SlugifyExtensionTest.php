@@ -53,7 +53,7 @@ class SlugifyExtensionTest extends MockeryTestCase
         $filters = $this->extension->getFilters();
 
         $this->assertCount(1, $filters);
-        $this->assertInstanceOf('\Twig_SimpleFilter', $filters[0]);
+        $this->assertInstanceOf('\Twig\TwigFilter', $filters[0]);
     }
 
     /**
