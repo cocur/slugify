@@ -13,7 +13,7 @@ namespace Cocur\Slugify\Tests\Bridge\Laravel;
 
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
 use Illuminate\Foundation\Application;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
  * SlugifyServiceProviderTest
@@ -27,7 +27,7 @@ use PHPUnit\Framework\TestCase;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class SlugifyProviderTest extends TestCase
+class SlugifyProviderTest extends MockeryTestCase
 {
     /** @var Application */
     private $app;
