@@ -1,12 +1,4 @@
-*.sublime-project
-*.sublime-workspace
-.idea
+/vendor/
 /.php_cs.cache
-/nbproject/private/
-/build/
-/cache/
-vendor
-report
-composer.lock
-phpunit.xml
-humbuglog.txt
+/composer.lock
+/phpunit.xml
