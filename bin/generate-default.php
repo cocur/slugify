@@ -56,4 +56,3 @@ if ($result) {
 } else {
     printf("Error writing rules into '%s'.\n", $fileName);
 }
-
