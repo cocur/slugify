@@ -13,7 +13,7 @@ namespace Cocur\Slugify\Tests;
 
 use Cocur\Slugify\Slugify;
 use Mockery;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
  * SlugifyTest
@@ -26,7 +26,7 @@ use PHPUnit\Framework\TestCase;
  * @copyright 2012-2014 Florian Eckerstorfer
  * @license   http://www.opensource.org/licenses/MIT The MIT License
  */
-class SlugifyTest extends TestCase
+class SlugifyTest extends MockeryTestCase
 {
     /**
      * @var Slugify

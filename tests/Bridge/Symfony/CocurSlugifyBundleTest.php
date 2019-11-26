@@ -13,7 +13,7 @@ namespace Cocur\Slugify\Tests\Bridge\Symfony;
 
 use Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle;
 use Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
  * CocurSlugifyBundleTest
@@ -26,7 +26,7 @@ use PHPUnit\Framework\TestCase;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class CocurSlugifyBundleTest extends TestCase
+class CocurSlugifyBundleTest extends MockeryTestCase
 {
     /**
      * @covers Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::getContainerExtension()

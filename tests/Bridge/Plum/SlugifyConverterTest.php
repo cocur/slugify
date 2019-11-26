@@ -13,7 +13,7 @@ namespace Cocur\Slugify\Tests\Bridge\Plum;
 
 use Cocur\Slugify\Bridge\Plum\SlugifyConverter;
 use Mockery;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
  * SlugifyConverterTest
@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  * @copyright 2012-2015 Florian Eckerstorfer
  * @group     unit
  */
-class SlugifyConverterTest extends TestCase
+class SlugifyConverterTest extends MockeryTestCase
 {
     /**
      * @test

@@ -13,9 +13,9 @@ namespace Cocur\Slugify\Tests\Bridge\Symfony;
 
 use Cocur\Slugify\Bridge\Symfony\Configuration;
 use Symfony\Component\Config\Definition\Processor;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class ConfigurationTest extends TestCase
+class ConfigurationTest extends MockeryTestCase
 {
     public function testAll()
     {
