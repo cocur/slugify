@@ -31,10 +31,10 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 class SlugifySilexProviderTest extends MockeryTestCase
 {
     /**
-     * @test
+     *
      * @covers Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider
      */
-    public function register()
+    public function testRegister()
     {
         // it seems like Application is not mockable.
         $app = new Application();
@@ -48,9 +48,9 @@ class SlugifySilexProviderTest extends MockeryTestCase
     }
 
     /**
-     * @test
+     *
      */
-    public function registerWithTwig()
+    public function testRegisterWithTwig()
     {
         $app = new Application();
         $app->register(new TwigServiceProvider());

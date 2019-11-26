@@ -45,10 +45,10 @@ class SlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @test
+     *
      * @covers Cocur\Slugify\Bridge\Twig\SlugifyExtension::getFilters()
      */
-    public function getFilters()
+    public function testGetFilters()
     {
         $filters = $this->extension->getFilters();
 
@@ -57,10 +57,10 @@ class SlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @test
+     *
      * @covers Cocur\Slugify\Bridge\Twig\SlugifyExtension::slugifyFilter()
      */
-    public function slugifyFilter()
+    public function testSlugifyFilter()
     {
         $this->slugify->shouldReceive('slugify')->with('hällo wörld', '_')->once()->andReturn('haello_woerld');
 

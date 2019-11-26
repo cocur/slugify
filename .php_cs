@@ -13,4 +13,5 @@ return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
+        'php_unit_test_annotation' => true,
     ]);

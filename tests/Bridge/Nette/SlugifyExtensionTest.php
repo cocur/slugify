@@ -24,10 +24,10 @@ class SlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @test
+     *
      * @covers Cocur\Slugify\Bridge\Nette\SlugifyExtension::loadConfiguration()
      */
-    public function loadConfiguration()
+    public function testLoadConfiguration()
     {
         $slugify = m::mock('Nette\DI\ServiceDefinition');
         $slugify
@@ -76,10 +76,10 @@ class SlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @test
+     *
      * @covers Cocur\Slugify\Bridge\Nette\SlugifyExtension::beforeCompile()
      */
-    public function beforeCompile()
+    public function testBeforeCompile()
     {
         $latteFactory = m::mock('Nette\DI\ServiceDefinition');
         $latteFactory

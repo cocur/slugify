@@ -26,11 +26,11 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 class FileRuleProviderTest extends MockeryTestCase
 {
     /**
-     * @test
+     *
      * @covers Cocur\Slugify\RuleProvider\FileRuleProvider::__construct()
      * @covers Cocur\Slugify\RuleProvider\FileRuleProvider::getRules()
      */
-    public function getRulesReturnsRulesReadFromJsonFile()
+    public function testGetRulesReturnsRulesReadFromJsonFile()
     {
         vfsStream::setup('fixtures', null, [
             'german.json'   => '{"ä": "a"}',

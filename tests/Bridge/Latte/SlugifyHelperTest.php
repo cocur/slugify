@@ -25,10 +25,10 @@ class SlugifyHelperTest extends MockeryTestCase
     }
 
     /**
-     * @test
+     *
      * @covers Cocur\Slugify\Bridge\Latte\SlugifyHelper::slugify()
      */
-    public function slugify()
+    public function testSlugify()
     {
         $this->slugify->shouldReceive('slugify')->with('hällo wörld', '_')->once()->andReturn('haello_woerld');
 
