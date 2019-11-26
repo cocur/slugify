@@ -159,6 +159,7 @@ class SlugifyTest extends MockeryTestCase
             ['danish', 'Æ æ Ø ø Å å É é', 'ae-ae-oe-oe-aa-aa-e-e'],
             ['romanian', 'ă î â ş ș ţ ț Ă Î Â Ş Ș Ţ Ț', 'a-i-a-s-s-t-t-a-i-a-s-s-t-t'],
             ['serbian', 'А Б В Г Д Ђ Е Ж З И Ј К Л Љ М Н Њ О П Р С Т Ћ У Ф Х Ц Ч Џ Ш а б в г д ђ е ж з и ј к л љ м н њ о п р с т ћ у ф х ц ч џ ш Š Đ Ž Ć Č š đ ž ć č', 'a-b-v-g-d-dj-e-z-z-i-j-k-l-lj-m-n-nj-o-p-r-s-t-c-u-f-h-c-c-dz-s-a-b-v-g-d-dj-e-z-z-i-j-k-l-lj-m-n-nj-o-p-r-s-t-c-u-f-h-c-c-dz-s-s-dj-z-c-c-s-dj-z-c-c'],
+            ['slovak', 'Á Ä Č Ď É Í Ĺ Ľ Ň Ó Ô Ŕ Š Ť Ú Ý Ž á ä č ď é í ĺ ľ ň ó ô ŕ š ť ú ý ž', 'a-a-c-d-e-i-l-l-n-o-o-r-s-t-u-y-z-a-a-c-d-e-i-l-l-n-o-o-r-s-t-u-y-z'],
             ['lithuanian', 'Ą Č Ę Ė Į Š Ų Ū Ž ą č ę ė į š ų ū ž', 'a-c-e-e-i-s-u-u-z-a-c-e-e-i-s-u-u-z'],
             ['estonian', 'Š Ž Õ Ä Ö Ü š ž õ ä ö ü', 's-z-o-a-o-u-s-z-o-a-o-u'],
             ['hungarian', 'Á É Í Ó Ö Ő Ú Ü Ű á é í ó ö ő ú ü ű', 'a-e-i-o-o-o-u-u-u-a-e-i-o-o-o-u-u-u'],
