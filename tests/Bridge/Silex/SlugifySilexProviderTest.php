@@ -46,9 +46,7 @@ class SlugifySilexProviderTest extends MockeryTestCase
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $app['slugify']);
     }
 
-    /**
-     *
-     */
+    
     public function testRegisterWithTwig()
     {
         $app = new Application();

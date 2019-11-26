@@ -13,6 +13,7 @@ return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
+        'no_empty_phpdoc' => true,
         'php_unit_test_annotation' => true,
         'phpdoc_trim' => true,
     ]);
