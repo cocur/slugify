@@ -25,7 +25,6 @@ class SlugifyHelperTest extends MockeryTestCase
     }
 
     /**
-     *
      * @covers Cocur\Slugify\Bridge\Latte\SlugifyHelper::slugify()
      */
     public function testSlugify()

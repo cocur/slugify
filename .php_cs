@@ -14,4 +14,5 @@ return PhpCsFixer\Config::create()
     ->setRules([
         '@PSR2' => true,
         'php_unit_test_annotation' => true,
+        'phpdoc_trim' => true,
     ]);

@@ -26,7 +26,6 @@ class SlugifyViewHelperFactoryTest extends MockeryTestCase
     }
 
     /**
-     *
      * @covers Cocur\Slugify\Bridge\ZF2\SlugifyViewHelperFactory::__invoke()
      */
     public function testCreateService()

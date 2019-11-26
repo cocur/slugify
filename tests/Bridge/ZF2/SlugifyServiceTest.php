@@ -25,7 +25,6 @@ class SlugifyServiceTest extends MockeryTestCase
     }
 
     /**
-     *
      * @covers Cocur\Slugify\Bridge\ZF2\SlugifyService::__invoke()
      */
     public function testInvokeWithoutCustomConfig()
@@ -41,7 +40,6 @@ class SlugifyServiceTest extends MockeryTestCase
     }
 
     /**
-     *
      * @covers Cocur\Slugify\Bridge\ZF2\SlugifyService::__invoke()
      */
     public function testInvokeWithCustomConfig()

@@ -34,7 +34,6 @@ class CocurSlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     *
      * @covers Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension::load()
      */
     public function testLoad()

@@ -26,7 +26,6 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 class FileRuleProviderTest extends MockeryTestCase
 {
     /**
-     *
      * @covers Cocur\Slugify\RuleProvider\FileRuleProvider::__construct()
      * @covers Cocur\Slugify\RuleProvider\FileRuleProvider::getRules()
      */
