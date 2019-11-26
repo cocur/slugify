@@ -33,7 +33,7 @@ class SlugifyExtension extends CompilerExtension
         $builder = $this->getContainerBuilder();
 
         $self = $this;
-        $registerToLatte = function(ServiceDefinition $def) use ($self) {
+        $registerToLatte = function (ServiceDefinition $def) use ($self) {
             $def->addSetup('addFilter', ['slugify', [$self->prefix('@helper'), 'slugify']]);
         };
 

@@ -76,5 +76,4 @@ class SlugifyExtension extends \Twig_Extension
     {
         return "SlugifyExtension";
     }
-
 }

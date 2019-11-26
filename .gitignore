@@ -1,6 +1,7 @@
 *.sublime-project
 *.sublime-workspace
 .idea
+/.php_cs.cache
 /nbproject/private/
 /build/
 /cache/
