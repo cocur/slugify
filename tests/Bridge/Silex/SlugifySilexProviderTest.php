@@ -52,6 +52,10 @@ class SlugifySilexProviderTest extends MockeryTestCase
      */
     public function registerWithTwig()
     {
+        if (!class_exists('\Twig_Environment')) {
+            $this->markTestSkipped('Silex is not compatible with Twig 3');
+        }
+
         $app = new Application();
         $app->register(new TwigServiceProvider());
         $app->register(new SlugifyServiceProvider());
