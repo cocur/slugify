@@ -31,10 +31,9 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 class SlugifySilexProviderTest extends MockeryTestCase
 {
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider
      */
-    public function register()
+    public function testRegister()
     {
         // it seems like Application is not mockable.
         $app = new Application();
@@ -47,10 +46,8 @@ class SlugifySilexProviderTest extends MockeryTestCase
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $app['slugify']);
     }
 
-    /**
-     * @test
-     */
-    public function registerWithTwig()
+    
+    public function testRegisterWithTwig()
     {
         if (!class_exists('\Twig_Environment')) {
             $this->markTestSkipped('Silex is not compatible with Twig 3');

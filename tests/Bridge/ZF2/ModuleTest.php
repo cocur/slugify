@@ -23,10 +23,9 @@ class ModuleTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\ZF2\Module::getServiceConfig()
      */
-    public function getServiceConfig()
+    public function testGetServiceConfig()
     {
         $smConfig = $this->module->getServiceConfig();
         $this->assertTrue(is_array($smConfig));
@@ -37,10 +36,9 @@ class ModuleTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\ZF2\Module::getViewHelperConfig()
      */
-    public function getViewHelperConfig()
+    public function testGetViewHelperConfig()
     {
         $vhConfig = $this->module->getViewHelperConfig();
         $this->assertTrue(is_array($vhConfig));

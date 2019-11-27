@@ -32,10 +32,9 @@ class SlugifyViewHelperTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__invoke()
      */
-    public function invoke()
+    public function testInvoke()
     {
         $actual = 'Hällo Wörld';
         $expected = call_user_func($this->viewHelper, $actual);

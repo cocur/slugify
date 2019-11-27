@@ -34,10 +34,9 @@ class CocurSlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension::load()
      */
-    public function load()
+    public function testLoad()
     {
         $twigDefinition = m::mock('Symfony\Component\DependencyInjection\Definition');
         $twigDefinition

@@ -47,11 +47,10 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @dataProvider defaultRuleProvider
      * @covers       Cocur\Slugify\Slugify::slugify()
      */
-    public function slugifyReturnsSlugifiedStringUsingDefaultProvider($string, $result)
+    public function testSlugifyReturnsSlugifiedStringUsingDefaultProvider($string, $result)
     {
         $slugify = new Slugify();
 
@@ -59,11 +58,10 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::addRule()
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function addRuleAddsRule()
+    public function testAddRuleAddsRule()
     {
         $this->assertInstanceOf(
             'Cocur\Slugify\Slugify',
@@ -73,11 +71,10 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::addRules()
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function addRulesAddsMultipleRules()
+    public function testAddRulesAddsMultipleRules()
     {
         $this->assertInstanceOf(
             'Cocur\Slugify\Slugify',
@@ -87,10 +84,9 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::activateRuleset()
      */
-    public function activateRulesetActivatesTheGivenRuleset()
+    public function testActivateRulesetActivatesTheGivenRuleset()
     {
         $provider = Mockery::mock('\Cocur\Slugify\RuleProvider\RuleProviderInterface');
         $provider->shouldReceive('getRules')->with('esperanto')->once()->andReturn(['ĉ' => 'cx']);
@@ -105,19 +101,17 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::create()
      */
-    public function createReturnsAnInstance()
+    public function testCreateReturnsAnInstance()
     {
         $this->assertInstanceOf('Cocur\\Slugify\\SlugifyInterface', Slugify::create());
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::__construct()
      */
-    public function constructWithOtherRegexp()
+    public function testConstructWithOtherRegexp()
     {
         $this->slugify = new Slugify(['regexp' => '/([^a-z0-9.]|-)+/']);
 
@@ -125,11 +119,10 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::__construct()
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function doNotConvertToLowercase()
+    public function testDoNotConvertToLowercase()
     {
         $actual   = 'File Name';
         $expected = 'File-Name';
@@ -139,10 +132,9 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @dataProvider customRulesProvider
      */
-    public function customRules($rule, $string, $result)
+    public function testCustomRules($rule, $string, $result)
     {
         $slugify = new Slugify();
         $slugify->activateRuleSet($rule);
@@ -170,11 +162,10 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::__construct()
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function slugifyDefaultsToSeparatorOption()
+    public function testSlugifyDefaultsToSeparatorOption()
     {
         $actual   = 'file name';
         $expected = 'file__name';
@@ -184,11 +175,10 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::__construct()
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function slugifyHonorsSeparatorArgument()
+    public function testSlugifyHonorsSeparatorArgument()
     {
         $actual   = 'file name';
         $expected = 'file__name';
@@ -198,10 +188,9 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function slugifyOptionsArray()
+    public function testSlugifyOptionsArray()
     {
         $this->assertEquals('file-name', $this->slugify->slugify('file name'));
         $this->assertEquals('file+name', $this->slugify->slugify('file name', ['separator' => '+']));
@@ -221,10 +210,9 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function slugifyCustomRuleSet()
+    public function testSlugifyCustomRuleSet()
     {
         $slugify = new Slugify();
 
@@ -275,10 +263,9 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function slugifyLowercaseNotAfterRegexp()
+    public function testSlugifyLowercaseNotAfterRegexp()
     {
         $slugify = new Slugify();
 
@@ -295,10 +282,9 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Slugify::slugify()
      */
-    public function slugifyLowercaseAfterRegexp()
+    public function testSlugifyLowercaseAfterRegexp()
     {
         $slugify = new Slugify();
 

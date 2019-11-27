@@ -25,10 +25,9 @@ class SlugifyServiceTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\ZF2\SlugifyService::__invoke()
      */
-    public function invokeWithoutCustomConfig()
+    public function testInvokeWithoutCustomConfig()
     {
         $sm = $this->createServiceManagerMock();
         $slugify = call_user_func($this->slugifyService, $sm);
@@ -41,10 +40,9 @@ class SlugifyServiceTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\ZF2\SlugifyService::__invoke()
      */
-    public function invokeWithCustomConfig()
+    public function testInvokeWithCustomConfig()
     {
         $sm = $this->createServiceManagerMock([
             Module::CONFIG_KEY => [

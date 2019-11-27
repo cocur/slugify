@@ -26,11 +26,10 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 class SlugifyConverterTest extends MockeryTestCase
 {
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\Plum\SlugifyConverter::__construct()
      * @covers Cocur\Slugify\Bridge\Plum\SlugifyConverter::convert()
      */
-    public function convertSlugifiesString()
+    public function testConvertSlugifiesString()
     {
         $slugify = Mockery::mock('Cocur\Slugify\SlugifyInterface');
         $slugify->shouldReceive('slugify')->with('Hello World')->once()->andReturn('hello_world');
@@ -40,11 +39,10 @@ class SlugifyConverterTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\Plum\SlugifyConverter::__construct()
      * @covers Cocur\Slugify\Bridge\Plum\SlugifyConverter::convert()
      */
-    public function constructorCreatesSlugifyIfNoneIsProvided()
+    public function testConstructorCreatesSlugifyIfNoneIsProvided()
     {
         $converter = new SlugifyConverter();
 

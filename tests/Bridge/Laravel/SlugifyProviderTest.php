@@ -42,10 +42,9 @@ class SlugifyProviderTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::register()
      */
-    public function registerRegistersTheServiceProvider()
+    public function testRegisterRegistersTheServiceProvider()
     {
         $this->provider->register();
 
@@ -57,10 +56,9 @@ class SlugifyProviderTest extends MockeryTestCase
     }
 
     /**
-     * @test
      * @covers Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::provides()
      */
-    public function containsReturnsTheNameOfThProvider()
+    public function testContainsReturnsTheNameOfThProvider()
     {
         $this->assertContains('slugify', $this->provider->provides());
     }
