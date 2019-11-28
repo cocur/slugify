@@ -44,7 +44,7 @@ before_install:
   - composer global outdated --strict hirak/prestissimo || composer global require hirak/prestissimo
 
 install:
-  - if [ ALLOW_PHP_55 == 1 ]; then travis_retry composer require --dev --working-dir=./dev-tools nette/di:~2.3,; fi
+  - if [ $ALLOW_PHP_55 == 1 ]; then travis_retry composer require --dev --working-dir=./dev-tools nette/di:~2.3,; fi
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update $COMPOSER_FLAGS --no-suggest
   - if [ $ANALYSIS == 1 ]; then travis_retry composer update --working-dir=./dev-tools --no-suggest; fi
 
