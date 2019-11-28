@@ -4,31 +4,14 @@ language: php
 
 matrix:
   include:
-    - php: 5.5.9
-      env: ALLOW_PHP_55=1
-    - php: 5.5
-      env: ALLOW_PHP_55=1
-    - php: 5.5
-      env:
-        - COMPOSER_FLAGS='--prefer-lowest'
-        - ALLOW_PHP_55=1
-    - php: 5.6
-    - php: 5.6
-      env: COMPOSER_FLAGS='--prefer-lowest'
-    - php: 7.0
-    - php: 7.0
-      env: COMPOSER_FLAGS='--prefer-lowest'
-    - php: 7.1
-    - php: 7.1
-      env: COMPOSER_FLAGS='--prefer-lowest'
     - php: 7.2
-      env: ANALYSIS=1
     - php: 7.2
       env: COMPOSER_FLAGS='--prefer-lowest'
     - php: 7.3
     - php: 7.3
       env: COMPOSER_FLAGS='--prefer-lowest'
     - php: 7.4snapshot
+      env: ANALYSIS=1
     - php: 7.4snapshot
       env: COMPOSER_FLAGS='--prefer-lowest'
     - php: nightly
@@ -44,7 +27,6 @@ before_install:
   - composer global outdated --strict hirak/prestissimo || composer global require hirak/prestissimo
 
 install:
-  - if [ $ALLOW_PHP_55 == 1 ]; then travis_retry composer require --dev --working-dir=./dev-tools nette/di:~2.3; fi
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update $COMPOSER_FLAGS --no-suggest
   - if [ $ANALYSIS == 1 ]; then travis_retry composer update --working-dir=./dev-tools --no-suggest; fi
 
