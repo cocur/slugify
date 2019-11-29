@@ -38,6 +38,7 @@ cache:
     - $HOME/.composer
 
 before_install:
+  - phpenv config-rm xdebug.ini || return 0
   - composer global outdated --strict hirak/prestissimo || composer global require hirak/prestissimo
 
 install:
