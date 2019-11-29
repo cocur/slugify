@@ -23,6 +23,7 @@
         "ext-mbstring": "*"
     },
     "conflict": {
+        "nette/di": "^3.0",
         "twig/twig": ">=1,<1.38.1 || >=2,<2.12.1"
     },
     "require-dev": {

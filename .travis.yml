@@ -28,6 +28,7 @@ matrix:
     - php: 7.4snapshot
       env: COMPOSER_FLAGS='--prefer-lowest'
     - php: nightly
+      env: COMPOSER_FLAGS='--ignore-platform-reqs'
   allow_failures:
     - php: nightly
   fast_finish: true
@@ -38,7 +39,6 @@ cache:
 
 before_install:
   - composer global outdated --strict hirak/prestissimo || composer global require hirak/prestissimo
-  - if [ `php -r 'echo PHP_VERSION_ID;'` -ge 70000 ]; then composer require --dev --no-update --quiet nette/di:^3.0; fi;
 
 install:
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update $COMPOSER_FLAGS --no-suggest
