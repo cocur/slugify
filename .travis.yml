@@ -18,10 +18,20 @@ matrix:
     - php: 7.1
       env: COMPOSER_FLAGS='--prefer-lowest'
     - php: 7.2
+    - php: 7.2
+      env: COMPOSER_FLAGS='--prefer-lowest'
+    - php: 7.3
       env: ANALYSIS=1
+    - php: 7.3
+      env: COMPOSER_FLAGS='--prefer-lowest'
+    - php: 7.4snapshot
+    - php: 7.4snapshot
+      env: COMPOSER_FLAGS='--prefer-lowest'
     - php: nightly
   allow_failures:
-    - php: nightly
+    - php:
+        - 7.4snapshot
+        - nightly
   fast_finish: true
 
 cache:
