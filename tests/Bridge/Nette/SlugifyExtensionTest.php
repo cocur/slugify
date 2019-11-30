@@ -28,6 +28,11 @@ class SlugifyExtensionTest extends MockeryTestCase
      */
     public function testLoadConfiguration()
     {
+        $reflection = new \ReflectionClass('Nette\DI\ServiceDefinition');
+        if ($reflection->isFinal()) {
+            $this->markTestSkipped('The class \Nette\DI\ServiceDefinition is marked final and cannot be mocked');
+        }
+
         $slugify = m::mock('Nette\DI\ServiceDefinition');
         $slugify
             ->shouldReceive('setClass')
@@ -79,6 +84,11 @@ class SlugifyExtensionTest extends MockeryTestCase
      */
     public function testBeforeCompile()
     {
+        $reflection = new \ReflectionClass('Nette\DI\ServiceDefinition');
+        if ($reflection->isFinal()) {
+            $this->markTestSkipped('The class \Nette\DI\ServiceDefinition is marked final and cannot be mocked');
+        }
+
         $latteFactory = m::mock('Nette\DI\ServiceDefinition');
         $latteFactory
             ->shouldReceive('addSetup')
