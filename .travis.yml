@@ -40,6 +40,7 @@ cache:
 before_install:
   - phpenv config-rm xdebug.ini || return 0
   - composer global outdated --strict hirak/prestissimo || composer global require hirak/prestissimo
+  - if [ `php -r 'echo PHP_VERSION_ID;'` -ge 70000 ]; then composer require --dev --no-update --quiet nette/di:^3.0; fi;
 
 install:
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update $COMPOSER_FLAGS --no-suggest
