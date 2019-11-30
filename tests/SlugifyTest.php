@@ -48,7 +48,7 @@ class SlugifyTest extends MockeryTestCase
 
     /**
      * @dataProvider defaultRuleProvider
-     * @covers       Cocur\Slugify\Slugify::slugify()
+     * @covers       \Cocur\Slugify\Slugify::slugify()
      */
     public function testSlugifyReturnsSlugifiedStringUsingDefaultProvider($string, $result)
     {
@@ -58,8 +58,8 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::addRule()
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::addRule()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testAddRuleAddsRule()
     {
@@ -71,8 +71,8 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::addRules()
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::addRules()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testAddRulesAddsMultipleRules()
     {
@@ -84,7 +84,7 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::activateRuleset()
+     * @covers \Cocur\Slugify\Slugify::activateRuleset()
      */
     public function testActivateRulesetActivatesTheGivenRuleset()
     {
@@ -101,7 +101,7 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::create()
+     * @covers \Cocur\Slugify\Slugify::create()
      */
     public function testCreateReturnsAnInstance()
     {
@@ -109,7 +109,7 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::__construct()
+     * @covers \Cocur\Slugify\Slugify::__construct()
      */
     public function testConstructWithOtherRegexp()
     {
@@ -119,8 +119,8 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::__construct()
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::__construct()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testDoNotConvertToLowercase()
     {
@@ -162,8 +162,8 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::__construct()
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::__construct()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testSlugifyDefaultsToSeparatorOption()
     {
@@ -175,8 +175,8 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::__construct()
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::__construct()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testSlugifyHonorsSeparatorArgument()
     {
@@ -188,7 +188,7 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testSlugifyOptionsArray()
     {
@@ -210,7 +210,7 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testSlugifyCustomRuleSet()
     {
@@ -263,7 +263,7 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testSlugifyLowercaseNotAfterRegexp()
     {
@@ -282,7 +282,7 @@ class SlugifyTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Slugify::slugify()
+     * @covers \Cocur\Slugify\Slugify::slugify()
      */
     public function testSlugifyLowercaseAfterRegexp()
     {

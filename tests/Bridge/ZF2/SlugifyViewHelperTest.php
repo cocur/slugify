@@ -23,7 +23,7 @@ class SlugifyViewHelperTest extends MockeryTestCase
     private $slugify;
 
     /**
-     * @covers Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__construct()
+     * @covers \Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__construct()
      */
     protected function setUp()
     {
@@ -32,7 +32,7 @@ class SlugifyViewHelperTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__invoke()
+     * @covers \Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__invoke()
      */
     public function testInvoke()
     {
