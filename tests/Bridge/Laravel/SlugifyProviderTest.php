@@ -42,7 +42,7 @@ class SlugifyProviderTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::register()
+     * @covers \Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::register()
      */
     public function testRegisterRegistersTheServiceProvider()
     {
@@ -56,7 +56,7 @@ class SlugifyProviderTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::provides()
+     * @covers \Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::provides()
      */
     public function testContainsReturnsTheNameOfThProvider()
     {

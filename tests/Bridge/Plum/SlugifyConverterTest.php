@@ -26,8 +26,8 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 class SlugifyConverterTest extends MockeryTestCase
 {
     /**
-     * @covers Cocur\Slugify\Bridge\Plum\SlugifyConverter::__construct()
-     * @covers Cocur\Slugify\Bridge\Plum\SlugifyConverter::convert()
+     * @covers \Cocur\Slugify\Bridge\Plum\SlugifyConverter::__construct()
+     * @covers \Cocur\Slugify\Bridge\Plum\SlugifyConverter::convert()
      */
     public function testConvertSlugifiesString()
     {
@@ -39,8 +39,8 @@ class SlugifyConverterTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\Plum\SlugifyConverter::__construct()
-     * @covers Cocur\Slugify\Bridge\Plum\SlugifyConverter::convert()
+     * @covers \Cocur\Slugify\Bridge\Plum\SlugifyConverter::__construct()
+     * @covers \Cocur\Slugify\Bridge\Plum\SlugifyConverter::convert()
      */
     public function testConstructorCreatesSlugifyIfNoneIsProvided()
     {

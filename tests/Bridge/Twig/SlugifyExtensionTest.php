@@ -45,7 +45,7 @@ class SlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\Twig\SlugifyExtension::getFilters()
+     * @covers \Cocur\Slugify\Bridge\Twig\SlugifyExtension::getFilters()
      */
     public function testGetFilters()
     {
@@ -56,7 +56,7 @@ class SlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\Twig\SlugifyExtension::slugifyFilter()
+     * @covers \Cocur\Slugify\Bridge\Twig\SlugifyExtension::slugifyFilter()
      */
     public function testSlugifyFilter()
     {

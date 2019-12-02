@@ -24,7 +24,7 @@ class SlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\Nette\SlugifyExtension::loadConfiguration()
+     * @covers \Cocur\Slugify\Bridge\Nette\SlugifyExtension::loadConfiguration()
      */
     public function testLoadConfiguration()
     {
@@ -75,7 +75,7 @@ class SlugifyExtensionTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\Nette\SlugifyExtension::beforeCompile()
+     * @covers \Cocur\Slugify\Bridge\Nette\SlugifyExtension::beforeCompile()
      */
     public function testBeforeCompile()
     {
