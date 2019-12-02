@@ -63,6 +63,10 @@ class CocurSlugifyExtensionTest extends MockeryTestCase
             ->shouldReceive('setAlias')
             ->with('slugify', 'cocur_slugify')
             ->once();
+        $container
+            ->shouldReceive('setAlias')
+            ->with('Cocur\Slugify\SlugifyInterface', 'cocur_slugify')
+            ->once();
 
         $this->extension->load([], $container);
     }
