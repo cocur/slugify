@@ -23,8 +23,8 @@ Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with t
     characters. Instead of removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 -   No external dependencies.
 -   PSR-4 compatible.
--   Compatible with PHP >= 5.5.9 and PHP 7.
--   Integrations for [Symfony (2 and 3)](http://symfony.com), [Silex (1 and 2)](http://silex.sensiolabs.org), [Laravel](http://laravel.com),
+-   Compatible with PHP >= 7.
+-   Integrations for [Symfony (3, 4 and 5)](http://symfony.com), [Laravel](http://laravel.com),
     [Twig (1 and 2)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/),
     [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
 
@@ -291,34 +291,6 @@ Slugify extension using a closure:
 
 You can find more information about registering extensions in the
 [Twig documentation](http://twig.sensiolabs.org/doc/advanced.html#creating-an-extension).
-
-### Silex
-
-Slugify also provides a service provider to integrate into Silex.
-
-```php
-// For Silex version 1
-$app->register(new Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider());
-```
-
-```php
-// For Silex version 2
-$app->register(new Cocur\Slugify\Bridge\Silex2\SlugifyServiceProvider());
-```
-
-You can use the `slugify` method in your controllers:
-
-```php
-$app->get('/', function () {
-    return $app['slugify']->slugify('welcome to the homepage');
-});
-```
-
-And if you use Silex in combination with Twig register the `SlugifyServiceProvider` after the `Silex\Provider\TwigServiceProvider` to add the Twig extension to your environment and use the `slugify` filter in your templates.
-
-```twig
-{{ 'welcome to the homepage'|slugify }}
-```
 
 ### Mustache.php
 
