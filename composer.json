@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0",
         "ext-mbstring": "*"
     },
     "conflict": {
