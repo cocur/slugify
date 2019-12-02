@@ -35,7 +35,6 @@
         "phpunit/phpunit": "^5.7.27",
         "pimple/pimple": "~1.1",
         "plumphp/plum": "~0.1",
-        "silex/silex": "~1.3",
         "symfony/config": "~2.4 || ~3.0 || ~4.0",
         "symfony/dependency-injection": "~2.4 || ~3.0 || ~4.0",
         "symfony/http-kernel": "~2.4 || ~3.0 || ~4.0",
