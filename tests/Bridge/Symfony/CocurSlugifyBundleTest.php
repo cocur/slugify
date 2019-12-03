@@ -29,7 +29,7 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 class CocurSlugifyBundleTest extends MockeryTestCase
 {
     /**
-     * @covers Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::getContainerExtension()
+     * @covers \Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::getContainerExtension()
      */
     public function testGetContainerExtension()
     {

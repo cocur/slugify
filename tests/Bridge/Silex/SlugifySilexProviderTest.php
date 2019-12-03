@@ -31,7 +31,7 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 class SlugifySilexProviderTest extends MockeryTestCase
 {
     /**
-     * @covers Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider
+     * @covers \Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider
      */
     public function testRegister()
     {

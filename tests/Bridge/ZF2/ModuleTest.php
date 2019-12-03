@@ -23,7 +23,7 @@ class ModuleTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\ZF2\Module::getServiceConfig()
+     * @covers \Cocur\Slugify\Bridge\ZF2\Module::getServiceConfig()
      */
     public function testGetServiceConfig()
     {
@@ -36,7 +36,7 @@ class ModuleTest extends MockeryTestCase
     }
 
     /**
-     * @covers Cocur\Slugify\Bridge\ZF2\Module::getViewHelperConfig()
+     * @covers \Cocur\Slugify\Bridge\ZF2\Module::getViewHelperConfig()
      */
     public function testGetViewHelperConfig()
     {
