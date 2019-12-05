@@ -505,6 +505,10 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### unreleased
+
+- [#227](https://github.com/cocur/slugify/pull/227) Add support for capital sharp s (by [weeman1337](https://github.com/weeman1337))
+
 ### Version 3.2 (31 January 2019)
 
 -   [#201](https://github.com/cocur/slugify/pull/201) Add strip_tags option (by [thewilkybarkid](https://github.com/thewilkybarkid))
