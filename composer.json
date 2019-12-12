@@ -23,6 +23,9 @@
         "ext-mbstring": "*"
     },
     "conflict": {
+        "symfony/config": "<3.4 || >=4,<4.3",
+        "symfony/dependency-injection": "<3.4 || >=4,<4.3",
+        "symfony/http-kernel": "<3.4 || >=4,<4.3",
         "twig/twig": ">=1,<1.38.1 || >=2,<2.12.1"
     },
     "require-dev": {
