@@ -16,17 +16,12 @@ Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with t
 
 ## Features
 
--   Removes all special characters from a string.
--   Provides custom replacements for Arabic, Austrian, Azerbaijani, Brazilian Portuguese, Bulgarian, Burmese, Chinese, Croatian,
-    Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Hungarian, Italian, Latvian, Lithuanian,
-    Macedonian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special
-    characters. Instead of removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
--   No external dependencies.
--   PSR-4 compatible.
--   Compatible with PHP >= 7.
--   Integrations for [Symfony (3, 4 and 5)](http://symfony.com), [Laravel](http://laravel.com),
-    [Twig (1 and 2)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/),
-    [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
+- Removes all special characters from a string.
+- Provides custom replacements for Arabic, Austrian, Azerbaijani, Brazilian Portuguese, Bulgarian, Burmese, Chinese, Croatian, Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
+- No external dependencies.
+- PSR-4 compatible.
+- Compatible with PHP >= 7.
+- Integrations for [Symfony (3, 4 and 5)](http://symfony.com), [Laravel](http://laravel.com), [Twig (2 and 3)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
 
 ## Installation
 
@@ -197,10 +192,13 @@ This project is no place for hate. If you have any problems please contact Flori
 
 ### Symfony
 
-Slugify contains a Symfony bundle and service definition that allow you to use it as a service in your Symfony
-application. The code resides in `Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle` and you only need to activate it:
+Slugify contains a Symfony bundle and service definition that allow you to use it as a service in your Symfony application. The code resides in `Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle` and you only need to activate it:
 
-#### Symfony <=3
+#### Symfony 2
+
+Support for Symfony 2 has been dropped in Slugify 4.0.0, use `cocur/slugify@3`.
+
+#### Symfony 3
 
 ```php
 // app/AppKernel.php
@@ -217,7 +215,7 @@ class AppKernel extends Kernel
 }
 ```
 
-#### Symfony >=4
+#### Symfony >= 4
 
 ```php
 // config/bundles.php
@@ -400,13 +398,13 @@ presenter:
 ```php
 class MyPresenter extends \Nette\Application\UI\Presenter
 {
-	/** @var \Cocur\Slugify\SlugifyInterface @inject */
-	public $slugify;
+    /** @var \Cocur\Slugify\SlugifyInterface @inject */
+    public $slugify;
 
-	public function renderDefault()
-	{
-		$this->template->hello = $this->slugify->slugify('Hällo Wörld');
-	}
+    public function renderDefault()
+    {
+        $this->template->hello = $this->slugify->slugify('Hällo Wörld');
+    }
 }
 ```
 
@@ -505,12 +503,33 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### Version 4.0 (14 December 2019)
+
+Version 4 does not introduce new major features, but adds support for Symfony 4 and 5, Twig 3 and, most importantly, PHP 7.3 and 7.4.
+
+Support for PHP 5, Twig 1 and Silex is dropped.
+
+- [#230](https://github.com/cocur/slugify/pull/230) Add Slovak rules (by [bartko-s](https://github.com/bartko-s))
+- [#236](https://github.com/cocur/slugify/pull/236) Make Twig Bridge compatible with Twig 3.0 (by [mhujer](https://github.com/mhujer))
+- [#237](https://github.com/cocur/slugify/pull/237) Fix Travis CI configuration (by [kubawerlos](https://github.com/kubawerlos))
+- [#238](https://github.com/cocur/slugify/pull/238) Drop Twig 1 support (by [FabienPapet](https://github.com/FabienPapet))
+- [#239](https://github.com/cocur/slugify/pull/239) Fix AppVeyor (by [kubawerlos](https://github.com/kubawerlos))
+- [#241](https://github.com/cocur/slugify/pull/241) Update .gitattributes (by [kubawerlos](https://github.com/kubawerlos))
+- [#242](https://github.com/cocur/slugify/pull/242) Add PHP CS Fixer (by [kubawerlos](https://github.com/kubawerlos))
+- [#243](https://github.com/cocur/slugify/pull/243) Normalize composer.json (by [kubawerlos](https://github.com/kubawerlos))
+- [#246](https://github.com/cocur/slugify/pull/246) Add support for PHP 7.3 and 7.4 (by [snapshotpl](https://github.com/snapshotpl))
+- [#247](https://github.com/cocur/slugify/pull/247) AppVeyor improvements (by [kubawerlos](https://github.com/kubawerlos))
+- [#249](https://github.com/cocur/slugify/pull/249) PHPUnit annotations should be a FQCNs including a root namespace (by [kubawerlos](https://github.com/kubawerlos))
+- [#250](https://github.com/cocur/slugify/pull/250) Add support for Symfony 4 and 5 (by [franmomu](https://github.com/franmomu))
+- [#251](https://github.com/cocur/slugify/pull/251) Dropping support for PHP 5 (by [franmomu](https://github.com/franmomu))
+- [#253](https://github.com/cocur/slugify/pull/253) Add conflict for unmaintained Symfony versions (by [franmomu](https://github.com/franmomu))
+
 ### Version 3.2 (31 January 2019)
 
--   [#201](https://github.com/cocur/slugify/pull/201) Add strip_tags option (by [thewilkybarkid](https://github.com/thewilkybarkid))
--   [#212](https://github.com/cocur/slugify/pull/212) Fix Macedonian Dze (by [franmomu](https://github.com/franmomu))
--   [#213](https://github.com/cocur/slugify/pull/213) Add support for Turkmen (by [umbarov](https://github.com/umbarov))
--   [#216](https://github.com/cocur/slugify/pull/216) Add lowercase_after_regexp option (by [julienfalque](https://github.com/julienfalque))
+- [#201](https://github.com/cocur/slugify/pull/201) Add strip_tags option (by [thewilkybarkid](https://github.com/thewilkybarkid))
+- [#212](https://github.com/cocur/slugify/pull/212) Fix Macedonian Dze (by [franmomu](https://github.com/franmomu))
+- [#213](https://github.com/cocur/slugify/pull/213) Add support for Turkmen (by [umbarov](https://github.com/umbarov))
+- [#216](https://github.com/cocur/slugify/pull/216) Add lowercase_after_regexp option (by [julienfalque](https://github.com/julienfalque))
 -   [#217](https://github.com/cocur/slugify/pull/217) Simplify default regular impression (by [julienfalque](https://github.com/julienfalque))
 -   [#220](https://github.com/cocur/slugify/pull/220) Fix deprecation warning for symfony/config 4.2+ (by [franmomu](https://github.com/franmomu))
 -   [#221](https://github.com/cocur/slugify/pull/221) Add suuport Armenian (by [boolfalse](https://github.com/boolfalse))
