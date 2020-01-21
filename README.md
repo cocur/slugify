@@ -244,14 +244,17 @@ If you use `autowire` (Symfony >=3.3), you can inject it into your services like
 public function __construct(\Cocur\Slugify\SlugifyInterface $slugify)
 ```
 
-You can set the following configuration settings in `config.yml` to adjust the slugify service:
+#### Symfony Configuration
+
+You can set the following configuration settings in `config.yml` (Symfony 2-3) or
+`config/packages/slugify.yaml` (Symfony 4) to adjust the slugify service:
 
 ```yaml
 cocur_slugify:
-    lowercase: <boolean>
-    separator: <string>
-    regexp: <string>
-    rulesets: {} # List of rulesets: https://github.com/cocur/slugify/tree/master/Resources/rules
+    lowercase: false # or true
+    separator: '-' # any string
+    # regexp: <string>
+    rulesets: ['austrian'] # List of rulesets: https://github.com/cocur/slugify/tree/master/Resources/rules
 ```
 
 ### Twig
