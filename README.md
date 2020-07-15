@@ -247,7 +247,7 @@ public function __construct(\Cocur\Slugify\SlugifyInterface $slugify)
 #### Symfony Configuration
 
 You can set the following configuration settings in `config.yml` (Symfony 2-3) or
-`config/packages/slugify.yaml` (Symfony 4) to adjust the slugify service:
+`config/packages/cocur_slugify.yaml` (Symfony 4) to adjust the slugify service:
 
 ```yaml
 cocur_slugify:
