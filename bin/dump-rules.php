@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $languages = \voku\helper\ASCII::getAllLanguages();
 
@@ -11,6 +11,12 @@ foreach ($languages as $languageName => $language) {
     }
 
     // mapping
+    if ($languageName === 'greek') {
+        continue;
+    }
+    if ($languageName === 'el__greeklish') {
+        $languageName = 'greek';
+    }
     if ($languageName === 'portuguese') {
         $languageName = 'portuguese-brazil';
     }
@@ -27,6 +33,7 @@ foreach ($languages as $languageName => $language) {
         $languageName = 'russian';
     }
 
+    ksort($langSpecific);
     $json = json_encode($langSpecific, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     $file = __DIR__ . '/../Resources/rules/' . $languageName . '.json';
 

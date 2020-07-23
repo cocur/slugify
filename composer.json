@@ -38,6 +38,7 @@
         "phpunit/phpunit": "^5.7.27",
         "pimple/pimple": "~1.1",
         "plumphp/plum": "~0.1",
+        "voku/portable-ascii": "^1.5",
         "symfony/config": "^3.4 || ^4.3 || ^5.0",
         "symfony/dependency-injection": "^3.4 || ^4.3 || ^5.0",
         "symfony/http-kernel": "^3.4 || ^4.3 || ^5.0",
