@@ -31,6 +31,6 @@ class SlugifyHelperTest extends MockeryTestCase
     {
         $this->slugify->shouldReceive('slugify')->with('hällo wörld', '_')->once()->andReturn('haello_woerld');
 
-        $this->assertEquals('haello_woerld', $this->helper->slugify('hällo wörld', '_'));
+        $this->assertSame('haello_woerld', $this->helper->slugify('hällo wörld', '_'));
     }
 }
