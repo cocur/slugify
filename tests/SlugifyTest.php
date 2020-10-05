@@ -67,7 +67,7 @@ class SlugifyTest extends MockeryTestCase
             'Cocur\Slugify\Slugify',
             $this->slugify->addRule('X', 'y')
         );
-        $this->assertEquals('y', $this->slugify->slugify('X'));
+        $this->assertSame('y', $this->slugify->slugify('X'));
     }
 
     /**
@@ -80,7 +80,7 @@ class SlugifyTest extends MockeryTestCase
             'Cocur\Slugify\Slugify',
             $this->slugify->addRules(['x' => 'y', 'a' => 'b'])
         );
-        $this->assertEquals('yb', $this->slugify->slugify('xa'));
+        $this->assertSame('yb', $this->slugify->slugify('xa'));
     }
 
     /**
@@ -97,7 +97,7 @@ class SlugifyTest extends MockeryTestCase
             $slugify->activateRuleset('esperanto')
         );
 
-        $this->assertEquals('sercxi', $slugify->slugify('serĉi'));
+        $this->assertSame('sercxi', $slugify->slugify('serĉi'));
     }
 
     /**
@@ -115,7 +115,7 @@ class SlugifyTest extends MockeryTestCase
     {
         $this->slugify = new Slugify(['regexp' => '/([^a-z0-9.]|-)+/']);
 
-        $this->assertEquals('file-name.tar.gz', $this->slugify->slugify('File Name.tar.gz'));
+        $this->assertSame('file-name.tar.gz', $this->slugify->slugify('File Name.tar.gz'));
     }
 
     /**
@@ -128,7 +128,7 @@ class SlugifyTest extends MockeryTestCase
         $expected = 'File-Name';
 
         $this->slugify = new Slugify(['lowercase' => false]);
-        $this->assertEquals($expected, $this->slugify->slugify($actual));
+        $this->assertSame($expected, $this->slugify->slugify($actual));
     }
 
     /**
@@ -171,7 +171,7 @@ class SlugifyTest extends MockeryTestCase
         $expected = 'file__name';
 
         $this->slugify = new Slugify(['separator' => '__']);
-        $this->assertEquals($expected, $this->slugify->slugify($actual));
+        $this->assertSame($expected, $this->slugify->slugify($actual));
     }
 
     /**
@@ -184,7 +184,7 @@ class SlugifyTest extends MockeryTestCase
         $expected = 'file__name';
 
         $this->slugify = new Slugify(['separator' => 'dummy']);
-        $this->assertEquals($expected, $this->slugify->slugify($actual, '__'));
+        $this->assertSame($expected, $this->slugify->slugify($actual, '__'));
     }
 
     /**
@@ -192,21 +192,21 @@ class SlugifyTest extends MockeryTestCase
      */
     public function testSlugifyOptionsArray()
     {
-        $this->assertEquals('file-name', $this->slugify->slugify('file name'));
-        $this->assertEquals('file+name', $this->slugify->slugify('file name', ['separator' => '+']));
+        $this->assertSame('file-name', $this->slugify->slugify('file name'));
+        $this->assertSame('file+name', $this->slugify->slugify('file name', ['separator' => '+']));
 
-        $this->assertEquals('name-1', $this->slugify->slugify('name(1)'));
-        $this->assertEquals('name(1)', $this->slugify->slugify('name(1)', ['regexp' => '/([^a-z0-9.()]|-)+/']));
+        $this->assertSame('name-1', $this->slugify->slugify('name(1)'));
+        $this->assertSame('name(1)', $this->slugify->slugify('name(1)', ['regexp' => '/([^a-z0-9.()]|-)+/']));
 
-        $this->assertEquals('file-name', $this->slugify->slugify('FILE NAME'));
-        $this->assertEquals('FILE-NAME', $this->slugify->slugify('FILE NAME', ['lowercase' => false]));
+        $this->assertSame('file-name', $this->slugify->slugify('FILE NAME'));
+        $this->assertSame('FILE-NAME', $this->slugify->slugify('FILE NAME', ['lowercase' => false]));
 
-        $this->assertEquals('file-name', $this->slugify->slugify('file name '));
-        $this->assertEquals('file-name-', $this->slugify->slugify('file name ', ['trim' => false]));
+        $this->assertSame('file-name', $this->slugify->slugify('file name '));
+        $this->assertSame('file-name-', $this->slugify->slugify('file name ', ['trim' => false]));
 
-        $this->assertEquals('file-name', $this->slugify->slugify('<file name'));
-        $this->assertEquals('p-file-p-foo-a-href-bar-name-a', $this->slugify->slugify('<p>file</p><!-- foo --> <a href="#bar">name</a>'));
-        $this->assertEquals('file-name', $this->slugify->slugify('<p>file</p><!-- foo --> <a href="#bar">name</a>', ['strip_tags' => true]));
+        $this->assertSame('file-name', $this->slugify->slugify('<file name'));
+        $this->assertSame('p-file-p-foo-a-href-bar-name-a', $this->slugify->slugify('<p>file</p><!-- foo --> <a href="#bar">name</a>'));
+        $this->assertSame('file-name', $this->slugify->slugify('<p>file</p><!-- foo --> <a href="#bar">name</a>', ['strip_tags' => true]));
     }
 
     /**
