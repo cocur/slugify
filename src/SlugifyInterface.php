@@ -33,4 +33,6 @@ interface SlugifyInterface
      * @api
      */
     public function slugify($string, $options = null);
+    
+    public function addRule($character, $replacement);
 }
