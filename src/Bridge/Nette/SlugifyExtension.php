@@ -3,6 +3,7 @@
 namespace Cocur\Slugify\Bridge\Nette;
 
 use Nette\DI\CompilerExtension;
+use Nette\DI\Definitions\FactoryDefinition;
 use Nette\DI\ServiceDefinition;
 
 /**
@@ -33,8 +34,8 @@ class SlugifyExtension extends CompilerExtension
         $builder = $this->getContainerBuilder();
 
         $self = $this;
-        $registerToLatte = function (ServiceDefinition $def) use ($self) {
-            $def->addSetup('addFilter', ['slugify', [$self->prefix('@helper'), 'slugify']]);
+        $registerToLatte = function (FactoryDefinition $def) use ($self) {
+            $def->getResultDefinition()->addSetup('addFilter', ['slugify', [$self->prefix('@helper'), 'slugify']]);
         };
 
         $latteFactory = $builder->getByType('Nette\Bridges\ApplicationLatte\ILatteFactory') ?: 'nette.latteFactory';
