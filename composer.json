@@ -29,7 +29,7 @@
         "twig/twig": "<2.12.1"
     },
     "require-dev": {
-        "laravel/framework": "~5.1",
+        "laravel/framework": "^5.0|^6.0|^7.0|^8.0",
         "latte/latte": "~2.2",
         "league/container": "^2.2.0",
         "mikey179/vfsstream": "~1.6.8",
