@@ -7468,6 +7468,7 @@ class DefaultRuleProvider implements RuleProviderInterface
     'Ș' => 'S',
     'ŝ' => 's',
     'ș' => 's',
+    'Ṣ' => 'S',
     'ṣ' => 's',
     'ſ' => 's',
     'Ţ' => 'T',
