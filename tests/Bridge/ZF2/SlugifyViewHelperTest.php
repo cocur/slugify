@@ -25,7 +25,7 @@ class SlugifyViewHelperTest extends MockeryTestCase
     /**
      * @covers \Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__construct()
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->slugify = new Slugify();
         $this->viewHelper = new SlugifyViewHelper($this->slugify);

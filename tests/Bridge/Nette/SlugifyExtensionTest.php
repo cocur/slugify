@@ -18,7 +18,7 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
  */
 class SlugifyExtensionTest extends MockeryTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->extension = new SlugifyExtension();
     }

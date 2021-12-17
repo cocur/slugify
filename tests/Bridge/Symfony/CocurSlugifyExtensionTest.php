@@ -12,8 +12,10 @@
 namespace Cocur\Slugify\Tests\Bridge\Symfony;
 
 use Cocur\Slugify\Bridge\Symfony\CocurSlugifyExtension;
-use Mockery as m;
-use Mockery\Adapter\Phpunit\MockeryTestCase;
+use Cocur\Slugify\SlugifyInterface;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 
 /**
  * CocurSlugifyExtensionTest
@@ -26,9 +28,9 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  * @group      unit
  */
-class CocurSlugifyExtensionTest extends MockeryTestCase
+class CocurSlugifyExtensionTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->extension = new CocurSlugifyExtension();
     }
@@ -38,36 +40,37 @@ class CocurSlugifyExtensionTest extends MockeryTestCase
      */
     public function testLoad()
     {
-        $twigDefinition = m::mock('Symfony\Component\DependencyInjection\Definition');
+        $twigDefinition = $this->createMock(Definition::class);
         $twigDefinition
-            ->shouldReceive('addTag')
-            ->with('twig.extension')
-            ->once()
-            ->andReturn($twigDefinition);
+            ->expects($this->once())
+            ->method('addTag')
+            ->with($this->equalTo('twig.extension'))
+            ->willReturn($twigDefinition);
         $twigDefinition
-            ->shouldReceive('setPublic')
-            ->with(false)
-            ->once();
+            ->expects($this->once())
+            ->method('setPublic')
+            ->with($this->equalTo(false))
+            ->willReturn($twigDefinition);
 
-        $container = m::mock('Symfony\Component\DependencyInjection\ContainerBuilder');
+        $container = $this->createMock(ContainerBuilder::class);
         $container
-            ->shouldReceive('setDefinition')
-            ->with('cocur_slugify', m::type('Symfony\Component\DependencyInjection\Definition'))
-            ->once();
+            ->expects($this->exactly(2))
+            ->method('setDefinition')
+            ->withConsecutive(
+                [$this->equalTo('cocur_slugify'), $this->isInstanceOf(Definition::class)],
+                [$this->equalTo('cocur_slugify.twig.slugify', $this->isInstanceOf(Definition::class))]
+            )
+            ->willReturnOnConsecutiveCalls(
+                $this->createMock(Definition::class),
+                $twigDefinition
+            );
         $container
-            ->shouldReceive('setDefinition')
-            ->with('cocur_slugify.twig.slugify', m::type('Symfony\Component\DependencyInjection\Definition'))
-            ->once()
-            ->andReturn($twigDefinition);
-        $container
-            ->shouldReceive('setAlias')
-            ->with('slugify', 'cocur_slugify')
-            ->once();
-        $container
-            ->shouldReceive('setAlias')
-            ->with('Cocur\Slugify\SlugifyInterface', 'cocur_slugify')
-            ->once();
-
+            ->expects($this->exactly(2))
+            ->method('setAlias')
+            ->withConsecutive(
+                [$this->equalTo('slugify'), $this->equalTo('cocur_slugify')],
+                [$this->equalTo(SlugifyInterface::class), $this->equalTo('cocur_slugify')]
+            );
         $this->extension->load([], $container);
     }
 }
