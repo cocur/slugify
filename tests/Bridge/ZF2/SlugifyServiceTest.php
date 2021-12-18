@@ -19,7 +19,7 @@ class SlugifyServiceTest extends MockeryTestCase
      */
     private $slugifyService;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->slugifyService = new SlugifyService();
     }

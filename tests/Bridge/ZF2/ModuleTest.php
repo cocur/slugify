@@ -17,7 +17,7 @@ class ModuleTest extends MockeryTestCase
      */
     private $module;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->module = new Module();
     }

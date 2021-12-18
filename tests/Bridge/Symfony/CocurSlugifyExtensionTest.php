@@ -28,7 +28,7 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
  */
 class CocurSlugifyExtensionTest extends MockeryTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->extension = new CocurSlugifyExtension();
     }
