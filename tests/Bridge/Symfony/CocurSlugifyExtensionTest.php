@@ -58,7 +58,7 @@ class CocurSlugifyExtensionTest extends TestCase
             ->method('setDefinition')
             ->withConsecutive(
                 [$this->equalTo('cocur_slugify'), $this->isInstanceOf(Definition::class)],
-                [$this->equalTo('cocur_slugify.twig.slugify', $this->isInstanceOf(Definition::class))]
+                [$this->equalTo('cocur_slugify.twig.slugify'), $this->isInstanceOf(Definition::class)]
             )
             ->willReturnOnConsecutiveCalls(
                 $this->createMock(Definition::class),
