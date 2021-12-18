@@ -46,6 +46,10 @@ jobs:
           extensions: "${{ env.extensions }}"
           tools: flex
 
+      - name: Install dependencies
+        run: |
+          composer update --no-progress --ansi
+
       - name: Run tests
         run: |
           vendor/bin/phpunit --verbose --coverage-clover=coverage.clover
