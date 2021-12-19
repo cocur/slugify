@@ -10,6 +10,7 @@ cache:
 
 init:
   - SET PATH=C:\tools\php;%PATH%
+  - SET COMPOSER_BINARY=C:\tools\composer.phar
 
 install:
   - ps: Set-Service wuauserv -StartupType Manual
@@ -24,9 +25,8 @@ install:
   - echo memory_limit=3G >> php.ini
   - IF NOT EXIST C:\tools\composer.phar (cd C:\tools && appveyor DownloadFile https://getcomposer.org/composer.phar)
   - cd %APPVEYOR_BUILD_FOLDER%
-  - php C:\tools\composer.phar global show hirak/prestissimo --quiet || php C:\tools\composer.phar global require hirak/prestissimo --no-progress
-  - php C:\tools\composer.phar update --no-ansi --no-interaction --no-progress --no-suggest --optimize-autoloader --prefer-stable
+  - php C:\tools\composer.phar update --no-interaction --no-progress --optimize-autoloader --prefer-stable
 
 test_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - php vendor\phpunit\phpunit\phpunit
+  - php vendor\bin\simple-phpunit

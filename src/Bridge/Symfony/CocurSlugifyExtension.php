@@ -11,6 +11,9 @@
 
 namespace Cocur\Slugify\Bridge\Symfony;
 
+use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
+use Cocur\Slugify\Slugify;
+use Cocur\Slugify\SlugifyInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -33,7 +36,7 @@ class CocurSlugifyExtension extends Extension
      * @param mixed[]          $configs
      * @param ContainerBuilder $container
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -45,18 +48,18 @@ class CocurSlugifyExtension extends Extension
         // Extract slugify arguments from config
         $slugifyArguments = array_intersect_key($config, array_flip(['lowercase', 'trim', 'strip_tags', 'separator', 'regexp', 'rulesets']));
 
-        $container->setDefinition('cocur_slugify', new Definition('Cocur\Slugify\Slugify', [$slugifyArguments]));
+        $container->setDefinition('cocur_slugify', new Definition(Slugify::class, [$slugifyArguments]));
         $container
             ->setDefinition(
                 'cocur_slugify.twig.slugify',
                 new Definition(
-                    'Cocur\Slugify\Bridge\Twig\SlugifyExtension',
+                    SlugifyExtension::class,
                     [new Reference('cocur_slugify')]
                 )
             )
             ->addTag('twig.extension')
             ->setPublic(false);
         $container->setAlias('slugify', 'cocur_slugify');
-        $container->setAlias('Cocur\Slugify\SlugifyInterface', 'cocur_slugify');
+        $container->setAlias(SlugifyInterface::class, 'cocur_slugify');
     }
 }

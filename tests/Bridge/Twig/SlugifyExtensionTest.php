@@ -38,7 +38,7 @@ class SlugifyExtensionTest extends MockeryTestCase
      */
     protected $extension;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->slugify = m::mock('Cocur\Slugify\SlugifyInterface');
         $this->extension = new SlugifyExtension($this->slugify);

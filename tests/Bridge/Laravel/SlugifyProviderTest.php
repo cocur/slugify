@@ -35,7 +35,7 @@ class SlugifyProviderTest extends MockeryTestCase
     /** @var SlugifyServiceProvider */
     private $provider;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->app = new Application();
         $this->provider = new SlugifyServiceProvider($this->app);

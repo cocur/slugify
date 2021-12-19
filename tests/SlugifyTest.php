@@ -38,7 +38,7 @@ class SlugifyTest extends MockeryTestCase
      */
     private $provider;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->provider = Mockery::mock('\Cocur\Slugify\RuleProvider\RuleProviderInterface');
         $this->provider->shouldReceive('getRules')->andReturn([]);

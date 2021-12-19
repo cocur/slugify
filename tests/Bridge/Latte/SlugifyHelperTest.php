@@ -18,7 +18,7 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
  */
 class SlugifyHelperTest extends MockeryTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->slugify = m::mock('Cocur\Slugify\SlugifyInterface');
         $this->helper = new SlugifyHelper($this->slugify);

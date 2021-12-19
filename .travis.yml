@@ -4,9 +4,6 @@ language: php
 
 matrix:
   include:
-    - php: 7.0
-    - php: 7.0
-      env: COMPOSER_FLAGS='--prefer-lowest'
     - php: 7.1
     - php: 7.1
       env: COMPOSER_FLAGS='--prefer-lowest'
@@ -17,8 +14,14 @@ matrix:
     - php: 7.3
       env: COMPOSER_FLAGS='--prefer-lowest'
     - php: 7.4
+    - php: 7.4
+      env: COMPOSER_FLAGS='--prefer-lowest'
+    - php: 8.0
+    - php: 8.0
+      env: COMPOSER_FLAGS='--prefer-lowest'
+    - php: 8.1
       env: ANALYSIS=1
-    - php: 7.4
+    - php: 8.1
       env: COMPOSER_FLAGS='--prefer-lowest'
     - php: nightly
   allow_failures:
@@ -34,7 +37,7 @@ install:
   - if [ $ANALYSIS == 1 ]; then travis_retry composer update --working-dir=./dev-tools --no-suggest; fi
 
 script:
-  - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover
+  - vendor/bin/simple-phpunit --verbose --coverage-clover=coverage.clover
   - if [ $ANALYSIS == 1 ]; then ./dev-tools/analyse.sh || travis_terminate 1; fi
 
 after_script:
