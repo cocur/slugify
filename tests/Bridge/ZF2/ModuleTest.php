@@ -28,7 +28,7 @@ class ModuleTest extends MockeryTestCase
     public function testGetServiceConfig()
     {
         $smConfig = $this->module->getServiceConfig();
-        $this->assertInternalType('array', $smConfig);
+        $this->assertIsArray($smConfig);
         $this->assertArrayHasKey('factories', $smConfig);
         $this->assertArrayHasKey('Cocur\Slugify\Slugify', $smConfig['factories']);
         $this->assertArrayHasKey('aliases', $smConfig);
@@ -41,7 +41,7 @@ class ModuleTest extends MockeryTestCase
     public function testGetViewHelperConfig()
     {
         $vhConfig = $this->module->getViewHelperConfig();
-        $this->assertInternalType('array', $vhConfig);
+        $this->assertIsArray($vhConfig);
         $this->assertArrayHasKey('factories', $vhConfig);
         $this->assertArrayHasKey('slugify', $vhConfig['factories']);
     }
