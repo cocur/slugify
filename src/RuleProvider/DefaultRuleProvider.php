@@ -144,7 +144,7 @@ class DefaultRuleProvider implements RuleProviderInterface
     'Ä' => 'AE',
     'Ö' => 'OE',
     'Ü' => 'UE',
-    'ß' => 'ss',
+    'ß' => 'sz',
     'ä' => 'ae',
     'ö' => 'oe',
     'ü' => 'ue',
