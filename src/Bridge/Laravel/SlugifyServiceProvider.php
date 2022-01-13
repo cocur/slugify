@@ -13,6 +13,7 @@ namespace Cocur\Slugify\Bridge\Laravel;
 
 use Cocur\Slugify\Slugify;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
 /**
  * SlugifyServiceProvider
@@ -24,14 +25,14 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
  * @copyright  2012-2014 Florian Eckerstorfer
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
-class SlugifyServiceProvider extends LaravelServiceProvider
+class SlugifyServiceProvider extends LaravelServiceProvider implements DeferrableProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
+     * Indicates if loading of the provider is deferred. ( Deprecated : Laravel 5.8 )
      *
      * @var bool
      */
-    protected $defer = true;
+    // protected $defer = true; ( Deprecated : Laravel 5.8 )
 
     /**
      * Register the service provider.
