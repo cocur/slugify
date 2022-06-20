@@ -11,6 +11,8 @@
 
 namespace Cocur\Slugify\RuleProvider;
 
+use OutOfBoundsException;
+
 /**
  * DefaultRuleProvider
  *
@@ -10309,6 +10311,9 @@ class DefaultRuleProvider implements RuleProviderInterface
      */
     public function getRules($ruleset)
     {
+        if (!array_key_exists($ruleset, $this->rules)) {
+            throw new OutOfBoundsException(sprintf('ruleset \'%s\' does not exist', $ruleset));
+        }
         return $this->rules[$ruleset];
     }
 }
