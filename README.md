@@ -506,6 +506,14 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### Version 4.2 (13 August 2022)
+
+- [#305](https://github.com/cocur/slugify/pull/305) Add support for custom fonts (by [luca-alsina](https://github.com/luca-alsina))
+- [#309](https://github.com/cocur/slugify/pull/309) Add handling for undefined rulesets (by [aadmathijssen](https://github.com/aadmathijssen))
+- [#227](https://github.com/cocur/slugify/pull/227) Add support for capital sharp s (by [weeman1337](https://github.com/weeman1337))
+- [#312](https://github.com/cocur/slugify/pull/312) Fix composer.lock file (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+- [#313](https://github.com/cocur/slugify/pull/313) Update PHP version requirement (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+
 ### Version 4.1 (11 January 2022)
 
 Support for Symfony 6.
