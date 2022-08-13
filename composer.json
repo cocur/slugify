@@ -23,7 +23,7 @@
         "laravel/framework": "~5.1",
         "latte/latte": "~2.2",
         "league/container": "^2.2.0",
-        "mikey179/vfsStream": "~1.6",
+        "mikey179/vfsstream": "~1.6",
         "mockery/mockery": "~0.9",
         "nette/di": "~2.2",
         "phpunit/phpunit": "~4.8.36|~5.2",
