@@ -233,7 +233,7 @@ class SlugifyTest extends MockeryTestCase
             ['H+e#l1l--o/W§o r.l:d)', 'h-e-l1l-o-w-o-r-l-d'],
             [': World', 'world'],
             ['Hello World!', 'hello-world'],
-            ['Ä ä Ö ö Ü ü ß', 'ae-ae-oe-oe-ue-ue-ss'],
+            ['Ä ä Ö ö Ü ü ẞ ß', 'ae-ae-oe-oe-ue-ue-ss-ss'],
             ['Á À á à É È é è Ó Ò ó ò Ñ ñ Ú Ù ú ù', 'a-a-a-a-e-e-e-e-o-o-o-o-n-n-u-u-u-u'],
             ['Â â Ê ê Ô ô Û û', 'a-a-e-e-o-o-u-u'],
             ['Â â Ê ê Ô ô Û 1', 'a-a-e-e-o-o-u-1'],
