@@ -97,7 +97,7 @@ class Slugify implements SlugifyInterface
      *
      * @return string Slugified version of the string
      */
-    public function slugify($string, $options = null)
+    public function slugify(string $string, $options = null): string
     {
         // BC: the second argument used to be the separator
         if (is_string($options)) {
