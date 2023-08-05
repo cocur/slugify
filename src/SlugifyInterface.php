@@ -32,5 +32,5 @@ interface SlugifyInterface
      *
      * @api
      */
-    public function slugify(string $string, $options = null): string;
+    public function slugify(string $string, array|string|null $options = null): string;
 }

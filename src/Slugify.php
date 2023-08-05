@@ -26,22 +26,22 @@ use Cocur\Slugify\RuleProvider\RuleProviderInterface;
  */
 class Slugify implements SlugifyInterface
 {
-    const LOWERCASE_NUMBERS_DASHES = '/[^A-Za-z0-9]+/';
+    public const LOWERCASE_NUMBERS_DASHES = '/[^A-Za-z0-9]+/';
 
     /**
      * @var array<string,string>
      */
-    protected $rules = [];
+    protected array $rules = [];
 
     /**
      * @var RuleProviderInterface
      */
-    protected $provider;
+    protected RuleProviderInterface $provider;
 
     /**
      * @var array<string,mixed>
      */
-    protected $options = [
+    protected array $options = [
         'regexp'    => self::LOWERCASE_NUMBERS_DASHES,
         'separator' => '-',
         'lowercase' => true,
@@ -97,7 +97,7 @@ class Slugify implements SlugifyInterface
      *
      * @return string Slugified version of the string
      */
-    public function slugify(string $string, $options = null): string
+    public function slugify(string $string, array|string|null $options = null): string
     {
         // BC: the second argument used to be the separator
         if (is_string($options)) {
@@ -145,7 +145,7 @@ class Slugify implements SlugifyInterface
      *
      * @return Slugify
      */
-    public function addRule($character, $replacement)
+    public function addRule($character, $replacement): self
     {
         $this->rules[$character] = $replacement;
 
@@ -159,7 +159,7 @@ class Slugify implements SlugifyInterface
      *
      * @return Slugify
      */
-    public function addRules(array $rules)
+    public function addRules(array $rules): self
     {
         foreach ($rules as $character => $replacement) {
             $this->addRule($character, $replacement);
@@ -173,7 +173,7 @@ class Slugify implements SlugifyInterface
      *
      * @return Slugify
      */
-    public function activateRuleSet($ruleSet)
+    public function activateRuleSet($ruleSet): self
     {
         return $this->addRules($this->provider->getRules($ruleSet));
     }
@@ -185,7 +185,7 @@ class Slugify implements SlugifyInterface
      *
      * @return Slugify
      */
-    public static function create(array $options = [])
+    public static function create(array $options = []): self
     {
         return new static($options);
     }

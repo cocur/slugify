@@ -5,7 +5,7 @@
  *
  * @return array
  */
-function getRules($directory)
+function getRules($directory): array
 {
     $rules    = [];
     $iterator = new DirectoryIterator($directory);
@@ -25,7 +25,7 @@ function getRules($directory)
  *
  * @return bool
  */
-function insertRules($fileName, array $rules = [])
+function insertRules($fileName, array $rules = []): bool
 {
     $startTag = '/*INSERT_START*/';
     $endTag   = '/*INSERT_END*/';
