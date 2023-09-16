@@ -521,6 +521,10 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### Version 4.5 (16 September 2023)
+
+-   [#327](https://github.com/cocur/slugify/pull/327) Add Korean to default ruleset
+
 ### Version 4.4 (5 August 2023)
 
 -   [#320](https://github.com/cocur/slugify/pull/320) Add Korean (by [MrMooky](https://github.com/MrMooky))
