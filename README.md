@@ -20,7 +20,7 @@ Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with t
 -   Provides custom replacements for Arabic, Austrian, Azerbaijani, Brazilian Portuguese, Bulgarian, Burmese, Chinese, Croatian, Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
 -   No external dependencies.
 -   PSR-4 compatible.
--   Compatible with PHP >= 7.
+-   Compatible with PHP >= 8.
 -   Integrations for [Symfony (3, 4 and 5)](http://symfony.com), [Laravel](http://laravel.com), [Twig (2 and 3)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
 
 ## Installation
@@ -521,9 +521,15 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### Version 4.5.1 (16 September 2023)
+
+-   Drop support for PHP 7 and fix version constraints
+-   Replaces v4.5.0
+
 ### Version 4.5 (16 September 2023)
 
 -   [#327](https://github.com/cocur/slugify/pull/327) Add Korean to default ruleset
+-   Removed since it breaks compatibility with PHP 7
 
 ### Version 4.4 (5 August 2023)
 
