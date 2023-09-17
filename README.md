@@ -521,10 +521,16 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### Version 4.4.1 (17 September 2023)
+
+-   Remove PHP 7 from compatibility list
+-   Replaces v4.4.0
+
 ### Version 4.4 (5 August 2023)
 
 -   [#320](https://github.com/cocur/slugify/pull/320) Add Korean (by [MrMooky](https://github.com/MrMooky))
 -   [#322](https://github.com/cocur/slugify/pull/322) Add types to avoid PHP 8.2 deprecation warning (by [antoniovj1](https://github.com/antoniovj1))
+-   Version removed since it breaks compatibility
 
 ### Version 4.3 (7 December 2022)
 
