@@ -9,17 +9,22 @@ jobs:
     strategy:
       matrix:
         include:
-          - php: '8.1'
-            os: ubuntu-20.04
-          - php: '8.0'
+          - php: "8.0"
             os: macos-11
-          - php: '8.0'
+          - php: "8.0"
             mode: high-deps
             os: ubuntu-20.04
-          - php: '8.1'
+          - php: "8.1"
+            os: ubuntu-20.04
+          - php: "8.1"
             mode: low-deps
             os: ubuntu-20.04
-          - php: '8.2'
+          - php: "8.2"
+            os: ubuntu-20.04
+          - php: "8.2"
+            os: ubuntu-20.04
+            mode: low-deps
+          - php: "8.3"
             mode: experimental
             os: ubuntu-20.04
       fail-fast: false
