@@ -260,6 +260,7 @@ class SlugifyTest extends MockeryTestCase
             [str_repeat('hi🇦🇹', 5000), substr(str_repeat('hi-', 5000), 0, -1)],
             ['Č Ć Ž Š Đ č ć ž š đ', 'c-c-z-s-d-c-c-z-s-d'],
             ['Ą Č Ę Ė Į Š Ų Ū Ž ą č ę ė į š ų ū ž', 'a-c-e-e-i-s-u-u-z-a-c-e-e-i-s-u-u-z'],
+            ['יאַן אַ טאָן יאָ אי רבֿ גיב דו האַװ האַוו יױרן יוירן אַזױ אַזוי יום־כּיפּור חנוכּה יײַכל מײַן בלײך ניי יע ייִדיש פֿליִען צוך סם פ קץ תּורת־אמת', 'yan-a-ton-yo-i-rv-gib-du-hav-hav-yoyrn-yoyrn-azoy-azoy-yum-kipur-khnukh-yaykhl-mayn-bleykh-ney-ye-yidish-flien-tsukh-sm-ph-kts-turs-ms'],
         ];
     }
 
