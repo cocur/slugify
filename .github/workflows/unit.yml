@@ -10,7 +10,7 @@ jobs:
       matrix:
         include:
           - php: "8.0"
-            os: macos-11
+            os: macos-13
           - php: "8.0"
             mode: high-deps
             os: ubuntu-20.04
