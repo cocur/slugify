@@ -80,7 +80,7 @@ class Slugify implements SlugifyInterface
      * @param array                 $options
      * @param RuleProviderInterface $provider
      */
-    public function __construct(array $options = [], RuleProviderInterface $provider = null)
+    public function __construct(array $options = [], ?RuleProviderInterface $provider = null)
     {
         $this->options  = array_merge($this->options, $options);
         $this->provider = $provider ? $provider : new DefaultRuleProvider();
