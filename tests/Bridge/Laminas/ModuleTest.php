@@ -1,7 +1,8 @@
 <?php
-namespace Cocur\Slugify\Tests\Bridge\ZF2;
+namespace Cocur\Slugify\Tests\Bridge\Laminas;
 
-use Cocur\Slugify\Bridge\ZF2\Module;
+use Cocur\Slugify\Bridge\Laminas\Module;
+use Cocur\Slugify\Bridge\Laminas\SlugifyViewHelper;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
@@ -23,7 +24,7 @@ class ModuleTest extends MockeryTestCase
     }
 
     /**
-     * @covers \Cocur\Slugify\Bridge\ZF2\Module::getServiceConfig()
+     * @covers \Cocur\Slugify\Bridge\Laminas\Module::getServiceConfig()
      */
     public function testGetServiceConfig()
     {
@@ -43,6 +44,8 @@ class ModuleTest extends MockeryTestCase
         $vhConfig = $this->module->getViewHelperConfig();
         $this->assertIsArray($vhConfig);
         $this->assertArrayHasKey('factories', $vhConfig);
-        $this->assertArrayHasKey('slugify', $vhConfig['factories']);
+        $this->assertArrayHasKey(SlugifyViewHelper::class, $vhConfig['factories']);
+        $this->assertArrayHasKey('aliases', $vhConfig);
+        $this->assertArrayHasKey('slugify', $vhConfig['aliases']);
     }
 }

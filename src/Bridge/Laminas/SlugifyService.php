@@ -16,13 +16,14 @@ class SlugifyService implements FactoryInterface
 {
 
     /**
-     * 
      * @param ContainerInterface $container
-     * @param string $requestedName
-     * @param array $options
-     * @return object
+     * @param $requestedName
+     * @param array|null $options
+     * @return Slugify
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): Slugify {
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): Slugify {
         $config = $container->get('Config');
 
         $slugifyOptions  = isset($config[Module::CONFIG_KEY]['options']) ? $config[Module::CONFIG_KEY]['options'] : [];
