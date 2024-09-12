@@ -38,7 +38,7 @@ class SlugifyExtensionTest extends MockeryTestCase
      */
     protected $extension;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->slugify = m::mock('Cocur\Slugify\SlugifyInterface');
         $this->extension = new SlugifyExtension($this->slugify);
@@ -62,6 +62,6 @@ class SlugifyExtensionTest extends MockeryTestCase
     {
         $this->slugify->shouldReceive('slugify')->with('hällo wörld', '_')->once()->andReturn('haello_woerld');
 
-        $this->assertEquals('haello_woerld', $this->extension->slugifyFilter('hällo wörld', '_'));
+        $this->assertSame('haello_woerld', $this->extension->slugifyFilter('hällo wörld', '_'));
     }
 }

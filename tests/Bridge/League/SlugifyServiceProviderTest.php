@@ -21,7 +21,7 @@ class SlugifyServiceProviderTest extends MockeryTestCase
         $slugify = $container->get(SlugifyInterface::class);
 
         $this->assertInstanceOf(SlugifyInterface::class, $slugify);
-        $this->assertAttributeInstanceOf(DefaultRuleProvider::class, 'provider', $slugify);
+        $this->assertInstanceOf(DefaultRuleProvider::class, $this->getProperty($slugify, 'provider'));
     }
 
     public function testProvidesSlugifyAsSharedService()
@@ -65,7 +65,7 @@ class SlugifyServiceProviderTest extends MockeryTestCase
 
         $slugify = $container->get(SlugifyInterface::class);
 
-        $this->assertAttributeSame($ruleProvider, 'provider', $slugify);
+        $this->assertSame($ruleProvider, $this->getProperty($slugify, 'provider'));
     }
 
     /**
@@ -82,5 +82,14 @@ class SlugifyServiceProviderTest extends MockeryTestCase
         ;
 
         return $ruleProvider;
+    }
+
+    private function getProperty(SlugifyInterface $slugify, string $name)
+    {
+        $reflection = new \ReflectionClass($slugify);
+        $prop = $reflection->getProperty($name);
+        $prop->setAccessible(true);
+
+        return $prop->getValue($slugify);
     }
 }

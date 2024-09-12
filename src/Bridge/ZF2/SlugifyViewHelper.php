@@ -34,7 +34,7 @@ class SlugifyViewHelper extends AbstractHelper
      *
      * @return string
      */
-    public function __invoke($string, $separator = null)
+    public function __invoke(string $string, string $separator = null)
     {
         return $this->slugify->slugify($string, $separator);
     }

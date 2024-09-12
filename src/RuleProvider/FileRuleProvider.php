@@ -23,24 +23,24 @@ class FileRuleProvider implements RuleProviderInterface
     /**
      * @var string
      */
-    protected $directoryName;
+    protected string $directoryName;
 
     /**
      * @param string $directoryName
      */
-    public function __construct($directoryName)
+    public function __construct(string $directoryName)
     {
         $this->directoryName = $directoryName;
     }
 
     /**
-     * @param $ruleset
+     * @param string $ruleset
      *
      * @return array
      */
-    public function getRules($ruleset)
+    public function getRules(string $ruleset): array
     {
-        $fileName = $this->directoryName.DIRECTORY_SEPARATOR.$ruleset.'.json';
+        $fileName = $this->directoryName . DIRECTORY_SEPARATOR . $ruleset . '.json';
 
         return json_decode(file_get_contents($fileName), true);
     }

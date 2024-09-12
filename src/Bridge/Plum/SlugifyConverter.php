@@ -43,7 +43,7 @@ class SlugifyConverter implements ConverterInterface
      *
      * @return string
      */
-    public function convert($item)
+    public function convert($item): string
     {
         return $this->slugify->slugify($item);
     }

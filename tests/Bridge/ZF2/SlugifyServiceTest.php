@@ -19,7 +19,7 @@ class SlugifyServiceTest extends MockeryTestCase
      */
     private $slugifyService;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->slugifyService = new SlugifyService();
     }
@@ -36,7 +36,7 @@ class SlugifyServiceTest extends MockeryTestCase
         // Make sure reg exp is default one
         $actual = 'Hello My Friend.zip';
         $expected = 'hello-my-friend-zip';
-        $this->assertEquals($expected, $slugify->slugify($actual));
+        $this->assertSame($expected, $slugify->slugify($actual));
     }
 
     /**
@@ -55,7 +55,7 @@ class SlugifyServiceTest extends MockeryTestCase
         // Make sure reg exp is the one provided and dots are kept
         $actual = 'Hello My Friend.zip';
         $expected = 'hello-my-friend.zip';
-        $this->assertEquals($expected, $slugify->slugify($actual));
+        $this->assertSame($expected, $slugify->slugify($actual));
     }
 
     protected function createServiceManagerMock(array $config = [])

@@ -31,7 +31,7 @@ class SlugifyHelper
      *
      * @return string
      */
-    public function slugify($string, $separator = null)
+    public function slugify($string, $separator = null): string
     {
         return $this->slugify->slugify($string, $separator);
     }

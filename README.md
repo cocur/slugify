@@ -16,19 +16,19 @@ Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with t
 
 ## Features
 
-- Removes all special characters from a string.
-- Provides custom replacements for Arabic, Austrian, Azerbaijani, Brazilian Portuguese, Bulgarian, Burmese, Chinese, Croatian, Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian and Vietnamese special characters. Instead of removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
-- No external dependencies.
-- PSR-4 compatible.
-- Compatible with PHP >= 7.
-- Integrations for [Symfony (3, 4 and 5)](http://symfony.com), [Laravel](http://laravel.com), [Twig (2 and 3)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
+-   Removes all special characters from a string.
+-   Provides custom replacements for Arabic, Austrian, Azerbaijani, Brazilian Portuguese, Bulgarian, Burmese, Chinese, Croatian, Czech, Esperanto, Estonian, Finnish, French, Georgian, German, Greek, Hindi, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian, Vietnamese and Yiddish special characters. Instead of removing these characters, Slugify approximates them (e.g., `ae` replaces `ä`).
+-   No external dependencies.
+-   PSR-4 compatible.
+-   Compatible with PHP >= 8.
+-   Integrations for [Symfony (3, 4 and 5)](http://symfony.com), [Laravel](http://laravel.com), [Twig (2 and 3)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
 
 ## Installation
 
 You can install Slugify through [Composer](https://getcomposer.org):
 
 ```shell
-$ composer require cocur/slugify
+composer require cocur/slugify
 ```
 
 Slugify requires the Multibyte String extension from PHP. Typically you can use the configure option `--enable-mbstring` while compiling PHP. More information can be found in the [PHP documentation](http://php.net/manual/en/mbstring.installation.php).
@@ -43,13 +43,13 @@ Generate a slug:
 use Cocur\Slugify\Slugify;
 
 $slugify = new Slugify();
-echo $slugify->slugify('Hello World!'); // hello-world
+echo $slugify->slugify("Hello World!"); // hello-world
 ```
 
 You can also change the separator used by `Slugify`:
 
 ```php
-echo $slugify->slugify('Hello World!', '_'); // hello_world
+echo $slugify->slugify("Hello World!", "_"); // hello_world
 ```
 
 The library also contains `Cocur\Slugify\SlugifyInterface`. Use this interface whenever you need to type hint an
@@ -58,8 +58,8 @@ instance of `Slugify`.
 To add additional transliteration rules you can use the `addRule()` method.
 
 ```php
-$slugify->addRule('i', 'ey');
-echo $slugify->slugify('Hi'); // hey
+$slugify->addRule("i", "ey");
+echo $slugify->slugify("Hi"); // hey
 ```
 
 ### Rulesets
@@ -73,16 +73,16 @@ prefer the Turkish transliteration you have to possibilities. You can activate i
 
 ```php
 $slugify = new Slugify();
-$slugify->slugify('ä'); // -> "ae"
-$slugify->activateRuleSet('turkish');
-$slugify->slugify('ä'); // -> "a"
+$slugify->slugify("ä"); // -> "ae"
+$slugify->activateRuleSet("turkish");
+$slugify->slugify("ä"); // -> "a"
 ```
 
 An alternative way would be to pass the rulesets and their order to the constructor.
 
 ```php
-$slugify = new Slugify(['rulesets' => ['default', 'turkish']]);
-$slugify->slugify('ä'); // -> "a"
+$slugify = new Slugify(["rulesets" => ["default", "turkish"]]);
+$slugify->slugify("ä"); // -> "a"
 ```
 
 You can find a list of the available rulesets in [Resources/rules](https://github.com/cocur/slugify/tree/master/Resources/rules).
@@ -93,7 +93,7 @@ The constructor takes an options array, you have already seen the `rulesets` opt
 regular expression that is used to replace characters with the separator.
 
 ```php
-$slugify = new Slugify(['regexp' => '/([^A-Za-z0-9]|-)+/']);
+$slugify = new Slugify(["regexp" => "/([^A-Za-z0-9]|-)+/"]);
 ```
 
 _(The regular expression used in the example above is the default one.)_
@@ -102,8 +102,8 @@ By default Slugify will convert the slug to lowercase. If you want to preserve t
 `lowercase` option to false.
 
 ```php
-$slugify = new Slugify(['lowercase' => false]);
-$slugify->slugify('Hello World'); // -> "Hello-World"
+$slugify = new Slugify(["lowercase" => false]);
+$slugify->slugify("Hello World"); // -> "Hello-World"
 ```
 
 Lowercasing is done before using the regular expression. If you want to keep the lowercasing behavior but your regular
@@ -111,26 +111,26 @@ expression needs to match uppercase letters, you can set the `lowercase_after_re
 
 ```php
 $slugify = new Slugify([
-    'regexp' => '/(?<=[[:^upper:]])(?=[[:upper:]])/',
-    'lowercase_after_regexp' => false,
+    "regexp" => "/(?<=[[:^upper:]])(?=[[:upper:]])/",
+    "lowercase_after_regexp" => false,
 ]);
-$slugify->slugify('FooBar'); // -> "foo-bar"
+$slugify->slugify("FooBar"); // -> "foo-bar"
 ```
 
 By default Slugify will use dashes as separators. If you want to use a different default separator, you can set the
 `separator` option.
 
 ```php
-$slugify = new Slugify(['separator' => '_']);
-$slugify->slugify('Hello World'); // -> "hello_world"
+$slugify = new Slugify(["separator" => "_"]);
+$slugify->slugify("Hello World"); // -> "hello_world"
 ```
 
 By default Slugify will remove leading and trailing separators before returning the slug. If you do not want the slug to
 be trimmed you can set the `trim` option to false.
 
 ```php
-$slugify = new Slugify(['trim' => false]);
-$slugify->slugify('Hello World '); // -> "hello-world-"
+$slugify = new Slugify(["trim" => false]);
+$slugify->slugify("Hello World "); // -> "hello-world-"
 ```
 
 ### Changing options on the fly
@@ -140,22 +140,22 @@ method. For example:
 
 ```php
 $slugify = new Slugify();
-$slugify->slugify('Hello World', ['lowercase' => false]); // -> "Hello-World"
+$slugify->slugify("Hello World", ["lowercase" => false]); // -> "Hello-World"
 ```
 
 You can also modify the separator this way:
 
 ```php
 $slugify = new Slugify();
-$slugify->slugify('Hello World', ['separator' => '_']); // -> "hello_world"
+$slugify->slugify("Hello World", ["separator" => "_"]); // -> "hello_world"
 ```
 
 You can even activate a custom ruleset without touching the default rules:
 
 ```php
 $slugify = new Slugify();
-$slugify->slugify('für', ['ruleset' => 'turkish']); // -> "fur"
-$slugify->slugify('für'); // -> "fuer"
+$slugify->slugify("für", ["ruleset" => "turkish"]); // -> "fur"
+$slugify->slugify("für"); // -> "fuer"
 ```
 
 ### Contributing
@@ -207,10 +207,10 @@ class AppKernel extends Kernel
 {
     public function registerBundles()
     {
-        $bundles = array(
+        $bundles = [
             // ...
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
-        );
+        ];
     }
 }
 ```
@@ -222,20 +222,20 @@ class AppKernel extends Kernel
 
 return [
     // ...
-    Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::class => ['all' => true],
+    Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::class => ["all" => true],
 ];
 ```
 
 You can now use the `cocur_slugify` service everywhere in your application, for example, in your controller:
 
 ```php
-$slug = $this->get('cocur_slugify')->slugify('Hello World!');
+$slug = $this->get("cocur_slugify")->slugify("Hello World!");
 ```
 
 The bundle also provides an alias `slugify` for the `cocur_slugify` service:
 
 ```php
-$slug = $this->get('slugify')->slugify('Hello World!');
+$slug = $this->get("slugify")->slugify("Hello World!");
 ```
 
 If you use `autowire` (Symfony >=3.3), you can inject it into your services like this:
@@ -247,14 +247,14 @@ public function __construct(\Cocur\Slugify\SlugifyInterface $slugify)
 #### Symfony Configuration
 
 You can set the following configuration settings in `config.yml` (Symfony 2-3) or
-`config/packages/slugify.yaml` (Symfony 4) to adjust the slugify service:
+`config/packages/cocur_slugify.yaml` (Symfony 4) to adjust the slugify service:
 
 ```yaml
 cocur_slugify:
     lowercase: false # or true
-    separator: '-' # any string
+    separator: "-" # any string
     # regexp: <string>
-    rulesets: ['austrian'] # List of rulesets: https://github.com/cocur/slugify/tree/master/Resources/rules
+    rulesets: ["austrian"] # List of rulesets: https://github.com/cocur/slugify/tree/master/Resources/rules
 ```
 
 ### Twig
@@ -301,12 +301,14 @@ If you want to use Slugify in Mustache, just add a helper:
 ```php
 use Cocur\Slugify\Slugify;
 
-$mustache = new Mustache_Engine(array(
+$mustache = new Mustache_Engine([
     // ...
-    'helpers' => array('slugify' => function($string, $separator = null) {
-        return Slugify::create()->slugify($string, $separator);
-    }),
-));
+    "helpers" => [
+        "slugify" => function ($string, $separator = null) {
+            return Slugify::create()->slugify($string, $separator);
+        },
+    ],
+]);
 ```
 
 ### Laravel
@@ -332,7 +334,7 @@ And add the facade into the "aliases" array:
 You can then use the `Slugify::slugify()` method in your controllers:
 
 ```php
-$url = Slugify::slugify('welcome to the homepage');
+$url = Slugify::slugify("welcome to the homepage");
 ```
 
 ### Laminas
@@ -390,44 +392,44 @@ already registered for you.
 Just enable the module in your configuration like this.
 
 ```php
-return array(
+return [
     //...
 
-    'modules' => array(
-        'Application',
-        'ZfcBase',
-        'Cocur\Slugify\Bridge\ZF2' // <- Add this line
+    "modules" => [
+        "Application",
+        "ZfcBase",
+        "Cocur\Slugify\Bridge\ZF2", // <- Add this line
         //...
-    )
+    ],
 
     //...
-);
+];
 ```
 
 After that you can retrieve the `Cocur\Slugify\Slugify` service (or the `slugify` alias) and generate a slug.
 
 ```php
 /** @var \Zend\ServiceManager\ServiceManager $sm */
-$slugify = $sm->get('Cocur\Slugify\Slugify');
-$slug = $slugify->slugify('Hällo Wörld');
-$anotherSlug = $slugify->slugify('Hällo Wörld', '_');
+$slugify = $sm->get("Cocur\Slugify\Slugify");
+$slug = $slugify->slugify("Hällo Wörld");
+$anotherSlug = $slugify->slugify("Hällo Wörld", "_");
 ```
 
 In your view templates use the `slugify` helper to generate slugs.
 
 ```php
-<?php echo $this->slugify('Hällo Wörld') ?>
-<?php echo $this->slugify('Hällo Wörld', '_') ?>
+<?php echo $this->slugify("Hällo Wörld"); ?>
+<?php echo $this->slugify("Hällo Wörld", "_"); ?>
 ```
 
 The service (which is also used in the view helper) can be customized by defining this configuration key.
 
 ```php
-return array(
-    'cocur_slugify' => array(
-        'reg_exp' => '/([^a-zA-Z0-9]|-)+/'
-    )
-);
+return [
+    "cocur_slugify" => [
+        "reg_exp" => "/([^a-zA-Z0-9]|-)+/",
+    ],
+];
 ```
 
 ### Nette Framework
@@ -453,7 +455,7 @@ class MyPresenter extends \Nette\Application\UI\Presenter
 
     public function renderDefault()
     {
-        $this->template->hello = $this->slugify->slugify('Hällo Wörld');
+        $this->template->hello = $this->slugify->slugify("Hällo Wörld");
     }
 }
 ```
@@ -475,7 +477,7 @@ use Cocur\Slugify\Slugify;
 use Latte;
 
 $latte = new Latte\Engine();
-$latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugify'));
+$latte->addFilter("slugify", [new SlugifyHelper(Slugify::create()), "slugify"]);
 ```
 
 ### Slim 3
@@ -483,11 +485,23 @@ $latte->addFilter('slugify', array(new SlugifyHelper(Slugify::create()), 'slugif
 Slugify does not need a specific bridge to work with [Slim 3](http://www.slimframework.com), just add the following configuration:
 
 ```php
-$container['view'] = function ($c) {
-    $settings = $c->get('settings');
-    $view = new \Slim\Views\Twig($settings['view']['template_path'], $settings['view']['twig']);
-    $view->addExtension(new Slim\Views\TwigExtension($c->get('router'), $c->get('request')->getUri()));
-    $view->addExtension(new Cocur\Slugify\Bridge\Twig\SlugifyExtension(Cocur\Slugify\Slugify::create()));
+$container["view"] = function ($c) {
+    $settings = $c->get("settings");
+    $view = new \Slim\Views\Twig(
+        $settings["view"]["template_path"],
+        $settings["view"]["twig"]
+    );
+    $view->addExtension(
+        new Slim\Views\TwigExtension(
+            $c->get("router"),
+            $c->get("request")->getUri()
+        )
+    );
+    $view->addExtension(
+        new Cocur\Slugify\Bridge\Twig\SlugifyExtension(
+            Cocur\Slugify\Slugify::create()
+        )
+    );
     return $view;
 };
 ```
@@ -507,7 +521,9 @@ use Cocur\Slugify;
 use League\Container;
 
 /* @var Container\ContainerInterface $container */
-$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+$container->addServiceProvider(
+    new Slugify\Bridge\League\SlugifyServiceProvider()
+);
 
 /* @var Slugify\Slugify $slugify */
 $slugify = $container->get(Slugify\SlugifyInterface::class);
@@ -520,15 +536,14 @@ use Cocur\Slugify;
 use League\Container;
 
 /* @var Container\ContainerInterface $container */
-$container->share('config.slugify.options', [
-    'lowercase' => false,
-    'rulesets' => [
-        'default',
-        'german',
-    ],
+$container->share("config.slugify.options", [
+    "lowercase" => false,
+    "rulesets" => ["default", "german"],
 ]);
 
-$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+$container->addServiceProvider(
+    new Slugify\Bridge\League\SlugifyServiceProvider()
+);
 
 /* @var Slugify\Slugify $slugify */
 $slugify = $container->get(Slugify\SlugifyInterface::class);
@@ -553,33 +568,84 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### Version 4.6.0 (10 September 2024)
+
+-   [#336](https://github.com/cocur/slugify/pull/336) Add Yiddish language ruleset ([yankl](https://github.com/yankl))
+-   [#340](https://github.com/cocur/slugify/pull/340) Fix for Symfony 7.1 (by [Evgeny1973](https://github.com/Evgeny1973))
+-   [#342](https://github.com/cocur/slugify/pull/342) Fix PHP 8.4 deprecation about implicit null arguments (by [shyim](https://github.com/shyim))
+
+### Version 4.5.1 (16 September 2023)
+
+-   Drop support for PHP 7 and fix version constraints
+-   Replaces v4.5.0
+
+### Version 4.5 (16 September 2023)
+
+-   [#327](https://github.com/cocur/slugify/pull/327) Add Korean to default ruleset
+-   Replaced by v4.5.1 since this release breaks compatibility with PHP 7
+
+### Version 4.4.1 (17 September 2023)
+
+-   Remove PHP 7 from compatibility list
+-   Replaces v4.4.0
+
+### Version 4.4 (5 August 2023)
+
+-   [#320](https://github.com/cocur/slugify/pull/320) Add Korean (by [MrMooky](https://github.com/MrMooky))
+-   [#322](https://github.com/cocur/slugify/pull/322) Add types to avoid PHP 8.2 deprecation warning (by [antoniovj1](https://github.com/antoniovj1))
+-   Replaced by v4.4.1 since this release broke compatibility with PHP 7
+
+### Version 4.3 (7 December 2022)
+
+-   [#317](https://github.com/cocur/slugify/pull/317) Add PHP 8.2 support (by [fezfez](https://github.com/fezfez))
+
+### Version 4.2 (13 August 2022)
+
+-   [#305](https://github.com/cocur/slugify/pull/305) Add support for custom fonts (by [luca-alsina](https://github.com/luca-alsina))
+-   [#309](https://github.com/cocur/slugify/pull/309) Add handling for undefined rulesets (by [aadmathijssen](https://github.com/aadmathijssen))
+-   [#227](https://github.com/cocur/slugify/pull/227) Add support for capital sharp s (by [weeman1337](https://github.com/weeman1337))
+-   [#312](https://github.com/cocur/slugify/pull/312) Fix composer.lock file (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+-   [#313](https://github.com/cocur/slugify/pull/313) Update PHP version requirement (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+
+### Version 4.1 (11 January 2022)
+
+Support for Symfony 6.
+
+-   [#244](https://github.com/cocur/slugify/pull/244) .gitignore cleanup (by [kubawerlos](https://github.com/kubawerlos))
+-   [#259](https://github.com/cocur/slugify/pull/259) Fix portuguese-brazil language (by [stephandesouza](https://github.com/stephandesouza))
+-   [#272](https://github.com/cocur/slugify/pull/272) Improve tests about assertions (by [peter279k](https://github.com/peter279k))
+-   [#278](https://github.com/cocur/slugify/pull/278) Update georgian.json (by [nikameto](https://github.com/nikameto))
+-   [#299](https://github.com/cocur/slugify/pull/299) Allow Symfony 6 and resolve depreciations (by [GromNaN](https://github.com/GromNaN))
+-   [#264](https://github.com/cocur/slugify/pull/264) Add new Gujarati language (by [infynnoTech](https://github.com/infynnoTech))
+-   [#297](https://github.com/cocur/slugify/pull/297) More Yoruba character support (by [9jaGuy](https://github.com/9jaGuy))
+
 ### Version 4.0 (14 December 2019)
 
 Version 4 does not introduce new major features, but adds support for Symfony 4 and 5, Twig 3 and, most importantly, PHP 7.3 and 7.4.
 
 Support for PHP 5, Twig 1 and Silex is dropped.
 
-- [#230](https://github.com/cocur/slugify/pull/230) Add Slovak rules (by [bartko-s](https://github.com/bartko-s))
-- [#236](https://github.com/cocur/slugify/pull/236) Make Twig Bridge compatible with Twig 3.0 (by [mhujer](https://github.com/mhujer))
-- [#237](https://github.com/cocur/slugify/pull/237) Fix Travis CI configuration (by [kubawerlos](https://github.com/kubawerlos))
-- [#238](https://github.com/cocur/slugify/pull/238) Drop Twig 1 support (by [FabienPapet](https://github.com/FabienPapet))
-- [#239](https://github.com/cocur/slugify/pull/239) Fix AppVeyor (by [kubawerlos](https://github.com/kubawerlos))
-- [#241](https://github.com/cocur/slugify/pull/241) Update .gitattributes (by [kubawerlos](https://github.com/kubawerlos))
-- [#242](https://github.com/cocur/slugify/pull/242) Add PHP CS Fixer (by [kubawerlos](https://github.com/kubawerlos))
-- [#243](https://github.com/cocur/slugify/pull/243) Normalize composer.json (by [kubawerlos](https://github.com/kubawerlos))
-- [#246](https://github.com/cocur/slugify/pull/246) Add support for PHP 7.3 and 7.4 (by [snapshotpl](https://github.com/snapshotpl))
-- [#247](https://github.com/cocur/slugify/pull/247) AppVeyor improvements (by [kubawerlos](https://github.com/kubawerlos))
-- [#249](https://github.com/cocur/slugify/pull/249) PHPUnit annotations should be a FQCNs including a root namespace (by [kubawerlos](https://github.com/kubawerlos))
-- [#250](https://github.com/cocur/slugify/pull/250) Add support for Symfony 4 and 5 (by [franmomu](https://github.com/franmomu))
-- [#251](https://github.com/cocur/slugify/pull/251) Dropping support for PHP 5 (by [franmomu](https://github.com/franmomu))
-- [#253](https://github.com/cocur/slugify/pull/253) Add conflict for unmaintained Symfony versions (by [franmomu](https://github.com/franmomu))
+-   [#230](https://github.com/cocur/slugify/pull/230) Add Slovak rules (by [bartko-s](https://github.com/bartko-s))
+-   [#236](https://github.com/cocur/slugify/pull/236) Make Twig Bridge compatible with Twig 3.0 (by [mhujer](https://github.com/mhujer))
+-   [#237](https://github.com/cocur/slugify/pull/237) Fix Travis CI configuration (by [kubawerlos](https://github.com/kubawerlos))
+-   [#238](https://github.com/cocur/slugify/pull/238) Drop Twig 1 support (by [FabienPapet](https://github.com/FabienPapet))
+-   [#239](https://github.com/cocur/slugify/pull/239) Fix AppVeyor (by [kubawerlos](https://github.com/kubawerlos))
+-   [#241](https://github.com/cocur/slugify/pull/241) Update .gitattributes (by [kubawerlos](https://github.com/kubawerlos))
+-   [#242](https://github.com/cocur/slugify/pull/242) Add PHP CS Fixer (by [kubawerlos](https://github.com/kubawerlos))
+-   [#243](https://github.com/cocur/slugify/pull/243) Normalize composer.json (by [kubawerlos](https://github.com/kubawerlos))
+-   [#246](https://github.com/cocur/slugify/pull/246) Add support for PHP 7.3 and 7.4 (by [snapshotpl](https://github.com/snapshotpl))
+-   [#247](https://github.com/cocur/slugify/pull/247) AppVeyor improvements (by [kubawerlos](https://github.com/kubawerlos))
+-   [#249](https://github.com/cocur/slugify/pull/249) PHPUnit annotations should be a FQCNs including a root namespace (by [kubawerlos](https://github.com/kubawerlos))
+-   [#250](https://github.com/cocur/slugify/pull/250) Add support for Symfony 4 and 5 (by [franmomu](https://github.com/franmomu))
+-   [#251](https://github.com/cocur/slugify/pull/251) Dropping support for PHP 5 (by [franmomu](https://github.com/franmomu))
+-   [#253](https://github.com/cocur/slugify/pull/253) Add conflict for unmaintained Symfony versions (by [franmomu](https://github.com/franmomu))
 
 ### Version 3.2 (31 January 2019)
 
-- [#201](https://github.com/cocur/slugify/pull/201) Add strip_tags option (by [thewilkybarkid](https://github.com/thewilkybarkid))
-- [#212](https://github.com/cocur/slugify/pull/212) Fix Macedonian Dze (by [franmomu](https://github.com/franmomu))
-- [#213](https://github.com/cocur/slugify/pull/213) Add support for Turkmen (by [umbarov](https://github.com/umbarov))
-- [#216](https://github.com/cocur/slugify/pull/216) Add lowercase_after_regexp option (by [julienfalque](https://github.com/julienfalque))
+-   [#201](https://github.com/cocur/slugify/pull/201) Add strip_tags option (by [thewilkybarkid](https://github.com/thewilkybarkid))
+-   [#212](https://github.com/cocur/slugify/pull/212) Fix Macedonian Dze (by [franmomu](https://github.com/franmomu))
+-   [#213](https://github.com/cocur/slugify/pull/213) Add support for Turkmen (by [umbarov](https://github.com/umbarov))
+-   [#216](https://github.com/cocur/slugify/pull/216) Add lowercase_after_regexp option (by [julienfalque](https://github.com/julienfalque))
 -   [#217](https://github.com/cocur/slugify/pull/217) Simplify default regular impression (by [julienfalque](https://github.com/julienfalque))
 -   [#220](https://github.com/cocur/slugify/pull/220) Fix deprecation warning for symfony/config 4.2+ (by [franmomu](https://github.com/franmomu))
 -   [#221](https://github.com/cocur/slugify/pull/221) Add suuport Armenian (by [boolfalse](https://github.com/boolfalse))

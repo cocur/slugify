@@ -12,6 +12,7 @@
 namespace Cocur\Slugify\Tests\Bridge\Symfony;
 
 use Cocur\Slugify\Bridge\Symfony\Configuration;
+use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 use Symfony\Component\Config\Definition\Processor;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 
@@ -30,32 +31,29 @@ class ConfigurationTest extends MockeryTestCase
             ],
         ];
 
-        $this->process($configs);
+        $this->assertSame($configs[0], $this->process($configs));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
-     */
     public function testLowercaseOnlyAcceptsBoolean()
     {
+        $this->expectException(InvalidTypeException::class);
+
         $configs = [['lowercase' => 'abc']];
         $this->process($configs);
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
-     */
     public function testLowercaseAfterRegexpOnlyAcceptsBoolean()
     {
+        $this->expectException(InvalidTypeException::class);
+
         $configs = [['lowercase_after_regexp' => 'abc']];
         $this->process($configs);
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
-     */
     public function testStripTagsOnlyAcceptsBoolean()
     {
+        $this->expectException(InvalidTypeException::class);
+
         $configs = [['strip_tags' => 'abc']];
         $this->process($configs);
     }
