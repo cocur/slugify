@@ -339,7 +339,7 @@ $url = Slugify::slugify("welcome to the homepage");
 
 ### Laminas
 
-Slugify can be easely used in Laminas applications. Included bridge provides a service and a view helper
+Slugify can be easily used in Laminas applications. Included bridge provides a service and a view helper
 already registered for you.
 
 Just enable the module in your configuration like this.
