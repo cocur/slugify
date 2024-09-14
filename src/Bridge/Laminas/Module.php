@@ -13,43 +13,16 @@ use Laminas\ServiceManager\Config;
  * @subpackage bridge
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
-class Module implements ServiceProviderInterface, ViewHelperProviderInterface
+class Module
 {
     public const CONFIG_KEY = 'cocur_slugify';
 
-    /**
-     * Expected to return \Laminas\ServiceManager\Config object or array to
-     * seed such an object.
-     *
-     * @return array<string,array<string,string>>
-     */
-    public function getServiceConfig()
+    public function getConfig()
     {
+        $provider = new ConfigProvider();
         return [
-            'factories' => [
-                Slugify::class => SlugifyService::class,
-            ],
-            'aliases' => [
-                'slugify' => Slugify::class,
-            ]
-        ];
-    }
-
-    /**
-     * Expected to return \Laminas\ServiceManager\Config object or array to
-     * seed such an object.
-     *
-     * @return array<string,array<string,string>>|Config
-     */
-    public function getViewHelperConfig()
-    {
-        return [
-            'aliases' => [
-                'slugify' => SlugifyViewHelper::class
-            ],
-            'factories' => [
-                SlugifyViewHelper::class => SlugifyViewHelperFactory::class
-            ]
+            'dependencies' => $provider->getDependencyConfig(),
+            'view_helpers' => $provider->getViewHelperConfig(),
         ];
     }
 }

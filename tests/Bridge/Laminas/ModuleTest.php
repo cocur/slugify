@@ -24,16 +24,17 @@ class ModuleTest extends MockeryTestCase
     }
 
     /**
-     * @covers \Cocur\Slugify\Bridge\Laminas\Module::getServiceConfig()
+     * @covers \Cocur\Slugify\Bridge\Laminas\Module::getDependencyConfig()
      */
     public function testGetServiceConfig()
     {
-        $smConfig = $this->module->getServiceConfig();
+        $smConfig = $this->module->getConfig();
         $this->assertIsArray($smConfig);
-        $this->assertArrayHasKey('factories', $smConfig);
-        $this->assertArrayHasKey('Cocur\Slugify\Slugify', $smConfig['factories']);
-        $this->assertArrayHasKey('aliases', $smConfig);
-        $this->assertArrayHasKey('slugify', $smConfig['aliases']);
+        $this->assertArrayHasKey('dependencies', $smConfig);
+        $this->assertArrayHasKey('factories', $smConfig['dependencies']);
+        $this->assertArrayHasKey('Cocur\Slugify\Slugify', $smConfig['dependencies']['factories']);
+        $this->assertArrayHasKey('aliases', $smConfig['dependencies']);
+        $this->assertArrayHasKey('slugify', $smConfig['dependencies']['aliases']);
     }
 
     /**
@@ -41,11 +42,12 @@ class ModuleTest extends MockeryTestCase
      */
     public function testGetViewHelperConfig()
     {
-        $vhConfig = $this->module->getViewHelperConfig();
+        $vhConfig = $this->module->getConfig();
         $this->assertIsArray($vhConfig);
-        $this->assertArrayHasKey('factories', $vhConfig);
-        $this->assertArrayHasKey(SlugifyViewHelper::class, $vhConfig['factories']);
-        $this->assertArrayHasKey('aliases', $vhConfig);
-        $this->assertArrayHasKey('slugify', $vhConfig['aliases']);
+        $this->assertArrayHasKey('view_helpers', $vhConfig);
+        $this->assertArrayHasKey('factories', $vhConfig['view_helpers']);
+        $this->assertArrayHasKey(SlugifyViewHelper::class, $vhConfig['view_helpers']['factories']);
+        $this->assertArrayHasKey('aliases', $vhConfig['view_helpers']);
+        $this->assertArrayHasKey('slugify', $vhConfig['view_helpers']['aliases']);
     }
 }
