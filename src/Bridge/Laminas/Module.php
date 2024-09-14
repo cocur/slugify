@@ -5,7 +5,7 @@ namespace Cocur\Slugify\Bridge\Laminas;
 use Cocur\Slugify\Slugify;
 use Laminas\ModuleManager\Feature\ServiceProviderInterface;
 use Laminas\ModuleManager\Feature\ViewHelperProviderInterface;
-use Zend\ServiceManager\Config;
+use Laminas\ServiceManager\Config;
 
 /**
  * Class Module
@@ -15,7 +15,7 @@ use Zend\ServiceManager\Config;
  */
 class Module implements ServiceProviderInterface, ViewHelperProviderInterface
 {
-    const CONFIG_KEY = 'cocur_slugify';
+    public const CONFIG_KEY = 'cocur_slugify';
 
     /**
      * Expected to return \Laminas\ServiceManager\Config object or array to

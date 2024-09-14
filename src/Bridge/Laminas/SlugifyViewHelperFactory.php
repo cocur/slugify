@@ -15,15 +15,17 @@ class SlugifyViewHelperFactory implements FactoryInterface
 {
 
     /**
-     * 
      * @param ContainerInterface $container
-     * @param string $requestedName
-     * @param array $options
+     * @param $requestedName
+     * @param array|null $options
      * @return SlugifyViewHelper
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): SlugifyViewHelper 
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): SlugifyViewHelper
     {
         $slugify = $container->get('Cocur\Slugify\Slugify');
+
         return new SlugifyViewHelper($slugify);
     }
 

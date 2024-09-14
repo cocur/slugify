@@ -3,7 +3,6 @@ namespace Cocur\Slugify\Tests\Bridge\Laminas;
 
 use Cocur\Slugify\Bridge\Laminas\Module;
 use Cocur\Slugify\Bridge\Laminas\SlugifyService;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\ServiceManager\ServiceManager;
 
 use Mockery\Adapter\Phpunit\MockeryTestCase;
@@ -32,9 +31,8 @@ class SlugifyServiceTest extends MockeryTestCase
      */
     public function testInvokeWithoutCustomConfig()
     {
-        $this->markTestSkipped();
         $sm = $this->createServiceManagerMock();
-        $slugify = call_user_func($this->slugifyService, $sm);
+        $slugify = call_user_func($this->slugifyService, $sm, 'slugify');
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $slugify);
 
         // Make sure reg exp is default one
@@ -48,16 +46,15 @@ class SlugifyServiceTest extends MockeryTestCase
      */
     public function testInvokeWithCustomConfig()
     {
-        $this->markTestSkipped();
         $sm = $this->createServiceManagerMock([
             Module::CONFIG_KEY => [
                 'options' => ['regexp' => '/([^a-z0-9.]|-)+/']
             ]
         ]);
-        $slugify = call_user_func($this->slugifyService, $sm);
+        $slugify = call_user_func($this->slugifyService, $sm, 'slugify');
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $slugify);
 
-        // Make sure reg exp is the one provided and dots are kept
+        // Make sure regexp is the one provided and dots are kept
         $actual = 'Hello My Friend.zip';
         $expected = 'hello-my-friend.zip';
         $this->assertSame($expected, $slugify->slugify($actual));
@@ -66,7 +63,7 @@ class SlugifyServiceTest extends MockeryTestCase
     protected function createServiceManagerMock(array $config = [])
     {
         $sm = new ServiceManager($config);
-        //$sm->setService('Config', $config);
+        $sm->setService('Config', $config);
 
         return $sm;
     }

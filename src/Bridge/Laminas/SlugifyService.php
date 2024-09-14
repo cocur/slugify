@@ -14,7 +14,6 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
  */
 class SlugifyService implements FactoryInterface
 {
-
     /**
      * @param ContainerInterface $container
      * @param $requestedName
@@ -23,11 +22,12 @@ class SlugifyService implements FactoryInterface
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): Slugify {
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): Slugify
+    {
         $config = $container->get('Config');
 
-        $slugifyOptions  = isset($config[Module::CONFIG_KEY]['options']) ? $config[Module::CONFIG_KEY]['options'] : [];
-        $provider = isset($config[Module::CONFIG_KEY]['provider']) ? $config[Module::CONFIG_KEY]['provider'] : null;
+        $slugifyOptions  =  $config[Module::CONFIG_KEY]['options'] ?? [];
+        $provider = $config[Module::CONFIG_KEY]['provider'] ?? null;
 
         return new Slugify($slugifyOptions, $provider);
     }

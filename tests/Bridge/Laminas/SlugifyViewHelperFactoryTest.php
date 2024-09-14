@@ -30,13 +30,10 @@ class SlugifyViewHelperFactoryTest extends MockeryTestCase
      */
     public function testCreateService()
     {
-        $this->markTestSkipped();
         $sm = new ServiceManager();
         $sm->setService('Cocur\Slugify\Slugify', new Slugify());
-        $vhm = new HelperPluginManager();
-        $vhm->setServiceLocator($sm);
 
-        $viewHelper = call_user_func($this->factory, $vhm);
+        $viewHelper = call_user_func($this->factory, $sm, 'slugify');
         $this->assertInstanceOf('Cocur\Slugify\Bridge\Laminas\SlugifyViewHelper', $viewHelper);
     }
 }
