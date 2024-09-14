@@ -2,11 +2,6 @@
 
 namespace Cocur\Slugify\Bridge\Laminas;
 
-use Cocur\Slugify\Slugify;
-use Laminas\ModuleManager\Feature\ServiceProviderInterface;
-use Laminas\ModuleManager\Feature\ViewHelperProviderInterface;
-use Laminas\ServiceManager\Config;
-
 /**
  * Class Module
  * @package    cocur/slugify
@@ -17,12 +12,13 @@ class Module
 {
     public const CONFIG_KEY = 'cocur_slugify';
 
-    public function getConfig()
+    public function getConfig(): array
     {
-        $provider = new ConfigProvider();
-        return [
-            'dependencies' => $provider->getDependencyConfig(),
-            'view_helpers' => $provider->getViewHelperConfig(),
-        ];
+        $provider                  = new ConfigProvider();
+        $config                    = $provider();
+        $config['service_manager'] = $config['dependencies'];
+        unset($config['dependencies']);
+
+        return $config;
     }
 }

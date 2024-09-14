@@ -30,11 +30,11 @@ class ModuleTest extends MockeryTestCase
     {
         $smConfig = $this->module->getConfig();
         $this->assertIsArray($smConfig);
-        $this->assertArrayHasKey('dependencies', $smConfig);
-        $this->assertArrayHasKey('factories', $smConfig['dependencies']);
-        $this->assertArrayHasKey('Cocur\Slugify\Slugify', $smConfig['dependencies']['factories']);
-        $this->assertArrayHasKey('aliases', $smConfig['dependencies']);
-        $this->assertArrayHasKey('slugify', $smConfig['dependencies']['aliases']);
+        $this->assertArrayHasKey('service_manager', $smConfig);
+        $this->assertArrayHasKey('factories', $smConfig['service_manager']);
+        $this->assertArrayHasKey('Cocur\Slugify\Slugify', $smConfig['service_manager']['factories']);
+        $this->assertArrayHasKey('aliases', $smConfig['service_manager']);
+        $this->assertArrayHasKey('slugify', $smConfig['service_manager']['aliases']);
     }
 
     /**
