@@ -4,7 +4,6 @@ namespace Cocur\Slugify\Tests\Bridge\Laminas;
 use Cocur\Slugify\Bridge\Laminas\SlugifyViewHelperFactory;
 use Cocur\Slugify\Slugify;
 use Laminas\ServiceManager\ServiceManager;
-use Laminas\View\HelperPluginManager;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
@@ -33,7 +32,7 @@ class SlugifyViewHelperFactoryTest extends MockeryTestCase
         $sm = new ServiceManager();
         $sm->setService('Cocur\Slugify\Slugify', new Slugify());
 
-        $viewHelper = call_user_func($this->factory, $sm, 'slugify');
+        $viewHelper = call_user_func($this->factory, $sm);
         $this->assertInstanceOf('Cocur\Slugify\Bridge\Laminas\SlugifyViewHelper', $viewHelper);
     }
 }

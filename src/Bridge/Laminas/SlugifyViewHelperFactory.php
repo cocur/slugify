@@ -17,14 +17,12 @@ class SlugifyViewHelperFactory
 
     /**
      * @param ContainerInterface $container
-     * @param $requestedName
-     * @param array|null $options
      *
      * @return SlugifyViewHelper
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): SlugifyViewHelper
+    public function __invoke(ContainerInterface $container): SlugifyViewHelper
     {
         $slugify = $container->get('Cocur\Slugify\Slugify');
 

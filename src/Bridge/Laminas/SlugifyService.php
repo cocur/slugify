@@ -17,14 +17,12 @@ class SlugifyService
 {
     /**
      * @param ContainerInterface $container
-     * @param $requestedName
-     * @param array|null $options
      *
      * @return Slugify
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): Slugify
+    public function __invoke(ContainerInterface $container): Slugify
     {
         $config = $container->get('Config');
 

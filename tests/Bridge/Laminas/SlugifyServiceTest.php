@@ -32,7 +32,7 @@ class SlugifyServiceTest extends MockeryTestCase
     public function testInvokeWithoutCustomConfig()
     {
         $sm = $this->createServiceManagerMock();
-        $slugify = call_user_func($this->slugifyService, $sm, 'slugify');
+        $slugify = call_user_func($this->slugifyService, $sm);
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $slugify);
 
         // Make sure reg exp is default one
@@ -51,7 +51,7 @@ class SlugifyServiceTest extends MockeryTestCase
                 'options' => ['regexp' => '/([^a-z0-9.]|-)+/']
             ]
         ]);
-        $slugify = call_user_func($this->slugifyService, $sm, 'slugify');
+        $slugify = call_user_func($this->slugifyService, $sm);
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $slugify);
 
         // Make sure regexp is the one provided and dots are kept
@@ -60,7 +60,12 @@ class SlugifyServiceTest extends MockeryTestCase
         $this->assertSame($expected, $slugify->slugify($actual));
     }
 
-    protected function createServiceManagerMock(array $config = [])
+    /**
+     * @param array $config
+     *
+     * @return ServiceManager
+     */
+    protected function createServiceManagerMock(array $config = []): ServiceManager
     {
         $sm = new ServiceManager($config);
         $sm->setService('Config', $config);
