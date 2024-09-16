@@ -1,7 +1,7 @@
 <?php
-namespace Cocur\Slugify\Tests\Bridge\ZF2;
+namespace Cocur\Slugify\Tests\Bridge\Laminas;
 
-use Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper;
+use Cocur\Slugify\Bridge\Laminas\SlugifyViewHelper;
 use Cocur\Slugify\Slugify;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 
@@ -23,7 +23,7 @@ class SlugifyViewHelperTest extends MockeryTestCase
     private $slugify;
 
     /**
-     * @covers \Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__construct()
+     * @covers \Cocur\Slugify\Bridge\Laminas\SlugifyViewHelper::__construct()
      */
     protected function setUp(): void
     {
@@ -32,7 +32,7 @@ class SlugifyViewHelperTest extends MockeryTestCase
     }
 
     /**
-     * @covers \Cocur\Slugify\Bridge\ZF2\SlugifyViewHelper::__invoke()
+     * @covers \Cocur\Slugify\Bridge\Laminas\SlugifyViewHelper::__invoke()
      */
     public function testInvoke()
     {
