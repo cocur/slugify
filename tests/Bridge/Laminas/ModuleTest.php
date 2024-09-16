@@ -24,7 +24,8 @@ class ModuleTest extends MockeryTestCase
     }
 
     /**
-     * @covers \Cocur\Slugify\Bridge\Laminas\Module::getDependencyConfig()
+     * @covers \Cocur\Slugify\Bridge\Laminas\Module::getConfig()
+     * @covers \Cocur\Slugify\Bridge\Laminas\ConfigProvider::getDependencyConfig()
      */
     public function testGetServiceConfig()
     {
@@ -38,7 +39,8 @@ class ModuleTest extends MockeryTestCase
     }
 
     /**
-     * @covers \Cocur\Slugify\Bridge\ZF2\Module::getViewHelperConfig()
+     * @covers \Cocur\Slugify\Bridge\Laminas\Module::getConfig()
+     * @covers \Cocur\Slugify\Bridge\Laminas\ConfigProvider::getViewHelperConfig()
      */
     public function testGetViewHelperConfig()
     {
