@@ -2,8 +2,9 @@
 
 namespace Cocur\Slugify\Bridge\Laminas;
 
-use Interop\Container\ContainerInterface;
-use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Class SlugifyViewHelperFactory
@@ -11,16 +12,17 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
  * @subpackage bridge
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
-class SlugifyViewHelperFactory implements FactoryInterface
+class SlugifyViewHelperFactory
 {
 
     /**
      * @param ContainerInterface $container
      * @param $requestedName
      * @param array|null $options
+     *
      * @return SlugifyViewHelper
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): SlugifyViewHelper
     {
