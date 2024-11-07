@@ -3,6 +3,7 @@
 namespace Cocur\Slugify\Bridge\Laminas;
 
 use Cocur\Slugify\Slugify;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 class ConfigProvider
 {
@@ -15,6 +16,7 @@ class ConfigProvider
     {
         return [
             'dependencies' => $this->getDependencyConfig(),
+            'filters'      => $this->filterConfig(),
             'view_helpers' => $this->getViewHelperConfig(),
         ];
     }
@@ -50,6 +52,21 @@ class ConfigProvider
             'factories' => [
                 SlugifyViewHelper::class => SlugifyViewHelperFactory::class
             ]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    private function filterConfig(): array
+    {
+        return [
+            'factories' => [
+                SlugifyFilter::class => InvokableFactory::class,
+            ],
+            'aliases'   => [
+                'slugify' => SlugifyFilter::class,
+            ],
         ];
     }
 }
