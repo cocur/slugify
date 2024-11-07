@@ -345,17 +345,13 @@ already registered for you.
 Just enable the module in your configuration like this.
 
 ```php
-return array(
-    //...
-
-    'modules' => array(
+return [
+    'modules' => [
         'Application',
         'Cocur\Slugify\Bridge\Laminas' // <- Add this line
         //...
-    )
-
-    //...
-);
+    ]
+];
 ```
 
 After that you can retrieve the `Cocur\Slugify\Slugify` service (or the `slugify` alias) and generate a slug.
@@ -377,11 +373,11 @@ In your view templates use the `slugify` helper to generate slugs.
 The service (which is also used in the view helper) can be customized by defining this configuration key.
 
 ```php
-return array(
-    'cocur_slugify' => array(
+return [
+    'cocur_slugify' => [
         'reg_exp' => '/([^a-zA-Z0-9]|-)+/'
-    )
-);
+    ]
+];
 ```
 
 
