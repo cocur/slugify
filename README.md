@@ -353,7 +353,7 @@ return [
     ]
 ];
 ```
-
+It will automatically inject the config-provider or the module in the configuration during the installation process.
 After that you can retrieve the `Cocur\Slugify\Slugify` service (or the `slugify` alias) and generate a slug.
 
 ```php
@@ -361,6 +361,25 @@ After that you can retrieve the `Cocur\Slugify\Slugify` service (or the `slugify
 $slugify = $sm->get('Cocur\Slugify\Slugify');
 $slug = $slugify->slugify('Hällo Wörld');
 $anotherSlug = $slugify->slugify('Hällo Wörld', '_');
+```
+
+It can be used in form filters as follows.
+
+```php
+'my_form_input' => [
+    'filters' => [
+        [
+            'name' => SlugifyFilter::class,
+            'options' => [
+                'regexp' => Slugify::LOWERCASE_NUMBERS_DASHES,
+                'strip_tags' => true,
+                //...
+            ]
+        ],
+    ],
+    //...
+],
+//...
 ```
 
 In your view templates use the `slugify` helper to generate slugs.
