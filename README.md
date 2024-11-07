@@ -337,7 +337,7 @@ You can then use the `Slugify::slugify()` method in your controllers:
 $url = Slugify::slugify("welcome to the homepage");
 ```
 
-### Laminas
+### Mezzio and laminas-mvc
 
 Slugify can be easily used in Mezzio or laminas-mvc applications. Included bridge provides a filter and a view helper
 already registered for you.
