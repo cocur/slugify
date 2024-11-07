@@ -5,7 +5,6 @@ namespace Cocur\Slugify\Tests\Bridge\Laminas;
 use Cocur\Slugify\Bridge\Laminas\SlugifyFilter;
 
 use Laminas\Filter\FilterChain;
-use Laminas\InputFilter\Input;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
@@ -17,14 +16,6 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
  */
 class SlugifyFilterTest extends MockeryTestCase
 {
-    /** @var Input */
-    protected Input $input;
-
-    protected function setUp(): void
-    {
-        $this->input = new Input('');
-    }
-
     /**
      * @covers \Cocur\Slugify\Bridge\Laminas\SlugifyFilter::filter()
      */
@@ -39,10 +30,11 @@ class SlugifyFilterTest extends MockeryTestCase
                 ],
             ]
         );
-        $this->input->setFilterChain($chain);
-        $this->input->setValue('foo Bar');
 
-        $this->assertSame('foo-bar', $this->input->getValue());
+        $value = 'foo Bar';
+        $expected = 'foo-bar';
+
+        $this->assertSame($expected, $chain->filter($value));
 
     }
 
@@ -64,10 +56,11 @@ class SlugifyFilterTest extends MockeryTestCase
                 ],
             ]
         );
-        $this->input->setFilterChain($chain);
-        $this->input->setValue('0123 foo bar <test>');
 
-        $this->assertSame('0123-test', $this->input->getValue());
+        $value = '0123 foo bar <test>';
+        $expected = '0123-test';
+
+        $this->assertSame($expected, $chain->filter($value));
     }
 
 }
