@@ -3,7 +3,7 @@
 namespace Cocur\Slugify\Bridge\Laminas;
 
 use Cocur\Slugify\Slugify;
-use Laminas\Filter\AbstractFilter;
+use Laminas\Filter\FilterInterface;
 
 /**
  * Class SlugifyFilter
@@ -12,13 +12,13 @@ use Laminas\Filter\AbstractFilter;
  * @subpackage bridge
  * @license    http://www.opensource.org/licenses/MIT The MIT License
  */
-class SlugifyFilter extends AbstractFilter
+class SlugifyFilter implements FilterInterface
 {
     /**
      * @var array
      * @see Slugify::$options
      */
-    protected $options = [
+    protected array $options = [
         'regexp' => Slugify::LOWERCASE_NUMBERS_DASHES,
         'separator' => '-',
         'lowercase' => true,
@@ -28,9 +28,9 @@ class SlugifyFilter extends AbstractFilter
     ];
 
     /**
-     * @param array|null $options
+     * @param array $options
      */
-    public function __construct(?array $options = null)
+    public function __construct(array $options = [])
     {
         if (!empty($options)) {
             $this->setOptions($options);
@@ -52,5 +52,19 @@ class SlugifyFilter extends AbstractFilter
         }
 
         return $value;
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return void
+     */
+    protected function setOptions(array $options)
+    {
+        foreach ($options as $key => $option) {
+            if (array_key_exists($key, $this->options)) {
+                $this->options[$key] = $option;
+            }
+        }
     }
 }
