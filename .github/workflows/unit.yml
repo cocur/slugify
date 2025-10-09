@@ -30,6 +30,9 @@ jobs:
           - php: "8.4"
             mode: experimental
             os: ubuntu-20.04
+          - php: "8.5"
+            mode: experimental
+            os: ubuntu-20.04
       fail-fast: false
 
     runs-on: "${{ matrix.os }}"
