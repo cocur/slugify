@@ -30,7 +30,7 @@ class SlugifyConverter implements ConverterInterface
     /**
      * @param SlugifyInterface|null $slugify
      */
-    public function __construct(SlugifyInterface $slugify = null)
+    public function __construct(?SlugifyInterface $slugify = null)
     {
         if ($slugify === null) {
             $slugify = new Slugify();
