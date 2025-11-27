@@ -337,53 +337,68 @@ You can then use the `Slugify::slugify()` method in your controllers:
 $url = Slugify::slugify("welcome to the homepage");
 ```
 
-### Zend Framework 2
+### Mezzio and laminas-mvc
 
-Slugify can be easely used in Zend Framework 2 applications. Included bridge provides a service and a view helper
+Slugify can be easily used in Mezzio or laminas-mvc applications. Included bridge provides a filter and a view helper
 already registered for you.
 
 Just enable the module in your configuration like this.
 
 ```php
 return [
-    //...
-
-    "modules" => [
-        "Application",
-        "ZfcBase",
-        "Cocur\Slugify\Bridge\ZF2", // <- Add this line
+    'modules' => [
+        'Application',
+        'Cocur\Slugify\Bridge\Laminas' // <- Add this line
         //...
-    ],
-
-    //...
+    ]
 ];
 ```
-
+It will automatically inject the config-provider or the module in the configuration during the installation process.
 After that you can retrieve the `Cocur\Slugify\Slugify` service (or the `slugify` alias) and generate a slug.
 
 ```php
-/** @var \Zend\ServiceManager\ServiceManager $sm */
-$slugify = $sm->get("Cocur\Slugify\Slugify");
-$slug = $slugify->slugify("Hällo Wörld");
-$anotherSlug = $slugify->slugify("Hällo Wörld", "_");
+/** @var \Laminas\ServiceManager\ServiceManager $sm */
+$slugify = $sm->get('Cocur\Slugify\Slugify');
+$slug = $slugify->slugify('Hällo Wörld');
+$anotherSlug = $slugify->slugify('Hällo Wörld', '_');
+```
+
+It can be used in form filters as follows.
+
+```php
+'my_form_input' => [
+    'filters' => [
+        [
+            'name' => SlugifyFilter::class,
+            'options' => [
+                'regexp' => Slugify::LOWERCASE_NUMBERS_DASHES,
+                'strip_tags' => true,
+                //...
+            ]
+        ],
+    ],
+    //...
+],
+//...
 ```
 
 In your view templates use the `slugify` helper to generate slugs.
 
 ```php
-<?php echo $this->slugify("Hällo Wörld"); ?>
-<?php echo $this->slugify("Hällo Wörld", "_"); ?>
+<?php echo $this->slugify('Hällo Wörld') ?>
+<?php echo $this->slugify('Hällo Wörld', '_') ?>
 ```
 
 The service (which is also used in the view helper) can be customized by defining this configuration key.
 
 ```php
 return [
-    "cocur_slugify" => [
-        "reg_exp" => "/([^a-zA-Z0-9]|-)+/",
-    ],
+    'cocur_slugify' => [
+        'reg_exp' => '/([^a-zA-Z0-9]|-)+/'
+    ]
 ];
 ```
+
 
 ### Nette Framework
 
