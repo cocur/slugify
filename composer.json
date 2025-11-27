@@ -55,5 +55,10 @@
         "psr-4": {
             "Cocur\\Slugify\\Tests\\": "tests"
         }
+    },
+    "config": {
+        "audit": {
+            "block-insecure": false
+        }
     }
 }
