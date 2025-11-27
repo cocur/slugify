@@ -521,6 +521,10 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### Version 4.7.0 (27 November 2025)
+
+-   [#346](https://github.com/cocur/slugify/pull/346) Add PHP 8.5 support (by [fulopattila122](https://github.com/fulopattila122))
+
 ### Version 4.6.0 (10 September 2024)
 
 -   [#336](https://github.com/cocur/slugify/pull/336) Add Yiddish language ruleset ([yankl](https://github.com/yankl))
