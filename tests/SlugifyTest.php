@@ -142,6 +142,19 @@ class SlugifyTest extends MockeryTestCase
         $this->assertSame($result, $slugify->slugify($string));
     }
 
+    /**
+     * @covers \Cocur\Slugify\Slugify::slugify()
+     */
+    public function testCzechRulesetConvertsAcuteVowels()
+    {
+        $slugify = new Slugify(['rulesets' => ['czech']]);
+
+        $this->assertSame(
+            'a-e-i-o-u-y-a-e-i-o-u-y',
+            $slugify->slugify('Á É Í Ó Ú Ý á é í ó ú ý')
+        );
+    }
+
     public function customRulesProvider()
     {
         return [
