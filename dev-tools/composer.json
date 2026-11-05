@@ -1,11 +1,11 @@
 {
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "localheinz/composer-normalize": "^2.34"
+        "ergebnis/composer-normalize": "^2.47",
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "config": {
         "allow-plugins": {
-            "localheinz/composer-normalize": true
+            "ergebnis/composer-normalize": true
         }
     }
 }
