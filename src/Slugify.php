@@ -133,9 +133,12 @@ class Slugify implements SlugifyInterface
             $string = mb_strtolower($string);
         }
 
-        return ($options['trim'])
-            ? trim($string, $options['separator'])
-            : $string;
+        if ($options['trim'] && $options['separator'] !== '') {
+            $separator = preg_quote($options['separator'], '~');
+            $string = preg_replace('~\A(?:'.$separator.')+|(?:'.$separator.')+\z~', '', $string);
+        }
+
+        return $string;
     }
 
     /**
