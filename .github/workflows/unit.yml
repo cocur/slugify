@@ -8,6 +8,11 @@ on:
 permissions:
   contents: read
 
+env:
+  # symfony/phpunit-bridge 5.4.x (installed with --prefer-lowest) reads this
+  # before phpunit.xml.dist is applied, so it must be set in the environment.
+  SYMFONY_DEPRECATIONS_HELPER: weak
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
