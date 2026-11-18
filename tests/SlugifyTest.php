@@ -201,6 +201,21 @@ class SlugifyTest extends MockeryTestCase
         $this->assertSame($expected, $this->slugify->slugify($actual, '__'));
     }
 
+    public function testSlugifyTrimsCompleteSeparatorsOnly()
+    {
+        $options = ['separator' => 'ab'];
+
+        $this->assertSame('alphaabbeta', $this->slugify->slugify('alpha beta', $options));
+        $this->assertSame('alpha', $this->slugify->slugify('alpha', $options));
+        $this->assertSame('beta', $this->slugify->slugify('beta', $options));
+        $this->assertSame('alphaabbeta', $this->slugify->slugify('!alpha beta!', $options));
+        $this->assertSame('', $this->slugify->slugify('!!!', $options));
+        $this->assertSame('', $this->slugify->slugify('', $options));
+        $this->assertSame('abalphaabbetaab', $this->slugify->slugify('!alpha beta!', $options + ['trim' => false]));
+        $this->assertSame('alpha..beta', $this->slugify->slugify('!alpha beta!', ['separator' => '..']));
+        $this->assertSame('alphabeta', $this->slugify->slugify('!alpha beta!', ['separator' => '']));
+    }
+
     /**
      * @covers \Cocur\Slugify\Slugify::slugify()
      */
