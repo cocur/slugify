@@ -525,6 +525,7 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 -   [#352](https://github.com/cocur/slugify/pull/352) Add PHP 8.6 support (by [mitelg](https://github.com/mitelg))
 -   [#355](https://github.com/cocur/slugify/pull/355) Trim complete separator sequences instead of individual characters (by [MelnixDev](https://github.com/MelnixDev))
 -   [#356](https://github.com/cocur/slugify/pull/356) Fix dead Twig links in README (by [farisbasha](https://github.com/farisbasha))
+-   [#357](https://github.com/cocur/slugify/pull/357) Replace dead CI badges with GitHub Actions, run tests with code coverage in CI, test lowest dependencies with `--prefer-lowest`
 
 ### Version 4.7.0 (27 November 2025)
 
