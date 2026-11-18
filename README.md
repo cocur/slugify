@@ -521,6 +521,14 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ## Change Log
 
+### Version 4.8.0 (18 November 2026)
+
+-   [#344](https://github.com/cocur/slugify/pull/344) Replace abandoned `localheinz/composer-normalize` with `ergebnis/composer-normalize` (by [shakaran](https://github.com/shakaran))
+-   [#351](https://github.com/cocur/slugify/pull/351) Add acute vowel rules for Czech (by [Gabrieljr42](https://github.com/Gabrieljr42))
+-   [#352](https://github.com/cocur/slugify/pull/352) Add PHP 8.6 support (by [mitelg](https://github.com/mitelg))
+-   [#355](https://github.com/cocur/slugify/pull/355) Trim complete separator sequences instead of individual characters (by [MelnixDev](https://github.com/MelnixDev))
+-   [#356](https://github.com/cocur/slugify/pull/356) Fix dead Twig links in README (by [farisbasha](https://github.com/farisbasha))
+
 ### Version 4.7.0 (27 November 2025)
 
 -   [#346](https://github.com/cocur/slugify/pull/346) Add PHP 8.5 support (by [fulopattila122](https://github.com/fulopattila122))
