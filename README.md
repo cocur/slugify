@@ -21,7 +21,7 @@ Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with t
 -   No external dependencies.
 -   PSR-4 compatible.
 -   Compatible with PHP 8.0 - 8.6.
--   Integrations for [Symfony (3, 4 and 5)](http://symfony.com), [Laravel](http://laravel.com), [Twig (2 and 3)](http://twig.sensiolabs.org), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
+-   Integrations for [Symfony (3, 4 and 5)](http://symfony.com), [Laravel](http://laravel.com), [Twig (2 and 3)](https://twig.symfony.com/), [Zend Framework 2](http://framework.zend.com/), [Nette Framework](http://nette.org/), [Latte](http://latte.nette.org/) and [Plum](https://github.com/plumphp/plum).
 
 ## Installation
 
@@ -291,7 +291,7 @@ Slugify extension using a closure:
 ```
 
 You can find more information about registering extensions in the
-[Twig documentation](http://twig.sensiolabs.org/doc/advanced.html#creating-an-extension).
+[Twig documentation](https://twig.symfony.com/doc/3.x/advanced.html#creating-an-extension).
 
 ### Mustache.php
 
