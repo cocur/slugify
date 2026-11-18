@@ -2,14 +2,11 @@
 
 > Converts a string into a slug.
 
-[![Build Status](https://img.shields.io/travis/cocur/slugify.svg?style=flat)](https://travis-ci.org/cocur/slugify)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/9yv498ff61byp742?svg=true)](https://ci.appveyor.com/project/florianeckerstorfer/slugify)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/cocur/slugify.svg?style=flat)](https://scrutinizer-ci.com/g/cocur/slugify/)
-[![Code Coverage](https://scrutinizer-ci.com/g/cocur/slugify/badges/coverage.png?b=master&style=flat-square)](https://scrutinizer-ci.com/g/cocur/slugify/?branch=master)
-
 [![Latest Release](https://img.shields.io/packagist/v/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
 [![MIT License](https://img.shields.io/packagist/l/cocur/slugify.svg)](http://opensource.org/licenses/MIT)
 [![Total Downloads](https://img.shields.io/packagist/dt/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
+
+[![PHPUnit](https://github.com/cocur/slugify/actions/workflows/unit.yml/badge.svg?branch=main)](https://github.com/cocur/slugify/actions/workflows/unit.yml)
 
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with the help of
 [many great contributors](https://github.com/cocur/slugify/graphs/contributors).

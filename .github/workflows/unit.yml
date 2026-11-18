@@ -1,6 +1,21 @@
 name: PHPUnit
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  # symfony/phpunit-bridge 5.4.x (installed with --prefer-lowest) reads this
+  # before phpunit.xml.dist is applied, so it must be set in the environment.
+  SYMFONY_DEPRECATIONS_HELPER: weak
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   tests:
@@ -10,14 +25,8 @@ jobs:
       matrix:
         include:
           - php: "8.0"
-            os: macos-latest
-          - php: "8.0"
-            mode: high-deps
             os: ubuntu-latest
           - php: "8.1"
-            os: ubuntu-latest
-          - php: "8.1"
-            mode: low-deps
             os: ubuntu-latest
           - php: "8.2"
             os: ubuntu-latest
@@ -25,26 +34,31 @@ jobs:
             os: ubuntu-latest
             mode: low-deps
           - php: "8.3"
-            mode: experimental
+            os: ubuntu-latest
+          - php: "8.3"
+            os: ubuntu-latest
+            mode: low-deps
+          - php: "8.4"
             os: ubuntu-latest
           - php: "8.4"
-            mode: experimental
+            os: ubuntu-latest
+            mode: low-deps
+          - php: "8.5"
             os: ubuntu-latest
           - php: "8.5"
-            mode: experimental
             os: ubuntu-latest
+            mode: low-deps
           - php: "8.6"
             mode: experimental
             os: ubuntu-latest
       fail-fast: false
 
     runs-on: "${{ matrix.os }}"
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
+        uses: actions/checkout@v4
 
       - name: Configure for PHP >= 8.2
         if: "matrix.php >= '8.2'"
@@ -57,13 +71,50 @@ jobs:
           coverage: "none"
           ini-values: date.timezone=Europe/Paris,memory_limit=-1,default_socket_timeout=10,session.gc_probability=0,apc.enable_cli=1,zend.assertions=1
           php-version: "${{ matrix.php }}"
-          extensions: "${{ env.extensions }}"
+          extensions: mbstring
           tools: flex
 
       - name: Install dependencies
         run: |
-          composer update --no-progress --ansi
+          composer update --no-progress --ansi ${{ matrix.mode == 'low-deps' && '--prefer-lowest' || '' }}
 
       - name: Run tests
         run: |
-          vendor/bin/simple-phpunit --verbose --coverage-clover=coverage.clover
+          vendor/bin/simple-phpunit --verbose
+
+  coverage:
+    name: Code coverage
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure platform for PHP 8.5
+        run: composer config platform.php 8.1.99
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: pcov
+          php-version: "8.5"
+          ini-values: date.timezone=Europe/Paris,memory_limit=-1
+          extensions: mbstring
+          tools: flex
+
+      - name: Install dependencies
+        run: composer update --no-progress --ansi
+
+      - name: Run tests with coverage
+        run: |
+          set -o pipefail
+          vendor/bin/simple-phpunit --coverage-text | tee coverage.txt
+
+      - name: Add coverage summary to job summary
+        run: |
+          echo '### Code coverage' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          grep -A6 'Summary:' coverage.txt >> "$GITHUB_STEP_SUMMARY" || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
