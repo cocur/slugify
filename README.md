@@ -2,11 +2,11 @@
 
 > Converts a string into a slug.
 
-[![PHPUnit](https://github.com/cocur/slugify/actions/workflows/unit.yml/badge.svg?branch=main)](https://github.com/cocur/slugify/actions/workflows/unit.yml)
-
 [![Latest Release](https://img.shields.io/packagist/v/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
 [![MIT License](https://img.shields.io/packagist/l/cocur/slugify.svg)](http://opensource.org/licenses/MIT)
 [![Total Downloads](https://img.shields.io/packagist/dt/cocur/slugify.svg)](https://packagist.org/packages/cocur/slugify)
+
+[![PHPUnit](https://github.com/cocur/slugify/actions/workflows/unit.yml/badge.svg?branch=main)](https://github.com/cocur/slugify/actions/workflows/unit.yml)
 
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe with the help of
 [many great contributors](https://github.com/cocur/slugify/graphs/contributors).
