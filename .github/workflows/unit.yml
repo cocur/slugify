@@ -66,4 +66,38 @@ jobs:
 
       - name: Run tests
         run: |
-          vendor/bin/simple-phpunit --verbose --coverage-clover=coverage.clover
+          vendor/bin/simple-phpunit --verbose
+
+  coverage:
+    name: Code coverage
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure platform for PHP 8.5
+        run: composer config platform.php 8.1.99
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: pcov
+          php-version: "8.5"
+          ini-values: date.timezone=Europe/Paris,memory_limit=-1
+          tools: flex
+
+      - name: Install dependencies
+        run: composer update --no-progress --ansi
+
+      - name: Run tests with coverage
+        run: |
+          vendor/bin/simple-phpunit --coverage-text | tee coverage.txt
+
+      - name: Add coverage summary to job summary
+        run: |
+          echo '### Code coverage' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          grep -A6 'Summary:' coverage.txt >> "$GITHUB_STEP_SUMMARY" || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
