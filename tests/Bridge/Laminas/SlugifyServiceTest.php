@@ -1,9 +1,10 @@
 <?php
-namespace Cocur\Slugify\Tests\Bridge\ZF2;
+namespace Cocur\Slugify\Tests\Bridge\Laminas;
 
-use Cocur\Slugify\Bridge\ZF2\Module;
-use Cocur\Slugify\Bridge\ZF2\SlugifyService;
-use Zend\ServiceManager\ServiceManager;
+use Cocur\Slugify\Bridge\Laminas\Module;
+use Cocur\Slugify\Bridge\Laminas\SlugifyService;
+use Laminas\ServiceManager\ServiceManager;
+
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
@@ -21,11 +22,12 @@ class SlugifyServiceTest extends MockeryTestCase
 
     protected function setUp(): void
     {
+
         $this->slugifyService = new SlugifyService();
     }
 
     /**
-     * @covers \Cocur\Slugify\Bridge\ZF2\SlugifyService::__invoke()
+     * @covers \Cocur\Slugify\Bridge\Laminas\SlugifyService::__invoke()
      */
     public function testInvokeWithoutCustomConfig()
     {
@@ -40,7 +42,7 @@ class SlugifyServiceTest extends MockeryTestCase
     }
 
     /**
-     * @covers \Cocur\Slugify\Bridge\ZF2\SlugifyService::__invoke()
+     * @covers \Cocur\Slugify\Bridge\Laminas\SlugifyService::__invoke()
      */
     public function testInvokeWithCustomConfig()
     {
@@ -52,15 +54,20 @@ class SlugifyServiceTest extends MockeryTestCase
         $slugify = call_user_func($this->slugifyService, $sm);
         $this->assertInstanceOf('Cocur\Slugify\Slugify', $slugify);
 
-        // Make sure reg exp is the one provided and dots are kept
+        // Make sure regexp is the one provided and dots are kept
         $actual = 'Hello My Friend.zip';
         $expected = 'hello-my-friend.zip';
         $this->assertSame($expected, $slugify->slugify($actual));
     }
 
-    protected function createServiceManagerMock(array $config = [])
+    /**
+     * @param array $config
+     *
+     * @return ServiceManager
+     */
+    protected function createServiceManagerMock(array $config = []): ServiceManager
     {
-        $sm = new ServiceManager();
+        $sm = new ServiceManager($config);
         $sm->setService('Config', $config);
 
         return $sm;

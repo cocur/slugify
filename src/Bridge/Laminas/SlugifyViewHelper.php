@@ -1,9 +1,9 @@
 <?php
 
-namespace Cocur\Slugify\Bridge\ZF2;
+namespace Cocur\Slugify\Bridge\Laminas;
 
 use Cocur\Slugify\SlugifyInterface;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 
 /**
  * Class SlugifyViewHelper
@@ -34,7 +34,7 @@ class SlugifyViewHelper extends AbstractHelper
      *
      * @return string
      */
-    public function __invoke(string $string, string $separator = null)
+    public function __invoke($string, $separator = null)
     {
         return $this->slugify->slugify($string, $separator);
     }
