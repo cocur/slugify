@@ -9340,9 +9340,9 @@ class DefaultRuleProvider implements RuleProviderInterface
   ),
   'german' => 
   array (
-    'Ä' => 'AE',
-    'Ö' => 'OE',
-    'Ü' => 'UE',
+    'Ä' => 'Ae',
+    'Ö' => 'Oe',
+    'Ü' => 'Ue',
     'ẞ' => 'SS',
     'ä' => 'ae',
     'ö' => 'oe',
